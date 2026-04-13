@@ -19,30 +19,46 @@
 
     <script src="data.js"></script>
     <script>
-        const container = document.getElementById('list-container');
-        // 팀별로 데이터를 그룹화해서 출력 (간략 버전)
-        const teams = ["포레 (FORET)", "헤아림"]; // 팀 리스트
-        
-        teams.forEach(teamName => {
-            const teamArticles = SUNNY_DATA.filter(d => d.team === teamName);
-            if(teamArticles.length === 0) return;
+       // article_list.html 하단 스크립트 부분에 덮어씌우세요
+const container = document.getElementById('list-container');
 
-            let html = `
-                <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm">
-                    <h2 class="text-2xl font-black mb-6">${teamName}</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-5 gap-4">`;
-            
-            teamArticles.forEach(art => {
-                html += `
-                    <a href="article_view.html?id=${art.id}" class="group">
-                        <div class="aspect-video bg-gray-100 rounded-xl overflow-hidden mb-3">
-                            <img src="${art.thumbnail}" class="w-full h-full object-cover group-hover:scale-105 transition">
-                        </div>
-                        <span class="text-[10px] font-black text-[#63489a]">${art.step}</span>
-                        <h3 class="text-xs font-bold leading-tight line-clamp-2">${art.title}</h3>
-                    </a>`;
-            });
-            
+// 1. 데이터에서 팀 목록만 추출 (중복 제거)
+const uniqueTeams = [...new Set(SUNNY_DATA.map(item => item.team))];
+
+if (uniqueTeams.length === 0) {
+    container.innerHTML = "<p class='text-center py-20 text-gray-400'>아티클 데이터를 불러올 수 없습니다. data.js를 확인해 주세요.</p>";
+}
+
+// 2. 팀별로 돌면서 화면 그리기
+uniqueTeams.forEach(teamName => {
+    const teamArticles = SUNNY_DATA.filter(d => d.team === teamName);
+    const teamInfo = teamArticles[0]; // 해당 팀의 첫 번째 데이터에서 팀 정보 가져옴
+
+    let html = `
+        <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm mb-10">
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <span class="text-sunny font-black text-sm">${teamInfo.teamNum || ''}</span>
+                    <h2 class="text-2xl font-black">${teamName}</h2>
+                </div>
+                <a href="team_detail.html" class="text-xs font-bold text-gray-400 hover:text-sunny">팀 소개 →</a>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4">`;
+    
+    teamArticles.forEach(art => {
+        html += `
+            <a href="article_view.html?id=${art.id}" class="group">
+                <div class="aspect-video bg-gray-100 rounded-xl overflow-hidden mb-3">
+                    <img src="${art.thumbnail}" class="w-full h-full object-cover group-hover:scale-105 transition" onerror="this.src='https://via.placeholder.com/300x200?text=No+Image'">
+                </div>
+                <span class="text-[10px] font-black text-[#63489a]">${art.step}</span>
+                <h3 class="text-xs font-bold leading-tight line-clamp-2 mt-1">${art.title}</h3>
+            </a>`;
+    });
+    
+    html += `</div></div>`;
+    container.innerHTML += html;
+});
             html += `</div></div>`;
             container.innerHTML += html;
         });
