@@ -144,5 +144,43 @@
         }
         window.onload = renderArticles;
     </script>
+    function renderArticles() {
+    const page = document.getElementById('article-page');
+    const teams = [...new Set(SUNNY_DATA.map(d => d.teamName))];
+
+    teams.forEach(team => {
+        const teamData = SUNNY_DATA.filter(d => d.teamName === team);
+        const order = teamData[0].teamOrder;
+        const teamId = teamData[0].teamId; // 데이터에서 teamId 가져오기
+
+        const section = document.createElement('section');
+        section.id = `section-${teamId}`; // 섹션에 고유 ID 부여 (예: section-foret)
+        section.className = "animate__animated animate__fadeInUp";
+        section.innerHTML = `
+            `;
+        page.appendChild(section);
+    });
+
+    // --- 추가된 자동 스크롤 로직 ---
+    const urlParams = new URLSearchParams(window.location.search);
+    const targetTeam = urlParams.get('team');
+
+    if (targetTeam) {
+        // 데이터 렌더링 후 약간의 시간차를 두고 스크롤 (브라우저가 위치를 계산할 시간)
+        setTimeout(() => {
+            const targetElement = document.getElementById(`section-${targetTeam}`);
+            if (targetElement) {
+                const headerOffset = 80; // 헤더 높이만큼 띄우기
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth" // 부드럽게 스크롤
+                });
+            }
+        }, 100);
+    }
+}
 </body>
 </html>
