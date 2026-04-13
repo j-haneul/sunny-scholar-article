@@ -7,71 +7,23 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
-        body { font-family: 'Pretendard', sans-serif; background-color: #F9F9F7; }
-        .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); }
-        /* 카드 커스텀 그림자 */
-        .article-card { transition: all 0.3s ease; border-radius: 2rem; }
-        .article-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+        :root { --sunny-purple: #63489a; --sunny-light: #8c52ff; }
+        body { font-family: 'Pretendard', sans-serif; background-color: #F9F9F7; letter-spacing: -0.02em; }
+        .glass { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .article-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); border-radius: 2rem; }
+        .article-card:hover { transform: translateY(-8px); box-shadow: 0 25px 30px -10px rgba(0, 0, 0, 0.08); }
+        /* 가로 스크롤바 숨기기 */
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="text-gray-900">
 
-    <header class="sticky top-0 z-50 glass border-b border-gray-100 px-6 py-4">
+    <header class="sticky top-0 z-50 glass px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html"><img src="sunny_scholar_logo.png" alt="Logo" class="h-8"></a>
-            <nav class="flex space-x-8 text-xs font-black uppercase tracking-widest">
-                <a href="article_list.html" class="text-[#63489a]">Articles</a>
-                <a href="about.html" class="text-gray-500 hover:text-[#63489a]">About</a>
-            </nav>
-        </div>
-    </header>
-
-    <main id="article-page" class="max-w-7xl mx-auto px-6 py-12 space-y-20">
-        </main>
-
-    <script src="data.js"></script>
-    <script>
-        function renderArticles() {
-            const page = document.getElementById('article-page');
-            
-            // 1. 팀별로 데이터 묶기
-            const teams = [...new Set(SUNNY_DATA.map(d => d.teamName))];
-
-            teams.forEach(team => {
-                const teamData = SUNNY_DATA.filter(d => d.teamName === team);
-                const order = teamData[0].teamOrder;
-
-                // 2. 팀 섹션 만들기
-                const section = document.createElement('section');
-                section.innerHTML = `
-                    <div class="flex justify-between items-center mb-8">
-                        <div class="flex items-center gap-3">
-                            <span class="bg-[#63489a] text-white text-xs font-black px-2 py-1 rounded-md">${order}</span>
-                            <h2 class="text-xl md:text-2xl font-black text-gray-800">${team}</h2>
-                        </div>
-                        <a href="team_detail.html" class="text-[11px] font-bold text-[#63489a] flex items-center gap-1 hover:underline">
-                            팀 정보 보러가기 <span class="text-sm">→</span>
-                        </a>
-                    </div>
-                    <div class="flex gap-6 overflow-x-auto pb-6 scrollbar-hide">
-                        ${teamData.map(art => `
-                            <a href="${art.link}" class="article-card min-w-[280px] md:min-w-[320px] bg-white p-6 border border-gray-100 shadow-sm flex-shrink-0">
-                                <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 bg-gray-100">
-                                    <img src="${art.thumbnail}" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x300?text=SUNNY+Scholar'">
-                                </div>
-                                <div>
-                                    <p class="text-[10px] font-black text-[#8c52ff] mb-2 uppercase tracking-tighter">${art.part}</p>
-                                    <h3 class="text-sm md:text-base font-black text-gray-800 leading-snug line-clamp-2">${art.title}</h3>
-                                </div>
-                            </a>
-                        `).join('')}
-                    </div>
-                `;
-                page.appendChild(section);
-            });
-        }
-
-        window.onload = renderArticles;
-    </script>
-</body>
-</html>
+            <a href="index.html" class="transition-opacity hover:opacity-80">
+                <img src="sunny_scholar_logo.png" alt="Logo" class="h-8 w-auto">
+            </a>
+            <nav class="flex space-x-10 text-xs font-black uppercase tracking-widest">
+                <a href="article_list.html" class="text-[#63489a] border-b-2 border-[#63489a] pb-1">Articles</a>
+                <a href="team_detail.html" class="text-gray-4
