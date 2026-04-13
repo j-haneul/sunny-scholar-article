@@ -101,7 +101,7 @@
                 </a>
                 
                 <nav class="hidden md:flex space-x-10 text-xs font-black tracking-widest uppercase">
-                    <a href="article_list.html" class="nav-link text-gray-800 hover:text-sunny transition">Articles</a>                    
+                    <a href="article_all.html" class="nav-link text-gray-800 hover:text-sunny transition">Articles</a>
                     <a href="team_detail.html" class="nav-link text-gray-800 hover:text-sunny transition">Lab</a>
                     <a href="about.html" class="nav-link text-gray-800 hover:text-sunny transition">About</a>
                 </nav>
@@ -129,9 +129,9 @@
                 <p class="text-sm md:text-base opacity-90 font-medium mb-8 max-w-xl mx-auto leading-relaxed">
                     5개의 팀이 현장에서 발견하고 분석한 <br class="md:hidden"> 사회문제의 진짜 원인을 아티클로 만나보세요.
                 </p>
-<a href="article_list.html" class="inline-block bg-white text-[#63489a] ...">
+<a href="#teams" class="inline-block bg-white text-[#63489a] px-8 py-3 rounded-full font-black text-sm hover:bg-gray-100 transition-all duration-300 shadow-xl">
     아티클 둘러보기
-</a>
+                </a>
             </div>
         </div>
         <!-- Decorative Grid Light -->
@@ -156,10 +156,10 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" id="team-container">
             
             <!-- Team 1: 포레 -->
-<div onclick="location.href='article_list.html?team=fo:re'" class="team-card ...">
-    <div class="card-banner bg-[#63489a] h-40 p-5 text-white flex flex-col justify-end">
+            <div onclick="location.href='article_list.html'" class="team-card bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col" data-category="자립">
+                <div class="card-banner bg-[#63489a] h-40 p-5 text-white flex flex-col justify-end">
                     <span class="text-[10px] font-bold opacity-70 mb-1">1조</span>
-                    <h3 class="text-xl font-black mb-1">포레 (fo:re)</h3>
+                    <h3 class="text-xl font-black mb-1">포레 (FORET)</h3>
                     <p class="text-[11px] font-medium leading-tight opacity-90">조부모 돌봄 자립준비청년의 학업 중도포기 문제</p>
                 </div>
                 <div class="p-5 flex-grow flex flex-col">
@@ -177,8 +177,8 @@
             </div>
 
             <!-- Team 2: 그린 -->
-<div onclick="location.href='article_list.html?team=green'" class="team-card ...">
-    <div class="card-banner bg-[#2d6a4f] h-40 p-5 text-white flex flex-col justify-end">
+            <div onclick="location.href='article_list.html'" class="team-card bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col" data-category="자립">
+                <div class="card-banner bg-[#2d6a4f] h-40 p-5 text-white flex flex-col justify-end">
                     <span class="text-[10px] font-bold opacity-70 mb-1">2조</span>
                     <h3 class="text-xl font-black mb-1">그린 (GREEN)</h3>
                     <p class="text-[11px] font-medium leading-tight opacity-90">자립준비청년의 학업 중단, 그 이면의 구조적 결핍</p>
@@ -198,8 +198,8 @@
             </div>
 
             <!-- Team 3: 헤아림 -->
-<div onclick="location.href='article_list.html?team=hearim'" class="team-card ...">                
-    <div class="card-banner bg-[#0077b6] h-40 p-5 text-white flex flex-col justify-end">
+            <div onclick="location.href='article_list.html'" class="team-card bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col" data-category="장애">
+                <div class="card-banner bg-[#0077b6] h-40 p-5 text-white flex flex-col justify-end">
                     <span class="text-[10px] font-bold opacity-70 mb-1">3조</span>
                     <h3 class="text-xl font-black mb-1">헤아림</h3>
                     <p class="text-[11px] font-medium leading-tight opacity-90">장애인 의무고용제도 내 발달장애인 배제 문제</p>
@@ -219,8 +219,8 @@
             </div>
 
             <!-- Team 4: 두드림 -->
-<div onclick="location.href='article_list.html?team=dodream'" class="team-card ...">
-    <div class="card-banner bg-[#c1121f] h-40 p-5 text-white flex flex-col justify-end">
+            <div onclick="location.href='article_list.html'" class="team-card bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col" data-category="장애">
+                <div class="card-banner bg-[#c1121f] h-40 p-5 text-white flex flex-col justify-end">
                     <span class="text-[10px] font-bold opacity-70 mb-1">4조</span>
                     <h3 class="text-xl font-black mb-1">두드림 (DO DREAM)</h3>
                     <p class="text-[11px] font-medium leading-tight opacity-90">경계성지능 한부모 가정의 삶과 자립의 사각지대</p>
@@ -240,8 +240,8 @@
             </div>
 
             <!-- Team 5: 등대 -->
-<div onclick="location.href='article_list.html?team=lighthouse'" class="team-card ...">
-    <div class="card-banner bg-[#f8961e] h-40 p-5 text-white flex flex-col justify-end">
+            <div onclick="location.href='article_list.html'" class="team-card bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col" data-category="이주">
+                <div class="card-banner bg-[#f8961e] h-40 p-5 text-white flex flex-col justify-end">
                     <span class="text-[10px] font-bold opacity-70 mb-1">5조</span>
                     <h3 class="text-xl font-black mb-1">등대 (LIGHTHOUSE)</h3>
                     <p class="text-[11px] font-medium leading-tight opacity-90">중도입국청소년의 입학 지연 및 학업 포기 문제</p>
