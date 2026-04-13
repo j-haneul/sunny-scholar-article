@@ -1,67 +1,77 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8"><title>Articles | SUNNY Scholar</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles | SUNNY Scholar</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css'); body{font-family:'Pretendard'; background:#f8f9ff;}</style>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
+        body { font-family: 'Pretendard', sans-serif; background-color: #F9F9F7; }
+        .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); }
+        /* 카드 커스텀 그림자 */
+        .article-card { transition: all 0.3s ease; border-radius: 2rem; }
+        .article-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+    </style>
 </head>
-<body>
-    <header class="p-6 border-b bg-white sticky top-0 z-50 flex justify-between items-center">
-        <a href="index.html"><img src="SUNNY_Scholar_Logo.png" class="h-8"></a>
-        <nav class="space-x-6 text-xs font-bold uppercase"><a href="article_list.html" class="text-[#63489a]">Articles</a><a href="about.html">About</a></nav>
+<body class="text-gray-900">
+
+    <header class="sticky top-0 z-50 glass border-b border-gray-100 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html"><img src="sunny_scholar_logo.png" alt="Logo" class="h-8"></a>
+            <nav class="flex space-x-8 text-xs font-black uppercase tracking-widest">
+                <a href="article_list.html" class="text-[#63489a]">Articles</a>
+                <a href="about.html" class="text-gray-500 hover:text-[#63489a]">About</a>
+            </nav>
+        </div>
     </header>
 
-    <main class="max-w-6xl mx-auto p-6 py-12">
-        <h1 class="text-3xl font-black mb-8">Problem Definition Articles</h1>
-        
-        <div id="list-container" class="space-y-12"></div>
-    </main>
+    <main id="article-page" class="max-w-7xl mx-auto px-6 py-12 space-y-20">
+        </main>
 
     <script src="data.js"></script>
     <script>
-       // article_list.html 하단 스크립트 부분에 덮어씌우세요
-const container = document.getElementById('list-container');
+        function renderArticles() {
+            const page = document.getElementById('article-page');
+            
+            // 1. 팀별로 데이터 묶기
+            const teams = [...new Set(SUNNY_DATA.map(d => d.teamName))];
 
-// 1. 데이터에서 팀 목록만 추출 (중복 제거)
-const uniqueTeams = [...new Set(SUNNY_DATA.map(item => item.team))];
+            teams.forEach(team => {
+                const teamData = SUNNY_DATA.filter(d => d.teamName === team);
+                const order = teamData[0].teamOrder;
 
-if (uniqueTeams.length === 0) {
-    container.innerHTML = "<p class='text-center py-20 text-gray-400'>아티클 데이터를 불러올 수 없습니다. data.js를 확인해 주세요.</p>";
-}
+                // 2. 팀 섹션 만들기
+                const section = document.createElement('section');
+                section.innerHTML = `
+                    <div class="flex justify-between items-center mb-8">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-[#63489a] text-white text-xs font-black px-2 py-1 rounded-md">${order}</span>
+                            <h2 class="text-xl md:text-2xl font-black text-gray-800">${team}</h2>
+                        </div>
+                        <a href="team_detail.html" class="text-[11px] font-bold text-[#63489a] flex items-center gap-1 hover:underline">
+                            팀 정보 보러가기 <span class="text-sm">→</span>
+                        </a>
+                    </div>
+                    <div class="flex gap-6 overflow-x-auto pb-6 scrollbar-hide">
+                        ${teamData.map(art => `
+                            <a href="${art.link}" class="article-card min-w-[280px] md:min-w-[320px] bg-white p-6 border border-gray-100 shadow-sm flex-shrink-0">
+                                <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 bg-gray-100">
+                                    <img src="${art.thumbnail}" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x300?text=SUNNY+Scholar'">
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-black text-[#8c52ff] mb-2 uppercase tracking-tighter">${art.part}</p>
+                                    <h3 class="text-sm md:text-base font-black text-gray-800 leading-snug line-clamp-2">${art.title}</h3>
+                                </div>
+                            </a>
+                        `).join('')}
+                    </div>
+                `;
+                page.appendChild(section);
+            });
+        }
 
-// 2. 팀별로 돌면서 화면 그리기
-uniqueTeams.forEach(teamName => {
-    const teamArticles = SUNNY_DATA.filter(d => d.team === teamName);
-    const teamInfo = teamArticles[0]; // 해당 팀의 첫 번째 데이터에서 팀 정보 가져옴
-
-    let html = `
-        <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm mb-10">
-            <div class="flex justify-between items-center mb-6">
-                <div>
-                    <span class="text-sunny font-black text-sm">${teamInfo.teamNum || ''}</span>
-                    <h2 class="text-2xl font-black">${teamName}</h2>
-                </div>
-                <a href="team_detail.html" class="text-xs font-bold text-gray-400 hover:text-sunny">팀 소개 →</a>
-            </div>
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-4">`;
-    
-    teamArticles.forEach(art => {
-        html += `
-            <a href="article_view.html?id=${art.id}" class="group">
-                <div class="aspect-video bg-gray-100 rounded-xl overflow-hidden mb-3">
-                    <img src="${art.thumbnail}" class="w-full h-full object-cover group-hover:scale-105 transition" onerror="this.src='https://via.placeholder.com/300x200?text=No+Image'">
-                </div>
-                <span class="text-[10px] font-black text-[#63489a]">${art.step}</span>
-                <h3 class="text-xs font-bold leading-tight line-clamp-2 mt-1">${art.title}</h3>
-            </a>`;
-    });
-    
-    html += `</div></div>`;
-    container.innerHTML += html;
-});
-            html += `</div></div>`;
-            container.innerHTML += html;
-        });
+        window.onload = renderArticles;
     </script>
 </body>
 </html>
