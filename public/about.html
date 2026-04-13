@@ -1,1 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | 2026 SUNNY Scholar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
+        :root { --sunny-purple: #63489a; --sunny-gradient: linear-gradient(135deg, #4f319b 0%, #8c52ff 100%); }
+        body { font-family: 'Pretendard', sans-serif; background-color: #f8f9ff; }
+        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); }
+        .bg-sunny-gradient { background: var(--sunny-gradient); }
+    </style>
+</head>
+<body class="text-gray-900">
 
+    <header class="sticky top-0 z-50 glass border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center">
+                    <img src="sunny_scholar_logo.png" alt="Logo" class="h-8 w-auto">
+                </a>
+                <nav class="hidden md:flex space-x-10 text-xs font-black tracking-widest uppercase">
+                    <a href="article_all.html" class="text-gray-800 hover:text-sunny transition">Articles</a>
+                    <a href="team_detail.html" class="text-gray-800 hover:text-sunny transition">Lab</a>
+                    <a href="about.html" class="text-sunny border-b-2 border-sunny transition">About</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-20 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-sunny font-black text-sm tracking-[0.2em] mb-4 uppercase">Program Introduction</h2>
+            <h1 class="text-4xl md:text-5xl font-black mb-8 leading-tight">진짜 사회문제를 정의하는<br>가장 치열한 여정</h1>
+            <p class="text-gray-600 text-lg font-medium leading-relaxed mb-12">
+                SUNNY Scholar는 사회문제를 해결하려는 열정을 넘어, 현장의 목소리를 듣고 데이터로 증명하며<br class="hidden md:block">
+                문제의 본질을 꿰뚫어 보는 소셜 임팩트 전문가를 육성합니다.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                <div class="p-6 bg-white rounded-2xl shadow-sm border border-gray-100">
+                    <div class="text-sunny font-black text-2xl mb-2">01</div>
+                    <div class="font-black text-gray-900 mb-1">현장 중심 연구</div>
+                    <div class="text-gray-500 text-sm">발로 뛰어 직접 만나는 현장 중심의 문제 정의.</div>
+                </div>
+                <div class="p-6 bg-white rounded-2xl shadow-sm border border-gray-100">
+                    <div class="text-sunny font-black text-2xl mb-2">02</div>
+                    <div class="font-black text-gray-900 mb-1">전문적 아카이빙</div>
+                    <div class="text-gray-500 text-sm">분석된 인사이트를 아티클로 기록하고 공유.</div>
+                </div>
+                <div class="p-6 bg-white rounded-2xl shadow-sm border border-gray-100">
+                    <div class="text-sunny font-black text-2xl mb-2">03</div>
+                    <div class="font-black text-gray-900 mb-1">임팩트 창출</div>
+                    <div class="text-gray-500 text-sm">정의된 문제를 바탕으로 실질적 변화 유도.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto px-6 mb-24">
+        <a href="https://sunny-scholar.oopy.io" target="_blank" class="block bg-sunny-gradient p-1 rounded-3xl group transition-transform hover:scale-[1.01]">
+            <div class="bg-gray-900/10 rounded-[calc(1.5rem-2px)] p-10 flex flex-col md:flex-row items-center justify-between text-white">
+                <div class="text-center md:text-left mb-6 md:mb-0">
+                    <h3 class="text-2xl font-black mb-2">이전 기수 프로젝트 살펴보기</h3>
+                    <p class="opacity-80 font-medium">지난 써니스콜라들이 정의한 사회문제 아카이브로 이동합니다.</p>
+                </div>
+                <div class="bg-white text-sunny px-8 py-3 rounded-full font-black text-sm group-hover:bg-gray-100 transition">
+                    Archive 바로가기 →
+                </div>
+            </div>
+        </a>
+    </section>
+
+</body>
+</html>
