@@ -1,6 +1,7 @@
 const SUNNY_DATA = [
     {
-        id: "foret-1",
+        id: "fore-1",
+        teamId: "fo:re",
         teamOrder: "01",
         teamName: "포레 : 조부모 돌봄 자립준비청년",
         part: "PART 01",
@@ -9,7 +10,8 @@ const SUNNY_DATA = [
         link: "article_view.html?id=foret-1"
     },
     {
-        id: "foret-2",
+        id: "fore-2",
+        teamId: "fo:re",
         teamOrder: "01",
         teamName: "포레 : 조부모 돌봄 자립준비청년",
         part: "PART 02",
@@ -19,10 +21,21 @@ const SUNNY_DATA = [
     },
     {
         id: "green-1",
+        teamId: "green",
         teamOrder: "02",
         teamName: "그린 : 자립준비청년 학업 중단",
         part: "PART 01",
         title: "학업을 포기하게 만드는 환경",
+        thumbnail: "green_1.png",
+        link: "article_view.html?id=green-1"
+    }
+        {
+        id: "green-2",
+        teamId: "green",
+        teamOrder: "02",
+        teamName: "그린 : 자립준비청년 학업 중단",
+        part: "PART 02",
+        title: "그럼에도 필요한 학업",
         thumbnail: "green_1.png",
         link: "article_view.html?id=green-1"
     }
