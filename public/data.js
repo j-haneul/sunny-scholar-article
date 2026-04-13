@@ -28,7 +28,7 @@ const SUNNY_DATA = [
         title: "학업을 포기하게 만드는 환경",
         thumbnail: "green_1.png",
         link: "article_view.html?id=green-1"
-    }
+    },
         {
         id: "green-2",
         teamId: "green",
