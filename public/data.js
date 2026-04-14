@@ -6,7 +6,7 @@ const SUNNY_DATA = [
         teamName: "포레 : 조부모 돌봄 자립준비청년",
         part: "PART 01",
         title: "문제의 실마리: 조부모라는 변수",
-        thumbnail: "fore_1.png",
+        thumbnail: "public/images/fore_1.png",
         subImage: "fore_1_detail.png", // 추가 이미지
         link: "article_view.html?id=fore-1",
         content: `우리는 현장에서 조부모를 돌보는 자립준비청년들을 만났습니다. 
