@@ -74,7 +74,7 @@
 
         <div class="mt-20 py-10 border-y border-gray-100 flex justify-center">
             <button onclick="copyURL()" class="flex items-center gap-3 bg-gray-900 text-white px-8 py-3 rounded-full hover:bg-black transition-all shadow-xl">
-                <span class="font-black text-sm tracking-tight">아티클 주소 복사하기</span>
+                <span class="font-black text-sm tracking-tight">공유하기</span>
             </button>
         </div>
 
@@ -100,18 +100,26 @@
         const articleId = urlParams.get('id');
 
         function initView() {
-            if (typeof SUNNY_DATA === 'undefined' || !articleId) return;
-            const currentIdx = SUNNY_DATA.findIndex(a => a.id === articleId);
-            const current = SUNNY_DATA[currentIdx];
-            if (!current) return;
+           function initView() {
+    if (typeof SUNNY_DATA === 'undefined' || !articleId) return;
+    const currentIdx = SUNNY_DATA.findIndex(a => a.id === articleId);
+    const current = SUNNY_DATA[currentIdx];
+    if (!current) return;
 
-            // 데이터 삽입
-            document.getElementById('view-team-tag').innerText = current.teamName;
-            document.getElementById('view-title').innerText = current.title;
-            document.getElementById('view-main-img').src = current.thumbnail;
-            
-            // 본문 예시 (나중에 JS에서 내용을 관리한다면 이 부분을 수정)
-            document.getElementById('dynamic-body').innerHTML = `<p>${current.content || "본문 내용이 data.js에 준비되지 않았습니다."}</p>`;
+    // 1. 기본 텍스트 삽입
+    document.getElementById('view-team-tag').innerText = current.teamName;
+    document.getElementById('view-title').innerText = current.title;
+    document.getElementById('view-main-img').src = current.thumbnail;
+    
+    // 2. 본문 및 서브 이미지 렌더링 (가독성 핵심)
+    let bodyHTML = `<div class="content-text">${current.content}</div>`;
+    
+    // 서브 이미지가 있을 경우에만 본문 아래에 추가
+    if (current.subImage && current.subImage !== "") {
+        bodyHTML += `<img src="${current.subImage}" class="content-img animate__animated animate__fadeIn" alt="Sub Image">`;
+    }
+    
+    document.getElementById('dynamic-body').innerHTML = bodyHTML;
 
             // 상단 탭 생성
             const teamArticles = SUNNY_DATA.filter(a => a.teamId === current.teamId);
