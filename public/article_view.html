@@ -1,1 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article View | 2026 SUNNY Scholar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
+        :root {
+            --sunny-purple: #63489a;
+            --sunny-gradient: linear-gradient(135deg, #4f319b 0%, #8c52ff 100%);
+        }
+        body { 
+            font-family: 'Pretendard', sans-serif; 
+            background-color: #f8f9ff;
+            line-height: 1.8;
+            letter-spacing: -0.01em;
+        }
+        .glass { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); }
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: ''; position: absolute; width: 0; height: 3px;
+            bottom: -4px; left: 0; background-color: var(--sunny-purple);
+            transition: width 0.2s ease; border-radius: 2px;
+        }
+        .nav-link:hover::after { width: 100%; }
+        .part-tab { transition: all 0.3s ease; border-radius: 99px; padding: 6px 16px; white-space: nowrap; }
+        .part-tab.active { background: var(--sunny-purple); color: white; font-weight: 800; }
+        
+        /* 아티클 본문 가독성 설정 */
+        article p { margin-bottom: 2rem; color: #374151; font-size: 1.125rem; word-break: keep-all; text-align: justify; }
+        .content-img { border-radius: 1.5rem; box-shadow: 0 20px 40px rgba(0,0,0,0.05); margin: 3rem 0; width: 100%; }
+        
+        /* 하단 이전/다음 탭 */
+        .bottom-nav-card {
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+        }
+        .bottom-nav-card:hover { border-color: var(--sunny-purple); transform: translateY(-4px); }
+    </style>
+</head>
+<body class="text-gray-900">
 
+    <header class="sticky top-0 z-50 glass border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center h-14 md:h-16">
+            <a href="index.html"><img src="/images/sunny_scholar_logo.png" alt="Logo" class="h-7 md:h-8"></a>
+            <nav class="hidden md:flex space-x-10 text-xs font-black tracking-widest uppercase">
+                <a href="article_list.html" class="nav-link text-gray-800">Articles</a>
+                <a href="team_detail.html" class="nav-link text-gray-800">Lab</a>
+                <a href="about.html" class="nav-link text-gray-800">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="bg-white border-b border-gray-100 sticky top-14 md:top-16 z-40">
+        <div class="max-w-3xl mx-auto px-6 py-3">
+            <div id="part-nav" class="flex justify-start md:justify-center items-center gap-2 overflow-x-auto py-1 no-scrollbar">
+                </div>
+        </div>
+    </div>
+
+    <main class="max-w-3xl mx-auto px-6 py-16 md:py-24 animate__animated animate__fadeIn">
+        <header class="mb-12">
+            <div id="view-team-tag" class="text-[#63489a] text-[11px] font-black mb-3 tracking-widest uppercase">Team Name</div>
+            <h1 id="view-title" class="text-3xl md:text-5xl font-black leading-tight break-keep mb-8">제목 로딩 중...</h1>
+        </header>
+
+        <article id="view-content">
+            <img id="view-main-img" src="" class="content-img">
+            <div id="dynamic-body"></div>
+        </article>
+
+        <div class="mt-20 py-10 border-y border-gray-100 flex justify-center">
+            <button onclick="copyURL()" class="flex items-center gap-3 bg-gray-900 text-white px-8 py-3 rounded-full hover:bg-black transition-all shadow-xl">
+                <span class="font-black text-sm tracking-tight">아티클 주소 복사하기</span>
+            </button>
+        </div>
+
+        <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div id="prev-article" class="invisible">
+                <a href="#" class="bottom-nav-card bg-white p-6 rounded-2xl flex flex-col h-full">
+                    <span class="text-[10px] font-black text-gray-400 uppercase mb-2">Previous</span>
+                    <span class="text-sm font-bold text-gray-900 line-clamp-1">이전 글 제목</span>
+                </a>
+            </div>
+            <div id="next-article" class="invisible">
+                <a href="#" class="bottom-nav-card bg-white p-6 rounded-2xl flex flex-col h-full text-right">
+                    <span class="text-[10px] font-black text-gray-400 uppercase mb-2">Next</span>
+                    <span class="text-sm font-bold text-gray-900 line-clamp-1">다음 글 제목</span>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script src="data.js"></script>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const articleId = urlParams.get('id');
+
+        function initView() {
+            if (typeof SUNNY_DATA === 'undefined' || !articleId) return;
+            const currentIdx = SUNNY_DATA.findIndex(a => a.id === articleId);
+            const current = SUNNY_DATA[currentIdx];
+            if (!current) return;
+
+            // 데이터 삽입
+            document.getElementById('view-team-tag').innerText = current.teamName;
+            document.getElementById('view-title').innerText = current.title;
+            document.getElementById('view-main-img').src = current.thumbnail;
+            
+            // 본문 예시 (나중에 JS에서 내용을 관리한다면 이 부분을 수정)
+            document.getElementById('dynamic-body').innerHTML = `<p>${current.content || "본문 내용이 data.js에 준비되지 않았습니다."}</p>`;
+
+            // 상단 탭 생성
+            const teamArticles = SUNNY_DATA.filter(a => a.teamId === current.teamId);
+            document.getElementById('part-nav').innerHTML = teamArticles.map(art => `
+                <a href="article_view.html?id=${art.id}" class="part-tab text-[11px] font-black ${art.id === articleId ? 'active' : 'text-gray-400'}">${art.part}</a>
+            `).join('');
+
+            // 하단 내비게이션 로직
+            if (currentIdx > 0) {
+                const prev = SUNNY_DATA[currentIdx - 1];
+                const el = document.getElementById('prev-article');
+                el.classList.remove('invisible');
+                el.querySelector('a').href = `article_view.html?id=${prev.id}`;
+                el.querySelector('span:last-child').innerText = prev.title;
+            }
+            if (currentIdx < SUNNY_DATA.length - 1) {
+                const next = SUNNY_DATA[currentIdx + 1];
+                const el = document.getElementById('next-article');
+                el.classList.remove('invisible');
+                el.querySelector('a').href = `article_view.html?id=${next.id}`;
+                el.querySelector('span:last-child').innerText = next.title;
+            }
+        }
+
+        function copyURL() {
+            navigator.clipboard.writeText(window.location.href);
+            alert("주소가 복사되었습니다!");
+        }
+
+        window.onload = initView;
+    </script>
+</body>
+</html>
