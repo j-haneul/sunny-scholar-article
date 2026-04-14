@@ -120,21 +120,31 @@
                 </a>
             `).join('');
 
-            // 6. 하단 내비게이션 (이전/다음 글)
-            if (currentIdx > 0) {
-                const prev = SUNNY_DATA[currentIdx - 1];
-                const prevEl = document.getElementById('prev-article');
-                prevEl.classList.remove('invisible');
-                prevEl.querySelector('a').href = `article_view.html?id=${prev.id}`;
-                prevEl.querySelector('span:last-child').innerText = prev.title;
-            }
-            if (currentIdx < SUNNY_DATA.length - 1) {
-                const next = SUNNY_DATA[currentIdx + 1];
-                const nextEl = document.getElementById('next-article');
-                nextEl.classList.remove('invisible');
-                nextEl.querySelector('a').href = `article_view.html?id=${next.id}`;
-                nextEl.querySelector('span:last-child').innerText = next.title;
-            }
+            // 6. 하단 내비게이션 (이전/다음 글) - 같은 팀 내에서만 작동하도록 수정
+const teamArticles = SUNNY_DATA.filter(a => a.teamId === current.teamId); // 현재 팀 글만 필터링
+const currentInTeamIdx = teamArticles.findIndex(a => a.id === articleId); // 팀 내에서의 순서
+
+// 이전 글 설정
+const prevEl = document.getElementById('prev-article');
+if (currentInTeamIdx > 0) {
+    const prev = teamArticles[currentInTeamIdx - 1];
+    prevEl.classList.remove('invisible');
+    prevEl.querySelector('a').href = `article_view.html?id=${prev.id}`;
+    prevEl.querySelector('span:last-child').innerText = prev.title;
+} else {
+    prevEl.classList.add('invisible'); // 첫 번째 글이면 숨김
+}
+
+// 다음 글 설정
+const nextEl = document.getElementById('next-article');
+if (currentInTeamIdx < teamArticles.length - 1) {
+    const next = teamArticles[currentInTeamIdx + 1];
+    nextEl.classList.remove('invisible');
+    nextEl.querySelector('a').href = `article_view.html?id=${next.id}`;
+    nextEl.querySelector('span:last-child').innerText = next.title;
+} else {
+    nextEl.classList.add('invisible'); // 마지막 글이면 숨김
+}
         }
 
         function copyURL() {
