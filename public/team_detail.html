@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Detail | 2026 SUNNY Scholar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
+        :root { --sunny-purple: #63489a; --sunny-gradient: linear-gradient(135deg, #4f319b 0%, #8c52ff 100%); }
+        body { font-family: 'Pretendard', sans-serif; background-color: #ffffff; color: #1a1a1a; scroll-behavior: smooth; }
+        .glass-nav { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        
+        /* Hero Section Gradient */
+        .hero-bg { background: var(--sunny-gradient); }
+        
+        /* Profile Image Ellipse */
+        .profile-img-container {
+            width: 100px;
+            height: 140px;
+            border-radius: 100px; /* 타원형 */
+            overflow: hidden;
+            background: #f3f4f6;
+            transition: transform 0.3s ease;
+        }
+        .profile-img-container:hover { transform: translateY(-5px); }
+        .profile-img-container img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Form Styling */
+        .input-field {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            border: 1px solid #e5e7eb;
+            background: #f9fafb;
+            transition: all 0.2s ease;
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: var(--sunny-purple);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(99, 72, 154, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center h-16">
+            <a href="index.html" class="font-black text-xl tracking-tighter text-[#63489a]">SUNNY Scholar</a>
+            <nav class="hidden md:flex space-x-8 text-sm font-bold uppercase tracking-widest">
+                <a href="article_list.html" class="hover:text-[#63489a] transition-colors">Articles</a>
+                <a href="team_detail.html" class="text-[#63489a]">Lab</a>
+                <a href="about.html" class="hover:text-[#63489a] transition-colors">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO Section: 팀 소개 배너 -->
+    <section class="pt-16">
+        <div class="hero-bg text-white py-24 md:py-32 px-6 text-center animate__animated animate__fadeIn">
+            <div class="max-w-4xl mx-auto">
+                <span class="inline-block px-4 py-1 rounded-full bg-white/20 text-xs font-bold mb-6 backdrop-blur-md">LAB 01</span>
+                <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight">포레 : 조부모 돌봄<br>자립준비청년의 자립</h1>
+                <p class="text-lg md:text-xl text-white/80 font-medium leading-relaxed max-w-2xl mx-auto break-keep">
+                    우리는 숫자에 가려진 조부모 돌봄 자립준비청년들의 현실을 탐구하고, 
+                    그들이 가족의 무게를 짊어지면서도 자신의 삶을 단단하게 가꾸어 나갈 수 있는 실질적인 대안을 제시합니다.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Section: 팀원 소개 -->
+    <section class="py-24 max-w-5xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-black mb-2">Team Members</h2>
+            <p class="text-gray-500 font-medium">변화를 만드는 포레의 팀원들을 소개합니다.</p>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <!-- Member 1 -->
+            <div class="flex flex-col items-center">
+                <div class="profile-img-container mb-4">
+                    <img src="public/images/member1.png" alt="Member" onerror="this.src='https://via.placeholder.com/100x140?text=SUNNY'">
+                </div>
+                <h3 class="font-black text-lg">김써니</h3>
+                <p class="text-sm text-gray-500 font-bold">Team Leader</p>
+            </div>
+            <!-- Member 2 -->
+            <div class="flex flex-col items-center">
+                <div class="profile-img-container mb-4">
+                    <img src="public/images/member2.png" alt="Member" onerror="this.src='https://via.placeholder.com/100x140?text=SUNNY'">
+                </div>
+                <h3 class="font-black text-lg">이학자</h3>
+                <p class="text-sm text-gray-500 font-bold">Researcher</p>
+            </div>
+            <!-- Member 3 -->
+            <div class="flex flex-col items-center">
+                <div class="profile-img-container mb-4">
+                    <img src="public/images/member3.png" alt="Member" onerror="this.src='https://via.placeholder.com/100x140?text=SUNNY'">
+                </div>
+                <h3 class="font-black text-lg">박돌봄</h3>
+                <p class="text-sm text-gray-500 font-bold">Designer</p>
+            </div>
+            <!-- Member 4 -->
+            <div class="flex flex-col items-center">
+                <div class="profile-img-container mb-4">
+                    <img src="public/images/member4.png" alt="Member" onerror="this.src='https://via.placeholder.com/100x140?text=SUNNY'">
+                </div>
+                <h3 class="font-black text-lg">최자립</h3>
+                <p class="text-sm text-gray-500 font-bold">Strategist</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section: 문의하기 & 컨택 포인트 -->
+    <section id="contact" class="py-24 bg-gray-50 border-t border-gray-100 px-6">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
+            
+            <!-- 컨택 포인트 정보 -->
+            <div class="animate__animated animate__fadeInLeft">
+                <h2 class="text-4xl font-black mb-8 leading-tight">우리 팀과<br>함께 변화를 만들어요.</h2>
+                <p class="text-gray-600 mb-10 leading-relaxed font-medium break-keep">
+                    팀 포레의 연구 결과에 대해 궁금하시거나, 협업을 제안하고 싶으신 기관 및 개인은 언제든 연락주세요. 
+                    사무국과 팀원이 함께 확인 후 답변 드립니다.
+                </p>
+                
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center shadow-sm">
+                            <svg class="w-6 h-6 text-[#63489a]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <div>
+                            <p class="text-xs font-black text-gray-400 uppercase">Email</p>
+                            <a href="mailto:fore_sunny@example.com" class="font-bold hover:text-[#63489a]">fore_sunny@example.com</a>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center shadow-sm">
+                            <svg class="w-6 h-6 text-[#63489a]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+                        </div>
+                        <div>
+                            <p class="text-xs font-black text-gray-400 uppercase">Blog / Channel</p>
+                            <a href="#" target="_blank" class="font-bold hover:text-[#63489a]">@fore_lab_official</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 문의하기 폼 -->
+            <div class="bg-white p-8 md:p-10 rounded-3xl shadow-2xl shadow-purple-900/5 animate__animated animate__fadeInRight">
+                <form id="contactForm" onsubmit="handleSubmit(event)" class="space-y-5">
+                    <div>
+                        <label class="block text-sm font-black mb-2 text-gray-700">기관명 (또는 개인명)</label>
+                        <input type="text" id="orgName" required class="input-field" placeholder="성함 혹은 기관명을 입력해주세요">
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-sm font-black mb-2 text-gray-700">담당자 이름</label>
+                            <input type="text" id="userName" required class="input-field" placeholder="이름">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-black mb-2 text-gray-700">이메일 주소</label>
+                            <input type="email" id="userEmail" required class="input-field" placeholder="email@example.com">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-black mb-2 text-gray-700">문의 내용</label>
+                        <textarea id="message" rows="5" required class="input-field resize-none" placeholder="문의하실 내용을 자유롭게 적어주세요"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-[#63489a] text-white font-black py-4 rounded-xl shadow-lg hover:bg-[#4f319b] transition-all transform hover:scale-[1.02] active:scale-95">
+                        문의 보내기
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-100 text-center text-gray-400 text-sm font-medium">
+        <p>© 2026 SUNNY Scholar Program. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            // 폼 데이터 수집
+            const data = {
+                org: document.getElementById('orgName').value,
+                name: document.getElementById('userName').value,
+                email: document.getElementById('userEmail').value,
+                msg: document.getElementById('message').value
+            };
+
+            // 서버 연동 전 시뮬레이션
+            console.log("문의 접수됨:", data);
+            
+            // 성공 피드백 (간단한 커스텀 알림)
+            alert(`${data.name}님, 문의가 정상적으로 접수되었습니다.\n사무국과 팀 메일로 내용이 전달됩니다.`);
+            document.getElementById('contactForm').reset();
+        }
+    </script>
+</body>
+</html>
