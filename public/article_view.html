@@ -13,11 +13,11 @@
         .glass { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); }
         .part-tab { transition: all 0.3s ease; border-radius: 99px; padding: 6px 16px; white-space: nowrap; font-size: 11px; font-weight: 800; color: #9ca3af; }
         .part-tab.active { background: var(--sunny-purple); color: white; }
-        article p { margin-bottom: 2rem; color: #374151; font-size: 1.125rem; word-break: keep-all; text-align: justify; }
-        .content-img { border-radius: 1.5rem; box-shadow: 0 20px 40px rgba(0,0,0,0.05); margin: 3rem 0; width: 100%; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
         .bottom-nav-card { transition: all 0.3s ease; border: 1px solid #eee; background: white; padding: 1.5rem; border-radius: 1rem; display: flex; flex-direction: column; }
         .bottom-nav-card:hover { border-color: var(--sunny-purple); transform: translateY(-4px); }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
+        article p { margin-bottom: 2rem; color: #374151; font-size: 1.125rem; word-break: keep-all; text-align: justify; }
+        .content-img { border-radius: 1.5rem; box-shadow: 0 20px 40px rgba(0,0,0,0.05); margin: 3rem 0; width: 100%; display: block; }
     </style>
 </head>
 <body class="text-gray-900">
@@ -35,8 +35,7 @@
 
     <div class="bg-white border-b border-gray-100 sticky top-14 md:top-16 z-40">
         <div class="max-w-3xl mx-auto px-6 py-3">
-            <div id="part-nav" class="flex justify-start md:justify-center items-center gap-2 overflow-x-auto no-scrollbar py-1">
-                </div>
+            <div id="part-nav" class="flex justify-start md:justify-center items-center gap-2 overflow-x-auto no-scrollbar py-1"></div>
         </div>
     </div>
 
@@ -47,14 +46,13 @@
         </header>
 
         <article>
-            <img id="view-main-img" src="" class="content-img mb-10" onerror="this.style.display='none'">
-            <div id="dynamic-body" class="prose prose-lg max-w-none">
-                </div>
+            <img id="view-main-img" src="" class="content-img mb-10" style="display:none;">
+            <div id="dynamic-body"></div>
         </article>
 
         <div class="mt-20 py-10 border-y border-gray-100 flex justify-center">
             <button onclick="copyURL()" class="bg-gray-900 text-white px-8 py-3 rounded-full font-black text-sm shadow-xl hover:bg-black transition-all">
-                공유하기
+                아티클 주소 복사하기
             </button>
         </div>
 
@@ -62,13 +60,13 @@
             <div id="prev-article" class="invisible">
                 <a href="#" class="bottom-nav-card">
                     <span class="text-[10px] font-black text-gray-400 uppercase mb-1">Previous</span>
-                    <span class="text-sm font-bold text-gray-900 truncate">이전 글 제목</span>
+                    <span class="text-sm font-bold text-gray-900 truncate">이전 글</span>
                 </a>
             </div>
             <div id="next-article" class="invisible">
                 <a href="#" class="bottom-nav-card text-right">
                     <span class="text-[10px] font-black text-gray-400 uppercase mb-1">Next</span>
-                    <span class="text-sm font-bold text-gray-900 truncate">다음 글 제목</span>
+                    <span class="text-sm font-bold text-gray-900 truncate">다음 글</span>
                 </a>
             </div>
         </div>
@@ -80,39 +78,40 @@
             const urlParams = new URLSearchParams(window.location.search);
             const articleId = urlParams.get('id');
 
-            // 1. 데이터 로드 확인
+            // 1. 데이터 로드 및 ID 체크
             if (typeof SUNNY_DATA === 'undefined') {
-                console.error("data.js를 찾을 수 없습니다.");
+                console.error("Error: data.js가 로드되지 않았습니다.");
+                return;
+            }
+            if (!articleId) {
+                document.getElementById('view-title').innerText = "잘못된 접근입니다.";
                 return;
             }
 
-            const currentIdx = SUNNY_DATA.findIndex(a => a.id === articleId);
-            if (currentIdx === -1) {
+            const current = SUNNY_DATA.find(a => a.id === articleId);
+            if (!current) {
                 document.getElementById('view-title').innerText = "아티클을 찾을 수 없습니다.";
                 return;
             }
 
-            const current = SUNNY_DATA[currentIdx];
-
-            // 2. 제목 및 팀명 매핑
+            // 2. 상단 데이터 매핑
             document.getElementById('view-team-tag').innerText = current.teamName;
             document.getElementById('view-title').innerText = current.title;
             
-            // 3. 메인 이미지 설정
-            const mainImg = document.getElementById('view-main-img');
             if(current.thumbnail) {
+                const mainImg = document.getElementById('view-main-img');
                 mainImg.src = current.thumbnail;
                 mainImg.style.display = 'block';
             }
 
-            // 4. 본문(content) 및 서브 이미지(subImage) 렌더링
-            let bodyHTML = `<div class="content-text">${current.content || "내용이 없습니다."}</div>`;
+            // 3. 본문 렌더링
+            let bodyHTML = `<div class="content-text">${current.content || ""}</div>`;
             if (current.subImage) {
                 bodyHTML += `<img src="${current.subImage}" class="content-img" alt="Sub Image">`;
             }
             document.getElementById('dynamic-body').innerHTML = bodyHTML;
 
-            // 5. 상단 회차 탭 생성
+            // 4. 상단 탭 (같은 팀 내에서만)
             const teamArticles = SUNNY_DATA.filter(a => a.teamId === current.teamId);
             document.getElementById('part-nav').innerHTML = teamArticles.map(art => `
                 <a href="article_view.html?id=${art.id}" class="part-tab ${art.id === articleId ? 'active' : ''}">
@@ -120,31 +119,30 @@
                 </a>
             `).join('');
 
-            // 6. 하단 내비게이션 (이전/다음 글) - 같은 팀 내에서만 작동하도록 수정
-const teamArticles = SUNNY_DATA.filter(a => a.teamId === current.teamId); // 현재 팀 글만 필터링
-const currentInTeamIdx = teamArticles.findIndex(a => a.id === articleId); // 팀 내에서의 순서
+            // 5. 하단 내비게이션 (중요: 팀별 필터링 적용)
+            const currentInTeamIdx = teamArticles.findIndex(a => a.id === articleId);
 
-// 이전 글 설정
-const prevEl = document.getElementById('prev-article');
-if (currentInTeamIdx > 0) {
-    const prev = teamArticles[currentInTeamIdx - 1];
-    prevEl.classList.remove('invisible');
-    prevEl.querySelector('a').href = `article_view.html?id=${prev.id}`;
-    prevEl.querySelector('span:last-child').innerText = prev.title;
-} else {
-    prevEl.classList.add('invisible'); // 첫 번째 글이면 숨김
-}
+            // 이전 글
+            const prevEl = document.getElementById('prev-article');
+            if (currentInTeamIdx > 0) {
+                const prev = teamArticles[currentInTeamIdx - 1];
+                prevEl.classList.remove('invisible');
+                prevEl.querySelector('a').href = `article_view.html?id=${prev.id}`;
+                prevEl.querySelector('span:last-child').innerText = prev.title;
+            } else {
+                prevEl.classList.add('invisible');
+            }
 
-// 다음 글 설정
-const nextEl = document.getElementById('next-article');
-if (currentInTeamIdx < teamArticles.length - 1) {
-    const next = teamArticles[currentInTeamIdx + 1];
-    nextEl.classList.remove('invisible');
-    nextEl.querySelector('a').href = `article_view.html?id=${next.id}`;
-    nextEl.querySelector('span:last-child').innerText = next.title;
-} else {
-    nextEl.classList.add('invisible'); // 마지막 글이면 숨김
-}
+            // 다음 글
+            const nextEl = document.getElementById('next-article');
+            if (currentInTeamIdx < teamArticles.length - 1) {
+                const next = teamArticles[currentInTeamIdx + 1];
+                nextEl.classList.remove('invisible');
+                nextEl.querySelector('a').href = `article_view.html?id=${next.id}`;
+                nextEl.querySelector('span:last-child').innerText = next.title;
+            } else {
+                nextEl.classList.add('invisible');
+            }
         }
 
         function copyURL() {
@@ -152,7 +150,6 @@ if (currentInTeamIdx < teamArticles.length - 1) {
             alert("주소가 복사되었습니다!");
         }
 
-        // 페이지 로드 시 실행
         window.onload = initView;
     </script>
 </body>
