@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team Profile | 2026 SUNNY Scholar</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+<script src="data.js"></script> <script>
+    // loadTeamDetail 함수 내용...
+</script> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
@@ -178,38 +180,21 @@
         memberListContainer.innerHTML = memberHTML;
 
         // 4. 해당 팀의 아티클 연동 (SUNNY_DATA에서 필터링)
-        renderTeamArticles(teamId);
-    }
 
-    function renderTeamArticles(teamId) {
-        // SUNNY_DATA에서 현재 팀의 아이디와 일치하는 아티클만 추출
-        const teamArticles = SUNNY_DATA.filter(article => article.teamId === teamId);
-        const articleSection = document.querySelector('section:last-of-type div:last-of-type');
+javascript
+function renderArticles() {
+    const container = document.getElementById('article-container'); // HTML에 해당 ID가 있어야 함
+    if (typeof SUNNY_DATA === 'undefined') return;
 
-        if (teamArticles.length > 0) {
-            // 아티클이 있을 경우 리스트 생성
-            const articleHTML = `
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    ${teamArticles.map(article => `
-                        <a href="${article.link}" class="group block bg-gray-50 rounded-2xl overflow-hidden hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-purple-100">
-                            <div class="aspect-video overflow-hidden">
-                                <img src="${article.thumbnail}" alt="${article.title}" class="w-100 h-100 object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/400x225?text=SUNNY+ARTICLE'">
-                            </div>
-                            <div class="p-6">
-                                <div class="text-[10px] font-black text-[#63489a] mb-2 uppercase tracking-widest">${article.part}</div>
-                                <h4 class="font-black text-lg group-hover:text-[#63489a] transition-colors line-clamp-1">${article.title}</h4>
-                            </div>
-                        </a>
-                    `).join('')}
-                </div>
-            `;
-            articleSection.classList.remove('text-center', 'py-12', 'text-gray-400', 'bg-gray-50');
-            articleSection.innerHTML = articleHTML;
-        } else {
-            // 아티클이 없을 경우 기본 메시지 유지
-            articleSection.innerHTML = "준비 중인 아티클이 없습니다.";
-        }
-    }
+    const html = SUNNY_DATA.map(art => `
+        <div class="article-item">
+            <img src="${art.thumbnail}" alt="">
+            <span>${art.teamName}</span>
+            <a href="${art.link}"><h3>${art.title}</h3></a>
+        </div>
+    `).join('');
+    container.innerHTML = html;
+}
 
     window.onload = loadTeamDetail;
 </script></body>
