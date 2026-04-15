@@ -86,76 +86,84 @@
 
     <script src="data.js"></script>
     <script>
-        function initView() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const articleId = urlParams.get('id');
+       function initView() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const articleId = urlParams.get('id');
 
-            // 1. 데이터 로드 및 ID 체크
-            if (typeof SUNNY_DATA === 'undefined') {
-                console.error("Error: data.js가 로드되지 않았습니다.");
-                return;
-            }
-            if (!articleId) {
-                document.getElementById('view-title').innerText = "잘못된 접근입니다.";
-                return;
-            }
+    // 1. 데이터 로드 체크
+    if (typeof SUNNY_DATA === 'undefined') return;
+    if (!articleId) {
+        document.getElementById('view-title').innerText = "잘못된 접근입니다.";
+        return;
+    }
 
-            const current = SUNNY_DATA.find(a => a.id === articleId);
-            if (!current) {
-                document.getElementById('view-title').innerText = "아티클을 찾을 수 없습니다.";
-                return;
-            }
+    const current = SUNNY_DATA.find(a => a.id === articleId);
+    if (!current) {
+        document.getElementById('view-title').innerText = "아티클을 찾을 수 없습니다.";
+        return;
+    }
 
-            // 2. 상단 데이터 매핑
-            document.getElementById('view-team-tag').innerText = current.teamName;
-            document.getElementById('view-title').innerText = current.title;
-            
-            if(current.thumbnail) {
-                const mainImg = document.getElementById('view-main-img');
-                mainImg.src = current.thumbnail;
-                mainImg.style.display = 'block';
-            }
+    // 2. 상단 데이터 매핑 (구조에 맞춰 수정)
+    // teamName: "포레 : 조부모 돌봄..." 전체 출력
+    document.getElementById('view-team-tag').innerText = current.teamName;
+    document.getElementById('view-title').innerText = current.title;
+    
+    // 3. 메인 이미지 (thumbnail) 처리
+    const mainImg = document.getElementById('view-main-img');
+    if(current.thumbnail) {
+        mainImg.src = current.thumbnail;
+        mainImg.style.display = 'block';
+    } else {
+        mainImg.style.display = 'none';
+    }
 
-            // 3. 본문 렌더링
-            let bodyHTML = `<div class="content-text">${current.content || ""}</div>`;
-            if (current.subImage) {
-                bodyHTML += `<img src="${current.subImage}" class="content-img" alt="Sub Image">`;
-            }
-            document.getElementById('dynamic-body').innerHTML = bodyHTML;
+    // 4. 본문 렌더링 (content)
+    // <br> 태그 등을 인식하기 위해 innerHTML 사용
+    document.getElementById('dynamic-body').innerHTML = current.content || "";
 
-            // 4. 상단 탭 (같은 팀 내에서만)
-            const teamArticles = SUNNY_DATA.filter(a => a.teamId === current.teamId);
-            document.getElementById('part-nav').innerHTML = teamArticles.map(art => `
-                <a href="article_view.html?id=${art.id}" class="part-tab ${art.id === articleId ? 'active' : ''}">
-                    ${art.part}
-                </a>
-            `).join('');
-
-            // 5. 하단 내비게이션 (중요: 팀별 필터링 적용)
-            const currentInTeamIdx = teamArticles.findIndex(a => a.id === articleId);
-
-            // 이전 글
-            const prevEl = document.getElementById('prev-article');
-            if (currentInTeamIdx > 0) {
-                const prev = teamArticles[currentInTeamIdx - 1];
-                prevEl.classList.remove('invisible');
-                prevEl.querySelector('a').href = `article_view.html?id=${prev.id}`;
-                prevEl.querySelector('span:last-child').innerText = prev.title;
-            } else {
-                prevEl.classList.add('invisible');
-            }
-
-            // 다음 글
-            const nextEl = document.getElementById('next-article');
-            if (currentInTeamIdx < teamArticles.length - 1) {
-                const next = teamArticles[currentInTeamIdx + 1];
-                nextEl.classList.remove('invisible');
-                nextEl.querySelector('a').href = `article_view.html?id=${next.id}`;
-                nextEl.querySelector('span:last-child').innerText = next.title;
-            } else {
-                nextEl.classList.add('invisible');
-            }
+    // 5. 서브 이미지 (subImage) 처리
+    // 기존에 없던 id이므로 HTML에 추가 필요 (아래 2번 참고)
+    const subImg = document.getElementById('view-sub-img');
+    if (subImg) {
+        if (current.subImage) {
+            subImg.src = current.subImage;
+            subImg.style.display = 'block';
+        } else {
+            subImg.style.display = 'none';
         }
+    }
+
+    // 6. 상단 파트 네비게이션 (같은 팀 아티클들)
+    const teamArticles = SUNNY_DATA.filter(a => a.teamId === current.teamId);
+    document.getElementById('part-nav').innerHTML = teamArticles.map(art => `
+        <a href="article_view.html?id=${art.id}" class="part-tab ${art.id === articleId ? 'active' : ''}">
+            ${art.part}
+        </a>
+    `).join('');
+
+    // 7. 하단 내비게이션 (이전/다음 글)
+    const currentIdx = teamArticles.findIndex(a => a.id === articleId);
+    
+    const prevEl = document.getElementById('prev-article');
+    if (currentIdx > 0) {
+        const prev = teamArticles[currentIdx - 1];
+        prevEl.classList.remove('invisible');
+        prevEl.querySelector('a').href = `article_view.html?id=${prev.id}`;
+        prevEl.querySelector('span:last-child').innerText = prev.title;
+    } else {
+        prevEl.classList.add('invisible');
+    }
+
+    const nextEl = document.getElementById('next-article');
+    if (currentIdx < teamArticles.length - 1) {
+        const next = teamArticles[currentIdx + 1];
+        nextEl.classList.remove('invisible');
+        nextEl.querySelector('a').href = `article_view.html?id=${next.id}`;
+        nextEl.querySelector('span:last-child').innerText = next.title;
+    } else {
+        nextEl.classList.add('invisible');
+    }
+}
 
         function copyURL() {
             navigator.clipboard.writeText(window.location.href);
