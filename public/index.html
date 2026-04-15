@@ -8,127 +8,201 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
-        
+
         :root {
-            /* 메인 컬러: 더 쨍한 네온 퍼플 */
-            --sunny-purple: #7e5bef;
-            --sunny-gradient: linear-gradient(135deg, #7e5bef 0%, #ac92ff 100%);
-            --grid-color: rgba(126, 91, 239, 0.08);
+            --sunny-purple: #63489a;
+            --sunny-gradient: linear-gradient(135deg, #4f319b 0%, #8c52ff 100%);
+            --grid-color: rgba(99, 72, 154, 0.05);
             
-            /* [핵심] 팀별 쨍한 화이트-믹스 그라데이션 */
-            /* 상단에 흰색 반투명 레이어를 섞어 탁한 기를 빼고 맑게 처리 */
-            --grad-team-1: linear-gradient(180deg, rgba(255,255,255,0.7) 0%, rgba(157, 124, 255, 0.9) 100%), #c4b5fd; 
-            --grad-team-2: linear-gradient(180deg, rgba(255,255,255,0.7) 0%, rgba(16, 185, 129, 0.9) 100%), #6ee7b7;
-            --grad-team-3: linear-gradient(180deg, rgba(255,255,255,0.7) 0%, rgba(59, 130, 246, 0.9) 100%), #93c5fd;
-            --grad-team-4: linear-gradient(180deg, rgba(255,255,255,0.7) 0%, rgba(239, 68, 68, 0.9) 100%), #fca5a5;
-            --grad-team-5: linear-gradient(180deg, rgba(255,255,255,0.7) 0%, rgba(245, 158, 11, 0.9) 100%), #fcd34d;
+            /* [수정] 카드 전용 쨍한 화이트-믹스 그라데이션 */
+            --grad-team-1: linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(99, 72, 154, 0.95) 100%); 
+            --grad-team-2: linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(45, 106, 79, 0.95) 100%);
+            --grad-team-3: linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(0, 119, 182, 0.95) 100%);
+            --grad-team-4: linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(193, 18, 31, 0.95) 100%);
+            --grad-team-5: linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(248, 150, 30, 0.95) 100%);
         }
-        
+
         body { 
             font-family: 'Pretendard', sans-serif; 
-            background-color: #f9faff;
+            overflow-x: hidden;
+            background-color: #f8f9ff;
             background-image: 
+                linear-gradient(to bottom, rgba(99, 72, 154, 0.1) 0%, transparent 15%),
                 linear-gradient(var(--grid-color) 1px, transparent 1px),
                 linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-            background-size: 30px 30px;
+            background-size: 100% 100%, 40px 40px, 40px 40px;
         }
 
         .bg-sunny-gradient { background: var(--sunny-gradient); }
-        .glass { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .animate-fast { animation-duration: 0.3s !important; }
+        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); box-shadow: 0 4px 20px 0 rgba(31, 38, 135, 0.05); }
+        .nav-link { position: relative; }
+        .nav-link::after { content: ''; position: absolute; width: 0; height: 3px; bottom: -4px; left: 0; background-color: var(--sunny-purple); transition: width 0.2s ease; border-radius: 2px; }
+        .nav-link:hover::after { width: 100%; }
 
-        /* 카드 및 그라데이션 영역 */
-        .team-card { transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); cursor: pointer; background: white; border: 1px solid rgba(0,0,0,0.05); }
-        .team-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(126, 91, 239, 0.15); }
-        
-        /* 텍스트 가독성을 위한 처리 */
-        .card-banner h3, .card-banner p, .card-banner span { color: #1a1a1a; } /* 쨍한 배경 위에는 어두운 글씨가 더 세련되어 보일 수 있음 */
-        .card-banner.dark-text h3, .card-banner.dark-text p { color: #2d3748; }
+        /* 카드 배너 텍스트 컬러 조정 (배경이 맑아졌으므로 텍스트를 어둡게 하여 쨍함 강조) */
+        .card-banner h3, .card-banner p, .card-banner span { color: #1a1a1a; }
 
-        .tag-block { display: inline-block; padding: 4px 10px; border-radius: 6px; background: #f1f5f9; color: #64748b; font-size: 11px; font-weight: 800; margin-right: 4px; }
+        .team-card { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease; cursor: pointer; }
+        .team-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .tag-block { display: inline-block; padding: 2px 8px; border-radius: 4px; background: #f3f4f6; color: #6b7280; font-size: 11px; font-weight: 700; margin-right: 4px; }
+        .gradient-text-box { background: rgba(255, 255, 255, 0.9); padding: 4px 16px; border-radius: 8px; display: inline-block; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         .text-gradient { background: var(--sunny-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     </style>
 </head>
 <body class="text-gray-900">
 
-    <header class="sticky top-0 z-50 glass">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center h-16">
-            <img src="/images/sunny_scholar_logo.png" alt="Logo" class="h-7">
-            <nav class="hidden md:flex space-x-10 text-[11px] font-black tracking-widest uppercase">
-                <a href="#" class="hover:text-[#7e5bef] transition">Articles</a>
-                <a href="#" class="hover:text-[#7e5bef] transition">Lab</a>
-                <a href="#" class="hover:text-[#7e5bef] transition">About</a>
-            </nav>
+    <header class="sticky top-0 z-50 glass border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-center h-14 md:h-16">
+                <a href="index.html" class="flex items-center">
+                    <img src="/images/sunny_scholar_logo.png" alt="Logo" class="h-7 md:h-8 w-auto">
+                </a>
+                <nav class="hidden md:flex space-x-10 text-xs font-black tracking-widest uppercase">
+                    <a href="article_list.html" class="nav-link text-gray-800">Articles</a>
+                    <a href="team_list.html" class="nav-link text-gray-800">Lab</a>
+                    <a href="about.html" class="nav-link text-gray-800">About</a>
+                </nav>
+            </div>
         </div>
     </header>
 
-    <section class="bg-sunny-gradient pt-20 pb-24 px-6 text-center text-white relative overflow-hidden">
-        <div class="relative z-10 animate__animated animate__fadeIn">
-            <p class="mb-4 text-purple-100 font-bold tracking-[0.3em] text-[10px] uppercase">Problem Definition Archive</p>
-            <h1 class="text-4xl md:text-5xl font-black mb-8 leading-tight">
+    <section class="bg-sunny-gradient pt-12 pb-16 px-6 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto text-center text-white relative z-10 animate__animated animate__fadeInUp animate-fast">
+            <p class="mb-3 text-purple-200 font-bold tracking-widest text-[10px] uppercase">Step 01: Problem Definition</p>
+            <h1 class="text-3xl md:text-5xl font-black mb-4 leading-tight">
                 2026 Sunny Scholar <br>
-                <span class="mt-4 bg-white px-6 py-2 rounded-2xl inline-block shadow-xl">
+                <div class="gradient-text-box mt-2">
                     <span class="text-gradient">문제정의 아카이빙</span>
-                </span>
+                </div>
             </h1>
-            <p class="text-lg opacity-90 font-medium mb-10 max-w-xl mx-auto break-keep">
-                치열한 고민 끝에 발견한 사회문제의 진짜 원인,<br>현장의 목소리가 담긴 아티클을 만나보세요. [cite: 26, 29]
+            <p class="text-sm md:text-base opacity-90 font-medium mb-8 max-w-xl mx-auto">
+                5개의 팀이 현장에서 발견하고 분석한 사회문제의 진짜 원인을 만나보세요.
+            </p>
+            <a href="#teams" class="inline-block bg-white text-[#63489a] px-8 py-3 rounded-full font-black text-sm shadow-xl">아티클 둘러보기</a>
+        </div>
+    </section>
+
+    <main id="teams" class="max-w-7xl mx-auto px-6 lg:px-8 py-12 md:py-16">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-10 border-b border-gray-100 pb-6">
+            <div class="text-left">
+                <h2 class="text-xl font-black text-gray-900 mb-1">2026 Sunny Scholar team.</h2>
+                <p class="text-gray-400 text-[11px] font-bold">총 5개의 팀이 사회문제를 연구하며 다시 정의합니다.</p>
+            </div>
+            <div class="flex space-x-2 mt-4 md:mt-0">
+                <button onclick="filterTeams('all')" class="filter-btn active px-3 py-1 bg-sunny-purple text-white rounded text-[10px] font-black">#전체</button>
+                <button onclick="filterTeams('자립')" class="filter-btn px-3 py-1 bg-white text-gray-400 rounded text-[10px] font-black border border-gray-100">#자립준비</button>
+                <button onclick="filterTeams('장애')" class="filter-btn px-3 py-1 bg-white text-gray-400 rounded text-[10px] font-black border border-gray-100">#장애/복지</button>
+                <button onclick="filterTeams('이주')" class="filter-btn px-3 py-1 bg-white text-gray-400 rounded text-[10px] font-black border border-gray-100">#이주민</button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" id="team-container">
+            <div onclick="location.href='article_list.html'" class="team-card bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col" data-category="자립">
+                <div class="card-banner h-40 p-5 flex flex-col justify-end" style="background: var(--grad-team-1);">
+                    <span class="text-[10px] font-bold opacity-60 mb-1">1조</span>
+                    <h3 class="text-xl font-black mb-1">포레 (FORET)</h3>
+                    <p class="text-[11px] font-bold opacity-80">조부모 돌봄 자립준비청년의 학업 문제</p>
+                </div>
+                <div class="p-5 flex-grow flex flex-col">
+                    <div class="mb-3"><span class="tag-block">#조부모돌봄</span><span class="tag-block">#자립준비청년</span></div>
+                    <h4 class="text-base font-black mb-2">가족 돌봄과 자립 사이의 선택</h4>
+                    <p class="text-gray-500 text-xs leading-relaxed">학업 유지에 미치는 영향을 탐구합니다.</p>
+                </div>
+            </div>
+
+            <div onclick="location.href='article_list.html'" class="team-card bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col" data-category="자립">
+                <div class="card-banner h-40 p-5 flex flex-col justify-end" style="background: var(--grad-team-2);">
+                    <span class="text-[10px] font-bold opacity-60 mb-1">2조</span>
+                    <h3 class="text-xl font-black mb-1">그린 (GREEN)</h3>
+                    <p class="text-[11px] font-bold opacity-80">자립준비청년의 학업 중단 구조적 결핍</p>
+                </div>
+                <div class="p-5 flex-grow flex flex-col">
+                    <div class="mb-3"><span class="tag-block">#학업중단</span><span class="tag-block">#시스템공백</span></div>
+                    <h4 class="text-base font-black mb-2">보호 종료 이후의 교육 공백</h4>
+                    <p class="text-gray-500 text-xs leading-relaxed">놓친 교육 기회에 대해 질문을 던집니다.</p>
+                </div>
+            </div>
+
+            <div onclick="location.href='article_list.html'" class="team-card bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col" data-category="장애">
+                <div class="card-banner h-40 p-5 flex flex-col justify-end" style="background: var(--grad-team-3);">
+                    <span class="text-[10px] font-bold opacity-60 mb-1">3조</span>
+                    <h3 class="text-xl font-black mb-1">헤아림</h3>
+                    <p class="text-[11px] font-bold opacity-80">장애인 의무고용제도 내 발달장애인 배제</p>
+                </div>
+                <div class="p-5 flex-grow flex flex-col">
+                    <div class="mb-3"><span class="tag-block">#의무고용제</span><span class="tag-block">#발달장애인</span></div>
+                    <h4 class="text-base font-black mb-2">숫자 뒤에 가려진 고용 불평등</h4>
+                    <p class="text-gray-500 text-xs leading-relaxed">현장의 목소리를 직접 담았습니다.</p>
+                </div>
+            </div>
+
+            <div onclick="location.href='article_list.html'" class="team-card bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col" data-category="장애">
+                <div class="card-banner h-40 p-5 flex flex-col justify-end" style="background: var(--grad-team-4);">
+                    <span class="text-[10px] font-bold opacity-60 mb-1">4조</span>
+                    <h3 class="text-xl font-black mb-1">두드림 (DO DREAM)</h3>
+                    <p class="text-[11px] font-bold opacity-80">경계성지능 한부모 가정의 삶</p>
+                </div>
+                <div class="p-5 flex-grow flex flex-col">
+                    <div class="mb-3"><span class="tag-block">#경계성지능</span><span class="tag-block">#복지사각지대</span></div>
+                    <h4 class="text-base font-black mb-2">이중의 어려움, 하나의 관심</h4>
+                    <p class="text-gray-500 text-xs leading-relaxed">일상적 고군분투를 기록합니다.</p>
+                </div>
+            </div>
+
+            <div onclick="location.href='article_list.html'" class="team-card bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col" data-category="이주">
+                <div class="card-banner h-40 p-5 flex flex-col justify-end" style="background: var(--grad-team-5);">
+                    <span class="text-[10px] font-bold opacity-60 mb-1">5조</span>
+                    <h3 class="text-xl font-black mb-1">등대 (LIGHTHOUSE)</h3>
+                    <p class="text-[11px] font-bold opacity-80">중도입국청소년의 학업 포기 문제</p>
+                </div>
+                <div class="p-5 flex-grow flex flex-col">
+                    <div class="mb-3"><span class="tag-block">#중도입국</span><span class="tag-block">#교육권보장</span></div>
+                    <h4 class="text-base font-black mb-2">닫힌 교문 앞의 이방인들</h4>
+                    <p class="text-gray-500 text-xs leading-relaxed">행정적 공백의 현실을 조명합니다.</p>
+                </div>
+            </div>
+
+            <div class="team-card bg-gray-50 rounded-xl overflow-hidden border border-dashed border-gray-200 flex flex-col justify-center items-center text-center p-6">
+                <h3 class="text-lg font-black text-gray-600">25개 전체 아티클 보기</h3>
+                <p class="text-gray-400 text-[10px] font-bold">Sunny Scholar 1단계 모든 기록</p>
+            </div>
+        </div>
+    </main>
+
+    <section class="max-w-4xl mx-auto px-6 mb-24">
+        <div class="glass rounded-3xl p-8 border border-white shadow-2xl relative overflow-hidden text-center md:text-left">
+            <div class="absolute top-0 left-0 w-1 bg-sunny-purple h-full"></div>
+            <h3 class="text-[#63489a] font-black text-xl mb-4">써니스콜라란?</h3>
+            <p class="text-sm text-gray-600 leading-relaxed break-keep">
+                Sunny Scholar는 치열한 문제 정의와 철저한 현장 경험을 기반으로 청년들이 사회문제 해결 전문가로 성장할 수 있도록 돕는 프로그램입니다.
             </p>
         </div>
     </section>
 
-    <main class="max-w-7xl mx-auto px-6 py-20">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            
-            <div class="team-card rounded-3xl overflow-hidden flex flex-col">
-                <div class="h-44 p-8 flex flex-col justify-end" style="background: var(--grad-team-1);">
-                    <span class="text-[10px] font-black opacity-60 tracking-tighter mb-1">TEAM 01</span>
-                    <h3 class="text-2xl font-black">포레 (FORET)</h3>
-                    <p class="text-xs font-bold opacity-80 mt-1">조부모 돌봄 자립준비청년의 학업 문제 [cite: 33]</p>
-                </div>
-                <div class="p-8 flex-grow">
-                    <div class="mb-5"><span class="tag-block">#조부모돌봄</span><span class="tag-block">#자립준비</span></div>
-                    <h4 class="text-lg font-black mb-3">가족 돌봄과 자립 사이의 선택</h4>
-                    <p class="text-gray-500 text-sm leading-relaxed mb-8">자립을 준비해야 하는 시기에 찾아온 가족 돌봄의 무게를 탐구합니다. [cite: 34]</p>
-                    <div class="flex justify-between items-center text-[#7e5bef] font-black text-sm border-t pt-5">
-                        <span>인사이트 읽기 →</span>
-                    </div>
-                </div>
-            </div>
+    <footer class="bg-gray-900 py-12 px-6 text-center md:text-left">
+        <img src="/images/sunny_scholar_logo.png" class="h-6 mb-3 brightness-0 invert opacity-40 mx-auto md:mx-0">
+        <p class="text-gray-600 text-[10px]">© 2026 SUNNY Scholar Archive.</p>
+    </footer>
 
-            <div class="team-card rounded-3xl overflow-hidden flex flex-col">
-                <div class="h-44 p-8 flex flex-col justify-end" style="background: var(--grad-team-2);">
-                    <span class="text-[10px] font-black opacity-60 tracking-tighter mb-1">TEAM 02</span>
-                    <h3 class="text-2xl font-black">그린 (GREEN)</h3>
-                    <p class="text-xs font-bold opacity-80 mt-1">자립준비청년의 구조적 결핍 [cite: 36]</p>
-                </div>
-                <div class="p-8 flex-grow">
-                    <div class="mb-5"><span class="tag-block">#학업중단</span><span class="tag-block">#교육공백</span></div>
-                    <h4 class="text-lg font-black mb-3">보호 종료 이후의 교육 공백</h4>
-                    <p class="text-gray-500 text-sm leading-relaxed mb-8">시스템이 놓친 자립준비청년의 교육 기회에 대해 질문을 던집니다. [cite: 36]</p>
-                    <div class="flex justify-between items-center text-[#10b981] font-black text-sm border-t pt-5">
-                        <span>인사이트 읽기 →</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="team-card rounded-3xl overflow-hidden flex flex-col">
-                <div class="h-44 p-8 flex flex-col justify-end" style="background: var(--grad-team-3);">
-                    <span class="text-[10px] font-black opacity-60 tracking-tighter mb-1">TEAM 03</span>
-                    <h3 class="text-2xl font-black">헤아림</h3>
-                    <p class="text-xs font-bold opacity-80 mt-1">발달장애인 의무고용 배제 문제 [cite: 38]</p>
-                </div>
-                <div class="p-8 flex-grow">
-                    <div class="mb-5"><span class="tag-block">#의무고용제</span><span class="tag-block">#발달장애</span></div>
-                    <h4 class="text-lg font-black mb-3">숫자 뒤에 가려진 고용 불평등</h4>
-                    <p class="text-gray-500 text-sm leading-relaxed mb-8">제도가 보장하는 기회가 왜 그들에게는 닿지 않는지 기록합니다. [cite: 38]</p>
-                    <div class="flex justify-between items-center text-[#3b82f6] font-black text-sm border-t pt-5">
-                        <span>인사이트 읽기 →</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </main>
-
+    <script>
+        function filterTeams(category) {
+            const cards = document.querySelectorAll('.team-card');
+            const btns = document.querySelectorAll('.filter-btn');
+            btns.forEach(btn => {
+                btn.classList.remove('bg-sunny-purple', 'text-white');
+                btn.classList.add('bg-white', 'text-gray-400');
+            });
+            event.currentTarget.classList.add('bg-sunny-purple', 'text-white');
+            cards.forEach(card => {
+                const cardCat = card.getAttribute('data-category');
+                if (category === 'all' || cardCat === category || !cardCat) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
