@@ -53,13 +53,13 @@
         }
     </style>
 </head>
+<body>
 
-    <!-- Header (Height Reduced) -->
     <header class="sticky top-0 z-50 glass border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex justify-between items-center h-14 md:h-16">
                 <a href="index.html" class="flex items-center">
-                    <img src="/images/sunny_scholar_logo.png" alt="sunny_scholar_logo.png" class="h-7 md:h-8 w-auto">
+                    <img src="/images/sunny_scholar_logo.png" alt="Logo" class="h-7 md:h-8 w-auto">
                 </a>
                 
                 <nav class="hidden md:flex space-x-10 text-xs font-black tracking-widest uppercase">
@@ -76,7 +76,6 @@
             </div>
         </div>
     </header>
-
 
     <main class="pt-24 pb-20 px-6 animate__animated animate__fadeIn">
         <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-10 xl:gap-16">
@@ -96,7 +95,13 @@
                 </div>
             </aside>
 
-            <div class="flex-grow space-y-16">
+            <div class="flex-grow space-y-12">
+                <section class="team-profile-card overflow-hidden animate__animated animate__fadeIn">
+                    <div class="aspect-[21/9] w-full bg-gray-100">
+                        <img id="display-team-profile-img" src="" alt="Team Group" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/1200x500?text=SUNNY+LAB+TEAM+PHOTO'">
+                    </div>
+                </section>
+
                 <section class="bg-white p-10 rounded-[2rem] border border-gray-100/50 shadow-lg shadow-purple-950/5">
                     <div class="flex items-center justify-between mb-10 pb-4 border-b border-gray-100">
                         <h2 class="text-2xl font-black text-gray-950 flex items-center gap-2">
@@ -104,7 +109,7 @@
                             Team Members
                         </h2>
                     </div>
-                    <div id="member-list" class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-8"></div>
+                    <div id="member-list" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6"></div>
                 </section>
 
                 <section class="bg-white p-10 rounded-[2rem] border border-gray-100/50 shadow-lg shadow-purple-950/5">
@@ -145,23 +150,26 @@
 
             const team = TEAM_DETAILS[teamId];
 
-            // 1. 데이터 안전하게 매핑 (존재하는 ID만 타겟팅)
+            // 1. 기본 정보 매핑
             if (document.getElementById('display-team-order')) document.getElementById('display-team-order').innerText = team.order;
             if (document.getElementById('display-team-name')) document.getElementById('display-team-name').innerText = team.name;
             if (document.getElementById('display-team-desc')) document.getElementById('display-team-desc').innerText = team.description;
             if (document.getElementById('display-team-email')) document.getElementById('display-team-email').href = `mailto:${team.email}`;
             if (document.getElementById('display-team-sns')) document.getElementById('display-team-sns').innerText = team.sns;
-
             
-            // 2. 팀원 리스트
+            // [NEW] 단체 사진 매핑
+            const profileImg = document.getElementById('display-team-profile-img');
+            if (profileImg) profileImg.src = team.teamProfileImg || team.teamImg;
+
+            // 2. 팀원 리스트 (5열 대응 레이아웃)
             const memberListContainer = document.getElementById('member-list');
-            if (memberListContainer) {
+            if (memberListContainer && team.members) {
                 memberListContainer.innerHTML = team.members.map(m => `
-                    <div class="flex flex-col items-center animate__animated animate__fadeInUp">
+                    <div class="flex flex-col items-center animate__animated animate__fadeInUp text-center">
                         <div class="member-profile-img mb-4 shadow-lg shadow-purple-900/10 transition-transform hover:-translate-y-1">
                             <img src="${m.img}" alt="${m.name}" onerror="this.src='https://via.placeholder.com/80x110?text=SUNNY'">
                         </div>
-                        <h3 class="font-black text-base text-gray-950">${m.name}</h3>
+                        <h3 class="font-black text-sm md:text-base text-gray-950">${m.name}</h3>
                     </div>
                 `).join('');
             }
@@ -179,7 +187,7 @@
                 container.innerHTML = `
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
                         ${teamArticles.map(art => `
-                            <a href="${art.link}" class="group block bg-gray-50 rounded-2xl overflow-hidden hover:bg-white hover:shadow-xl transition-all border border-transparent hover:border-purple-100">
+                            <a href="article_view.html?id=${art.id}" class="group block bg-gray-50 rounded-2xl overflow-hidden hover:bg-white hover:shadow-xl transition-all border border-transparent hover:border-purple-100">
                                 <div class="aspect-video overflow-hidden">
                                     <img src="${art.thumbnail}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/400x225?text=SUNNY+ARTICLE'">
                                 </div>
