@@ -88,28 +88,34 @@
                 </div>
                 
                 <div class="flex gap-6 overflow-x-auto pb-8 scrollbar-hide px-1">
-                    ${teamArticles.map(art => `
-                       <a href="article_view.html?id=${art.id}" class="article-card min-w-[280px] md:min-w-[320px] bg-white p-6 border border-gray-100 shadow-sm flex-shrink-0 group">
-    <div class="w-20 h-20 rounded-2xl overflow-hidden mb-6 bg-gray-50 ring-4 ring-gray-50 group-hover:ring-[#63489a]/10 transition-all">
-        <img src="${art.thumbnail}" 
-             loading="lazy"
-             class="w-full h-full object-cover" 
-             onerror="this.src='https://via.placeholder.com/200?text=SUNNY'">
-    </div>
-    
-    <p class="text-[11px] font-black text-[#8c52ff] mb-3 uppercase tracking-widest">${art.part}</p>
-    
-    <h3 class="text-xl md:text-2xl font-black text-gray-900 leading-tight break-keep group-hover:text-[#63489a] transition-colors">
-        ${art.title}
-    </h3>
-    
-    <div class="mt-6 pt-4 border-t border-gray-50 flex items-center text-[12px] font-bold text-gray-300 group-hover:text-[#63489a] transition-colors">
-        <span>Read Full Story</span>
-        <span class="ml-auto">→</span>
-    </div>
-</a>
-                    `).join('')}
-                </div>
+${teamArticles.map(art => `
+    <a href="article_view.html?id=${art.id}" class="group block bg-white rounded-3xl overflow-hidden border border-gray-100 hover:shadow-2xl hover:shadow-purple-900/10 transition-all duration-500 min-w-[280px] md:min-w-[300px] flex-shrink-0">
+        
+        <div class="aspect-[16/9] overflow-hidden bg-gray-100">
+            <img src="${art.thumbnail}" 
+                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                 onerror="this.src='https://via.placeholder.com/400x225?text=SUNNY+ARTICLE'">
+        </div>
+
+        <div class="p-6 md:p-7">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="w-2 h-[2px] bg-[#8c52ff]"></span>
+                <span class="text-[10px] font-black text-[#8c52ff] uppercase tracking-[0.1em]">${art.part}</span>
+            </div>
+            
+            <h4 class="font-black text-lg md:text-xl text-gray-950 leading-tight group-hover:text-[#63489a] transition-colors break-keep h-[3em] line-clamp-2">
+                ${art.title}
+            </h4>
+            
+            <div class="mt-8 flex items-center text-[11px] font-black text-gray-300 group-hover:text-[#63489a] transition-all">
+                <span class="uppercase tracking-widest">Read Article</span>
+                <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+            </div>
+        </div>
+    </a>
+`).join('')}                </div>
             `;
             page.appendChild(section);
         });
