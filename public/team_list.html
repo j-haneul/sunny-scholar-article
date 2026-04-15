@@ -17,15 +17,29 @@
 </head>
 <body>
 
-    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center h-16">
-            <a href="index.html" class="font-black text-[#63489a] text-lg">SUNNY Scholar</a>
-            <nav class="flex space-x-8 text-[11px] font-black uppercase tracking-widest">
-                <a href="article_list.html" class="hover:text-[#63489a]">Articles</a>
-                <a href="team_list.html" class="text-[#63489a]">Lab</a>
-            </nav>
+       <!-- Header (Height Reduced) -->
+    <header class="sticky top-0 z-50 glass border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-center h-14 md:h-16">
+                <a href="index.html" class="flex items-center">
+                    <img src="/images/sunny_scholar_logo.png" alt="sunny_scholar_logo.png" class="h-7 md:h-8 w-auto">
+                </a>
+                
+                <nav class="hidden md:flex space-x-10 text-xs font-black tracking-widest uppercase">
+                    <a href="article_list.html" class="nav-link text-gray-800 hover:text-sunny transition">Articles</a>
+                    <a href="team_list.html" class="nav-link text-gray-800 hover:text-sunny transition">Lab</a>
+                    <a href="about.html" class="nav-link text-gray-800 hover:text-sunny transition">About</a>
+                </nav>
+
+                <div class="md:hidden">
+                    <button class="p-2 text-gray-600">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 6h16"></path></svg>
+                    </button>
+                </div>
+            </div>
         </div>
     </header>
+
 
     <main class="max-w-7xl mx-auto px-6 py-20">
         <div class="mb-16">
