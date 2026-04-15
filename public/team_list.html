@@ -122,14 +122,10 @@
     <script>
       function renderTeams() {
     const grid = document.getElementById('team-grid');
-    
-    if (typeof TEAM_DETAILS === 'undefined') {
-        grid.innerHTML = '<p class="col-span-full text-center py-20 text-gray-400 font-bold">데이터를 로드하는 중입니다...</p>';
-        return;
-    }
+    if (typeof TEAM_DETAILS === 'undefined') return;
 
     const teamHTML = Object.entries(TEAM_DETAILS).map(([id, team]) => {
-        // [중요] teamProfileImg가 없으면 teamImg라도 가져오도록 우선순위 설정
+        // 우선순위: teamProfileImg가 없으면 teamImg라도 찾고, 둘 다 없으면 빈 문자열
         const imgSrc = team.teamProfileImg || team.teamImg || "";
 
         return `
@@ -145,11 +141,9 @@
                             ${team.order}
                         </span>
                     </div>
-                    
                     <h3 class="text-xl font-black text-gray-900 group-hover:text-[#63489a] transition-colors leading-tight">
                         ${team.name}
                     </h3>
-                    
                     <div class="pt-4 flex items-center text-[11px] font-bold text-[#63489a] opacity-0 group-hover:opacity-100 transition-all transform translate-x-[-10px] group-hover:translate-x-0">
                         <span>View Lab Profile</span>
                         <span class="ml-1">→</span>
