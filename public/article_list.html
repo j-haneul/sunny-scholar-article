@@ -1,132 +1,97 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Articles | 2026 SUNNY Scholar</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-<style>
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
-:root {
---sunny-purple: #63489a;
---sunny-gradient: linear-gradient(135deg, #4f319b 0%, #8c52ff 100%);
---grid-color: rgba(99, 72, 154, 0.05);
-}
-body { 
-font-family: 'Pretendard', sans-serif; 
-background-color: #f8f9ff;
-background-image: 
-linear-gradient(to bottom, rgba(99, 72, 154, 0.05) 0%, transparent 15%),
-linear-gradient(var(--grid-color) 1px, transparent 1px),
-linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-background-size: 100% 100%, 40px 40px, 40px 40px;
-}
-.glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles | 2026 SUNNY Scholar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
+        :root {
+            --sunny-purple: #63489a;
+            --sunny-gradient: linear-gradient(135deg, #4f319b 0%, #8c52ff 100%);
+            --grid-color: rgba(99, 72, 154, 0.05);
+        }
+        body { 
+            font-family: 'Pretendard', sans-serif; 
+            background-color: #f8f9ff;
+            background-image: 
+                linear-gradient(to bottom, rgba(99, 72, 154, 0.05) 0%, transparent 15%),
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
+        }
+        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); }
         .article-card { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease; border-radius: 1.25rem; }
         .article-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
-        
-        /* 카드 스타일 수정 */
-        .article-card { 
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); 
-            border-radius: 1.5rem;
-            background: white;
-            border: 1px solid rgba(0,0,0,0.03);
-        }
-        .article-card:hover { 
-            transform: translateY(-10px); 
-            box-shadow: 0 30px 60px rgba(99, 72, 154, 0.12);
-            border-color: var(--sunny-purple);
-        }
-
-.scrollbar-hide::-webkit-scrollbar { display: none; }
-.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
         .text-gradient { background: var(--sunny-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        
-        .text-gradient { 
-            background: var(--sunny-gradient); 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
-        }
-</style>
+    </style>
 </head>
 <body class="text-gray-900">
 
-<header class="sticky top-0 z-50 glass border-b border-gray-100">
-<div class="max-w-7xl mx-auto px-6 h-14 md:h-16 flex justify-between items-center">
-<a href="index.html"><img src="images/sunny_scholar_logo.png" class="h-7 md:h-8 w-auto" onerror="this.src='https://via.placeholder.com/150x40?text=LOGO'"></a>
-<nav class="hidden md:flex space-x-10 text-xs font-black uppercase tracking-widest">
-<a href="article_list.html" class="text-gray-800 border-b-2 border-[#63489a]">Articles</a>
-<a href="team_list.html" class="text-gray-400 hover:text-gray-800 transition">Lab</a>
-<a href="about.html" class="text-gray-400 hover:text-gray-800 transition">About</a>
-</nav>
-</div>
-</header>
+    <header class="sticky top-0 z-50 glass border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 h-14 md:h-16 flex justify-between items-center">
+            <a href="index.html"><img src="images/sunny_scholar_logo.png" class="h-7 md:h-8 w-auto" onerror="this.src='https://via.placeholder.com/150x40?text=LOGO'"></a>
+            <nav class="hidden md:flex space-x-10 text-xs font-black uppercase tracking-widest">
+                <a href="article_list.html" class="text-gray-800 border-b-2 border-[#63489a]">Articles</a>
+                <a href="team_list.html" class="text-gray-400 hover:text-gray-800 transition">Lab</a>
+                <a href="about.html" class="text-gray-400 hover:text-gray-800 transition">About</a>
+            </nav>
+        </div>
+    </header>
 
     <section class="py-12 md:py-16 px-6 max-w-7xl mx-auto">
-    <section class="pt-16 pb-12 px-6 max-w-7xl mx-auto">
-<p class="text-[#63489a] font-black tracking-widest text-[10px] uppercase mb-2">Step 01 Archive</p>
+        <p class="text-[#63489a] font-black tracking-widest text-[10px] uppercase mb-2">Step 01 Archive</p>
         <h1 class="text-3xl md:text-4xl font-black mb-2 tracking-tight">Problem Definition <span class="text-gradient">Articles</span></h1>
-        <h1 class="text-4xl md:text-5xl font-black mb-4 tracking-tight leading-tight">
-            Problem Definition<br><span class="text-gradient">Articles</span>
-        </h1>
-<p class="text-gray-500 text-sm font-medium">5개의 팀이 정의한 문제의 본질을 아티클로 확인하세요.</p>
-</section>
+        <p class="text-gray-500 text-sm font-medium">5개의 팀이 정의한 문제의 본질을 아티클로 확인하세요.</p>
+    </section>
 
     <main id="article-page" class="max-w-7xl mx-auto px-6 pb-24 space-y-20"></main>
-    <main id="article-page" class="max-w-7xl mx-auto px-6 pb-32 space-y-24"></main>
 
-<script src="data.js"></script>
-<script>
-function renderArticles() {
-const page = document.getElementById('article-page');
+    <script src="data.js"></script>
+    <script>
+    function renderArticles() {
+        const page = document.getElementById('article-page');
         
         // 데이터가 로드되지 않았을 때 체크
         if (typeof SUNNY_DATA === 'undefined') {
             console.error("SUNNY_DATA를 찾을 수 없습니다. data.js 경로를 확인하세요.");
             return;
         }
-        if (typeof SUNNY_DATA === 'undefined') return;
 
-const teamIds = [...new Set(SUNNY_DATA.map(d => d.teamId))];
-page.innerHTML = ''; 
+        const teamIds = [...new Set(SUNNY_DATA.map(d => d.teamId))];
+        page.innerHTML = ''; 
 
-teamIds.forEach(tId => {
-const teamArticles = SUNNY_DATA.filter(d => d.teamId === tId);
-const teamDetail = (typeof TEAM_DETAILS !== 'undefined') ? TEAM_DETAILS[tId] : null;
-
+        teamIds.forEach(tId => {
+            const teamArticles = SUNNY_DATA.filter(d => d.teamId === tId);
+            const teamDetail = (typeof TEAM_DETAILS !== 'undefined') ? TEAM_DETAILS[tId] : null;
+            
             // 팀 정보 결정 (데이터가 없을 경우 대비)
-const teamOrder = teamDetail?.order || "LAB";
-const teamName = teamDetail?.name || teamArticles[0].teamName;
+            const teamOrder = teamDetail?.order || "LAB";
+            const teamName = teamDetail?.name || teamArticles[0].teamName;
 
-const section = document.createElement('section');
-section.className = "animate__animated animate__fadeInUp animate-fast";
-
-section.innerHTML = `
+            const section = document.createElement('section');
+            section.className = "animate__animated animate__fadeInUp animate-fast";
+            
+            section.innerHTML = `
                 <div class="flex justify-between items-end mb-8 border-b border-gray-100 pb-4">
                     <div class="flex items-center gap-3">
                         <span class="bg-[#63489a] text-white text-[10px] font-black px-2 py-1 rounded">${teamOrder}</span>
                         <h2 class="text-xl md:text-2xl font-black text-gray-900">${teamName}</h2>
-                <div class="flex justify-between items-end mb-10 border-b border-gray-100 pb-5">
-                    <div class="flex items-center gap-4">
-                        <span class="bg-[#63489a] text-white text-[11px] font-black px-3 py-1 rounded-full">${teamOrder}</span>
-                        <h2 class="text-2xl md:text-3xl font-black text-gray-900 tracking-tight">${teamName}</h2>
-</div>
+                    </div>
                     <a href="team_detail.html?id=${tId}" class="text-[11px] font-black text-[#63489a] hover:opacity-70 transition flex items-center gap-1">
                         팀 정보 보기 <span class="text-[14px]">→</span>
-                    <a href="team_detail.html?id=${tId}" class="text-xs font-bold text-gray-400 hover:text-[#63489a] transition flex items-center gap-1">
-                        View Team <span class="text-lg">→</span>
-</a>
-</div>
-
+                    </a>
+                </div>
+                
                 <div class="flex gap-6 overflow-x-auto pb-8 scrollbar-hide px-1">
-                <div class="flex gap-8 overflow-x-auto pb-10 scrollbar-hide px-1">
-${teamArticles.map(art => `
+                    ${teamArticles.map(art => `
                         <a href="article_view.html?id=${art.id}" class="article-card min-w-[280px] md:min-w-[320px] bg-white p-5 border border-gray-100 shadow-sm flex-shrink-0 group">
                             <div class="aspect-[16/10] rounded-xl overflow-hidden mb-5 bg-gray-50 shadow-inner">
-                        <a href="article_view.html?id=${art.id}" class="article-card min-w-[300px] md:min-w-[380px] p-8 flex-shrink-0 group">
-                            <div class="w-20 h-20 rounded-2xl overflow-hidden mb-8 bg-gray-50 ring-4 ring-gray-50 group-hover:ring-[#63489a]/10 transition-all">
-<img src="${art.thumbnail}" 
+                                <img src="${art.thumbnail}" 
                                      loading="lazy"
                                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                                      onerror="this.src='https://via.placeholder.com/400x250?text=Image+Not+Found'">
@@ -150,4 +115,3 @@ ${teamArticles.map(art => `
     </script>
 </body>
 </html>
-                                     loading
