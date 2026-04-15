@@ -35,8 +35,8 @@ const SUNNY_DATA = [
     },
     {
         id: "article-02",
-        teamId: "team-foret",
-        teamName: "포레 (FORET)",
+        teamId: "team-fore",
+        teamName: "포레 (FORE)",
         part: "Part 2. 원인 분석",
         title: "보이지 않는 돌봄의 무게: 통계로 본 현실",
         content: "<p>두 번째 파트 내용이 들어갈 자리입니다.</p>"
