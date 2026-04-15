@@ -9,19 +9,29 @@
     <style>
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
         
-        :root {
-            --sunny-purple: #63489a;
-            --sunny-gradient: linear-gradient(135deg, #4f319b 0%, #8c52ff 100%);
-            --grid-color: rgba(99, 72, 154, 0.05);
-            
-            /* 팀별 커스텀 그라데이션 (탁한 느낌 제거) */
-            --grad-team-1: linear-gradient(135deg, #a78bfa 0%, #63489a 100%); /* 포레: 보라 */
-            --grad-team-2: linear-gradient(135deg, #82c6a2 0%, #2d6a4f 100%); /* 그린: 초록 */
-            --grad-team-3: linear-gradient(135deg, #74b9ff 0%, #0077b6 100%); /* 헤아림: 파랑 */
-            --grad-team-4: linear-gradient(135deg, #ff8787 0%, #c1121f 100%); /* 두드림: 빨강 */
-            --grad-team-5: linear-gradient(135deg, #ffbe0b 0%, #f8961e 100%); /* 등대: 주황 */
-        }
-        
+     :root {
+    --sunny-purple: #63489a;
+    /* 메인 히어로: 더 밝고 쨍한 울트라 바이올렛 그라데이션 */
+    --sunny-gradient: linear-gradient(135deg, #7e5bef 0%, #ac92ff 100%);
+    --grid-color: rgba(99, 72, 154, 0.05);
+    
+    /* [수정] 팀별 쨍한 그라데이션 (상단에 흰색을 믹스하여 맑은 느낌 강조) */
+    
+    /* 1조 포레: 맑은 라벤더 -> 비비드 퍼플 */
+    --grad-team-1: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, #9d7cff 100%), #c4b5fd; 
+    
+    /* 2조 그린: 에메랄드 틴트 -> 딥 민트 그린 */
+    --grad-team-2: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, #10b981 100%), #6ee7b7;
+    
+    /* 3조 헤아림: 스카이 화이트 -> 브라이트 블루 */
+    --grad-team-3: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, #3b82f6 100%), #93c5fd;
+    
+    /* 4조 두드림: 캔디 핑크 -> 네온 레드 */
+    --grad-team-4: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, #ef4444 100%), #fca5a5;
+    
+    /* 5조 등대: 선샤인 옐로우 -> 비비드 오렌지 */
+    --grad-team-5: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, #f59e0b 100%), #fcd34d;
+}
         body { 
             font-family: 'Pretendard', sans-serif; 
             background-color: #f8f9ff;
