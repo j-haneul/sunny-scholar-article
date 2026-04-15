@@ -101,7 +101,7 @@
 
     <script src="data.js"></script>
     <script>
-        function renderArticles() {
+      function renderArticles() {
             const page = document.getElementById('article-page');
             if (typeof SUNNY_DATA === 'undefined') return;
 
@@ -111,6 +111,8 @@
             teams.forEach(team => {
                 const teamData = SUNNY_DATA.filter(d => d.teamName === team);
                 const order = teamData[0].teamOrder;
+                // 해당 팀의 ID 추출 (team_detail.html?id=... 에 사용)
+                const teamId = teamData[0].teamId; 
 
                 const section = document.createElement('section');
                 section.className = "animate__animated animate__fadeInUp animate-fast";
@@ -120,18 +122,20 @@
                             <span class="bg-[#63489a] text-white text-[10px] font-black px-2 py-1 rounded">${order}</span>
                             <h2 class="text-xl md:text-2xl font-black text-gray-900">${team}</h2>
                         </div>
-                        <a href="team_detail.html" class="text-[11px] font-black text-[#63489a] hover:opacity-70 transition">팀 정보 →</a>
+                        <a href="team_detail.html?id=${teamId}" class="text-[11px] font-black text-[#63489a] hover:opacity-70 transition flex items-center gap-1">
+                            팀 정보 보기 <span class="text-[14px]">→</span>
+                        </a>
                     </div>
                     
                     <div class="flex gap-6 overflow-x-auto pb-8 scrollbar-hide px-1">
                         ${teamData.map(art => `
-                            <a href="article_view.html?id=${art.id}" class="article-card min-w-[280px] md:min-w-[320px] bg-white p-5 border border-gray-100 shadow-sm flex-shrink-0">
+                            <a href="article_view.html?id=${art.id}" class="article-card min-w-[280px] md:min-w-[320px] bg-white p-5 border border-gray-100 shadow-sm flex-shrink-0 group">
                                 <div class="aspect-[16/10] rounded-xl overflow-hidden mb-5 bg-gray-50 shadow-inner">
-                                    <img src="${art.thumbnail}" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x250?text=SUNNY+Scholar'">
+                                    <img src="${art.thumbnail}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/400x250?text=SUNNY+Scholar'">
                                 </div>
                                 <p class="text-[10px] font-black text-[#8c52ff] mb-2 uppercase tracking-tighter">${art.part}</p>
-                                <h3 class="text-sm md:text-base font-black text-gray-900 leading-tight line-clamp-2 h-10 md:h-12">${art.title}</h3>
-                                <div class="mt-4 pt-4 border-t border-gray-50 flex items-center text-[11px] font-bold text-gray-400">
+                                <h3 class="text-sm md:text-base font-black text-gray-900 leading-tight line-clamp-2 h-10 md:h-12 group-hover:text-[#63489a] transition-colors">${art.title}</h3>
+                                <div class="mt-4 pt-4 border-t border-gray-50 flex items-center text-[11px] font-bold text-gray-400 group-hover:text-[#63489a] transition-colors">
                                     <span>Read Article</span>
                                     <span class="ml-auto">→</span>
                                 </div>
