@@ -5,7 +5,7 @@ const SUNNY_DATA = [
         teamName: "포레 (FORE)",
         part: "Part 1. 문제의 발견",
         title: "#1 스물 하나, 홀로 짊어진 시간들",
-        thumbnail: "public/fore_1.png"
+        thumbnail: "public/fore_1.png",
         content: `
             <p>수업 중간에 울린 전화는 119였습니다.</p>
             <p>“할머님께서 횡단보도를 건너다 넘어지셨어요. 바로 병원으로 오세요.”</p>
@@ -38,7 +38,7 @@ const SUNNY_DATA = [
             </div>
             <p>돌봄과 자신의 삶 사이에서 방향을 잡지 못하는 자립준비청년의 현실입니다. 그리고 그 경계에 서 있는 것은 성진 한 사람만의 이야기가 아닙니다.</p>
         `,
-        subImage:  // 하단 추가 이미지
+        subImage: "" // 하단 추가 이미지
     },
     {
         id: "article-02",
