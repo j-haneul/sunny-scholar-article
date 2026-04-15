@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teams | 2026 SUNNY Scholar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
+        body { font-family: 'Pretendard', sans-serif; background-color: #fcfcfd; letter-spacing: -0.02em; }
+        .team-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .team-card:hover { transform: translateY(-8px); }
+        .team-img-wrapper { aspect-ratio: 3/4; overflow: hidden; border-radius: 1.5rem; background: #eee; }
+        .team-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .team-card:hover .team-img { transform: scale(1.05); }
+    </style>
+</head>
+<body>
+
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center h-16">
+            <a href="index.html" class="font-black text-[#63489a] text-lg">SUNNY Scholar</a>
+            <nav class="flex space-x-8 text-[11px] font-black uppercase tracking-widest">
+                <a href="article_list.html" class="hover:text-[#63489a]">Articles</a>
+                <a href="team_list.html" class="text-[#63489a]">Lab</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-20">
+        <div class="mb-16">
+            <h1 class="text-4xl md:text-5xl font-black mb-4 tracking-tighter">SUNNY Lab Teams</h1>
+            <p class="text-gray-500 font-medium">2026년 사회 변화를 일구는 팀들을 소개합니다.</p>
+        </div>
+
+        <div id="team-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+            </div>
+    </main>
+
+    <script src="data.js"></script>
+    <script>
+        function renderTeams() {
+            const grid = document.getElementById('team-grid');
+            
+            // 1. 데이터 존재 확인
+            if (typeof TEAM_LIST === 'undefined') {
+                grid.innerHTML = '<p class="col-span-full text-center py-20 text-gray-400 font-bold">팀 데이터를 불러올 수 없습니다.</p>';
+                return;
+            }
+
+            // 2. HTML 템플릿 생성
+            const teamHTML = TEAM_LIST.map(team => `
+                <a href="team_detail.html?id=${team.id}" class="team-card group block">
+                    <div class="team-img-wrapper mb-5 shadow-lg shadow-purple-900/5">
+                        <img src="${team.thumbnail}" alt="${team.name}" class="team-img" 
+                             onerror="this.src='https://via.placeholder.com/300x400?text=SUNNY+LAB'">
+                    </div>
+                    <div class="px-1">
+                        <div class="text-[10px] font-black text-[#63489a] mb-2 tracking-widest uppercase">${team.order}</div>
+                        <h3 class="font-black text-lg leading-tight break-keep group-hover:text-[#63489a] transition-colors">
+                            ${team.name}
+                        </h3>
+                        <p class="mt-2 text-xs text-gray-400 font-medium line-clamp-2 leading-relaxed">
+                            ${team.description}
+                        </p>
+                    </div>
+                </a>
+            `).join('');
+
+            // 3. 그리드에 삽입
+            grid.innerHTML = teamHTML;
+        }
+
+        // 페이지 로드 시 실행
+        window.onload = renderTeams;
+    </script>
+</body>
+</html>
