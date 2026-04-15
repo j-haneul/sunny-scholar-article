@@ -1,7 +1,7 @@
 const SUNNY_DATA = [
     {
         id: "article-01",
-        teamId: "team-foret",
+        teamId: "team-fore",
         teamName: "포레 (FORE)",
         part: "Part 1. 문제의 발견",
         title: "#1 스물 하나, 홀로 짊어진 시간들",
