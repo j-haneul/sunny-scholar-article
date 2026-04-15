@@ -43,7 +43,7 @@
             const grid = document.getElementById('team-grid');
             
             // 1. 데이터 존재 확인
-            if (typeof TEAM_LIST === 'undefined') {
+            if (typeof TEAM_detail === 'undefined') {
                 grid.innerHTML = '<p class="col-span-full text-center py-20 text-gray-400 font-bold">팀 데이터를 불러올 수 없습니다.</p>';
                 return;
             }
