@@ -74,11 +74,11 @@ const TEAM_DETAILS = {
         email: "green_sunny@example.com",
         sns: "@green_scholar",
         members: [
-            { name: "정그린", role: "Team Leader", img: "images/g_member1.png" },
-            { name: "나에듀", role: "Researcher", img: "images/g_member2.png" },
-            { name: "정린린", role: "Team Leader", img: "images/g_member3.png" },
-            { name: "나듀듀", role: "Researcher", img: "images/g_member4.png" },
-            { name: "정그링", role: "Team Leader", img: "images/g_member5.png" }
+            { name: "정그린",  img: "images/g_member1.png" },
+            { name: "나에듀", img: "images/g_member2.png" },
+            { name: "정린린", img: "images/g_member3.png" },
+            { name: "나듀듀",  img: "images/g_member4.png" },
+            { name: "정그링", img: "images/g_member5.png" }
         ]
     }
     // ... 나머지 팀들도 동일한 형식으로 추가
