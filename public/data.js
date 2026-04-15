@@ -1,63 +1,47 @@
 const SUNNY_DATA = [
     {
-        id: "fore-1",
-        teamId: "fore",
-        teamOrder: "01",
-        teamName: "포레 : 조부모 돌봄 자립준비청년",
-        part: "PART 01",
-        title: "문제의 실마리: 조부모라는 변수",
-        thumbnail: "public/images/fore_1.png",
-        subImage: "fore_1_detail.png", // 추가 이미지
-        link: "article_view.html?id=fore-1",
-        content: `우리는 현장에서 조부모를 돌보는 자립준비청년들을 만났습니다. 
-                  대부분의 지원 정책은 '개인'의 자립에만 초점이 맞춰져 있었고, 
-                  그들이 짊어진 '가족의 무게'는 숫자에 가려져 있었습니다.<br><br>
-                  인터뷰를 통해 확인한 결과, 학업 중단의 가장 큰 원인은 단순히 성적이 아니라 
-                  갑작스러운 조부모의 병환과 그로 인한 간병 부담이었습니다.`
+        id: "article-01",
+        teamId: "team-foret",
+        teamName: "포레 (FORET)",
+        part: "Part 1. 문제의 발견",
+        title: "#1 스물 하나, 홀로 짊어진 시간들",
+        thumbnail: "https://images.unsplash.com/photo-1516594798947-e65505dbb29d?q=80&w=2070&auto=format&fit=crop", // 예시 이미지
+        content: `
+            <p>수업 중간에 울린 전화는 119였습니다.</p>
+            <p>“할머님께서 횡단보도를 건너다 넘어지셨어요. 바로 병원으로 오세요.”</p>
+            <p>수업은 뒷전이었고, 성진은 병원으로 뛰었습니다. 뛰어가는 내내 머릿속에는 한 가지 생각뿐이었습니다. ‘괜찮으셔야 하는데.’</p>
+            <p>어릴 적에 부모가 이혼하고 오갈 데 없던 성진을 도맡아 키워준 사람은 할머니였습니다. 사회에서는 잠시 위탁가정에서 자라는 것이라 말했지만, 성진이 성인이 될 때까지 할머니는 그의 보호자이자 가족의 전부였습니다.</p>
+            
+            <div class="bg-purple-50 p-8 rounded-2xl my-10 border-l-4 border-[#63489a]">
+                <p class="mb-0 text-gray-700 italic">“일상생활 속에서도 주의 깊게 보셔야 합니다. 조금만 자극이 가도 위험할 수 있습니다.”</p>
+            </div>
+
+            <p>그 날 이후 성진은 약해진 할머니의 관절이 안정화될 때까지 일주일을 통째로 할머니와 함께 보냈습니다. 당시는 기말고사 기간이었고, 성진은 대학교 2학년이었습니다. 할머니를 돌보고 병원을 함께 다니는 바람에, 성진은 결국 기말고사를 치르지 못했습니다. 시험을 보지 못한 과목들은 그대로 F 학점으로 남았고, 그 결과 다음 학기 국가장학금 수혜 기준을 충족하지 못하게 되었습니다.</p>
+            
+            <p>갑작스럽게 장학금이 끊기자 등록금을 감당할 수 없었습니다. 성진이 야간 아르바이트를 하며 모았던 작은 돈은 모두 할머니의 병원비로 소진되었기 때문입니다. 결국 성진은 다음 학기에 계획에 없던 휴학을 선택할 수밖에 없었습니다.</p>
+            
+            <p>대학에 다니며 친구를 사귀고, 하고 싶은 공부를 하는 일은 성진에게는 먼 이야기였습니다. 누군가에게는 당연한 보호였던 시간이, 성진에게는 ‘갚아야 할 빚’처럼 느껴졌습니다. 성진은 누군가를 지탱하기에도, 자신의 삶을 지켜내기에도 너무 어린 나이, 스물한 살이었습니다.</p>
+
+            <div class="my-12 py-8 border-y border-gray-100">
+                <p class="text-xl font-bold text-[#63489a] mb-4">“가정위탁 배경 자립준비청년의 아킬레스건이 나를 돌봐줬던 분이잖아요. 부모 대신 그들에게 은혜를 갚아야 한다는 생각이 굉장히 강합니다. 그래서 분리를 하지 못합니다.”</p>
+                <p class="text-sm text-gray-400 font-bold">— 자립지원전담기관 담당자</p>
+            </div>
+
+            <p>비슷한 경험은 다른 자립준비청년에게도 이어집니다.</p>
+            <p>“지난 학기에는 일하느라 학점이 부족해서 장학금에서 탈락했습니다. 그래서 제 통장을 깨고, 돈을 더 빌려서 280만 원을 만들어 등록금으로 마련했습니다.” (연구참여자 지민)</p>
+            <p>돌봄과 자신의 삶 사이에서 방향을 잡지 못하는 자립준비청년의 현실입니다. 그리고 그 경계에 서 있는 것은 성진 한 사람만의 이야기가 아닙니다.</p>
+        `,
+        subImage: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop" // 하단 추가 이미지
     },
     {
-        id: "fore-2",
-        teamId: "fore",
-        teamOrder: "01",
-        teamName: "포레 : 조부모 돌봄 자립준비청년",
-        part: "PART 02",
-        title: "현장의 목소리: 숨겨진 돌봄의 무게",
-        thumbnail: "fore_2.png",
-        subImage: "", // 이미지가 없을 경우 빈값
-        link: "article_view.html?id=fore-2",
-        content: `두 번째 단계로 우리는 실제 간병 현장의 하루를 기록했습니다. 
-                  아침 6시부터 시작되는 일과 속에 '학업'이 들어갈 틈은 좁았습니다.<br><br>
-                  이 아티클에서는 그들의 일과표를 통해 우리가 정의해야 할 
-                  진짜 문제가 무엇인지 심층적으로 다룹니다.`
-    },
-    {
-        id: "green-1",
-        teamId: "green",
-        teamOrder: "02",
-        teamName: "그린 : 자립준비청년 학업 중단",
-        part: "PART 01",
-        title: "학업을 포기하게 만드는 환경",
-        thumbnail: "green_1.png",
-        subImage: "green_1_sub.png",
-        link: "article_view.html?id=green-1",
-        content: `자립준비청년에게 학교는 단순한 교육 기관 그 이상입니다. 
-                  하지만 당장 내일의 생계가 위협받는 상황에서 학업은 사치로 느껴지곤 합니다.`
-    },
-    {
-        id: "green-2",
-        teamId: "green",
-        teamOrder: "02",
-        teamName: "그린 : 자립준비청년 학업 중단",
-        part: "PART 02",
-        title: "그럼에도 필요한 학업",
-        thumbnail: "green_2.png",
-        subImage: "",
-        link: "article_view.html?id=green-2",
-        content: `왜 우리는 다시 교육을 이야기해야 할까요? 
-                  장기적인 자립을 위해서는 단기적인 지원을 넘어선 교육의 기회가 필수적입니다.`
+        id: "article-02",
+        teamId: "team-foret",
+        teamName: "포레 (FORET)",
+        part: "Part 2. 원인 분석",
+        title: "보이지 않는 돌봄의 무게: 통계로 본 현실",
+        content: "<p>두 번째 파트 내용이 들어갈 자리입니다.</p>"
     }
 ];
-
 // 팀 상세 정보를 담은 데이터 추가
 const TEAM_DETAILS = {
     "fore": {
