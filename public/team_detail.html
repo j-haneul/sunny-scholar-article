@@ -152,6 +152,24 @@
             if (document.getElementById('display-team-email')) document.getElementById('display-team-email').href = `mailto:${team.email}`;
             if (document.getElementById('display-team-sns')) document.getElementById('display-team-sns').innerText = team.sns;
 
+<div class="flex-grow space-y-10">
+    <div class="w-full aspect-[21/9] rounded-[2rem] overflow-hidden shadow-2xl shadow-purple-900/10 border border-white">
+        <img id="display-team-main-img" src="" alt="Team Group" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/1200x500?text=SUNNY+SCHOLAR+TEAM'">
+    </div>
+
+    <section class="bg-white p-10 rounded-[2rem] border border-gray-100/50 shadow-lg shadow-purple-950/5">
+        <div class="flex items-center justify-between mb-10 pb-4 border-b border-gray-100">
+            <h2 class="text-2xl font-black text-gray-950 flex items-center gap-2">
+                <span class="w-1 h-6 bg-[#63489a] rounded-full"></span>
+                Team Members
+            </h2>
+        </div>
+        <div id="member-list" class="grid grid-cols-2 sm:grid-cols-4 gap-8"></div>
+    </section>
+    
+    </div>
+
+            
             // 2. 팀원 리스트
             const memberListContainer = document.getElementById('member-list');
             if (memberListContainer) {
