@@ -11,39 +11,33 @@
         :root { --sunny-purple: #63489a; }
         body { font-family: 'Pretendard', sans-serif; background-color: #f8f9ff; line-height: 1.8; }
         .glass { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); }
-        .part-tab { transition: all 0.3s ease; border-radius: 99px; padding: 6px 16px; white-space: nowrap; font-size: 11px; font-weight: 800; color: #9ca3af; }
-        .part-tab.active { background: var(--sunny-purple); color: white; }
+        .part-tab { transition: all 0.3s ease; border-radius: 99px; padding: 6px 16px; white-space: nowrap; font-size: 11px; font-weight: 800; color: #9ca3af; border: 1px solid #eee; }
+        .part-tab.active { background: var(--sunny-purple); color: white; border-color: var(--sunny-purple); }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .bottom-nav-card { transition: all 0.3s ease; border: 1px solid #eee; background: white; padding: 1.5rem; border-radius: 1rem; display: flex; flex-direction: column; }
         .bottom-nav-card:hover { border-color: var(--sunny-purple); transform: translateY(-4px); }
-        article p { margin-bottom: 2rem; color: #374151; font-size: 1.125rem; word-break: keep-all; text-align: justify; }
-        .content-img { border-radius: 1.5rem; box-shadow: 0 20px 40px rgba(0,0,0,0.05); margin: 3rem 0; width: 100%; display: block; }
+        
+        /* 본문 내 텍스트 스타일 정의 */
+        .content-text { color: #374151; font-size: 1.125rem; word-break: keep-all; text-align: justify; }
+        .content-text p { margin-bottom: 2rem; }
+        .content-img { border-radius: 1.5rem; box-shadow: 0 20px 40px rgba(0,0,0,0.05); width: 100%; display: block; object-fit: cover; }
     </style>
 </head>
 <body class="text-gray-900">
-    <!-- Header (Height Reduced) -->
     <header class="sticky top-0 z-50 glass border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex justify-between items-center h-14 md:h-16">
                 <a href="index.html" class="flex items-center">
-                    <img src="/images/sunny_scholar_logo.png" alt="sunny_scholar_logo.png" class="h-7 md:h-8 w-auto">
+                    <img src="/images/sunny_scholar_logo.png" alt="Logo" class="h-7 md:h-8 w-auto">
                 </a>
-                
                 <nav class="hidden md:flex space-x-10 text-xs font-black tracking-widest uppercase">
                     <a href="article_list.html" class="nav-link text-gray-800 hover:text-sunny transition">Articles</a>
                     <a href="team_list.html" class="nav-link text-gray-800 hover:text-sunny transition">Lab</a>
                     <a href="about.html" class="nav-link text-gray-800 hover:text-sunny transition">About</a>
                 </nav>
-
-                <div class="md:hidden">
-                    <button class="p-2 text-gray-600">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 6h16"></path></svg>
-                    </button>
-                </div>
             </div>
         </div>
     </header>
-
 
     <div class="bg-white border-b border-gray-100 sticky top-14 md:top-16 z-40">
         <div class="max-w-3xl mx-auto px-6 py-3">
@@ -53,13 +47,16 @@
 
     <main class="max-w-3xl mx-auto px-6 py-16 md:py-24 animate__animated animate__fadeIn">
         <header class="mb-12">
-            <div id="view-team-tag" class="text-[#63489a] text-[11px] font-black mb-3 tracking-widest uppercase">TEAM</div>
+            <div id="view-team-tag" class="text-[#63489a] text-[11px] font-black mb-3 tracking-widest uppercase"></div>
             <h1 id="view-title" class="text-3xl md:text-5xl font-black leading-tight break-keep mb-8">데이터를 불러오는 중...</h1>
         </header>
 
         <article>
             <img id="view-main-img" src="" class="content-img mb-10" style="display:none;">
-            <div id="dynamic-body"></div>
+            
+            <div id="dynamic-body" class="content-text"></div>
+            
+            <img id="view-sub-img" src="" class="content-img mt-10" style="display:none;">
         </article>
 
         <div class="mt-20 py-10 border-y border-gray-100 flex justify-center">
@@ -86,84 +83,62 @@
 
     <script src="data.js"></script>
     <script>
-       function initView() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const articleId = urlParams.get('id');
+        function initView() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const articleId = urlParams.get('id');
 
-    // 1. 데이터 로드 체크
-    if (typeof SUNNY_DATA === 'undefined') return;
-    if (!articleId) {
-        document.getElementById('view-title').innerText = "잘못된 접근입니다.";
-        return;
-    }
+            if (typeof SUNNY_DATA === 'undefined' || !articleId) return;
 
-    const current = SUNNY_DATA.find(a => a.id === articleId);
-    if (!current) {
-        document.getElementById('view-title').innerText = "아티클을 찾을 수 없습니다.";
-        return;
-    }
+            const current = SUNNY_DATA.find(a => a.id === articleId);
+            if (!current) {
+                document.getElementById('view-title').innerText = "아티클을 찾을 수 없습니다.";
+                return;
+            }
 
-    // 2. 상단 데이터 매핑 (구조에 맞춰 수정)
-    // teamName: "포레 : 조부모 돌봄..." 전체 출력
-    document.getElementById('view-team-tag').innerText = current.teamName;
-    document.getElementById('view-title').innerText = current.title;
-    
-    // 3. 메인 이미지 (thumbnail) 처리
-    const mainImg = document.getElementById('view-main-img');
-    if(current.thumbnail) {
-        mainImg.src = current.thumbnail;
-        mainImg.style.display = 'block';
-    } else {
-        mainImg.style.display = 'none';
-    }
+            // [핵심] 데이터 매핑
+            document.getElementById('view-team-tag').innerText = current.teamName;
+            document.getElementById('view-title').innerText = current.title;
+            document.getElementById('dynamic-body').innerHTML = current.content || "";
 
-    // 4. 본문 렌더링 (content)
-    // <br> 태그 등을 인식하기 위해 innerHTML 사용
-    document.getElementById('dynamic-body').innerHTML = current.content || "";
+            // [이미지 처리] data.js에 지정된 경로를 그대로 사용
+            const mainImg = document.getElementById('view-main-img');
+            if(current.thumbnail) {
+                mainImg.src = current.thumbnail;
+                mainImg.style.display = 'block';
+            }
 
-    // 5. 서브 이미지 (subImage) 처리
-    // 기존에 없던 id이므로 HTML에 추가 필요 (아래 2번 참고)
-    const subImg = document.getElementById('view-sub-img');
-    if (subImg) {
-        if (current.subImage) {
-            subImg.src = current.subImage;
-            subImg.style.display = 'block';
-        } else {
-            subImg.style.display = 'none';
+            const subImg = document.getElementById('view-sub-img');
+            if(current.subImage) {
+                subImg.src = current.subImage;
+                subImg.style.display = 'block';
+            }
+
+            // 상단 탭 (같은 팀 아티클 목록)
+            const teamArticles = SUNNY_DATA.filter(a => a.teamId === current.teamId);
+            document.getElementById('part-nav').innerHTML = teamArticles.map(art => `
+                <a href="article_view.html?id=${art.id}" class="part-tab ${art.id === articleId ? 'active' : ''}">
+                    ${art.part}
+                </a>
+            `).join('');
+
+            // 하단 내비게이션 로직
+            const currentIdx = teamArticles.findIndex(a => a.id === articleId);
+            const prevEl = document.getElementById('prev-article');
+            const nextEl = document.getElementById('next-article');
+
+            if (currentIdx > 0) {
+                const prev = teamArticles[currentIdx - 1];
+                prevEl.classList.remove('invisible');
+                prevEl.querySelector('a').href = `article_view.html?id=${prev.id}`;
+                prevEl.querySelector('span:last-child').innerText = prev.title;
+            }
+            if (currentIdx < teamArticles.length - 1) {
+                const next = teamArticles[currentIdx + 1];
+                nextEl.classList.remove('invisible');
+                nextEl.querySelector('a').href = `article_view.html?id=${next.id}`;
+                nextEl.querySelector('span:last-child').innerText = next.title;
+            }
         }
-    }
-
-    // 6. 상단 파트 네비게이션 (같은 팀 아티클들)
-    const teamArticles = SUNNY_DATA.filter(a => a.teamId === current.teamId);
-    document.getElementById('part-nav').innerHTML = teamArticles.map(art => `
-        <a href="article_view.html?id=${art.id}" class="part-tab ${art.id === articleId ? 'active' : ''}">
-            ${art.part}
-        </a>
-    `).join('');
-
-    // 7. 하단 내비게이션 (이전/다음 글)
-    const currentIdx = teamArticles.findIndex(a => a.id === articleId);
-    
-    const prevEl = document.getElementById('prev-article');
-    if (currentIdx > 0) {
-        const prev = teamArticles[currentIdx - 1];
-        prevEl.classList.remove('invisible');
-        prevEl.querySelector('a').href = `article_view.html?id=${prev.id}`;
-        prevEl.querySelector('span:last-child').innerText = prev.title;
-    } else {
-        prevEl.classList.add('invisible');
-    }
-
-    const nextEl = document.getElementById('next-article');
-    if (currentIdx < teamArticles.length - 1) {
-        const next = teamArticles[currentIdx + 1];
-        nextEl.classList.remove('invisible');
-        nextEl.querySelector('a').href = `article_view.html?id=${next.id}`;
-        nextEl.querySelector('span:last-child').innerText = next.title;
-    } else {
-        nextEl.classList.add('invisible');
-    }
-}
 
         function copyURL() {
             navigator.clipboard.writeText(window.location.href);
