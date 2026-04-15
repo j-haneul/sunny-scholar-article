@@ -17,10 +17,12 @@
         .bottom-nav-card { transition: all 0.3s ease; border: 1px solid #eee; background: white; padding: 1.5rem; border-radius: 1rem; display: flex; flex-direction: column; }
         .bottom-nav-card:hover { border-color: var(--sunny-purple); transform: translateY(-4px); }
         
-        /* 본문 내 텍스트 스타일 정의 */
         .content-text { color: #374151; font-size: 1.125rem; word-break: keep-all; text-align: justify; }
         .content-text p { margin-bottom: 2rem; }
         .content-img { border-radius: 1.5rem; box-shadow: 0 20px 40px rgba(0,0,0,0.05); width: 100%; display: block; object-fit: cover; }
+        
+        /* 추가된 팀 컨택트 카드 스타일 */
+        .contact-box { background: white; border-radius: 1.5rem; border: 1px solid #f1f5f9; padding: 2rem; text-align: center; margin-top: 2rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
     </style>
 </head>
 <body class="text-gray-900">
@@ -53,29 +55,37 @@
 
         <article>
             <img id="view-main-img" src="" class="content-img mb-10" style="display:none;">
-            
             <div id="dynamic-body" class="content-text"></div>
-            
             <img id="view-sub-img" src="" class="content-img mt-10" style="display:none;">
         </article>
 
-        <div class="mt-20 py-10 border-y border-gray-100 flex justify-center">
+        <div class="mt-20 py-10 border-t border-gray-100 flex justify-center">
             <button onclick="copyURL()" class="bg-gray-900 text-white px-8 py-3 rounded-full font-black text-sm shadow-xl hover:bg-black transition-all">
                 아티클 주소 복사하기
             </button>
         </div>
 
-        <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div id="contact-section" class="contact-box">
+            <span id="contact-team-name" class="text-[10px] font-black text-[#63489a] uppercase tracking-widest">TEAM INFO</span>
+            <h3 class="text-xl font-black mt-2 mb-4">프로젝트 및 팀에 대해 궁금한 점이 있나요?</h3>
+            <p class="text-gray-500 text-sm mb-6">아티클 내용이나 문제정의 과정에 대한 문의는<br>아래 연락처를 통해 팀에게 직접 전달하실 수 있습니다.</p>
+            <a id="contact-email" href="" class="inline-flex items-center gap-2 bg-[#f8f9ff] text-[#63489a] px-6 py-3 rounded-xl font-bold text-sm hover:bg-[#efefff] transition-all">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                <span id="email-text">이메일 보내기</span>
+            </a>
+        </div>
+
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
             <div id="prev-article" class="invisible">
-                <a href="#" class="bottom-nav-card">
+                <a href="#" class="bottom-nav-card h-full">
                     <span class="text-[10px] font-black text-gray-400 uppercase mb-1">Previous</span>
-                    <span class="text-sm font-bold text-gray-900 truncate">이전 글</span>
+                    <span class="text-sm font-bold text-gray-900 line-clamp-1">이전 글</span>
                 </a>
             </div>
             <div id="next-article" class="invisible">
-                <a href="#" class="bottom-nav-card text-right">
+                <a href="#" class="bottom-nav-card text-right h-full">
                     <span class="text-[10px] font-black text-gray-400 uppercase mb-1">Next</span>
-                    <span class="text-sm font-bold text-gray-900 truncate">다음 글</span>
+                    <span class="text-sm font-bold text-gray-900 line-clamp-1">다음 글</span>
                 </a>
             </div>
         </div>
@@ -95,25 +105,37 @@
                 return;
             }
 
-            // [핵심] 데이터 매핑
+            // 데이터 매핑
             document.getElementById('view-team-tag').innerText = current.teamName;
             document.getElementById('view-title').innerText = current.title;
             document.getElementById('dynamic-body').innerHTML = current.content || "";
 
-            // [이미지 처리] data.js에 지정된 경로를 그대로 사용
+            // 컨택 정보 업데이트 (data.js에 email 속성이 있다고 가정)
+            document.getElementById('contact-team-name').innerText = `TEAM ${current.teamName}`;
+            const emailLink = document.getElementById('contact-email');
+            const emailText = document.getElementById('email-text');
+            if (current.email) {
+                emailLink.href = `mailto:${current.email}`;
+                emailText.innerText = current.email;
+            } else {
+                // 이메일 데이터가 없을 경우 기본값 혹은 섹션 숨기기
+                emailLink.href = "mailto:sunny@sk.com";
+                emailText.innerText = "sunny@sk.com";
+            }
+
+            // 이미지 처리
             const mainImg = document.getElementById('view-main-img');
             if(current.thumbnail) {
                 mainImg.src = current.thumbnail;
                 mainImg.style.display = 'block';
             }
-
             const subImg = document.getElementById('view-sub-img');
             if(current.subImage) {
                 subImg.src = current.subImage;
                 subImg.style.display = 'block';
             }
 
-            // 상단 탭 (같은 팀 아티클 목록)
+            // 상단 탭
             const teamArticles = SUNNY_DATA.filter(a => a.teamId === current.teamId);
             document.getElementById('part-nav').innerHTML = teamArticles.map(art => `
                 <a href="article_view.html?id=${art.id}" class="part-tab ${art.id === articleId ? 'active' : ''}">
@@ -121,7 +143,7 @@
                 </a>
             `).join('');
 
-            // 하단 내비게이션 로직
+            // 하단 내비게이션
             const currentIdx = teamArticles.findIndex(a => a.id === articleId);
             const prevEl = document.getElementById('prev-article');
             const nextEl = document.getElementById('next-article');
