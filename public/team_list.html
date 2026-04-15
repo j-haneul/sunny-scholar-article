@@ -18,7 +18,6 @@
         body { 
             font-family: 'Pretendard', sans-serif; 
             background-color: #f8f9ff;
-            /* 아티클 페이지와 동일한 그리드 배경 */
             background-image: 
                 linear-gradient(to bottom, rgba(99, 72, 154, 0.05) 0%, transparent 15%),
                 linear-gradient(var(--grid-color) 1px, transparent 1px),
@@ -34,17 +33,14 @@
             box-shadow: 0 4px 20px 0 rgba(31, 38, 135, 0.05);
         }
 
-        /* Nav 스타일 통일 */
         .nav-link { position: relative; }
         .nav-link::after {
             content: ''; position: absolute; width: 0; height: 3px;
             bottom: -4px; left: 0; background-color: var(--sunny-purple);
             transition: width 0.2s ease; border-radius: 2px;
         }
-        .nav-link.active::after { width: 100%; }
         .nav-link:hover::after { width: 100%; }
 
-        /* 팀 카드 스타일 강화 (아티클 카드 느낌 계승) */
         .team-card { 
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease; 
             background: white;
@@ -57,7 +53,7 @@
             border-color: rgba(99, 72, 154, 0.2);
         }
         
-        .team-img-wrapper { aspect-ratio: 3/4; overflow: hidden; border-radius: 1.1rem; }
+        .team-img-wrapper { aspect-ratio: 3/4; overflow: hidden; border-radius: 1.1rem; background-color: #f3f4f6; }
         .team-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
         .team-card:hover .team-img { transform: scale(1.08); }
 
@@ -70,38 +66,29 @@
 </head>
 <body class="text-gray-900">
 
-    <!-- Header (Height Reduced) -->
     <header class="sticky top-0 z-50 glass border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex justify-between items-center h-14 md:h-16">
                 <a href="index.html" class="flex items-center">
-                    <img src="/images/sunny_scholar_logo.png" alt="sunny_scholar_logo.png" class="h-7 md:h-8 w-auto">
+                    <img src="images/sunny_scholar_logo.png" alt="Logo" class="h-7 md:h-8 w-auto">
                 </a>
-                
                 <nav class="hidden md:flex space-x-10 text-xs font-black tracking-widest uppercase">
                     <a href="article_list.html" class="nav-link text-gray-800 hover:text-sunny transition">Articles</a>
-                    <a href="team_list.html" class="nav-link text-gray-800 hover:text-sunny transition">Lab</a>
+                    <a href="team_list.html" class="nav-link text-gray-800 hover:text-sunny transition active">Lab</a>
                     <a href="about.html" class="nav-link text-gray-800 hover:text-sunny transition">About</a>
                 </nav>
-
-                <div class="md:hidden">
-                    <button class="p-2 text-gray-600">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 6h16"></path></svg>
-                    </button>
-                </div>
             </div>
         </div>
     </header>
 
-
     <section class="py-12 md:py-16 px-6">
-        <div class="max-w-7xl mx-auto">
+        <div class="max-w-7xl mx-auto text-left">
             <div class="animate__animated animate__fadeIn animate__faster">
                 <p class="text-[#63489a] font-black tracking-widest text-[10px] uppercase mb-2">2026 SUNNY LAB</p>
                 <h1 class="text-3xl md:text-4xl font-black mb-2 tracking-tight">
                     Change Maker <span class="text-gradient">Teams</span>
                 </h1>
-                <p class="text-gray-500 text-sm font-medium">사회 문제를 해결하기 위해 모인 5개의 팀을 소개합니다.</p>
+                <p class="text-gray-500 text-sm font-medium">사회 문제를 해결하기 위해 모인 팀들을 소개합니다.</p>
             </div>
         </div>
     </section>
@@ -111,50 +98,48 @@
             </div>
     </main>
 
-    <footer class="bg-gray-900 py-12 px-6 mt-20">
-        <div class="max-w-7xl mx-auto text-center md:text-left">
-            <img src="/images/sunny_scholar_logo.png" class="h-6 mb-3 brightness-0 invert opacity-40 mx-auto md:mx-0">
-            <p class="text-gray-600 text-[10px]">© 2026 SUNNY Scholar Program. All rights reserved.</p>
-        </div>
-    </footer>
-
     <script src="data.js"></script>
     <script>
-     function renderTeams() {
-    const grid = document.getElementById('team-grid');
-    if (typeof TEAM_DETAILS === 'undefined') return;
+        function renderTeams() {
+            const grid = document.getElementById('team-grid');
+            if (typeof TEAM_DETAILS === 'undefined') {
+                console.error("TEAM_DETAILS 데이터가 없습니다.");
+                return;
+            }
 
-    const teamHTML = Object.entries(TEAM_DETAILS).map(([id, team]) => {
-        // [수정 포인트] data.js에 작성하신 변수명 'team_img'를 가장 먼저 찾도록 합니다.
-        const imgSrc = team.team_img || team.teamProfileImg || team.teamImg || "";
+            const teamHTML = Object.entries(TEAM_DETAILS).map(([id, team]) => {
+                // teamProfileImg가 있으면 그것을 사용, 없으면 team_img 사용
+                const imgSrc = team.teamProfileImg || team.team_img || "";
 
-        return `
-            <a href="team_detail.html?id=${id}" class="team-card group p-5 animate__animated animate__fadeInUp">
-                <div class="team-img-wrapper mb-6 shadow-lg shadow-purple-900/5 bg-gray-100">
-                    <img src="${imgSrc}" alt="${team.name}" class="team-img" 
-                         onerror="this.style.opacity='0'; this.parentElement.classList.add('bg-gray-200');">
-                </div>
-                
-                <div class="space-y-3">
-                    <div class="flex items-center gap-2">
-                        <span class="bg-[#63489a] text-white text-[9px] font-black px-2 py-0.5 rounded uppercase tracking-tighter">
-                            ${team.order}
-                        </span>
-                    </div>
-                    <h3 class="text-xl font-black text-gray-900 group-hover:text-[#63489a] transition-colors leading-tight">
-                        ${team.name}
-                    </h3>
-                    <div class="pt-4 flex items-center text-[11px] font-bold text-[#63489a] opacity-0 group-hover:opacity-100 transition-all transform translate-x-[-10px] group-hover:translate-x-0">
-                        <span>View Lab Profile</span>
-                        <span class="ml-1">→</span>
-                    </div>
-                </div>
-            </a>
-        `;
-    }).join('');
+                return `
+                    <a href="team_detail.html?id=${id}" class="team-card group p-5 animate__animated animate__fadeInUp">
+                        <div class="team-img-wrapper mb-6 shadow-lg shadow-purple-900/5">
+                            <img src="${imgSrc}" 
+                                 alt="${team.name}" 
+                                 class="team-img" 
+                                 onerror="this.style.opacity='0'; this.parentElement.style.backgroundColor='#e5e7eb';">
+                        </div>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-2">
+                                <span class="bg-[#63489a] text-white text-[9px] font-black px-2 py-0.5 rounded uppercase tracking-tighter">
+                                    ${team.order}
+                                </span>
+                            </div>
+                            <h3 class="text-xl font-black text-gray-900 group-hover:text-[#63489a] transition-colors leading-tight">
+                                ${team.name}
+                            </h3>
+                            <div class="pt-4 flex items-center text-[11px] font-bold text-[#63489a] opacity-0 group-hover:opacity-100 transition-all transform translate-x-[-10px] group-hover:translate-x-0">
+                                <span>View Lab Profile</span>
+                                <span class="ml-1">→</span>
+                            </div>
+                        </div>
+                    </a>
+                `;
+            }).join('');
 
-    grid.innerHTML = teamHTML;
-}
+            grid.innerHTML = teamHTML;
+        }
 
         window.onload = renderTeams;
     </script>
