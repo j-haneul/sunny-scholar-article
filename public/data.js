@@ -57,3 +57,27 @@ const SUNNY_DATA = [
                   장기적인 자립을 위해서는 단기적인 지원을 넘어선 교육의 기회가 필수적입니다.`
     }
 ];
+
+// 팀 상세 정보를 담은 데이터 추가
+const TEAM_LIST = [
+    {
+        id: "fore",
+        order: "LAB 01",
+        name: "포레 : 조부모 돌봄 자립준비청년",
+        description: "가족 돌봄의 무게를 짊어진 청년들의 자립을 연구합니다.",
+        thumbnail: "public/images/team_fore_thumb.png", // 팀 리스트용 대표 이미지
+        link: "team_detail.html?id=fore"
+    },
+    {
+        id: "green",
+        order: "LAB 02",
+        name: "그린 : 자립준비청년 학업 중단",
+        description: "중단 없는 학업을 위한 환경 조성을 고민합니다.",
+        thumbnail: "public/images/team_green_thumb.png",
+        link: "team_detail.html?id=green"
+    },
+    // 나머지 팀들도 동일한 형식으로 추가 (총 5개 팀 예시)
+    { id: "team3", order: "LAB 03", name: "팀 03 제목", description: "설명글", thumbnail: "public/images/team3.png", link: "team_detail.html?id=team3" },
+    { id: "team4", order: "LAB 04", name: "팀 04 제목", description: "설명글", thumbnail: "public/images/team4.png", link: "team_detail.html?id=team4" },
+    { id: "team5", order: "LAB 05", name: "팀 05 제목", description: "설명글", thumbnail: "public/images/team5.png", link: "team_detail.html?id=team5" }
+];
