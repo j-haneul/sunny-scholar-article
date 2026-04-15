@@ -89,7 +89,7 @@
                 
                 <div class="flex gap-6 overflow-x-auto pb-8 scrollbar-hide px-1">
 ${teamArticles.map(art => `
-    <a href="article_view.html?id=${art.id}" class="group block bg-white rounded-3xl overflow-hidden border border-gray-100 hover:shadow-2xl hover:shadow-purple-900/10 transition-all duration-500 min-w-[280px] md:min-w-[300px] flex-shrink-0">
+    <a href="article_view.html?id=${art.id}" class="group block bg-white rounded-3xl overflow-hidden border border-gray-100 hover:shadow-2xl hover:shadow-purple-900/10 transition-all duration-500 min-w-[280px] md:min-w-[200px] flex-shrink-0">
         
         <div class="aspect-[16/9] overflow-hidden bg-gray-100">
             <img src="${art.thumbnail}" 
@@ -103,7 +103,7 @@ ${teamArticles.map(art => `
                 <span class="text-[10px] font-black text-[#8c52ff] uppercase tracking-[0.1em]">${art.part}</span>
             </div>
             
-            <h4 class="font-black text-lg md:text-xl text-gray-950 leading-tight group-hover:text-[#63489a] transition-colors break-keep h-[3em] line-clamp-2">
+            <h4 class="font-black text-lg md:text-x3 text-gray-950 leading-tight group-hover:text-[#63489a] transition-colors break-keep h-[3em] line-clamp-2">
                 ${art.title}
             </h4>
             
