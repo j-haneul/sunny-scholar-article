@@ -2,7 +2,7 @@ const SUNNY_DATA = [
     {
         id: "article-01",
         teamId: "team-foret",
-        teamName: "포레 (FORET)",
+        teamName: "포레 (FORE)",
         part: "Part 1. 문제의 발견",
         title: "#1 스물 하나, 홀로 짊어진 시간들",
         thumbnail: "https://images.unsplash.com/photo-1516594798947-e65505dbb29d?q=80&w=2070&auto=format&fit=crop", // 예시 이미지
