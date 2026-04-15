@@ -8,145 +8,160 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
-        
-        :root {
-            --sunny-purple: #63489a;
-            --sunny-deep-purple: #4e387a;
-            --sunny-gradient: linear-gradient(135deg, #4f319b 0%, #8c52ff 100%);
-            --grid-color: rgba(99, 72, 154, 0.05);
-        }
-        
+        :root { --sunny-purple: #63489a; --sunny-green: #106e4e; --grid-color: rgba(99, 72, 154, 0.05); }
         body { 
-            font-family: 'Pretendard', sans-serif; 
-            overflow-x: hidden;
-            background-color: #f8f9ff;
-            /* 인덱스와 동일한 배경 설정 */
-            background-image: 
-                linear-gradient(to bottom, rgba(99, 72, 154, 0.1) 0%, transparent 15%),
-                linear-gradient(var(--grid-color) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-            background-size: 100% 100%, 40px 40px, 40px 40px;
+            font-family: 'Pretendard', sans-serif; background-color: #f8f9ff;
+            background-image: linear-gradient(var(--grid-color) 1px, transparent 1px), linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 40px 40px; letter-spacing: -0.02em;
         }
-
-        .bg-sunny-gradient { background: var(--sunny-gradient); }
-        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); box-shadow: 0 4px 20px 0 rgba(31, 38, 135, 0.05); }
-
-        /* Navigation Underline */
-        .nav-link { position: relative; }
-        .nav-link::after {
-            content: ''; position: absolute; width: 0; height: 3px; bottom: -4px; left: 0;
-            background-color: var(--sunny-purple); transition: width 0.2s ease; border-radius: 2px;
-        }
-        .nav-link:hover::after { width: 100%; }
-
-        /* Gradient Text Box (Index Style) */
-        .gradient-text-box {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 4px 16px;
-            border-radius: 8px;
-            display: inline-block;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        .text-gradient {
-            background: var(--sunny-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .step-card { transition: all 0.3s ease; }
-        .step-card:hover { transform: translateY(-5px); }
+        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .stage-card { background: white; border: 1px solid #eee; border-radius: 1.5rem; transition: all 0.3s ease; }
+        .stage-card:hover { transform: translateY(-5px); border-color: var(--sunny-purple); box-shadow: 0 10px 30px rgba(99, 72, 154, 0.1); }
+        .text-gradient { background: linear-gradient(135deg, #4f319b 0%, #8c52ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     </style>
 </head>
-<body class="text-gray-900">
 
+<body>
     <header class="sticky top-0 z-50 glass border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex justify-between items-center h-14 md:h-16">
-                <a href="index.html" class="flex items-center">
-                    <img src="/images/sunny_scholar_logo.png" alt="sunny_scholar_logo.png" class="h-7 md:h-8 w-auto">
-                </a>
-                
-                <nav class="hidden md:flex space-x-10 text-xs font-black tracking-widest uppercase">
-                    <a href="article_list.html" class="nav-link text-gray-800 hover:text-sunny transition">Articles</a>
-                    <a href="team_list.html" class="nav-link text-gray-800 hover:text-sunny transition">Lab</a>
-                    <a href="about.html" class="nav-link text-gray-800 hover:text-sunny transition">About</a>
-                </nav>
-
-                <div class="md:hidden">
-                    <button class="p-2 text-gray-600">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 6h16"></path></svg>
-                    </button>
-                </div>
-            </div>
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center h-16">
+            <a href="index.html"><img src="images/sunny_scholar_logo.png" alt="Logo" class="h-8"></a>
+            <nav class="hidden md:flex space-x-10 text-xs font-black tracking-widest uppercase">
+                <a href="article_list.html" class="hover:text-[#63489a]">Articles</a>
+                <a href="team_list.html" class="hover:text-[#63489a]">Lab</a>
+                <a href="about.html" class="text-[#63489a]">About</a>
+            </nav>
         </div>
     </header>
 
-    <section class="bg-sunny-gradient pt-20 pb-24 px-6 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto text-center text-white relative z-10">
-            <div class="animate__animated animate__fadeInUp">
-                <p class="mb-4 text-purple-200 font-bold tracking-widest text-xs uppercase">Program Introduction</p>
-                <h1 class="text-4xl md:text-6xl font-black mb-8 leading-tight">
-                    진짜 사회문제를 정의하는<br>
-                    <div class="gradient-text-box mt-3">
-                        <span class="text-gradient">가장 치열한 여정</span>
+    <main class="animate__animated animate__fadeIn">
+        <section class="pt-24 pb-20 px-6 text-center">
+            <h2 class="text-[#63489a] font-black tracking-widest text-xs uppercase mb-4">SK행복나눔재단 청년 육성 프로그램</h2>
+            <h1 class="text-4xl md:text-5xl font-black text-gray-950 mb-8 leading-tight">
+                복잡한 사회문제를 <br class="md:hidden"> <span class="text-gradient">해결 가능하게</span>
+            </h1>
+            <p class="max-w-3xl mx-auto text-lg text-gray-600 font-medium leading-relaxed break-keep">
+                Sunny Scholar는 치열한 문제 정의와 철저한 현장 경험을 기반으로, <br class="hidden md:block">
+                청년들이 소셜 섹터 내 전문적인 현장 연구자로 성장할 수 있도록 지원합니다. [cite: 26, 27]
+            </p>
+        </section>
+
+        <section class="py-20 bg-white/50 px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-16">
+                    <h2 class="text-3xl font-black mb-6">Sunny Scholar 연구 과정</h2> [cite: 28]
+                    <p class="text-gray-600 font-medium leading-relaxed max-w-2xl">
+                        사회문제 탐색과 문제 정의를 기반으로 이를 현장에서 검증하고 기록합니다. <br>
+                        문제를 '해결 가능한 크기'로 구조화하여 대학생들이 직접 변화를 만들 수 있도록 돕습니다. [cite: 29, 30, 31]
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="stage-card p-8">
+                        <span class="text-[#63489a] font-black text-xs tracking-tighter mb-4 block">STAGE 01</span> [cite: 41]
+                        <h3 class="text-xl font-black mb-4">연구 준비</h3> [cite: 32, 42]
+                        <p class="text-sm text-gray-500 leading-relaxed break-keep">
+                            시스템 사고 교육과 현장 경험을 통해 문제에 Deep Dive하고 8개월간 해결할 문제를 정의합니다. [cite: 33, 34, 43]
+                        </p>
                     </div>
-                </h1>
-                <p class="text-base md:text-xl opacity-90 font-medium max-w-2xl mx-auto leading-relaxed">
-                    SUNNY Scholar는 치열한 사회문제 정의와 철저한 현장 경험을 기반으로,<br class="hidden md:block">
-                    청년들이 소셜 섹터 내 전문적인 현장 연구자로 성장할 수 있도록 지원하는<br class="hidden md:block">
-                    SK행복나눔재단의 대표 청년 육성 프로그램입니다.
-                </p>
-            </div>
-        </div>
-        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 30px 30px;"></div>
-    </section>
-
-    <section class="max-w-7xl mx-auto px-6 py-20">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="step-card p-10 bg-white rounded-3xl shadow-sm border border-gray-100 relative overflow-hidden group">
-                <div class="absolute top-0 left-0 w-2 h-full bg-sunny-gradient opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div class="text-sunny font-black text-4xl mb-6 opacity-20">01</div>
-                <h3 class="text-xl font-black text-gray-900 mb-4">현장 중심 연구</h3>
-                <p class="text-gray-500 leading-relaxed text-sm md:text-base">책상 앞의 고민이 아닌, 발로 뛰어 직접 만나는 현장 중심의 문제 정의 과정을 거칩니다.</p>
-            </div>
-
-            <div class="step-card p-10 bg-white rounded-3xl shadow-sm border border-gray-100 relative overflow-hidden group">
-                <div class="absolute top-0 left-0 w-2 h-full bg-sunny-gradient opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div class="text-sunny font-black text-4xl mb-6 opacity-20">02</div>
-                <h3 class="text-xl font-black text-gray-900 mb-4">전문적 아카이빙</h3>
-                <p class="text-gray-500 leading-relaxed text-sm md:text-base">치열하게 분석한 인사이트를 정교한 아티클로 기록하여 사회적 자산으로 공유합니다.</p>
-            </div>
-
-            <div class="step-card p-10 bg-white rounded-3xl shadow-sm border border-gray-100 relative overflow-hidden group">
-                <div class="absolute top-0 left-0 w-2 h-full bg-sunny-gradient opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div class="text-sunny font-black text-4xl mb-6 opacity-20">03</div>
-                <h3 class="text-xl font-black text-gray-900 mb-4">임팩트 창출</h3>
-                <p class="text-gray-500 leading-relaxed text-sm md:text-base">정확히 정의된 문제를 바탕으로 수혜자에게 실질적인 변화를 일으키는 솔루션을 도출합니다.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="max-w-7xl mx-auto px-6 mb-32">
-        <a href="https://sunnyscholar.oopy.io/2a419980-3577-80be-9025-d6e852414a34" target="_blank" rel="noopener noreferrer" 
-           class="block bg-sunny-gradient p-[1px] rounded-3xl group transition-all duration-500 hover:shadow-2xl hover:shadow-purple-200">
-            <div class="bg-white group-hover:bg-transparent rounded-[calc(1.5rem-1px)] p-10 flex flex-col md:flex-row items-center justify-between transition-colors duration-500">
-                <div class="text-center md:text-left mb-8 md:mb-0">
-                    <h3 class="text-2xl font-black mb-2 text-gray-900 group-hover:text-white transition-colors">이전 기수 프로젝트 살펴보기</h3>
-                    <p class="text-gray-500 group-hover:text-white/80 transition-colors font-medium">지난 써니스콜라들이 정의한 사회문제 아카이브로 이동합니다.</p>
-                </div>
-                <div class="bg-[#63489a] text-white group-hover:bg-white group-hover:text-[#63489a] px-8 py-4 rounded-full font-black text-sm transition-all shadow-lg">
-                    Archive 바로가기 →
+                    <div class="stage-card p-8">
+                        <span class="text-[#63489a] font-black text-xs tracking-tighter mb-4 block">STAGE 02</span> [cite: 44]
+                        <h3 class="text-xl font-black mb-4">연구 계획</h3> [cite: 35, 45]
+                        <p class="text-sm text-gray-500 leading-relaxed break-keep">
+                            문제 정의를 바탕으로 해결을 위한 가설을 설정하고 구체적인 연구 수행 계획을 수립합니다. [cite: 36, 46]
+                        </p>
+                    </div>
+                    <div class="stage-card p-8">
+                        <span class="text-[#63489a] font-black text-xs tracking-tighter mb-4 block">STAGE 03</span> [cite: 47]
+                        <h3 class="text-xl font-black mb-4">연구 수행</h3> [cite: 37, 48]
+                        <p class="text-sm text-gray-500 leading-relaxed break-keep">
+                            가설이 현장에서 작동하는지 검증하고 수정하는 사이클을 반복하며 해결 가능성에 다가갑니다. [cite: 38, 49]
+                        </p>
+                    </div>
+                    <div class="stage-card p-8">
+                        <span class="text-[#63489a] font-black text-xs tracking-tighter mb-4 block">STAGE 04</span> [cite: 50]
+                        <h3 class="text-xl font-black mb-4">연구 아카이빙</h3> [cite: 39, 51]
+                        <p class="text-sm text-gray-500 leading-relaxed break-keep">
+                            전 과정을 솔루션 리포트로 제작하여 사회 섹터 및 이해관계자들과 연구 내용을 공유합니다. [cite: 40, 52]
+                        </p>
+                    </div>
                 </div>
             </div>
-        </a>
-    </section>
+        </section>
 
-    <footer class="bg-gray-900 py-12 px-6">
-        <div class="max-w-7xl mx-auto text-center md:text-left">
-            <img src="/images/sunny_scholar_logo.png" class="h-6 mb-3 brightness-0 invert opacity-40 mx-auto md:mx-0">
-            <p class="text-gray-600 text-[10px]">© 2026 SUNNY Scholar Archive. Designed for Problem Definers.</p>
-        </div>
+        <section class="py-24 px-6 max-w-7xl mx-auto">
+            <h2 class="text-3xl font-black text-center mb-16">사회문제 탐구와 해결을 위한 <br class="md:hidden"> 최적의 실험실</h2> [cite: 53]
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="space-y-6">
+                    <h3 class="text-[#63489a] font-black text-xl flex items-center gap-2">
+                        <span class="w-2 h-6 bg-[#63489a] rounded-full"></span> 1. 교육 [cite: 54]
+                    </h3>
+                    <ul class="space-y-4 text-gray-600 font-bold text-sm">
+                        <li>• 시스템 사고 교육 [cite: 55]</li>
+                        <li>• 데스크/필드 리서치 방법론 [cite: 56]</li>
+                        <li>• 솔루션 제작 및 검증 방법론 [cite: 57]</li>
+                    </ul>
+                </div>
+                <div class="space-y-6">
+                    <h3 class="text-[#63489a] font-black text-xl flex items-center gap-2">
+                        <span class="w-2 h-6 bg-[#63489a] rounded-full"></span> 2. 경험 [cite: 58]
+                    </h3>
+                    <ul class="space-y-4 text-gray-600 font-bold text-sm">
+                        <li>• 당사자 인터뷰 및 봉사활동 [cite: 59]</li>
+                        <li>• 논문 및 아티클 분석 [cite: 60]</li>
+                        <li>• 솔루션 제작 및 MVP 테스트 [cite: 61]</li>
+                    </ul>
+                </div>
+                <div class="space-y-6">
+                    <h3 class="text-[#63489a] font-black text-xl flex items-center gap-2">
+                        <span class="w-2 h-6 bg-[#63489a] rounded-full"></span> 3. 지원 [cite: 62]
+                    </h3>
+                    <ul class="space-y-4 text-gray-600 font-bold text-sm">
+                        <li>• 활동비 및 솔루션 개발비 지원 [cite: 63]</li>
+                        <li>• 실무자 멘토링 인적 리소스 [cite: 64]</li>
+                        <li>• 전담 매니저 밀착 케어 [cite: 65]</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 px-6 bg-[#f0f2f9]">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-xs font-black text-gray-400 uppercase tracking-widest mb-10">Upcoming Event</h2> [cite: 66]
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="bg-[#63489a] p-10 rounded-[2rem] text-white relative overflow-hidden group">
+                        <div class="relative z-10">
+                            <span class="text-xs font-bold opacity-80 mb-2 block">성과공유회 · 2026.08.20(목)</span> [cite: 67, 68, 74]
+                            <h3 class="text-2xl font-black mb-6">현장 실무자들과 만나는 <br> 사회문제 제안의 장</h3> [cite: 75, 76]
+                            <p class="opacity-80 text-sm leading-relaxed mb-10 break-keep">
+                                8개월간 정의한 사회문제를 현장 전문가 앞에서 발표합니다. <br>
+                                단순한 졸업식이 아니라, 문제 제안이 실제 변화로 이어지는 자리입니다. [cite: 69, 70, 77]
+                            </p>
+                            <a href="#" class="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 rounded-xl font-black text-sm transition-all">
+                                공유회 살펴보기 → [cite: 78]
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="bg-[#106e4e] p-10 rounded-[2rem] text-white relative overflow-hidden group">
+                        <div class="relative z-10">
+                            <span class="text-xs font-bold opacity-80 mb-2 block">신규 모집 · 매년 12월</span> [cite: 79]
+                            <h3 class="text-2xl font-black mb-6">다음 기수 모집은 <br> 매년 12월에 시작됩니다</h3> [cite: 80, 81]
+                            <p class="opacity-80 text-sm leading-relaxed mb-10 break-keep">
+                                서류 접수부터 면접, 선발 교육까지 약 6주간 진행됩니다. <br>
+                                가장 먼저 소식을 알고 싶다면 채널을 팔로우해 두세요. [cite: 82, 83]
+                            </p>
+                            <a href="https://www.instagram.com/sk_sunny/" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 rounded-xl font-black text-sm transition-all">
+                                지원 채널 팔로우 → [cite: 71, 72, 84]
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-12 text-center text-gray-400 text-sm font-medium border-t border-gray-100 bg-white">
+        <p>© 2026 SUNNY Scholar Program. All rights reserved.</p>
     </footer>
-
 </body>
 </html>
