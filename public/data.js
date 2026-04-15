@@ -59,25 +59,33 @@ const SUNNY_DATA = [
 ];
 
 // 팀 상세 정보를 담은 데이터 추가
-const TEAM_LIST = [
-    {
-        id: "fore",
+const TEAM_DETAILS = {
+    "fore": {
         order: "LAB 01",
         name: "포레 : 조부모 돌봄 자립준비청년",
-        description: "가족 돌봄의 무게를 짊어진 청년들의 자립을 연구합니다.",
-        thumbnail: "public/images/team_fore_thumb.png", // 팀 리스트용 대표 이미지
-        link: "team_detail.html?id=fore"
+        // 팀을 상징하는 정사각형 로고/프로필 이미지 추가 (추천 사이즈: 200x200 이상)
+        teamProfileImg: "public/images/team_fore_logo.png", 
+        description: "우리는 숫자에 가려진 조부모 돌봄 자립준비청년들의 현실을 탐구하고, 그들이 가족의 무게를 짊어지면서도 자신의 삶을 단단하게 가꾸어 나갈 수 있는 대안을 제시합니다.",
+        email: "fore_sunny@example.com",
+        sns: "@fore_lab_official",
+        members: [
+            { name: "김써니", role: "Team Leader", img: "public/images/member1.png" },
+            { name: "이학자", role: "Researcher", img: "public/images/member2.png" },
+            { name: "박돌봄", role: "Designer", img: "public/images/member3.png" },
+            { name: "최자립", role: "Strategist", img: "public/images/member4.png" }
+        ]
     },
-    {
-        id: "green",
+    "green": {
         order: "LAB 02",
         name: "그린 : 자립준비청년 학업 중단",
-        description: "중단 없는 학업을 위한 환경 조성을 고민합니다.",
-        thumbnail: "public/images/team_green_thumb.png",
-        link: "team_detail.html?id=green"
-    },
-    // 나머지 팀들도 동일한 형식으로 추가 (총 5개 팀 예시)
-    { id: "team3", order: "LAB 03", name: "팀 03 제목", description: "설명글", thumbnail: "public/images/team3.png", link: "team_detail.html?id=team3" },
-    { id: "team4", order: "LAB 04", name: "팀 04 제목", description: "설명글", thumbnail: "public/images/team4.png", link: "team_detail.html?id=team4" },
-    { id: "team5", order: "LAB 05", name: "팀 05 제목", description: "설명글", thumbnail: "public/images/team5.png", link: "team_detail.html?id=team5" }
-];
+        teamProfileImg: "public/images/team_green_logo.png", 
+        description: "자립준비청년들이 경제적 어려움으로 인해 학업을 포기하지 않도록, 지속 가능한 교육 환경과 정책적 지원 방안을 연구합니다.",
+        email: "green_sunny@example.com",
+        sns: "@green_scholar",
+        members: [
+            { name: "정그린", role: "Team Leader", img: "public/images/g_member1.png" },
+            { name: "나에듀", role: "Researcher", img: "public/images/g_member2.png" }
+        ]
+    }
+    // ... 나머지 팀들도 동일한 형식으로 추가
+};
