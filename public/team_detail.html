@@ -90,59 +90,67 @@
 
     <script src="data.js"></script>
     <script>
-        function loadTeamDetail() {
-            // 1. 데이터 로드 확인
-            if (typeof TEAM_DETAILS === 'undefined' || typeof SUNNY_DATA === 'undefined') {
-                console.error("data.js 파일을 찾을 수 없거나 데이터가 올바르지 않습니다.");
-                return;
-            }
+        // <script> 내부 loadTeamDetail 함수 수정
 
-            const urlParams = new URLSearchParams(window.location.search);
-            let teamId = urlParams.get('id') || 'fore'; // id가 없으면 기본값 fore
+function loadTeamDetail() {
+    if (typeof TEAM_DETAILS === 'undefined' || typeof SUNNY_DATA === 'undefined') {
+        console.error("data.js 파일을 찾을 수 없습니다.");
+        return;
+    }
 
-            const team = TEAM_DETAILS[teamId];
-            if (!team) return;
+    const urlParams = new URLSearchParams(window.location.search);
+    let teamId = urlParams.get('id') || 'fore'; 
 
-            // 2. 사이드바 데이터 넣기
-            document.getElementById('display-team-order').innerText = team.order;
-            document.getElementById('display-team-name').innerText = team.name;
-            document.getElementById('display-team-desc').innerText = team.description;
-            document.getElementById('display-team-email').href = `mailto:${team.email}`;
-            document.getElementById('display-team-sns').innerText = team.sns;
-            document.getElementById('display-team-profile-img').src = team.teamProfileImg;
+    const team = TEAM_DETAILS[teamId];
+    if (!team) return;
 
-            // 3. 멤버 리스트 출력
-            const memberList = document.getElementById('member-list');
-            memberList.innerHTML = team.members.map(m => `
-                <div class="flex flex-col items-center text-center animate__animated animate__fadeInUp">
-                    <div class="member-profile-img mb-4 shadow-lg shadow-purple-900/10">
-                        <img src="${m.img}" alt="${m.name}" onerror="this.src='https://via.placeholder.com/80x110?text=SUNNY'">
-                    </div>
-                    <h3 class="font-black text-sm text-gray-950">${m.name}</h3>
-                </div>
-            `).join('');
+    // 1. 사이드바 데이터 넣기
+    document.getElementById('display-team-order').innerText = team.order;
+    document.getElementById('display-team-name').innerText = team.name;
+    document.getElementById('display-team-desc').innerText = team.description;
+    document.getElementById('display-team-email').href = `mailto:${team.email}`;
+    document.getElementById('display-team-sns').innerText = team.sns;
 
-            // 4. 아티클 리스트 출력
-            const teamArticles = SUNNY_DATA.filter(art => art.teamId === teamId);
-            const artContainer = document.getElementById('article-list-container');
-            
-            if (teamArticles.length > 0) {
-                artContainer.innerHTML = `
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-                        ${teamArticles.map(art => `
-                            <a href="article_view.html?id=${art.id}" class="group block bg-gray-50 rounded-2xl overflow-hidden hover:bg-white hover:shadow-xl transition-all border border-transparent hover:border-purple-100">
-                                <div class="aspect-video overflow-hidden"><img src="${art.thumbnail}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"></div>
-                                <div class="p-6">
-                                    <div class="text-[10px] font-black text-[#63489a] mb-2 uppercase tracking-widest">${art.part}</div>
-                                    <h4 class="font-black text-lg group-hover:text-[#63489a] transition-colors line-clamp-1">${art.title}</h4>
-                                </div>
-                            </a>
-                        `).join('')}
-                    </div>`;
-            } else {
-                artContainer.innerHTML = `<div class="text-center py-12 text-gray-400 font-medium bg-gray-50 rounded-xl">준비 중인 아티클이 없습니다.</div>`;
-            }
-        }
+    // [수정] team.teamProfileImg 대신 team.team_img를 사용
+    const mainImg = team.team_img || team.teamProfileImg || "";
+    document.getElementById('display-team-profile-img').src = mainImg;
+
+    // 2. 멤버 리스트 출력 (onerror 이미지 차단 처리 추가)
+    const memberList = document.getElementById('member-list');
+    memberList.innerHTML = team.members.map(m => `
+        <div class="flex flex-col items-center text-center animate__animated animate__fadeInUp">
+            <div class="member-profile-img mb-4 shadow-lg shadow-purple-900/10">
+                <img src="${m.img}" alt="${m.name}" 
+                     onerror="this.style.opacity='0'; this.parentElement.style.backgroundColor='#eee';">
+            </div>
+            <h3 class="font-black text-sm text-gray-950">${m.name}</h3>
+        </div>
+    `).join('');
+
+    // 3. 아티클 리스트 출력
+    const teamArticles = SUNNY_DATA.filter(art => art.teamId === teamId);
+    const artContainer = document.getElementById('article-list-container');
+    
+    if (teamArticles.length > 0) {
+        artContainer.innerHTML = `
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                ${teamArticles.map(art => `
+                    <a href="article_view.html?id=${art.id}" class="group block bg-gray-50 rounded-2xl overflow-hidden hover:bg-white hover:shadow-xl transition-all border border-transparent hover:border-purple-100">
+                        <div class="aspect-video overflow-hidden">
+                            <img src="${art.thumbnail}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                 onerror="this.style.opacity='0';">
+                        </div>
+                        <div class="p-6">
+                            <div class="text-[10px] font-black text-[#63489a] mb-2 uppercase tracking-widest">${art.part}</div>
+                            <h4 class="font-black text-lg group-hover:text-[#63489a] transition-colors line-clamp-1">${art.title}</h4>
+                        </div>
+                    </a>
+                `).join('')}
+            </div>`;
+    } else {
+        artContainer.innerHTML = `<div class="text-center py-12 text-gray-400 font-medium bg-gray-50 rounded-xl">준비 중인 아티클이 없습니다.</div>`;
+    }
+}
         window.onload = loadTeamDetail;
     </script>
 </body>
