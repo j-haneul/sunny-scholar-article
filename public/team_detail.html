@@ -4,40 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team Profile | 2026 SUNNY Scholar</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <style>
-        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
-        :root { --sunny-purple: #63489a; --sunny-gradient: linear-gradient(135deg, #4f319b 0%, #8c52ff 100%); }
-        body { font-family: 'Pretendard', sans-serif; background-color: #f8f9ff; color: #1a1a1a; letter-spacing: -0.01em; }
-        .glass-nav { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); }
-        .team-profile-card { background: white; border-radius: 2rem; border: 1px solid #f1f1f4; box-shadow: 0 25px 50px -12px rgba(99, 72, 154, 0.1); }
-        .team-logo-box { width: 120px; height: 120px; border-radius: 2rem; overflow: hidden; background: var(--sunny-gradient); box-shadow: 0 10px 20px rgba(99, 72, 154, 0.2); margin: 0 auto 1.5rem auto; }
-        .team-logo-box img { width: 100%; height: 100%; object-fit: cover; }
-        .member-profile-img { width: 80px; height: 110px; border-radius: 100px; overflow: hidden; background: #f3f4f6; }
-        .member-profile-img img { width: 100%; height: 100%; object-fit: cover; }
-        @media (min-width: 1024px) { .sticky-sidebar { position: sticky; top: 6rem; height: calc(100vh - 8rem); overflow-y: auto; } }
-    </style>
-</head>
-<body class="overflow-x-hidden">
+  <script src="data.js"></script>
+<script>
+    function loadTeamDetail() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const teamId = urlParams.get('id');
 
-    <header class="fixed top-0 w-full z-50 glass-nav">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center h-16">
-            <a href="index.html" class="font-black text-xl tracking-tighter text-[#63489a]">SUNNY Scholar</a>
-            <nav class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest">
-                <a href="article_list.html" class="hover:text-[#63489a] transition-colors">Articles</a>
-                <a href="team_list.html" class="text-[#63489a]">Lab</a>
-                <a href="about.html" class="hover:text-[#63489a] transition-colors">About</a>
-            </nav>
-        </div>
-    </header>
+        // 1. 데이터 존재 확인 (data.js 로드 여부 체크)
+        if (typeof TEAM_DETAILS === 'undefined' || typeof SUNNY_DATA === 'undefined') {
+            console.error("data.js 파일을 찾을 수 없거나 데이터가 로드되지 않았습니다.");
+            return;
+        }
 
-    <main class="pt-24 pb-20 px-6 animate__animated animate__fadeIn">
-        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-10 xl:gap-16">
-            <aside class="w-full lg:w-[380px] xl:w-[420px] flex-shrink-0 sticky-sidebar">
-                <div class="team-profile-card p-10 text-center">
-                    <div class="team-logo-box animate__animated animate__zoomIn animate__faster">
-                        <img id="display-team-logo" src="" alt="Team Logo" onerror="this.src='https://via.placeholder.com/120?text=LAB'">
-                    </div>
-                    <span id="display-team-order" class="inline-block px-4 py-1 rounded-full bg-purple-50 text-[#63489a] text-[11px] font-black mb-4 tracking-widest uppercase">-</span>
-                    <h1 id="display-team-name" class="text-2
+        if (!teamId || !TEAM_DETAILS[teamId]) {
+            document.getElementById('display-team-name').innerText = "팀 정보를 찾을 수 없습니다.";
+            return;
+        }
+
+        const team = TEAM_DETAILS[teamId];
+
+        // 2. 좌측 사이드바 데이터 매핑
+        document.getElementById('display-team-logo').src = team.teamProfileImg;
+        document.getElementById('display-team-order').innerText = team.order;
+        document.getElementById('display-team-name').innerText = team.name;
+        document.getElementById('display-team-desc').innerText = team.description;
+        document.getElementById('display-team-email').href = `mailto:${team.email}`;
+        document.getElementById('display-team-sns').innerText = team.sns;
+
+        // 3. 팀원 리스트 생성
+        const memberListContainer = document.getElementById('member-list');
+        memberListContainer.innerHTML = team.members.map(m => `
+            <div class="flex flex-col items-center animate__animated animate__fadeInUp">
+                <div class="member-profile-img mb-4 shadow-lg shadow-purple-900/10 transition-transform hover:-translate-y-1">
+                    <img src="${m.img}" alt="${m.name}" onerror="this.src='https://via.placeholder.com/80x110?text=SUNNY'">
+                </div>
+                <h3 class="font-black text-base text-gray-950">${m.name}</h3>
+                <p class="text-[11px] text-gray-400 font-bold uppercase tracking-wider">${m.role}</p>
+            </div>
+        `).join('');
+
+        // 4. 해당 팀의 아티클(Recent Work) 연동
+        renderTeamArticles(teamId);
+    }
+
+    function renderTeamArticles(teamId) {
+        // SUNNY_DATA에서 이 팀에 해당하는 아티클만 필터링
+        const teamArticles = SUNNY_DATA.filter(art => art.teamId === teamId);
+        
+        // "준비 중인 아티클이 없습니다" 문구가 적힌 섹션 찾기
+        const articleSection = document.querySelector('section:last-of-type div:last-of-type');
+
+        if (teamArticles.length > 0) {
+            // 아티클이 있으면 HTML 생성 (그리드 레이아웃 적용)
+            articleSection.classList.remove('text-center', 'py-12', 'text-gray-400', 'bg-gray-50');
+            articleSection.innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    ${teamArticles.map(art => `
+                        <a href="${art.link}" class="group block bg-gray-50 rounded-2xl overflow-hidden hover:bg-white hover:shadow-xl transition-all border border-transparent hover:border-purple-100">
+                            <div class="aspect-video overflow-hidden">
+                                <img src="${art.thumbnail}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/400x225?text=SUNNY+ARTICLE'">
+                            </div>
+                            <div class="p-6">
+                                <div class="text-[10px] font-black text-[#63489a] mb-2 uppercase tracking-widest">${art.part}</div>
+                                <h4 class="font-black text-lg group-hover:text-[#63489a] transition-colors line-clamp-1">${art.title}</h4>
+                            </div>
+                        </a>
+                    `).join('')}
+                </div>
+            `;
+        } else {
+            articleSection.innerHTML = "준비 중인 아티클이 없습니다.";
+        }
+    }
+
+    // 페이지 로드 시 실행
+    window.onload = loadTeamDetail;
+</script>
