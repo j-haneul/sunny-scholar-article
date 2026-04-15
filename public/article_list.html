@@ -89,30 +89,23 @@
                 
                 <div class="flex gap-6 overflow-x-auto pb-8 scrollbar-hide px-1">
 ${teamArticles.map(art => `
-    <a href="article_view.html?id=${art.id}" class="group block bg-white rounded-[1.5rem] overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-500 min-w-[280px] md:min-w-[320px] flex-shrink-0">
+    <a href="article_view.html?id=${art.id}" class="group block bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-500 min-w-[280px] md:min-w-[320px] flex-shrink-0">
         
-        <div class="relative w-full pb-[56.25%] overflow-hidden bg-gray-50">
+        <div class="relative w-full pb-[56.25%] overflow-hidden bg-gray-50 flex-shrink-0">
             <img src="${art.thumbnail}" 
-                 class="absolute top-0 left-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                 class="absolute top-0 left-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
                  onerror="this.src='https://via.placeholder.com/400x225?text=SUNNY+ARTICLE'">
         </div>
 
-        <div class="p-5 md:p-6">
+        <div class="p-5">
             <div class="flex items-center gap-1.5 mb-2">
                 <span class="w-2 h-[1.5px] bg-[#8c52ff]"></span>
                 <span class="text-[9px] font-black text-[#8c52ff] uppercase tracking-wider">${art.part}</span>
             </div>
             
-            <h4 class="font-black text-lg md:text-xl text-gray-950 leading-tight group-hover:text-[#63489a] transition-colors break-keep line-clamp-2">
+            <h4 class="font-black text-lg md:text-xl text-gray-950 leading-tight group-hover:text-[#63489a] transition-colors break-keep line-clamp-2 min-h-[2.6em]">
                 ${art.title}
             </h4>
-            
-            <div class="mt-4 flex items-center text-[10px] font-black text-gray-300 group-hover:text-[#63489a] transition-all">
-                <span class="uppercase tracking-widest">Read Article</span>
-                <svg class="w-3.5 h-3.5 ml-1.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                </svg>
-            </div>
         </div>
     </a>
 `).join('')}     </div>
