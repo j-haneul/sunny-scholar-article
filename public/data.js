@@ -69,7 +69,7 @@ const TEAM_DETAILS = {
     "green": {
         order: "LAB 02",
         name: "그린 : 자립준비청년 학업 중단",
-        teamProfileImg: "", 
+        teamProfileImg: "images/green_team_1.jpg", 
         description: "자립준비청년들이 경제적 어려움으로 인해 학업을 포기하지 않도록, 지속 가능한 교육 환경과 정책적 지원 방안을 연구합니다.",
         email: "green_sunny@example.com",
         sns: "@green_scholar",
