@@ -1,7 +1,7 @@
 const SUNNY_DATA = [
     {
         id: "article-01",
-        teamId: "team-fore",
+        teamId: "fore",
         teamName: "포레 (FORE)",
         part: "Part 1. 문제의 발견",
         title: "#1 스물 하나, 홀로 짊어진 시간들",
@@ -11,7 +11,7 @@ const SUNNY_DATA = [
             <p>“할머님께서 횡단보도를 건너다 넘어지셨어요. 바로 병원으로 오세요.”</p>
             <p>수업은 뒷전이었고, 성진은 병원으로 뛰었습니다. 뛰어가는 내내 머릿속에는 한 가지 생각뿐이었습니다. ‘괜찮으셔야 하는데.’</p>
             <p>어릴 적에 부모가 이혼하고 오갈 데 없던 성진을 도맡아 키워준 사람은 할머니였습니다. 사회에서는 잠시 위탁가정에서 자라는 것이라 말했지만, 성진이 성인이 될 때까지 할머니는 그의 보호자이자 가족의 전부였습니다.</p>
-            <p>할머니의 소식을 듣고 뛰어온 성진에게 의사는 말했습니다.></p>
+            <p>할머니의 소식을 듣고 뛰어온 성진에게 의사는 말했습니다.</p>
             
             <div class="bg-purple-50 p-8 rounded-2xl my-10 border-l-4 border-[#63489a]">
                 <p class="mb-0 text-gray-700 italic">“일상생활 속에서도 주의 깊게 보셔야 합니다. 조금만 자극이 가도 위험할 수 있습니다.”</p>
@@ -42,7 +42,7 @@ const SUNNY_DATA = [
     },
     {
         id: "article-02",
-        teamId: "team-fore",
+        teamId: "fore",
         teamName: "포레 (FORE)",
         part: "Part 2. 원인 분석",
         title: "보이지 않는 돌봄의 무게: 통계로 본 현실",
