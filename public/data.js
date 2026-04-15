@@ -56,7 +56,7 @@ const TEAM_DETAILS = {
         order: "LAB 01",
         name: "포레 : 조부모 돌봄 자립준비청년",
         // 팀을 상징하는 정사각형 로고/프로필 이미지 추가 (추천 사이즈: 200x200 이상)
-        teamProfileImg: "public/images/team_fore_logo.png", 
+        teamProfileImg: "images/fore_team_1.jpg", 
         description: "우리는 숫자에 가려진 조부모 돌봄 자립준비청년들의 현실을 탐구하고, 그들이 가족의 무게를 짊어지면서도 자신의 삶을 단단하게 가꾸어 나갈 수 있는 대안을 제시합니다.",
         email: "fore_sunny@example.com",
         sns: "@fore_lab_official",
