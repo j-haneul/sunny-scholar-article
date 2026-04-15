@@ -57,14 +57,14 @@ const TEAM_DETAILS = {
         name: "포레 : 조부모 돌봄 자립준비청년",
         // 팀을 상징하는 정사각형 로고/프로필 이미지 추가 (추천 사이즈: 200x200 이상)
         teamProfileImg: "images/fore_team_1.jpg", 
-        description: "우리는 숫자에 가려진 조부모 돌봄 자립준비청년들의 현실을 탐구하고, 그들이 가족의 무게를 짊어지면서도 자신의 삶을 단단하게 가꾸어 나갈 수 있는 대안을 제시합니다.",
+        description: "저희 fou:re(포레)는 사회를 바라볼 때 당연하게 여겨져 온 것들을 다시 질문하는 데서 출발합니다. 익숙함 속에서 무심히 지나쳐 온 문제를 되짚으며, 사회를 서로 연결된 하나의 숲(forest)처럼  바라봅니다. 동시에 four(4명)과 re(다시·회복)의 결합으로, 실패하더라도 끊임없이 다시 도전하고 시도하겠다는 의지를 담고 있습니다.",
         email: "fore_sunny@example.com",
         sns: "@fore_lab_official",
         members: [
-            { name: "김써니", role: "Team Leader", img: "public/images/member1.png" },
-            { name: "이학자", role: "Researcher", img: "public/images/member2.png" },
-            { name: "박돌봄", role: "Designer", img: "public/images/member3.png" },
-            { name: "최자립", role: "Strategist", img: "public/images/member4.png" }
+            { name: "김은결",  img: "images/fore_member1.jpg" },
+            { name: "박성인",  img: "images/fore_member2.jpg" },
+            { name: "오재란",  img: "images/fore_member3.jpg" },
+            { name: "하수진",  img: "images/fore_member4.jpg" }
         ]
     },
     "green": {
