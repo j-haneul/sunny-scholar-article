@@ -54,8 +54,7 @@ const SUNNY_DATA = [
 const TEAM_DETAILS = {
     "fore": {
         order: "LAB 01",
-        name: "포레 : 조부모 돌봄 자립준비청년",
-        // 팀을 상징하는 정사각형 로고/프로필 이미지 추가 (추천 사이즈: 200x200 이상)
+        name: "포레(fo:re)",
         teamProfileImg: "images/fore_team_1.jpg", 
         description: "저희 fou:re(포레)는 사회를 바라볼 때 당연하게 여겨져 온 것들을 다시 질문하는 데서 출발합니다. 익숙함 속에서 무심히 지나쳐 온 문제를 되짚으며, 사회를 서로 연결된 하나의 숲(forest)처럼  바라봅니다. 동시에 four(4명)과 re(다시·회복)의 결합으로, 실패하더라도 끊임없이 다시 도전하고 시도하겠다는 의지를 담고 있습니다.",
         email: "fore_sunny@example.com",
