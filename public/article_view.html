@@ -58,24 +58,36 @@
             <div id="dynamic-body" class="content-text"></div>
             <img id="view-sub-img" src="" class="content-img mt-10" style="display:none;">
         </article>
-
-        <div class="mt-20 py-10 border-t border-gray-100 flex justify-center">
+<div class="mt-20 py-10 border-t border-gray-100 flex justify-center">
             <button onclick="copyURL()" class="bg-gray-900 text-white px-8 py-3 rounded-full font-black text-sm shadow-xl hover:bg-black transition-all">
                 아티클 주소 복사하기
             </button>
         </div>
 
-        <div id="contact-section" class="contact-box">
-            <span id="contact-team-name" class="text-[10px] font-black text-[#63489a] uppercase tracking-widest">TEAM INFO</span>
-            <h3 class="text-xl font-black mt-2 mb-4">프로젝트 및 팀에 대해 궁금한 점이 있나요?</h3>
-            <p class="text-gray-500 text-sm mb-6">아티클 내용이나 문제정의 과정에 대한 문의는<br>아래 연락처를 통해 팀에게 직접 전달하실 수 있습니다.</p>
-            <a id="contact-email" href="" class="inline-flex items-center gap-2 bg-[#f8f9ff] text-[#63489a] px-6 py-3 rounded-xl font-bold text-sm hover:bg-[#efefff] transition-all">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                <span id="email-text">이메일 보내기</span>
-            </a>
+        <div class="mt-8 py-10 border-t border-gray-200">
+            <div class="flex flex-col items-start">
+                <a id="team-link" href="team_detail.html" class="group flex items-center gap-2 mb-2">
+                    <h2 id="contact-team-name" class="text-2xl font-black text-gray-900 group-hover:text-[#63489a] transition-colors">TEAM NAME</h2>
+                    <svg class="w-5 h-5 text-gray-400 group-hover:text-[#63489a]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </a>
+                <p id="team-one-liner" class="text-gray-500 font-medium mb-4">팀의 한 줄 소개가 들어가는 자리입니다.</p>
+                <div class="flex items-center gap-2 text-[#63489a] font-bold text-sm">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    <a id="contact-email-link" href="" class="hover:underline">email@address.com</a>
+                </div>
+            </div>
         </div>
 
-        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="mt-4 p-6 bg-gray-50 rounded-2xl border border-gray-100">
+            <div class="flex items-start gap-3">
+                <span class="text-gray-400 mt-1">ⓒ</span>
+                <p class="text-gray-500 text-[13px] leading-relaxed break-keep">
+                    2026 SUNNY Scholar의 모든 콘텐츠 저작권은 해당 팀과 SK행복나눔재단에 있습니다. 인용 시에는 반드시 출처를 표기해야 하며, 전문 복사 및 무단 전재·재배포는 금지되어 있습니다. 
+                </p>
+            </div>
+        </div>
+
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-4">
             <div id="prev-article" class="invisible">
                 <a href="#" class="bottom-nav-card h-full">
                     <span class="text-[10px] font-black text-gray-400 uppercase mb-1">Previous</span>
@@ -105,23 +117,24 @@
                 return;
             }
 
-            // 데이터 매핑
+            // 기본 데이터 매핑
             document.getElementById('view-team-tag').innerText = current.teamName;
             document.getElementById('view-title').innerText = current.title;
             document.getElementById('dynamic-body').innerHTML = current.content || "";
 
-            // 컨택 정보 업데이트 (data.js에 email 속성이 있다고 가정)
-            document.getElementById('contact-team-name').innerText = `TEAM ${current.teamName}`;
-            const emailLink = document.getElementById('contact-email');
-            const emailText = document.getElementById('email-text');
-            if (current.email) {
-                emailLink.href = `mailto:${current.email}`;
-                emailText.innerText = current.email;
-            } else {
-                // 이메일 데이터가 없을 경우 기본값 혹은 섹션 숨기기
-                emailLink.href = "mailto:sunny@sk.com";
-                emailText.innerText = "sunny@sk.com";
-            }
+            // --- 팀 컨택 영역 업데이트 ---
+            document.getElementById('contact-team-name').innerText = current.teamName;
+            // 팀 상세 페이지로 이동 시 teamId 전달 (data.js에 teamId가 있다고 가정)
+            document.getElementById('team-link').href = `team_detail.html?teamId=${current.teamId}`;
+            
+            // 한줄 소개 (data.js에 description 혹은 intro가 있다면 연결)
+            document.getElementById('team-one-liner').innerText = current.teamDescription || "사회문제의 본질을 연구하고 새로운 시각을 제안합니다.";
+            
+            // 이메일
+            const emailAddr = current.email || "sunny@sk.com";
+            const emailLink = document.getElementById('contact-email-link');
+            emailLink.innerText = emailAddr;
+            emailLink.href = `mailto:${emailAddr}`;
 
             // 이미지 처리
             const mainImg = document.getElementById('view-main-img');
@@ -135,7 +148,7 @@
                 subImg.style.display = 'block';
             }
 
-            // 상단 탭
+            // 상단 탭 처리
             const teamArticles = SUNNY_DATA.filter(a => a.teamId === current.teamId);
             document.getElementById('part-nav').innerHTML = teamArticles.map(art => `
                 <a href="article_view.html?id=${art.id}" class="part-tab ${art.id === articleId ? 'active' : ''}">
@@ -143,7 +156,7 @@
                 </a>
             `).join('');
 
-            // 하단 내비게이션
+            // 하단 내비게이션 처리
             const currentIdx = teamArticles.findIndex(a => a.id === articleId);
             const prevEl = document.getElementById('prev-article');
             const nextEl = document.getElementById('next-article');
