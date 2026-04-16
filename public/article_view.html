@@ -47,7 +47,7 @@
         </div>
     </div>
 
-    <main class="max-w-3xl mx-auto px-6 py-16 md:py-24 animate__animated animate__fadeIn">
+   <main class="max-w-3xl mx-auto px-6 py-16 md:py-24 animate__animated animate__fadeIn">
         <header class="mb-12">
             <div id="view-team-tag" class="text-[#63489a] text-[11px] font-black mb-3 tracking-widest uppercase"></div>
             <h1 id="view-title" class="text-3xl md:text-5xl font-black leading-tight break-keep mb-8">데이터를 불러오는 중...</h1>
@@ -58,46 +58,45 @@
             <div id="dynamic-body" class="content-text"></div>
             <img id="view-sub-img" src="" class="content-img mt-10" style="display:none;">
         </article>
-<div class="mt-20 py-10 border-t border-gray-100 flex justify-center">
-            <button onclick="copyURL()" class="bg-gray-900 text-white px-8 py-3 rounded-full font-black text-sm shadow-xl hover:bg-black transition-all">
+
+        <div class="mt-20 py-10 border-t border-gray-100 flex justify-center">
+            <button onclick="copyURL()" class="bg-gray-900 text-white px-7 py-2.5 rounded-full font-black text-xs shadow-xl hover:bg-black transition-all transform hover:scale-105">
                 아티클 주소 복사하기
             </button>
         </div>
 
-        <div class="mt-8 py-10 border-t border-gray-200">
+        <div class="py-10 border-t border-gray-200">
             <div class="flex flex-col items-start">
-                <a id="team-link" href="team_detail.html" class="group flex items-center gap-2 mb-2">
-                    <h2 id="contact-team-name" class="text-2xl font-black text-gray-900 group-hover:text-[#63489a] transition-colors">TEAM NAME</h2>
-                    <svg class="w-5 h-5 text-gray-400 group-hover:text-[#63489a]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                <a id="team-link" href="#" class="group flex items-center gap-1.5 mb-2">
+                    <h2 id="contact-team-name" class="text-xl font-black text-gray-900 group-hover:text-[#63489a] transition-colors">TEAM NAME</h2>
+                    <svg class="w-4 h-4 text-gray-400 group-hover:text-[#63489a] mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                 </a>
-                <p id="team-one-liner" class="text-gray-500 font-medium mb-4">팀의 한 줄 소개가 들어가는 자리입니다.</p>
-                <div class="flex items-center gap-2 text-[#63489a] font-bold text-sm">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                    <a id="contact-email-link" href="" class="hover:underline">email@address.com</a>
+                <p id="team-one-liner" class="text-gray-500 text-sm font-medium mb-4 break-keep">사회문제의 본질을 연구하고 해결 가능한 크기로 구조화합니다.</p>
+                <div class="flex items-center gap-2 text-[#63489a] font-bold text-xs">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    <a id="contact-email-link" href="" class="hover:underline tracking-tight">email@address.com</a>
                 </div>
             </div>
         </div>
 
-        <div class="mt-4 p-6 bg-gray-50 rounded-2xl border border-gray-100">
-            <div class="flex items-start gap-3">
-                <span class="text-gray-400 mt-1">ⓒ</span>
-                <p class="text-gray-500 text-[13px] leading-relaxed break-keep">
-                    2026 SUNNY Scholar의 모든 콘텐츠 저작권은 해당 팀과 SK행복나눔재단에 있습니다. 인용 시에는 반드시 출처를 표기해야 하며, 전문 복사 및 무단 전재·재배포는 금지되어 있습니다. 
-                </p>
-            </div>
+        <div class="p-5 bg-gray-50 rounded-xl border border-gray-100 flex items-start gap-3">
+            <span class="text-gray-400 text-xs mt-0.5">ⓒ</span>
+            <p class="text-gray-500 text-[12px] leading-relaxed break-keep">
+                2026 SUNNY Scholar의 모든 콘텐츠 저작권은 해당 팀과 SK행복나눔재단에 있습니다. 인용 시에는 반드시 출처를 표기해야 하며, 전문 복사 및 무단 전재·재배포는 금지되어 있습니다. 
+            </p>
         </div>
 
-        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="mt-10 mb-20 grid grid-cols-1 md:grid-cols-2 gap-3">
             <div id="prev-article" class="invisible">
-                <a href="#" class="bottom-nav-card h-full">
-                    <span class="text-[10px] font-black text-gray-400 uppercase mb-1">Previous</span>
-                    <span class="text-sm font-bold text-gray-900 line-clamp-1">이전 글</span>
+                <a href="#" class="bottom-nav-card !p-4 border-gray-100 hover:border-[#63489a] rounded-xl flex flex-col group">
+                    <span class="text-[9px] font-black text-gray-400 uppercase mb-1 group-hover:text-[#63489a]">Previous</span>
+                    <span class="text-[13px] font-bold text-gray-800 line-clamp-1">이전 글</span>
                 </a>
             </div>
             <div id="next-article" class="invisible">
-                <a href="#" class="bottom-nav-card text-right h-full">
-                    <span class="text-[10px] font-black text-gray-400 uppercase mb-1">Next</span>
-                    <span class="text-sm font-bold text-gray-900 line-clamp-1">다음 글</span>
+                <a href="#" class="bottom-nav-card !p-4 text-right border-gray-100 hover:border-[#63489a] rounded-xl flex flex-col items-end group">
+                    <span class="text-[9px] font-black text-gray-400 uppercase mb-1 group-hover:text-[#63489a]">Next</span>
+                    <span class="text-[13px] font-bold text-gray-800 line-clamp-1">다음 글</span>
                 </a>
             </div>
         </div>
@@ -117,26 +116,27 @@
                 return;
             }
 
-            // 기본 데이터 매핑
+            // 1. 기본 텍스트 및 본문 매핑
             document.getElementById('view-team-tag').innerText = current.teamName;
             document.getElementById('view-title').innerText = current.title;
             document.getElementById('dynamic-body').innerHTML = current.content || "";
 
-            // --- 팀 컨택 영역 업데이트 ---
-            document.getElementById('contact-team-name').innerText = current.teamName;
-            // 팀 상세 페이지로 이동 시 teamId 전달 (data.js에 teamId가 있다고 가정)
-            document.getElementById('team-link').href = `team_detail.html?teamId=${current.teamId}`;
+            // 2. 팀 정보 및 상세 페이지 연결 (이슈 해결)
+            const teamLink = document.getElementById('team-link');
+            if (current.teamId) {
+                // team_detail.html에서 데이터를 불러올 수 있도록 teamId를 파라미터로 넘깁니다.
+                teamLink.href = `team_detail.html?teamId=${current.teamId}`;
+            }
             
-            // 한줄 소개 (data.js에 description 혹은 intro가 있다면 연결)
+            document.getElementById('contact-team-name').innerText = current.teamName;
             document.getElementById('team-one-liner').innerText = current.teamDescription || "사회문제의 본질을 연구하고 새로운 시각을 제안합니다.";
             
-            // 이메일
             const emailAddr = current.email || "sunny@sk.com";
             const emailLink = document.getElementById('contact-email-link');
             emailLink.innerText = emailAddr;
             emailLink.href = `mailto:${emailAddr}`;
 
-            // 이미지 처리
+            // 3. 이미지 처리
             const mainImg = document.getElementById('view-main-img');
             if(current.thumbnail) {
                 mainImg.src = current.thumbnail;
@@ -148,7 +148,7 @@
                 subImg.style.display = 'block';
             }
 
-            // 상단 탭 처리
+            // 4. 상단 탭 (동일 팀 아티클 목록)
             const teamArticles = SUNNY_DATA.filter(a => a.teamId === current.teamId);
             document.getElementById('part-nav').innerHTML = teamArticles.map(art => `
                 <a href="article_view.html?id=${art.id}" class="part-tab ${art.id === articleId ? 'active' : ''}">
@@ -156,7 +156,7 @@
                 </a>
             `).join('');
 
-            // 하단 내비게이션 처리
+            // 5. 하단 내비게이션 (이전/다음 글)
             const currentIdx = teamArticles.findIndex(a => a.id === articleId);
             const prevEl = document.getElementById('prev-article');
             const nextEl = document.getElementById('next-article');
