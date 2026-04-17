@@ -154,10 +154,14 @@ const TEAM_DETAILS = {
         order: "LAB 01",
         name: "포레(fou:re)",
         teamProfileImg: "images/fore_team_1.jpg", 
-        description: "저희 fou:re(포레)는 사회를 바라볼 때 당연하게 여겨져 온 것들을 다시 질문하는 데서 출발합니다. 익숙함 속에서 무심히 지나쳐 온 문제를 되짚으며, 사회를 서로 연결된 하나의 숲(forest)처럼  바라봅니다. 동시에 four(4명)과 re(다시·회복)의 결합으로, 실패하더라도 끊임없이 다시 도전하고 시도하겠다는 의지를 담고 있습니다.",
-        email: "fore_sunny@example.com",
-        instagram: "https://instagram.com/아이디", // 버튼으로 연결
-        homepage: "https://velog.io/@아이디", // 버튼으로 연결        
+        description: "저희 fou:re(포레)는 사회를 바라볼 때 당연하게 여겨져 온 것들을 다시 질문하는 데서 출발합니다. 익숙함 속에서 무심히 지나쳐 온 문제를 되짚으며, 사회를 서로 연결된 하나의 숲(forest)처럼 바라봅니다. 동시에 four(4명)과 re(다시·회복)의 결합으로, 실패하더라도 끊임없이 다시 도전하고 시도하겠다는 의지를 담고 있습니다.
+
+<br><br><strong>[TAB 기능]</strong><br>
+조부모 가정위탁 자립준비청년의 예견된 돌봄 문제, 여러분은 어떻게 생각하시나요? 
+비슷한 사례를 알고 계시거나, 저희 포레에게 전달하고자 하는 이야기가 있다면 언제든 연락 주시길 바랍니다.",
+        email: " foure.sunny@gmail.com",
+        instagram: "", // 버튼으로 연결
+        homepage: "", // 버튼으로 연결        
         members: [
             { name: "김은결",  img: "images/fore_member1.jpg" },
             { name: "박성인",  img: "images/fore_member2.jpg" },
