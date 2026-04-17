@@ -15,8 +15,8 @@
             background-size: 40px 40px; letter-spacing: -0.02em;
         }
         .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); }
-        .member-chip { background: white; border: 1px solid #eee; border-radius: 20px; padding: 0.6rem 1.8rem; font-weight: 800; color: #1a1a1a; transition: all 0.3s; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
-        .member-chip:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
+        .member-chip { background: white; border: 1px solid #eee; border-radius: 14px; padding: 0.5rem 1.2rem; font-weight: 800; color: #1a1a1a; transition: all 0.3s; box-shadow: 0 2px 8px rgba(0,0,0,0.02); font-size: 14px; }
+        .member-chip:hover { transform: translateY(-2px); border-color: #ddd; }
         .theme-bg { transition: background-color 0.5s ease; }
     </style>
 </head>
@@ -33,39 +33,39 @@
         </div>
     </header>
 
-    <div id="team-hero" class="theme-bg pt-24 pb-20 px-6 text-white text-center relative overflow-hidden">
+    <div id="team-hero" class="theme-bg pt-16 pb-12 px-6 text-white text-center relative overflow-hidden">
         <div class="max-w-5xl mx-auto relative z-10">
-            <div id="display-team-order" class="inline-block px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-white text-[11px] font-black mb-6 uppercase tracking-[0.2em] border border-white/10">-</div>
-            <h1 id="display-team-name" class="text-5xl md:text-7xl font-black mb-10 tracking-tighter leading-tight">로딩 중...</h1>
-            <div class="inline-block px-8 py-6 bg-white/10 backdrop-blur-xl rounded-[32px] border border-white/10 max-w-3xl">
-                <p id="display-team-desc" class="text-lg md:text-xl font-bold leading-relaxed break-keep opacity-90"></p>
+            <h1 id="display-team-name" class="text-4xl md:text-6xl font-black mb-6 tracking-tighter leading-tight">로딩 중...</h1>
+            <div class="inline-block px-6 py-4 bg-white/10 backdrop-blur-xl rounded-[24px] border border-white/10 max-w-2xl shadow-inner">
+                <p id="display-team-desc" class="text-base md:text-lg font-bold leading-relaxed break-keep opacity-90"></p>
             </div>
         </div>
         <div class="absolute -top-24 -right-24 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
     </div>
 
-    <main class="py-24 px-6 max-w-5xl mx-auto">
-        <section class="mb-24 text-center">
-            <h2 class="text-sm font-black text-gray-400 uppercase tracking-[0.3em] mb-10">Creative Minds</h2>
-            <div id="member-list" class="flex flex-wrap justify-center gap-4"></div>
-        </section>
+    <main class="py-16 px-6 max-w-6xl mx-auto">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-24">
+            
+            <section class="bg-white p-8 md:p-10 rounded-[32px] border border-gray-100 shadow-sm flex flex-col justify-center">
+                <h2 class="text-xs font-black text-gray-400 uppercase tracking-[0.3em] mb-6 text-center lg:text-left">Team Members</h2>
+                <div id="member-list" class="flex flex-wrap justify-center lg:justify-start gap-3"></div>
+            </section>
 
-        <section class="mb-32">
-            <div class="bg-white p-10 md:p-14 rounded-[40px] shadow-2xl shadow-gray-200/50 border border-gray-100 flex flex-col items-center text-center">
-                <h3 class="text-3xl font-black text-gray-950 mb-4 tracking-tight">Connect with Us</h3>
-                <p class="text-gray-500 font-medium mb-10">우리 팀의 더 많은 이야기와 협업 제안은 아래를 통해 전달해주세요.</p>
-                <div id="contact-container" class="flex flex-wrap justify-center gap-4">
+            <section class="bg-white p-8 md:p-10 rounded-[32px] border border-gray-100 shadow-sm flex flex-col justify-center items-center lg:items-start">
+                <h2 class="text-xs font-black text-gray-400 uppercase tracking-[0.3em] mb-6">Connect with Us</h2>
+                <div id="contact-container" class="flex flex-wrap justify-center lg:justify-start gap-3 w-full">
                     </div>
-            </div>
-        </section>
+            </section>
+        </div>
 
         <section>
-            <div class="flex items-center justify-between mb-12">
+            <div class="flex items-center justify-between mb-10 px-2">
                 <div>
                     <h2 class="text-3xl font-black text-gray-950 tracking-tight">Team Articles</h2>
                     <p class="text-gray-500 text-sm mt-1">이 팀이 기록한 변화의 목소리</p>
                 </div>
-                <a href="article_list.html" class="px-5 py-2 rounded-full border-2 border-gray-100 text-xs font-black text-gray-400 hover:border-[#63489a] hover:text-[#63489a] transition-all">전체보기</a>
+                <a href="article_list.html" class="px-5 py-2 rounded-full border border-gray-200 text-[11px] font-black text-gray-500 hover:border-[#63489a] hover:text-[#63489a] transition-all bg-white">전체보기</a>
             </div>
             <div id="article-list-container"></div>
         </section>
@@ -86,13 +86,12 @@
             const team = sourceData[teamId];
             const mainColor = team.theme?.main || '#63489a';
 
-            // 1. 테마 및 기본 정보 적용
+            // 1. 테마 적용 및 배지 제거된 헤더 정보 적용
             document.getElementById('team-hero').style.backgroundColor = mainColor;
-            document.getElementById('display-team-order').innerText = team.order;
             document.getElementById('display-team-name').innerText = team.teamName || team.name;
             document.getElementById('display-team-desc').innerText = team.summary;
 
-            // 2. 팀원 리스트
+            // 2. 팀원 리스트 (좌측 섹션)
             const memberList = document.getElementById('member-list');
             if (team.members) {
                 memberList.innerHTML = team.members.map(m => `
@@ -100,16 +99,15 @@
                 `).join('');
             }
 
-            // 3. 동적 컨택 포인트 생성
+            // 3. 컨택 포인트 (우측 섹션) - 버튼 크기 컴팩트하게 조정
             const contactContainer = document.getElementById('contact-container');
             const contacts = [];
-            
-            if (team.email) contacts.push({ type: 'Email', link: `mailto:${team.email}`, color: 'bg-gray-950' });
-            if (team.instagram) contacts.push({ type: 'Instagram', link: team.instagram, color: 'bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600' });
-            if (team.blog) contacts.push({ type: 'Blog', link: team.blog, color: 'bg-[#03C75A]' }); // 네이버 블로그 그린
+            if (team.email) contacts.push({ type: 'Email', link: `mailto:${team.email}`, color: 'bg-gray-900' });
+            if (team.instagram) contacts.push({ type: 'Instagram', link: team.instagram, color: 'bg-gradient-to-tr from-orange-400 via-red-500 to-purple-600' });
+            if (team.blog) contacts.push({ type: 'Blog', link: team.blog, color: 'bg-[#03C75A]' });
 
             contactContainer.innerHTML = contacts.map(c => `
-                <a href="${c.link}" target="_blank" class="px-8 py-4 ${c.color} text-white rounded-2xl font-black text-sm hover:scale-105 transition-all shadow-lg">
+                <a href="${c.link}" target="_blank" class="flex-1 min-w-[120px] text-center px-4 py-3 ${c.color} text-white rounded-xl font-bold text-[13px] hover:brightness-110 transition-all shadow-sm">
                     ${c.type}
                 </a>
             `).join('') || '<p class="text-gray-400">등록된 연락처가 없습니다.</p>';
@@ -124,21 +122,21 @@
 
             if (teamArticles.length > 0) {
                 container.innerHTML = `
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         ${teamArticles.map(art => `
-                            <a href="article_view.html?id=${art.id}" class="group block">
-                                <div class="aspect-[16/10] rounded-[32px] overflow-hidden mb-6 shadow-xl shadow-gray-200/50 border border-gray-100">
+                            <a href="article_view.html?id=${art.id}" class="group block bg-white rounded-[32px] p-4 border border-transparent hover:border-gray-100 hover:shadow-xl transition-all duration-500">
+                                <div class="aspect-[16/10] rounded-[24px] overflow-hidden mb-5">
                                     <img src="${art.thumbnail}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                                 </div>
-                                <div class="flex items-center gap-3 mb-3">
-                                    <span class="text-[10px] font-black text-[#63489a] uppercase tracking-widest bg-purple-50 px-2.5 py-1 rounded-md">${art.part}</span>
+                                <div class="px-2">
+                                    <span class="text-[10px] font-black text-[#63489a] uppercase tracking-widest bg-purple-50 px-2 py-1 rounded-md mb-3 inline-block">${art.part}</span>
+                                    <h4 class="font-black text-xl text-gray-900 group-hover:text-[#63489a] transition-colors leading-snug break-keep">${art.title}</h4>
                                 </div>
-                                <h4 class="font-black text-2xl text-gray-950 group-hover:text-[#63489a] transition-colors leading-snug break-keep">${art.title}</h4>
                             </a>
                         `).join('')}
                     </div>`;
             } else {
-                container.innerHTML = `<div class="text-center py-20 text-gray-400 font-bold bg-gray-50 rounded-[32px] text-sm">준비된 아티클이 없습니다.</div>`;
+                container.innerHTML = `<div class="text-center py-20 text-gray-400 font-bold bg-white border border-dashed border-gray-200 rounded-[32px] text-sm">등록된 아티클이 아직 없습니다.</div>`;
             }
         }
 
