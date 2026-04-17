@@ -65,6 +65,7 @@ background-size: 100% 100%, 40px 40px, 40px 40px;
 <main id="article-page" class="max-w-7xl mx-auto px-6 pb-24 space-y-24"></main>
 
 <script src="data.js"></script>
+<script src="data.js"></script>
 <script>
 function renderArticles() {
     const page = document.getElementById('article-page');
@@ -73,14 +74,16 @@ function renderArticles() {
         return;
     }
 
-    // TEAM_DATA의 키를 기준으로 순회 (팀 순서 보장)
+    page.innerHTML = ''; // 중복 렌더링 방지
+
+    // 1. 팀별 아티클 섹션 생성
     Object.keys(TEAM_DATA).forEach(tId => {
         const team = TEAM_DATA[tId];
         const teamArticles = SUNNY_DATA.filter(d => d.teamId === tId);
 
         const section = document.createElement('section');
-        section.id = tId; // 스크롤 타겟 ID
-        section.className = "animate__animated animate__fadeInUp animate-fast scroll-mt-24";
+        section.id = tId; 
+        section.className = "animate__animated animate__fadeInUp animate-fast scroll-mt-24 mb-20"; // mb-20으로 팀간 간격 확보
 
         section.innerHTML = `
             <div class="team-info-box shadow-sm">
@@ -130,15 +133,32 @@ function renderArticles() {
         page.appendChild(section);
     });
 
-    // 해시 스크롤 처리
+    // 2. 렌더링이 끝난 직후에 스크롤 위치 보정 실행
+    handleScrollToHash();
+}
+
+function handleScrollToHash() {
     if (window.location.hash) {
+        const targetId = window.location.hash;
+        
+        // 데이터가 그려지는 시간을 고려해 아주 잠깐 대기
         setTimeout(() => {
-            const el = document.querySelector(window.location.hash);
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
-        }, 300);
+            const element = document.querySelector(targetId);
+            if (element) {
+                const headerOffset = 110; // 헤더 높이에 맞춘 보정값
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }, 300); 
     }
 }
 
+// 페이지 로드 시 실행
 window.onload = renderArticles;
 </script>
 </body>
