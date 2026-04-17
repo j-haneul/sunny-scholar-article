@@ -123,23 +123,29 @@ function renderArticles() {
             
             <div class="scroll-container-wrapper group/scroll">
                 <div class="flex gap-5 overflow-x-auto pb-10 scrollbar-hide px-6 cursor-grab active:cursor-grabbing horizontal-scroll">
-                ${teamArticles.map(art => `
+               ${teamArticles.map(art => `
     <a href="article_view.html?id=${art.id}" class="group block bg-white rounded-[24px] overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-500 min-w-[280px] md:min-w-[320px] flex-shrink-0 flex flex-col">
-        <div class="w-full aspect-video bg-gray-100 overflow-hidden relative flex-shrink-0">
+        
+        <div class="w-full h-[180px] md:h-[200px] bg-gray-100 overflow-hidden relative flex-shrink-0">
             <img src="${art.thumbnail}" 
                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                  onerror="this.src='https://via.placeholder.com/400x225?text=SUNNY+ARTICLE'">
         </div>
         
-        <div class="p-5 flex flex-col flex-grow">
-            <span class="text-[10px] font-black text-[#63489a] uppercase tracking-widest mb-2 inline-block">
-                ${art.part}
-            </span>
-            <h4 class="font-black text-lg text-gray-900 leading-snug group-hover:text-[#63489a] transition-colors break-keep line-clamp-2 min-h-[3.2rem] md:min-h-[3.5rem]">
-                ${art.title}
-            </h4>
+        <div class="p-6 flex flex-col">
+            <div class="h-5 mb-2">
+                <span class="text-[10px] font-black text-[#63489a] uppercase tracking-widest">
+                    ${art.part}
+                </span>
+            </div>
+
+            <div class="h-[3rem] mb-2">
+                <h4 class="font-black text-lg text-gray-900 leading-snug group-hover:text-[#63489a] transition-colors break-keep line-clamp-2">
+                    ${art.title}
+                </h4>
+            </div>
             
-            <div class="mt-4 flex justify-end">
+            <div class="flex justify-end items-center h-6 mt-2">
                 <svg class="w-5 h-5 text-[#63489a] opacity-0 group-hover:opacity-100 transition-all transform translate-x-[-10px] group-hover:translate-x-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                 </svg>
