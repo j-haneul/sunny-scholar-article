@@ -84,60 +84,61 @@ function renderArticles() {
         section.id = tId; 
         section.className = "animate__animated animate__fadeInUp animate-fast scroll-mt-24 mb-20"; // mb-20으로 팀간 간격 확보
 
- section.innerHTML = `
-            <div class="bg-white rounded-[24px] p-6 md:p-8 border border-gray-100 shadow-[0_4px_20px_rgb(0,0,0,0.03)] mb-8 relative overflow-hidden group">
+section.innerHTML = `
+            <div class="bg-white rounded-[20px] p-5 md:p-6 border border-gray-100 shadow-[0_4px_15px_rgb(0,0,0,0.02)] mb-6 relative overflow-hidden group">
                 
                 <div class="relative z-10">
-                    <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
-                        <div class="flex-1">
-                            <div class="flex items-center gap-3 mb-2">
-                                <span class="bg-[#63489a] text-white text-[11px] font-extrabold px-2 py-0.5 rounded uppercase tracking-wider shadow-sm">
+                    <div class="flex flex-col gap-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <span class="bg-[#63489a] text-white text-[10px] font-extrabold px-1.5 py-0.5 rounded uppercase tracking-wider">
                                     ${team.order}
                                 </span>
-                                </div>
-                            <h2 class="text-3xl md:text-5xl font-black text-gray-950 tracking-tighter mb-4">
-                                ${team.teamName}
-                            </h2>
-                            <p class="text-[17px] md:text-[19px] font-bold text-gray-600 leading-snug max-w-3xl whitespace-pre-line">
+                            </div>
+                            <div class="flex gap-1.5">
+                                ${team.tags.map(tag => `
+                                    <span class="px-3 py-1 rounded-lg text-[11px] md:text-[12px] font-extrabold border border-gray-50 shadow-sm" 
+                                          style="background-color: ${team.theme.tagBg}; color: ${team.theme.main}">
+                                        #${tag}
+                                    </span>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <h2 class="text-2xl md:text-3xl font-black text-gray-950 tracking-tighter">
+                            ${team.teamName}
+                        </h2>
+
+                        <div class="flex items-end justify-between gap-4 border-t border-gray-50 pt-3">
+                            <p class="text-[14px] md:text-[16px] font-bold text-gray-500 leading-tight max-w-[70%] whitespace-pre-line">
                                 ${team.summary}
                             </p>
+                            
+                            <a href="team_detail.html?teamId=${tId}" 
+                               class="inline-flex items-center gap-1.5 text-[13px] md:text-[14px] font-black text-[#63489a] hover:text-[#4e387a] transition-all group/btn flex-shrink-0 mb-0.5">
+                                팀 연구 정보 보기
+                                <svg class="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
                         </div>
-
-                        <div class="flex flex-wrap md:justify-end gap-2 self-start mt-2">
-                            ${team.tags.map(tag => `
-                                <span class="px-5 py-2 rounded-xl text-[13px] md:text-[14px] font-extrabold border border-gray-100 shadow-sm" 
-                                      style="background-color: ${team.theme.tagBg}; color: ${team.theme.main}">
-                                    #${tag}
-                                </span>
-                            `).join('')}
-                        </div>
-                    </div>
-
-                    <div class="pt-4 border-t border-gray-50 flex items-center justify-end">
-                        <a href="team_detail.html?teamId=${tId}" 
-                           class="inline-flex items-center gap-2 text-[14px] md:text-[16px] font-black text-[#63489a] hover:text-[#4e387a] transition-all group/btn">
-                            팀 연구 정보 보기
-                            <svg class="w-5 h-5 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
                     </div>
                 </div>
             </div>
             
-            <div class="flex gap-6 overflow-x-auto pb-10 scrollbar-hide px-2">
+            <div class="flex gap-4 overflow-x-auto pb-8 scrollbar-hide px-1">
                 ${teamArticles.map(art => `
-                    <a href="article_view.html?id=${art.id}" class="group block bg-white rounded-[24px] overflow-hidden border border-gray-100 hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all duration-500 min-w-[300px] md:min-w-[340px] flex-shrink-0">
-                        <div class="relative w-full pb-[60%] overflow-hidden bg-gray-50">
+                    <a href="article_view.html?id=${art.id}" class="group block bg-white rounded-[20px] overflow-hidden border border-gray-100 hover:shadow-[0_15px_40px_rgba(0,0,0,0.08)] transition-all duration-500 min-w-[260px] md:min-w-[300px] flex-shrink-0">
+                        <div class="relative w-full pb-[58%] overflow-hidden bg-gray-50">
                             <img src="${art.thumbnail}" 
                                 class="absolute top-0 left-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
                                 onerror="this.src='https://via.placeholder.com/400x225?text=SUNNY+ARTICLE'">
                         </div>
-                        <div class="p-6">
-                            <div class="flex items-center gap-2 mb-3">
-                                <span class="text-[10px] font-black text-[#63489a] uppercase tracking-[0.15em]">${art.part}</span>
+                        <div class="p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-[9px] font-black text-[#63489a] uppercase tracking-[0.1em]">${art.part}</span>
                             </div>
-                            <h4 class="font-black text-xl text-gray-900 leading-[1.4] group-hover:text-[#63489a] transition-colors break-keep line-clamp-2">
+                            <h4 class="font-black text-lg text-gray-900 leading-snug group-hover:text-[#63489a] transition-colors break-keep line-clamp-2">
                                 ${art.title}
                             </h4>
                         </div>
