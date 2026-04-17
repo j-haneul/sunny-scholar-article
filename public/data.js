@@ -94,10 +94,37 @@ const SUNNY_DATA = [
         teamId: "foure",
         teamName: "포레 (fou:re)",
         part: "Part 2. 원인 분석",
-        title: "보이지 않는 돌봄의 무게: 통계로 본 현실",
+        title: "#2 ‘돌봄’이라는 당연함에 부딪히다",
  thumbnail: "images/fore_2.jpg",
         content: "<p>두 번째 파트 내용이 들어갈 자리입니다.</p>"
-    }
+    },
+     {
+        id: "article-03",
+        teamId: "foure",
+        teamName: "포레 (fou:re)",
+        part: "Part 3. 원인 분석",
+        title: "#3 할머니의 시계는 멈추지 않는다",
+ thumbnail: "images/fore_3.jpg",
+        content: "<p>세 번째 파트 내용이 들어갈 자리입니다.</p>"
+    },
+     {
+        id: "article-04",
+        teamId: "foure",
+        teamName: "포레 (fou:re)",
+        part: "Part 4. 원인 분석",
+        title: "#4 버티는 사이, 미래는 조금씩 늦어진다",
+ thumbnail: "images/fore_4.jpg",
+        content: "<p>네 번째 파트 내용이 들어갈 자리입니다.</p>"
+    },
+    {
+        id: "article-05",
+        teamId: "foure",
+        teamName: "포레 (fou:re)",
+        part: "Part 5. 팀 소개",
+        title: "#5 당연함을 깨기 위해,",
+ thumbnail: "images/fore_5.jpg",
+        content: "<p>다섯 번째 파트 내용이 들어갈 자리입니다.</p>"
+    },
 ];
 // 팀 상세 정보를 담은 데이터 추가
 const TEAM_DETAILS = {
