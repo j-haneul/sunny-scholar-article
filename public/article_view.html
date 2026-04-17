@@ -55,11 +55,38 @@ sup {
     font-weight: 700;
     margin-left: 2px;
 }
-    
+
+
+
+/* 상단 읽기 진행바 스타일 */
+.progress-container {
+    position: fixed;
+    top: 64px; /* 헤더 높이만큼 띄우기 (h-16 = 64px) */
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: transparent;
+    z-index: 49; /* 헤더보다는 아래 */
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--sunny-purple); /* 팀 컬러를 쓰고 싶다면 스크립트로 조절 가능 */
+    width: 0%;
+    transition: width 0.1s ease;
+}        
+
+        #part-nav {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
     </style>
 </head>
 <body class="text-gray-900">
     <header class="sticky top-0 z-50 glass border-b border-gray-100">
+        <div class="progress-container">
+    <div id="scroll-indicator" class="progress-bar"></div>
+</div>
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex justify-between items-center h-14 md:h-16">
                 <a href="index.html" class="flex items-center">
@@ -80,15 +107,18 @@ sup {
         </div>
     </div>
 
-   <main class="max-w-3xl mx-auto px-6 py-16 md:py-24 animate__animated animate__fadeIn">
-        <header class="mb-12">
-            <div id="view-team-tag" class="text-[#63489a] text-[11px] font-black mb-3 tracking-widest uppercase"></div>
-            <h1 id="view-title" class="text-3xl md:text-5xl font-black leading-tight break-keep mb-8">데이터를 불러오는 중...</h1>
-        </header>
+<main class="max-w-3xl mx-auto px-6 py-16 md:py-24 animate__animated animate__fadeIn">
+    <header class="mb-12">
+        <div id="view-team-tag" class="text-[#63489a] text-[11px] font-black mb-2 tracking-widest uppercase"></div>
+        
+        <div id="view-team-summary" class="text-gray-500 text-sm md:text-base font-bold mb-6 break-keep leading-relaxed border-l-4 border-purple-100 pl-4 py-1"></div>
+        
+        <h1 id="view-title" class="text-3xl md:text-5xl font-black leading-tight break-keep">데이터를 불러오는 중...</h1>
+    </header>
 
-        <article>
-            <div id="dynamic-body" class="content-text"></div>
-        </article>
+    <article>
+        <div id="dynamic-body" class="content-text"></div>
+    </article>
 
         <div class="mt-20 py-10 border-t border-gray-100 flex justify-center">
             <button onclick="copyURL()" class="bg-gray-900 text-white px-7 py-2.5 rounded-full font-black text-xs shadow-xl hover:bg-black transition-all transform hover:scale-105">
@@ -136,83 +166,103 @@ sup {
     <script src="data.js"></script>
     <script>
         function initView() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const articleId = urlParams.get('id');
+    const urlParams = new URLSearchParams(window.location.search);
+    const articleId = urlParams.get('id');
 
-            if (typeof SUNNY_DATA === 'undefined' || !articleId) return;
+    // 데이터 존재 여부 확인 (TEAM_DETAILS 추가)
+    if (typeof SUNNY_DATA === 'undefined' || !articleId) return;
+    const baseDetails = typeof TEAM_DETAILS !== 'undefined' ? TEAM_DETAILS : {};
 
-            const current = SUNNY_DATA.find(a => a.id === articleId);
-            if (!current) {
-                document.getElementById('view-title').innerText = "아티클을 찾을 수 없습니다.";
-                return;
-            }
+    const current = SUNNY_DATA.find(a => a.id === articleId);
+    if (!current) {
+        document.getElementById('view-title').innerText = "아티클을 찾을 수 없습니다.";
+        return;
+    }
 
-            // 1. 헤더 텍스트 매핑
-            document.getElementById('view-team-tag').innerText = current.teamName;
-            document.getElementById('view-title').innerText = current.title;
+    // 해당 팀의 상세 정보 가져오기 (이메일, 설명 등)
+    const teamInfo = baseDetails[current.teamId] || {};
 
-            // 2. 본문 및 이미지 결합
-            const dynamicBody = document.getElementById('dynamic-body');
-            let articleContent = current.content || "";
+    // 1. 헤더 텍스트 매핑
+  const teamBase = (typeof TEAM_DATA !== 'undefined') ? TEAM_DATA[current.teamId] : null;
+    
+    document.getElementById('view-team-tag').innerText = current.teamName;
+    
+    // 팀 써머리(한 줄 정의) 삽입
+    const summaryEl = document.getElementById('view-team-summary');
+    if (teamBase && teamBase.summary) {
+        summaryEl.innerText = teamBase.summary;
+    } else {
+        summaryEl.style.display = 'none'; // 데이터가 없으면 영역 숨김
+    }
+    
+    document.getElementById('view-title').innerText = current.title;
+    // 2. 본문 및 이미지 결합
+    const dynamicBody = document.getElementById('dynamic-body');
+    let articleContent = current.content || "";
 
-            if (current.thumbnail) {
-                articleContent = `
-                    <div class="img-container animate__animated animate__fadeIn">
-                        <img src="${current.thumbnail}" class="content-img">
-                        ${current.thumbnailCaption ? `<p class="img-caption">▲ ${current.thumbnailCaption}</p>` : ''}
-                    </div>
-                ` + articleContent;
-            }
+    // 썸네일 처리
+    if (current.thumbnail) {
+        articleContent = `
+            <div class="img-container animate__animated animate__fadeIn">
+                <img src="${current.thumbnail}" class="content-img">
+                ${current.thumbnailCaption ? `<p class="img-caption">▲ ${current.thumbnailCaption}</p>` : ''}
+            </div>
+        ` + articleContent;
+    }
+    dynamicBody.innerHTML = articleContent;
 
-            if (current.subImage) {
-                articleContent = articleContent + `
-                    <div class="img-container animate__animated animate__fadeIn">
-                        <img src="${current.subImage}" class="content-img">
-                        ${current.subImageCaption ? `<p class="img-caption">▲ ${current.subImageCaption}</p>` : ''}
-                    </div>
-                `;
-            }
-            dynamicBody.innerHTML = articleContent;
+    // 3. 하단 팀 정보 섹션 업데이트
+    const teamLink = document.getElementById('team-link');
+    if (current.teamId) {
+        teamLink.href = `team_detail.html?teamId=${current.teamId}`;
+    }
+    
+    document.getElementById('contact-team-name').innerText = teamInfo.name || current.teamName;
+    
+    // 팀 설명 (data.js의 description 연결)
+    const oneLiner = document.getElementById('team-one-liner');
+    oneLiner.innerHTML = teamInfo.description || "사회문제의 본질을 연구하고 새로운 시각을 제안합니다.";
+    oneLiner.style.whiteSpace = "pre-line"; // 줄바꿈 적용
 
-            // 3. 팀 정보 업데이트
-            const teamLink = document.getElementById('team-link');
-            if (current.teamId) {
-                teamLink.href = `team_detail.html?teamId=${current.teamId}`;
-            }
-            document.getElementById('contact-team-name').innerText = current.teamName;
-            document.getElementById('team-one-liner').innerText = current.teamDescription || "사회문제의 본질을 연구하고 새로운 시각을 제안합니다.";
-            
-            const emailAddr = current.email || "sunny@sk.com";
-            const emailLink = document.getElementById('contact-email-link');
-            emailLink.innerText = emailAddr;
-            emailLink.href = `mailto:${emailAddr}`;
+    // 이메일 연결
+    const emailAddr = teamInfo.email || "sunny@sk.com";
+    const emailLink = document.getElementById('contact-email-link');
+    emailLink.innerText = emailAddr;
+    emailLink.href = `mailto:${emailAddr}`;
 
-            // 4. 상단 탭 (동일 팀 아티클 목록)
-            const teamArticles = SUNNY_DATA.filter(a => a.teamId === current.teamId);
-            document.getElementById('part-nav').innerHTML = teamArticles.map(art => `
-                <a href="article_view.html?id=${art.id}" class="part-tab ${art.id === articleId ? 'active' : ''}">
-                    ${art.part}
-                </a>
-            `).join('');
+    // 4. 상단 탭 (동일 팀 아티클 목록)
+    const teamArticles = SUNNY_DATA.filter(a => a.teamId === current.teamId);
+    const partNav = document.getElementById('part-nav');
+    partNav.innerHTML = teamArticles.map(art => `
+        <a href="article_view.html?id=${art.id}" class="part-tab ${art.id === articleId ? 'active' : ''}">
+            ${art.part}
+        </a>
+    `).join('');
+    
+    // 현재 활성화된 탭으로 스크롤 이동 (모바일 대응)
+    const activeTab = partNav.querySelector('.active');
+    if (activeTab) {
+        activeTab.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
 
-            // 5. 하단 내비게이션 (이전/다음 글)
-            const currentIdx = teamArticles.findIndex(a => a.id === articleId);
-            const prevEl = document.getElementById('prev-article');
-            const nextEl = document.getElementById('next-article');
+    // 5. 하단 내비게이션 (이전/다음 글)
+    const currentIdx = teamArticles.findIndex(a => a.id === articleId);
+    const prevEl = document.getElementById('prev-article');
+    const nextEl = document.getElementById('next-article');
 
-            if (currentIdx > 0) {
-                const prev = teamArticles[currentIdx - 1];
-                prevEl.classList.remove('invisible');
-                prevEl.querySelector('a').href = `article_view.html?id=${prev.id}`;
-                prevEl.querySelector('span:last-child').innerText = prev.title;
-            }
-            if (currentIdx < teamArticles.length - 1) {
-                const next = teamArticles[currentIdx + 1];
-                nextEl.classList.remove('invisible');
-                nextEl.querySelector('a').href = `article_view.html?id=${next.id}`;
-                nextEl.querySelector('span:last-child').innerText = next.title;
-            }
-        }
+    if (currentIdx > 0) {
+        const prev = teamArticles[currentIdx - 1];
+        prevEl.classList.remove('invisible');
+        prevEl.querySelector('a').href = `article_view.html?id=${prev.id}`;
+        prevEl.querySelector('span:last-child').innerText = prev.title;
+    }
+    if (currentIdx < teamArticles.length - 1) {
+        const next = teamArticles[currentIdx + 1];
+        nextEl.classList.remove('invisible');
+        nextEl.querySelector('a').href = `article_view.html?id=${next.id}`;
+        nextEl.querySelector('span:last-child').innerText = next.title;
+    }
+}
 
         function copyURL() {
             navigator.clipboard.writeText(window.location.href);
@@ -220,6 +270,20 @@ sup {
         }
 
         window.onload = initView;
+
+        window.onscroll = function() {
+    updateProgressBar();
+};
+
+function updateProgressBar() {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    const indicator = document.getElementById("scroll-indicator");
+    if(indicator) {
+        indicator.style.width = scrolled + "%";
+    }
+}
     </script>
 </body>
 </html>
