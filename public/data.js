@@ -563,7 +563,7 @@ const SUNNY_DATA = [
     teamName: "헤아림",
     part: "Part 5. 팀 소개",
     title: "#5 마주해야 비로소 보이는 것들",
-    thumbnail: "images/hearim_8.png",
+    thumbnail: "images/hearim_8.jpeg",
     thumbnailCaption: "이미지 출처 : 써니 스콜라 사무국",
     content: `
     <p>“저희 팀이 선택한 가치는 ‘다른 세상을 마주할 용기’입니다. 우리에게 익숙한 관점을 내려놓고, 그동안 잘 알지 못했던 누군가의 삶을 온전히 헤아릴 수 있는 사람들이 되고 싶습니다.”</p>
@@ -583,7 +583,7 @@ const SUNNY_DATA = [
     <p>이 문제도 마찬가지다. 우리가 당장 제도를 바꾸거나, 대규모 고용 시스템을 설계할 수는 없다. 하지만 같은 지역사회 안에서 살아가는 사람으로서 발달장애인을 마주할 수 있다. 당사자의 삶을 더 구체적으로 전달하고, 왜 이 문제가 반복되는지를 조금 더 많은 사람들에게 설명할 수도 있다. 짧은 방문, 작은 봉사, 한 번의 대화처럼 사소해 보이는 만남이 차곡차곡 쌓여간다면, 큰 변화로 이어질 수 있다고 믿기 때문이다.</p>
 
     <div class="img-container">
-      <img src="images/hearim_9.png" class="content-img">
+      <img src="images/hearim_9.jpeg" class="content-img">
       <p class="img-caption">▲ 이미지 출처 : 써니 스콜라 사무국</p>
     </div>
 
