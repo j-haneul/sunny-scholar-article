@@ -124,7 +124,7 @@ const SUNNY_DATA = [
         teamName: "포레 (fou:re)",
         part: "Part 3. 원인 분석",
         title: "#3 할머니의 시계는 멈추지 않는다",
- thumbnail: "images/fore_3.jpg",
+ thumbnail: "images/fore_4.jpg",
         content: "<p>세 번째 파트 내용이 들어갈 자리입니다.</p>"
     },
      {
@@ -133,7 +133,7 @@ const SUNNY_DATA = [
         teamName: "포레 (fou:re)",
         part: "Part 4. 원인 분석",
         title: "#4 버티는 사이, 미래는 조금씩 늦어진다",
- thumbnail: "images/fore_4.jpg",
+ thumbnail: "images/fore_5.jpg",
         content: "<p>네 번째 파트 내용이 들어갈 자리입니다.</p>"
     },
     {
