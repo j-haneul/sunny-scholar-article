@@ -242,7 +242,7 @@ const SUNNY_DATA = [
     <p>그래서 이 문제는 단순한 돌봄의 문제가 아닙니다. 이미 보호 시점부터 <strong>충분히 예견 가능했던 구조적 문제</strong>이며, 그럼에도 불구하고 아무런 대비 없이 자립을 준비해야 하는 청년에게 전가 되고 있습니다.</p>
 
  <div class="img-container">
-      <img src="images/content/fore_8.jpg" class="content-img">
+      <img src="images/fore_8.jpg" class="content-img">
       <p class="img-caption">▲ 이미지 출처 : 써니 스콜라 사무국</p>
     </div>
     
@@ -260,7 +260,7 @@ const SUNNY_DATA = [
     <p>앞으로 저희가 어떠한 변화를 시도하는지, 실제로 성진이 가장 어려워하고 있는 부분은 무엇일지, 계속해서 관심을 가지고 지켜봐주시길 바랍니다.</p>
 
  <div class="img-container">
-      <img src="images/content/fore_9.jpg" class="content-img">
+      <img src="images/fore_9.jpg" class="content-img">
       <p class="img-caption">▲ 이미지 출처 : 포레팀 촬영</p>
     </div>
     
