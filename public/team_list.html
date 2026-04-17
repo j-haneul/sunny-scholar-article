@@ -44,17 +44,25 @@
             <p class="col-span-full text-center py-20 text-gray-400">데이터를 불러오는 중입니다...</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="aspect-[16/10] bg-gray-100 rounded-[32px] overflow-hidden border border-gray-200">
-                <img src="images/sunny_group_1.jpg" class="w-full h-full object-cover" onerror="this.style.display='none';">
-            </div>
-            <div class="aspect-[16/10] bg-gray-100 rounded-[32px] overflow-hidden border border-gray-200">
-                <img src="images/sunny_group_2.jpg" class="w-full h-full object-cover" onerror="this.style.display='none';">
-            </div>
-            <div class="aspect-[16/10] bg-gray-100 rounded-[32px] overflow-hidden border border-gray-200">
-                <img src="images/sunny_group_3.jpg" class="w-full h-full object-cover" onerror="this.style.display='none';">
-            </div>
-        </div>
+   <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="group/img relative aspect-[16/10] bg-gray-200 rounded-[32px] overflow-hidden border border-gray-100 shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
+        <img src="images/sunny_group_1.jpg" alt="Sunny Moment 1" 
+             class="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-110"
+             onerror="this.src='https://via.placeholder.com/800x500?text=이미지를+찾을수+없음'">
+    </div>
+
+    <div class="group/img relative aspect-[16/10] bg-gray-200 rounded-[32px] overflow-hidden border border-gray-100 shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
+        <img src="images/sunny_group_2.jpg" alt="Sunny Moment 2" 
+             class="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-110"
+             onerror="this.src='https://via.placeholder.com/800x500?text=이미지를+찾을수+없음'">
+    </div>
+
+    <div class="group/img relative aspect-[16/10] bg-gray-200 rounded-[32px] overflow-hidden border border-gray-100 shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
+        <img src="images/sunny_group_3.jpg" alt="Sunny Moment 3" 
+             class="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-110"
+             onerror="this.src='https://via.placeholder.com/800x500?text=이미지를+찾을수+없음'">
+    </div>
+</div>
     </main>
 
     <script src="data.js"></script>
