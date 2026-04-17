@@ -10,7 +10,6 @@
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
         :root {
             --sunny-purple: #63489a;
-            --sunny-gradient: linear-gradient(135deg, #4f319b 0%, #8c52ff 100%);
             --grid-color: rgba(99, 72, 154, 0.05);
         }
         body { 
@@ -22,56 +21,38 @@
         }
         .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
         
-        .team-card { 
-            transition: all 0.3s ease; 
-            background: white;
-            border-radius: 1.5rem;
-            border: 1px solid rgba(226, 232, 240, 1);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+        /* 1열 세로형 카드 스타일 */
+        .team-wide-card { 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
-        .team-card:hover { 
-            transform: translateY(-5px); 
-            box-shadow: 0 15px 30px rgba(99, 72, 154, 0.08);
-            border-color: var(--sunny-purple);
-        }
-        .text-gradient {
-            background: var(--sunny-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .team-wide-card:hover { 
+            transform: scale(1.01);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
         }
     </style>
 </head>
 <body class="text-gray-900">
 
     <header class="sticky top-0 z-50 glass border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex justify-between items-center h-16">
-                <a href="index.html" class="flex items-center">
-                    <img src="images/sunny_scholar_logo.png" alt="Logo" class="h-8 w-auto">
-                </a>
-                <nav class="hidden md:flex space-x-10 text-xs font-black tracking-widest uppercase">
-                    <a href="article_list.html" class="text-gray-800 hover:text-[#63489a] transition">Articles</a>
-                    <a href="team_list.html" class="text-[#63489a] transition">Lab</a>
-                    <a href="about.html" class="text-gray-800 hover:text-[#63489a] transition">About</a>
-                </nav>
-            </div>
+        <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
+            <a href="index.html"><img src="images/sunny_scholar_logo.png" alt="Logo" class="h-8"></a>
+            <nav class="hidden md:flex space-x-10 text-xs font-black tracking-widest uppercase">
+                <a href="article_list.html" class="text-gray-800 hover:text-[#63489a]">Articles</a>
+                <a href="team_list.html" class="text-[#63489a]">Lab</a>
+                <a href="about.html" class="text-gray-800 hover:text-[#63489a]">About</a>
+            </nav>
         </div>
     </header>
 
-    <section class="py-16 px-6">
-        <div class="max-w-7xl mx-auto text-left">
-            <p class="text-[#63489a] font-black tracking-widest text-[10px] uppercase mb-2">2026 SUNNY LAB</p>
-            <h1 class="text-3xl md:text-4xl font-black mb-2 tracking-tight">
-                Change Maker <span class="text-gradient">Teams</span>
-            </h1>
-            <p class="text-gray-500 text-sm font-medium">사회 문제를 해결하기 위해 모인 팀들을 소개합니다.</p>
-        </div>
+    <section class="py-16 px-6 max-w-5xl mx-auto">
+        <p class="text-[#63489a] font-black tracking-widest text-[10px] uppercase mb-2">2026 SUNNY LAB</p>
+        <h1 class="text-4xl font-black mb-2 tracking-tight">Change Maker <span class="text-[#63489a]">Teams</span></h1>
+        <p class="text-gray-500 text-sm font-medium">5개의 팀이 만들어가는 변화의 움직임을 확인하세요.</p>
     </section>
 
-    <main class="max-w-7xl mx-auto px-6 pb-24">
-        <div id="team-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <main class="max-w-5xl mx-auto px-6 pb-24">
+        <div id="team-grid" class="flex flex-col gap-8">
             </div>
     </main>
 
@@ -79,39 +60,55 @@
     <script>
         function renderTeams() {
             const grid = document.getElementById('team-grid');
-            
-            // 1. 데이터 소스 변수명 확인 (TEAM_DATA 또는 TEAM_DETAILS)
-            // data.js에 있는 이름이 TEAM_DATA라면 아래처럼 수정해야 합니다.
+            // TEAM_DATA와 TEAM_DETAILS 모두 대응
             const sourceData = typeof TEAM_DATA !== 'undefined' ? TEAM_DATA : (typeof TEAM_DETAILS !== 'undefined' ? TEAM_DETAILS : null);
 
-            if (!sourceData) {
-                console.error("데이터를 찾을 수 없습니다.");
-                return;
-            }
+            if (!sourceData) return;
 
             grid.innerHTML = Object.entries(sourceData).map(([id, team]) => `
-                <div class="team-card p-8 animate__animated animate__fadeInUp">
-                    <div>
-                        <span class="inline-block bg-purple-50 text-[#63489a] text-[10px] font-black px-3 py-1 rounded-full uppercase mb-4">
-                            ${team.order || '-'}
-                        </span>
-                        <h3 class="text-2xl font-black text-gray-900 mb-3 leading-tight">
-                            ${team.teamName || team.name}
-                        </h3>
-                        <p class="text-gray-500 text-sm leading-relaxed line-clamp-3 mb-6 font-medium">
-                            ${team.summary || team.description}
-                        </p>
-                    </div>
+                <div class="team-wide-card relative overflow-hidden rounded-[32px] p-8 md:p-12 animate__animated animate__fadeInUp" 
+                     style="background-color: ${team.theme.tagBg}">
                     
-                    <a href="team_detail.html?teamId=${id}" class="inline-flex items-center justify-center w-full py-4 bg-gray-50 hover:bg-[#63489a] text-[#63489a] hover:text-white text-xs font-black rounded-xl transition-all duration-300 uppercase tracking-widest group">
-                        View Lab Profile
-                        <span class="ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
-                    </a>
+                    <div class="absolute -right-4 -bottom-10 text-[160px] font-black opacity-10 select-none" style="color: ${team.theme.main}">
+                        ${team.order.replace('TEAM ', '')}
+                    </div>
+
+                    <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="px-3 py-1 rounded-full text-[11px] font-black bg-white shadow-sm" style="color: ${team.theme.main}">
+                                    ${team.order}
+                                </span>
+                            </div>
+                            
+                            <h3 class="text-3xl md:text-5xl font-black mb-6 tracking-tighter" style="color: ${team.theme.main}">
+                                ${team.teamName || team.name}
+                            </h3>
+
+                            <div class="flex flex-wrap gap-2">
+                                ${(team.tags || []).map(tag => `
+                                    <span class="px-4 py-2 rounded-xl text-[13px] md:text-[14px] font-bold bg-white/50 backdrop-blur-sm border border-white/50" style="color: ${team.theme.main}">
+                                        #${tag}
+                                    </span>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <div class="flex-shrink-0">
+                            <a href="team_detail.html?teamId=${id}" 
+                               class="inline-flex items-center justify-center px-8 py-4 bg-white rounded-2xl font-black text-sm transition-all hover:shadow-lg hover:-translate-y-1"
+                               style="color: ${team.theme.main}">
+                                팀 소개 보러가기
+                                <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             `).join('');
         }
         
-        // 페이지 로드 시 실행
         window.addEventListener('load', renderTeams);
     </script>
 </body>
