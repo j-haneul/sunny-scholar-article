@@ -111,7 +111,7 @@ sup {
     <header class="mb-12">
         <div id="view-team-tag" class="text-[#63489a] text-[11px] font-black mb-2 tracking-widest uppercase"></div>
         
-        <div id="view-team-summary" class="text-gray-500 text-sm md:text-base font-bold mb-6 break-keep leading-relaxed border-l-4 border-purple-100 pl-4 py-1"></div>
+        <div id="view-team-cta" class="text-gray-500 text-sm md:text-base font-bold mb-6 break-keep leading-relaxed border-l-4 border-purple-100 pl-4 py-1"></div>
         
         <h1 id="view-title" class="text-3xl md:text-5xl font-black leading-tight break-keep">데이터를 불러오는 중...</h1>
     </header>
@@ -188,11 +188,11 @@ sup {
     document.getElementById('view-team-tag').innerText = current.teamName;
     
     // 팀 써머리(한 줄 정의) 삽입
-    const summaryEl = document.getElementById('view-team-summary');
-    if (teamBase && teamBase.summary) {
-        summaryEl.innerText = teamBase.summary;
+    const ctaEl = document.getElementById('view-team-cta');
+    if (teamBase && teamBase.cta) {
+        cataEl.innerText = teamBase.cta;
     } else {
-        summaryEl.style.display = 'none'; // 데이터가 없으면 영역 숨김
+        ctaEl.style.display = 'none'; // 데이터가 없으면 영역 숨김
     }
     
     document.getElementById('view-title').innerText = current.title;
