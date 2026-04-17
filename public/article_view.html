@@ -165,11 +165,10 @@ sup {
 
     <script src="data.js"></script>
     <script>
-        function initView() {
+ function initView() {
     const urlParams = new URLSearchParams(window.location.search);
     const articleId = urlParams.get('id');
 
-    // 데이터 존재 여부 확인 (TEAM_DETAILS 추가)
     if (typeof SUNNY_DATA === 'undefined' || !articleId) return;
     const baseDetails = typeof TEAM_DETAILS !== 'undefined' ? TEAM_DETAILS : {};
 
@@ -179,28 +178,32 @@ sup {
         return;
     }
 
-    // 해당 팀의 상세 정보 가져오기 (이메일, 설명 등)
     const teamInfo = baseDetails[current.teamId] || {};
-
-    // 1. 헤더 텍스트 매핑
-  const teamBase = (typeof TEAM_DATA !== 'undefined') ? TEAM_DATA[current.teamId] : null;
+    const teamBase = (typeof TEAM_DATA !== 'undefined') ? TEAM_DATA[current.teamId] : null;
     
+    // 1. 헤더 텍스트 매핑
     document.getElementById('view-team-tag').innerText = current.teamName;
     
-    // 팀 써머리(한 줄 정의) 삽입
+    // [중요 수정] summary 대신 cta를 가져와서 화면에 뿌려주는 로직
     const ctaEl = document.getElementById('view-team-cta');
-    if (teamBase && teamBase.cta) {
-        cataEl.innerText = teamBase.cta;
-    } else {
-        ctaEl.style.display = 'none'; // 데이터가 없으면 영역 숨김
+    if (ctaEl) {
+        // TEAM_DATA에 cta가 있으면 그걸 쓰고, 없으면 TEAM_DETAILS의 cta를 가져옵니다.
+        const ctaText = (teamBase && teamBase.cta) ? teamBase.cta : (teamInfo.cta || "");
+        
+        if (ctaText) {
+            ctaEl.innerText = ctaText;
+            ctaEl.style.display = 'block'; 
+        } else {
+            ctaEl.style.display = 'none'; 
+        }
     }
     
     document.getElementById('view-title').innerText = current.title;
+
     // 2. 본문 및 이미지 결합
     const dynamicBody = document.getElementById('dynamic-body');
     let articleContent = current.content || "";
 
-    // 썸네일 처리
     if (current.thumbnail) {
         articleContent = `
             <div class="img-container animate__animated animate__fadeIn">
@@ -219,12 +222,10 @@ sup {
     
     document.getElementById('contact-team-name').innerText = teamInfo.name || current.teamName;
     
-    // 팀 설명 (data.js의 description 연결)
     const oneLiner = document.getElementById('team-one-liner');
     oneLiner.innerHTML = teamInfo.description || "사회문제의 본질을 연구하고 새로운 시각을 제안합니다.";
-    oneLiner.style.whiteSpace = "pre-line"; // 줄바꿈 적용
+    oneLiner.style.whiteSpace = "pre-line";
 
-    // 이메일 연결
     const emailAddr = teamInfo.email || "sunny@sk.com";
     const emailLink = document.getElementById('contact-email-link');
     emailLink.innerText = emailAddr;
@@ -239,7 +240,6 @@ sup {
         </a>
     `).join('');
     
-    // 현재 활성화된 탭으로 스크롤 이동 (모바일 대응)
     const activeTab = partNav.querySelector('.active');
     if (activeTab) {
         activeTab.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
@@ -255,12 +255,17 @@ sup {
         prevEl.classList.remove('invisible');
         prevEl.querySelector('a').href = `article_view.html?id=${prev.id}`;
         prevEl.querySelector('span:last-child').innerText = prev.title;
+    } else {
+        prevEl.classList.add('invisible');
     }
+
     if (currentIdx < teamArticles.length - 1) {
         const next = teamArticles[currentIdx + 1];
         nextEl.classList.remove('invisible');
         nextEl.querySelector('a').href = `article_view.html?id=${next.id}`;
         nextEl.querySelector('span:last-child').innerText = next.title;
+    } else {
+        nextEl.classList.add('invisible');
     }
 }
 
