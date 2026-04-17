@@ -143,9 +143,10 @@ function handleScrollToHash() {
         setTimeout(() => {
             const element = document.querySelector(targetId);
             if (element) {
-                // [수정] 110에서 220으로 값을 키웠습니다. 
-                // 이 값이 커질수록 팀 카드가 아래쪽(화면 중앙 방향)으로 내려와서 뜹니다.
-                const headerOffset = 220; 
+                // [수정] 첫 번째 팀(#foure)일 때는 헤더 오프셋을 거의 주지 않거나 작게 설정
+                // 일반 팀은 220, 첫 팀은 100 정도로 조절
+                const isFirstTeam = targetId === '#foure';
+                const headerOffset = isFirstTeam ? 100 : 220; 
                 
                 const elementPosition = element.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
