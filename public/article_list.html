@@ -54,20 +54,7 @@
     <script src="data.js"></script>
     <script>
     function renderArticles() {
-        const card = `
-    <div class="team-card group animate__animated animate__fadeIn animate-fast" 
-         onclick="location.href='article_list.html?teamId=${id}#${id}'"> <div class="card-banner text-white" style="background: ${team.theme.grad}">
-            <div class="banner-bg-text">${team.theme.bgText}</div>
-            <div class="relative z-10">
-                <span class="text-[9px] font-black tracking-[0.3em] mb-1 block uppercase opacity-60">${team.order}</span>
-                <h3 class="text-2xl font-black tracking-tighter leading-none mb-3">${team.teamName}</h3>
-                <p class="text-[14px] font-black leading-snug whitespace-pre-line text-white/90">
-                    ${team.summary}
-                </p>
-            </div>
-        </div>
-        </div>
-`;
+            const page = document.getElementById('article-page');
         
         // 데이터가 로드되지 않았을 때 체크
         if (typeof SUNNY_DATA === 'undefined') {
@@ -80,6 +67,7 @@
 
         teamIds.forEach(tId => {
             const teamArticles = SUNNY_DATA.filter(d => d.teamId === tId);
+                        const teamDetail = (typeof TEAM_DETAILS !== 'undefined') ? TEAM_DETAILS[tId] : null;
             
             // 팀 정보 결정 (데이터가 없을 경우 대비)
             const teamOrder = teamDetail?.order || "LAB";
