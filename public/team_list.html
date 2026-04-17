@@ -20,23 +20,13 @@
             letter-spacing: -0.02em;
         }
         .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
-        
-        /* 1열 세로형 카드 스타일 */
-        .team-wide-card { 
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        .team-wide-card:hover { 
-            transform: scale(1.01);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-        }
     </style>
 </head>
 <body class="text-gray-900">
 
     <header class="sticky top-0 z-50 glass border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
-            <a href="index.html"><img src="images/sunny_scholar_logo.png" alt="Logo" class="h-8"></a>
+            <a href="index.html"><img src="images/sunny_scholar_logo.png" alt="Logo" class="h-8" onerror="this.src='https://via.placeholder.com/150x40?text=SUNNY+LOGO'"></a>
             <nav class="hidden md:flex space-x-10 text-xs font-black tracking-widest uppercase">
                 <a href="article_list.html" class="text-gray-800 hover:text-[#63489a]">Articles</a>
                 <a href="team_list.html" class="text-[#63489a]">Lab</a>
@@ -45,61 +35,73 @@
         </div>
     </header>
 
-    <section class="py-16 px-6 max-w-5xl mx-auto">
+    <section class="py-16 px-6 max-w-7xl mx-auto">
         <p class="text-[#63489a] font-black tracking-widest text-[10px] uppercase mb-2">2026 SUNNY LAB</p>
         <h1 class="text-4xl font-black mb-2 tracking-tight">Change Maker <span class="text-[#63489a]">Teams</span></h1>
         <p class="text-gray-500 text-sm font-medium">5개의 팀이 만들어가는 변화의 움직임을 확인하세요.</p>
     </section>
 
-  <main class="max-w-[1600px] mx-auto px-6 pb-24">
-    <div id="team-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-        </div>
-</main>
+    <main class="max-w-[1600px] mx-auto px-6 pb-24">
+        <div id="team-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            </div>
+    </main>
 
-<script>
-    function renderTeams() {
-        const grid = document.getElementById('team-grid');
-        const sourceData = typeof TEAM_DATA !== 'undefined' ? TEAM_DATA : (typeof TEAM_DETAILS !== 'undefined' ? TEAM_DETAILS : null);
+    <script src="data.js"></script>
 
-        if (!sourceData) return;
+    <script>
+        function renderTeams() {
+            const grid = document.getElementById('team-grid');
+            
+            // 데이터 소스 확인 (콘솔창에서 TEAM_DATA 혹은 TEAM_DETAILS가 찍히는지 확인해보세요)
+            const sourceData = typeof TEAM_DATA !== 'undefined' ? TEAM_DATA : (typeof TEAM_DETAILS !== 'undefined' ? TEAM_DETAILS : null);
 
-        grid.innerHTML = Object.entries(sourceData).map(([id, team]) => `
-            <div class="group relative flex flex-col h-[500px] rounded-[24px] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl animate__animated animate__fadeIn"
-                 style="background-color: ${team.theme.main}"> <div class="p-8 pb-0">
-                    <span class="inline-block px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-widest">
-                        ${team.order}
-                    </span>
-                </div>
+            if (!sourceData) {
+                console.error("데이터를 찾을 수 없습니다. data.js 파일 로드 상태를 확인하세요.");
+                grid.innerHTML = '<p class="col-span-full text-center py-20 text-gray-400">데이터를 불러오는 중 오류가 발생했습니다.</p>';
+                return;
+            }
 
-                <div class="flex-1 p-8 flex flex-col justify-center">
-                    <h3 class="text-3xl md:text-4xl font-black text-white mb-6 leading-[1.1] break-keep">
-                        ${team.teamName || team.name}
-                    </h3>
+            grid.innerHTML = Object.entries(sourceData).map(([id, team]) => `
+                <div class="group relative flex flex-col h-[520px] rounded-[24px] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl animate__animated animate__fadeIn"
+                     style="background-color: ${team.theme ? team.theme.main : '#63489a'}"> 
                     
-                    <div class="flex flex-wrap gap-2">
-                        ${(team.tags || []).map(tag => `
-                            <span class="text-white/80 text-xs font-bold">#${tag}</span>
-                        `).join('')}
+                    <div class="p-8 pb-0 relative z-10">
+                        <span class="inline-block px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-widest">
+                            ${team.order || id}
+                        </span>
+                    </div>
+
+                    <div class="flex-1 p-8 flex flex-col justify-center relative z-10">
+                        <h3 class="text-3xl md:text-4xl font-black text-white mb-6 leading-[1.1] break-keep">
+                            ${team.teamName || team.name}
+                        </h3>
+                        
+                        <div class="flex flex-wrap gap-2">
+                            ${(team.tags || []).map(tag => `
+                                <span class="px-3 py-1 rounded-lg bg-white/10 text-white/90 text-[11px] font-bold backdrop-blur-sm border border-white/10">#${tag}</span>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <div class="p-6 mt-auto relative z-10">
+                        <a href="team_detail.html?teamId=${id}" 
+                           class="flex items-center justify-between w-full p-4 bg-white/10 hover:bg-white text-white hover:text-gray-900 rounded-xl transition-all duration-300 group/btn shadow-lg">
+                            <span class="text-[13px] font-black">팀 소개 보러가기</span>
+                            <svg class="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <div class="absolute -right-6 top-12 text-9xl font-black text-white opacity-[0.07] pointer-events-none select-none uppercase transform rotate-90 origin-top-right">
+                        ${id}
                     </div>
                 </div>
+            `).join('');
+        }
 
-                <div class="p-6 mt-auto">
-                    <a href="team_detail.html?teamId=${id}" 
-                       class="flex items-center justify-between w-full p-4 bg-white/10 hover:bg-white text-white hover:text-gray-900 rounded-xl transition-all duration-300 group/btn">
-                        <span class="text-[13px] font-black">팀 소개 보러가기</span>
-                        <svg class="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
-
-                <div class="absolute -right-4 top-10 text-8xl font-black text-white/10 pointer-events-none select-none uppercase transform rotate-90 origin-top-right">
-                    ${id}
-                </div>
-            </div>
-        `).join('');
-    }
-    window.addEventListener('load', renderTeams);
-</script>
+        // 페이지가 완전히 로드된 후 실행
+        document.addEventListener('DOMContentLoaded', renderTeams);
+    </script>
 </body>
 </html>
