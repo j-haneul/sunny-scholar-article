@@ -286,7 +286,7 @@ const SUNNY_DATA = [
     <p>살기 위해 도망쳐 나온 아이들 중, 쉼터조차 온전한 쉼의 공간으로 느끼지 못하는 것은 수현이만의 이야기가 아닙니다. 쉼터 이용 실태 연구에 따르면, 가정 밖 청소년들은 5년 동안 평균 17.1회나 쉼터를 이동하면서 살아갑니다. 특히 시설 입소 및 생활 과정에서 가장 큰 걸림돌로 작용하는 것은 쉼터 규칙이었습니다. 희망친구 기아대책 실태조사에 따르면, 10명 중 쉼터 규칙으로 인한 입소 거부는 4명, 퇴소는 평균 6명입니다. 안전과 보호를 목적으로 만들어진 관리 체계가 오히려 아이들의 시설 유입을 막고 조기 퇴소를 유발하는 것입니다.</p>
     
     <div class="img-container">
-      <img src="images/green_8.jpg" class="content-img">
+      <img src="images/green_3.png" class="content-img">
       <p class="img-caption">▲ 이미지 출처: 그린팀 자체 제작</p>
     </div>
 
@@ -329,7 +329,7 @@ const SUNNY_DATA = [
     <p>.</p>
 
     <div class="img-container">
-      <img src="images/green_5.jpg" class="content-img">
+      <img src="images/green_5.png" class="content-img">
       <p class="img-caption">▲ 이미지 출처: 그린팀 자체제작</p>
     </div>
 
