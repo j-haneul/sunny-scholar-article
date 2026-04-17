@@ -135,7 +135,7 @@ const SUNNY_DATA = [
         id: "article-03",
         teamId: "foure",
         teamName: "포레 (fou:re)",
-        part: "Part 3. 원인 분석",
+        part: "Part 3. 원인 설명",
         title: "#3 할머니의 시계는 멈추지 않는다",
         thumbnail: "images/fore_4.JPG",
         thumbnailCaption: "이미지 출처 : Unsplash ", 
@@ -170,7 +170,7 @@ const SUNNY_DATA = [
         id: "article-04",
         teamId: "foure",
         teamName: "포레 (fou:re)",
-        part: "Part 4. 원인 분석",
+        part: "Part 4. 문제 해결의 시작",
         title: "#4 버티는 사이, 미래는 조금씩 늦어진다",
         thumbnail: "images/fore_6.jpg",
        thumbnailCaption: "이미지 출처 : Gemini, 나노바나나2 생성 ", 
@@ -247,17 +247,46 @@ const SUNNY_DATA = [
     teamId: "green",
     teamName: "그린",
     part: "Part 1. 당사자 소개",
-    title: "#1 제목입력",
+    title: "#1 돌아갈 곳이 없는 시간 : 밖으로 내몰린 아이들",
     thumbnail: "images/green_1.jpg",
     thumbnailCaption: "이미지 출처 : pixabay",
     content: `
-    `
+    <p>“어디로 가야 하지?”</p>
+    <p>해가 저물고, 친구들은 하나둘 집으로 돌아갑니다. 학교가 끝나면 다들 자연스럽게 향하는 곳이 있지만, 수현이는 선뜻 발걸음을 옮기지 못합니다. 집으로 가야 할 시간인데도, 수현이에게 집은 돌아가 쉬는 곳이 아니기 때문입니다. 열일곱 살, 이제 막 고등학교에 올라간 수현이는 왜 망설이고 있을까요?</p>
+
+    <div class="my-4 py-2">
+      <p class="text-xl font-bold text-[#63489a] mb-2">“평범한 가정이라고 생각했던 가정이 사실 평범하지 않더라고요. 아버지는 스트레스를 가족들에게 풀었고, 아버지의 폭력은 일상이었죠.”</p>
+      <p class="text-sm text-gray-400 font-bold">— 수현</p>
+    </div>
+
+    <p>아버지의 폭력은 날이 갈수록 심해졌고, 어느 날은 정신을 잃어 응급실에 실려가기도 했습니다. 이후 전문기관에 의해 우선 쉼터에서 머물 수 있게 된 수현이는 이제는 폭력에서 벗어나 안전한 자신의 보금자리를 찾을 수 있으리라 생각했습니다.</p>
+    
+    <div class="img-container">
+      <img src="images/green_6.jpg" class="content-img">
+    </div>
+
+    <p>처음 쉼터에 들어갔을 때 수현이는 안도했습니다. 적어도 오늘은 안전하게 잠들 수 있겠다고 생각했기 때문입니다. 밥을 먹을 수 있고, 씻을 수 있고, 잘 곳이 있다는 사실만으로도 숨이 조금 놓였습니다. 하지만 그 안도감은 오래가지 않았습니다. 쉼터에 기한이 존재한다는 것을 알게 된 것입니다.</p>
+    <p>수현이는 다시 떠나야 한다는 말을 들으며 마음이 조급해졌습니다. 겨우 몸을 쉬일 곳을 찾았는데, 또다시 다음 장소를 걱정해야 했기 때문입니다. 쉼터 선생님은 기간 만료 후 다른 곳으로의 연계를 도와주겠다 하셨지만, 수현이의 마음은 쉽게 놓이지 않았습니다. 다음에도 계속 머물 수 있을지, 또 언제 나가야 될지 알 수 없다는 사실이 머릿속을 떠나지 않았습니다.</p>
+    <p>수현이는 점점 다른 걱정도 하기 시작했습니다. 언제 또 나가게 될지 모른다면, 나가기 전에 돈을 최대한 모아둬야 한다는 생각이 들었습니다. 그래서 수현이는 그나마 자신을 받아주는 야간 아르바이트를 구했습니다. 수중에 돈이 있어야 불안이 조금이라도 줄어들 것 같았습니다. 다음 쉼터로 옮기게 되든, 다시 혼자 버텨야 하든, 돈이 있어야 덜 막막할 것 같았습니다.</p>
+    
+    <div class="img-container">
+      <img src="images/green_7.jpg" class="content-img">
+    </div>
+
+    <p>하지만 그때부터 쉼터 생활은 또 다른 방식으로 어려워지기 시작했습니다. 쉼터에는 통금 시간이 있었고, 외출과 귀가 시간에도 규칙이 있었습니다. 그 규칙은 아이들을 통제하기 위함이 아니라 보호하기 위해 만들어진 것이었습니다. 그러나 수현이에게는 그 규칙이 현실과 자꾸 부딪혔습니다. 늦은 시간까지 일해야 하는 아르바이트와 정해진 통금 시간을 동시에 지키는 것은 쉽지 않았습니다. 일을 계속하려면 규칙을 어겨야 했고, 규칙을 지키려면 일을 포기해야 했습니다. 수현이에게 통금은 단순히 불편한 규칙이 아니라, 앞으로를 버티기 위해 필요한 돈과 맞바꿔야 하는 문제처럼 느껴졌습니다.</p>
+    <p>결국 수현이는 쉼터 안에서도 편히 머물지 못했습니다. 안전한 곳에 들어왔지만, 그 안에서 계속 살아갈 수 있을지는 또 다른 문제였습니다. 다시 나가야 할지도 모른다는 불안, 돈을 벌어야 한다는 압박, 그리고 그 모든 것과 충돌하는 쉼터의 규칙 속에서 수현이는 점점 지쳐 갔습니다. 쉼터는 분명 수현이를 보호하기 위한 공간이었지만, 수현이에게는 그 안에 오래 머물 수 있는 삶이 쉽게 상상되지 않았습니다. 결국 수현이는 다시 길 밖으로 나올 수밖에 없었습니다.</p>
+    <p>이처럼 우리 사회에는 가정에서 살 수 없어 밖으로 내몰린 아이들이 있습니다. 이런 아이들을 가정 밖 청소년이라 부르며, 한국청소년정책연구원의 실태 조사에 따르면 이들은 약 56,000여 명으로 추산됩니다. 그리고 이들을 위한 쉼터가 존재하지만, 이러한 쉼터 역시 아이들을 무한히 보호할 수는 없기에 아이들은 다시 다른 쉼터를 알아보거나, 때로는 거리를 떠돌게 됩니다. 그렇기에 쉼터에서 아이들이 실제로 그 안에 머물 수 있는가, 그리고 그 머묾이 다시 삶의 안정으로 이어질 수 있는가를 논해야 합니다.</p>
+
+    <div class="footnote-section">
+      <p>1. 김희진 외. (2018). 가정 밖 청소년의 실태와 자립지원 방안 연구. 한국청소년정책연구원.</p>
+    </div>
+  `
   },
   {
     id: "green-02",
     teamId: "green",
     teamName: "그린",
-    part: "Part 2. 문제 정의",
+    part: "Part 2. 문제 발견",
     title: "#2 제목입력",
     thumbnail: "images/green_2.jpg",
     thumbnailCaption: "이미지 출처 : pixabay",
@@ -268,7 +297,7 @@ const SUNNY_DATA = [
     id: "green-03",
     teamId: "green",
     teamName: "그린",
-    part: "Part 3. 해결의 실마리",
+    part: "Part 3. 원인 설명",
     title: "#3 제목입력",
     thumbnail: "images/green_3.jpg",
     thumbnailCaption: "이미지 출처 : pixabay",
@@ -279,7 +308,7 @@ const SUNNY_DATA = [
     id: "green-04",
     teamId: "green",
     teamName: "그린",
-    part: "Part 4. 팀의 철학",
+    part: "Part 4. 문제 해결의 시작",
     title: "#4 제목입력",
     thumbnail: "images/green_4.jpg",
     thumbnailCaption: "이미지 출처 : pixabay",
@@ -290,7 +319,7 @@ const SUNNY_DATA = [
     id: "green-05",
     teamId: "green",
     teamName: "그린",
-    part: "Part 5. 변화의 시작",
+    part: "Part 5. 팀 소개",
     title: "#5 제목입력",
     thumbnail: "images/green_5.jpg",
     thumbnailCaption: "이미지 출처 : pixabay",
@@ -316,7 +345,7 @@ const SUNNY_DATA = [
     id: "hearim-02",
     teamId: "hearim",
     teamName: "헤아림",
-    part: "Part 2. 문제 정의",
+    part: "Part 2. 문제 발견",
     title: "#2 제목입력",
     thumbnail: "images/hearim_2.jpg",
     thumbnailCaption: "이미지 출처 : pixabay",
@@ -327,7 +356,7 @@ const SUNNY_DATA = [
     id: "hearim-03",
     teamId: "hearim",
     teamName: "헤아림",
-    part: "Part 3. 해결의 실마리",
+    part: "Part 3. 원인 설명",
     title: "#3 제목입력",
     thumbnail: "images/hearim_3.jpg",
     thumbnailCaption: "이미지 출처 : pixabay",
@@ -338,7 +367,7 @@ const SUNNY_DATA = [
     id: "hearim-04",
     teamId: "hearim",
     teamName: "헤아림",
-    part: "Part 4. 팀의 철학",
+    part: "Part 4. 문제 해결의 시작",
     title: "#4 제목입력",
     thumbnail: "images/hearim_4.jpg",
     thumbnailCaption: "이미지 출처 : pixabay",
@@ -349,7 +378,7 @@ const SUNNY_DATA = [
     id: "hearim-05",
     teamId: "hearim",
     teamName: "헤아림",
-    part: "Part 5. 변화의 시작",
+    part: "Part 5. 팀 소개",
     title: "#5 제목입력",
     thumbnail: "images/hearim_5.jpg",
     thumbnailCaption: "이미지 출처 : pixabay",
@@ -375,7 +404,7 @@ const SUNNY_DATA = [
     id: "dodream-02",
     teamId: "dodream",
     teamName: "두드림(Do-Dream)",
-    part: "Part 2. 문제 정의",
+    part: "Part 2. 문제 발견",
     title: "#2 제목입력",
     thumbnail: "images/dodream_2.jpg",
     thumbnailCaption: "이미지 출처 : pixabay",
@@ -386,7 +415,7 @@ const SUNNY_DATA = [
     id: "dodream-03",
     teamId: "dodream",
     teamName: "두드림(Do-Dream)",
-    part: "Part 3. 해결의 실마리",
+    part: "Part 3. 원인 설명",
     title: "#3 제목입력",
     thumbnail: "images/dodream_3.jpg",
     thumbnailCaption: "이미지 출처 : pixabay",
@@ -397,7 +426,7 @@ const SUNNY_DATA = [
     id: "dodream-04",
     teamId: "dodream",
     teamName: "두드림(Do-Dream)",
-    part: "Part 4. 팀의 철학",
+    part: "Part 4. 문제 해결의 시작",
     title: "#4 제목입력",
     thumbnail: "images/dodream_4.jpg",
     thumbnailCaption: "이미지 출처 : pixabay",
@@ -408,7 +437,7 @@ const SUNNY_DATA = [
     id: "dodream-05",
     teamId: "dodream",
     teamName: "두드림(Do-Dream)",
-    part: "Part 5. 변화의 시작",
+    part: "Part 5. 팀 소개",
     title: "#5 제목입력",
     thumbnail: "images/dodream_5.jpg",
     thumbnailCaption: "이미지 출처 : pixabay",
@@ -434,7 +463,7 @@ const SUNNY_DATA = [
     id: "lighthouse-02",
     teamId: "lighthouse",
     teamName: "등대",
-    part: "Part 2. 문제 정의",
+    part: "Part 2. 문제 발견",
     title: "#2 제목입력",
     thumbnail: "images/lighthouse_2.jpg",
     thumbnailCaption: "이미지 출처 : pixabay",
@@ -445,7 +474,7 @@ const SUNNY_DATA = [
     id: "lighthouse-03",
     teamId: "lighthouse",
     teamName: "등대",
-    part: "Part 3. 해결의 실마리",
+    part: "Part 3. 원인 설명",
     title: "#3 제목입력",
     thumbnail: "images/lighthouse_3.jpg",
     thumbnailCaption: "이미지 출처 : pixabay",
@@ -456,7 +485,7 @@ const SUNNY_DATA = [
     id: "lighthouse-04",
     teamId: "lighthouse",
     teamName: "등대",
-    part: "Part 4. 팀의 철학",
+    part: "Part 4. 문제 해결의 시작",
     title: "#4 제목입력",
     thumbnail: "images/lighthouse_4.jpg",
     thumbnailCaption: "이미지 출처 : pixabay",
@@ -467,7 +496,7 @@ const SUNNY_DATA = [
     id: "lighthouse-05",
     teamId: "lighthouse",
     teamName: "등대",
-    part: "Part 5. 변화의 시작",
+    part: "Part 5. 팀 소개",
     title: "#5 제목입력",
     thumbnail: "images/lighthouse_5.jpg",
     thumbnailCaption: "이미지 출처 : pixabay",
