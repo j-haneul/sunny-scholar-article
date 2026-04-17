@@ -407,20 +407,86 @@ const SUNNY_DATA = [
     teamId: "hearim",
     teamName: "헤아림",
     part: "Part 1. 당사자 소개",
-    title: "#1 제목입력",
+    title: "#1 취업은 했지만, 그 다음은 없었다",
     thumbnail: "images/hearim_1.jpg",
-    thumbnailCaption: "이미지 출처 : pixabay",
+    thumbnailCaption: "이미지 출처 : ChatGPT 생성",
     content: `
-    `
+    <div class="my-4 py-2">
+      <p class="text-xl font-bold text-[#63489a] mb-2">“다시 취업하고 싶으세요?”</p>
+      <p class="text-sm text-gray-400 font-bold">— 질문자</p>
+    </div>
+
+    <p>민준(가명·34)은 잠깐 어머니 얼굴을 본 후 고개를 끄덕였다.</p>
+
+    <div class="my-4 py-2">
+      <p class="text-xl font-bold text-[#63489a] mb-2">“마지막으로 1년 이상 직장을 다녔던 게 언제예요?”</p>
+      <p class="text-sm text-gray-400 font-bold">— 질문자</p>
+    </div>
+
+    <div class="my-4 py-2">
+      <p class="text-xl font-bold text-[#63489a] mb-2">“아마… 5년 전쯤일 거예요.”</p>
+      <p class="text-sm text-gray-400 font-bold">— 민준의 어머니</p>
+    </div>
+
+    <p>그의 첫 직장은 포장 공장이었다. 지적장애인 민준은 초등학교 고학년 수준의 지적 능력을 갖고 있다. 그래도 특수학교로 진학해, 학교와 가정의 꾸준한 관리와 지원을 받아 큰 어려움 없이 학교생활을 마쳤다.</p>
+    <p>특수학교 전공과 과정을 마칠 무렵, 민준을 직장으로 연결해준 사람은 학교 선생님이었다. 수년간 민준의 곁에서 그가 어떤 작업을 오래 할 수 있는지, 어떤 환경에서 안정적으로 일하는지를 지켜본 선생님이 고르고 고른 자리였다. 낯선 사람을 자주 마주하지 않고, 작업 순서가 일정한 곳. 매일 아침 같은 시간에 일어나 작업복을 입고, 같은 버스를 타고 출근하는 생활. 이미 학교에서부터 익혀온 일이었기에 민준은 4년 동안 큰 문제 없이 직장에 다녔다.</p>
+    <p>그렇게 4년을 일하고 계약이 끝났다. 민준은 다시 집으로 돌아왔다. ‘한 번 일해본 경험이 있으니 다시 일자리를 구할 수 있겠지.’ 그때까지만 해도 재취업을 막막하고 어려운 일로 생각하지 않았다. 민준과 어머니는 다시 이곳저곳 문을 두드리기 시작했고, 한 공장을 소개받았다. 학습 교구를 만드는 공장이었다. 민준은 다시 직무훈련부터 시작했다. 아침 10시에 출근해 하루 5시간 가까이 일했다. 옆 사람이 일하는 모습을 보고 그걸 따라 물건을 옮기고, 조립했다. 훈련이 끝나면 그대로 일자리가 될 수도 있다고 생각했다.</p>
+    <p>하지만 실습 기간이 끝나고, 직무훈련은 훈련에서 그쳤다. 이전 직장에서처럼 ‘월급’이라고 할 만한 충분한 돈을 받지 못했고, 훈련이 끝난 후에도 다음 연락은 오지 않았다.</p>
+    <p>민준은 짧은 계약직이라도 다녀보고자 집 근처에 있는 자동차 부품 공장을 기웃거렸다. 3개월짜리 일자리였다. 처음 해보는 작업을 익히고, 업무 순서를 외우고, 함께 일하는 사람들에게 맞춰가는 일을 처음부터 다시 반복했다. 첫 직장에서 4년 동안 일하며 익혔던 ‘한 사람 몫을 해냈다’는 감각은 직장을 옮겨 다니는 동안 조금씩 흐릿해졌다. 실수는 잦아졌고, 늘 긴장한 상태로 일했다. 엎친 데 덮친 격으로 직급 높은 조장은 민준을 몰아세웠다.</p>
+
+    <div class="my-4 py-2">
+      <p class="text-xl font-bold text-[#63489a] mb-2">“일도 못한다고… 한 대 때리고, 무시당하기도 하고…”</p>
+      <p class="text-sm text-gray-400 font-bold">— 민준의 어머니</p>
+    </div>
+
+    <p>어머니도 그때를 생생하게 기억하고 있었다.</p>
+
+    <div class="my-4 py-2">
+      <p class="text-xl font-bold text-[#63489a] mb-2">“그러다가 한 번은 출근 준비를 하다가 발작을 일으키더라고요. 그래도 사람답게 살아보자 하는 마음에, 밖에 나가면 직장 구할 수 있겠지 하고 나왔는데… 현실이 쉽지가 않네요.”</p>
+      <p class="text-sm text-gray-400 font-bold">— 민준의 어머니</p>
+    </div>
+
+    <p>결국 공장을 나온 민준은 4년째 일자리를 찾고 있다. 채용 공고 사이트들을 뒤적거리는 것은 민준의 새로운 일과가 되었다. 그래도 나름 경력을 갖추었다는 생각에 자신 있게 지원 버튼을 눌러보는 날도 있었지만, 결과는 늘 비슷했다.</p>
+
+    <div class="my-4 py-2">
+      <p class="text-xl font-bold text-[#63489a] mb-2">“이게 발달장애인이라서 그런가… 경력이 있어도 안 돼요”</p>
+      <p class="text-sm text-gray-400 font-bold">— 민준의 어머니</p>
+    </div>
+
+    <p>그동안 민준의 어머니도 분주하게 움직였다. 학교에서 받았던 취업 지원처럼, 민준의 곁에 밀착해 취업을 도와줄 사람이나 기관이 있는지 살폈다. 하지만 돌아오는 답은 대부분 비슷했다. 주민센터는 고용공단으로 가라고, 고용공단은 신청 절차를 밟으라고 했다. 직업능력개발원에도 여러 번 문을 두드렸다.</p>
+
+    <div class="my-4 py-2">
+      <p class="text-xl font-bold text-[#63489a] mb-2">“기관 가면 그래도 일자리 소개는 받아요. 일자리 소개는 고맙죠… 일단 연결은 되는데, 연결된다고 일자리가 바로 직장이 되고, 취업이 되는 건 아니었어요.”</p>
+      <p class="text-sm text-gray-400 font-bold">— 민준의 어머니</p>
+    </div>
+
+    <p>민준에게 소개된 자리는 대부분 직무훈련이나 짧은 실습 수준에 머물렀다. 일자리가 직장이 되어 취업에 성공하는 것은 아주 드문 일이었다. 할 수 있는 일과 없는 일, 그의 적성과 특성을 고려하지 않고 그저 ‘자리 난 곳’과 연결 받는 식으로는 민준에게 적합한 일자리를 알 수 없었다.</p>
+    <p>몇 번의 퇴사와 취업 실패를 거치고 나서, 어머니는 어디서부터 일이 꼬인 것인지 생각하게 되었다. 새로운 일터에 갈 때마다 불안해한다면 다시 직무역량을 쌓아야 하는 걸까. 다시 전공과라도 보내야 하는 걸까. 한참 말을 이어가던 어머니는 결국 가장 오래 붙들고 있던 걱정을 꺼냈다.</p>
+
+    <div class="my-4 py-2">
+      <p class="text-xl font-bold text-[#63489a] mb-2">“제가 지금은 옆에 있으니까 이력서도 써주고 이것저것 알아봐 줄 수 있는데. 저도 이제 나이가 있잖아요. 내가 없으면… 얘는 어떻게 될지…”</p>
+      <p class="text-sm text-gray-400 font-bold">— 민준의 어머니</p>
+    </div>
+
+    <p>마지막으로 민준에게 지금 가장 원하는 것이 무엇인지 물었다. 그는 의외의 답변을 전했다.</p>
+
+    <div class="my-4 py-2">
+      <p class="text-xl font-bold text-[#63489a] mb-2">“그냥. 밖에 가면 다른 사람들은 다 회사 다니고 부러워요.”</p>
+      <p class="text-sm text-gray-400 font-bold">— 민준</p>
+    </div>
+
+    <p>민준의 바람은 소박했다. 큰 돈을 벌거나 원대한 계획을 세우기 이전에, ‘한 사람의 몫을 다하는 어른’으로 살고 싶었다. 작고 소박하기에 더 절실한 바람이었다.</p>
+    <p>이 이야기에서 소개한 ‘민준’은 취업 사이트와 커뮤니티, 발달장애인 당사자와 보호자의 여러 사례를 바탕으로 만들어낸 가상의 인물이다. 그러나 그의 이야기만큼은 허구가 아니다. 일자리 소개를 받아도 그곳이 곧 직장이 되지는 않는다는 것. 훈련을 받고, 경력을 쌓으며 시간과 비용, 노력을 쏟아도 취업의 문턱은 여전히 좁고 높다는 것. 오늘도 많은 발달장애인이 민준과 비슷한 자리에서, 비슷한 기다림의 시간을 견디고 있다.</p>
+  `
   },
   {
     id: "hearim-02",
     teamId: "hearim",
     teamName: "헤아림",
     part: "Part 2. 문제 발견",
-    title: "#2 제목입력",
+    title: "#2 9년 6개월, 발달장애인의 시간은 그렇게 멈춰 있다",
     thumbnail: "images/hearim_2.jpg",
-    thumbnailCaption: "이미지 출처 : pixabay",
+    thumbnailCaption: "이미지 출처 : ChatGPT 생성",
     content: `
     `
   },
@@ -429,9 +495,9 @@ const SUNNY_DATA = [
     teamId: "hearim",
     teamName: "헤아림",
     part: "Part 3. 원인 설명",
-    title: "#3 제목입력",
+    title: "#3 빈자리는 일자리만이 아니었다",
     thumbnail: "images/hearim_3.jpg",
-    thumbnailCaption: "이미지 출처 : pixabay",
+    thumbnailCaption: "이미지 출처 : ChatGPT 생성",
     content: `
     `
   },
@@ -440,9 +506,9 @@ const SUNNY_DATA = [
     teamId: "hearim",
     teamName: "헤아림",
     part: "Part 4. 문제 해결의 시작",
-    title: "#4 제목입력",
+    title: "#4 지원의 문제가 아니라, 지속의 문제다",
     thumbnail: "images/hearim_4.jpg",
-    thumbnailCaption: "이미지 출처 : pixabay",
+    thumbnailCaption: "이미지 출처 : ChatGPT 생성",
     content: `
     `
   },
@@ -451,9 +517,9 @@ const SUNNY_DATA = [
     teamId: "hearim",
     teamName: "헤아림",
     part: "Part 5. 팀 소개",
-    title: "#5 제목입력",
+    title: "#5 마주해야 비로소 보이는 것들",
     thumbnail: "images/hearim_5.jpg",
-    thumbnailCaption: "이미지 출처 : pixabay",
+    thumbnailCaption: "이미지 출처 : ChatGPT 생성",
     content: `
     `
   },
