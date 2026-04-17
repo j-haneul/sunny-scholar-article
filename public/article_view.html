@@ -20,73 +20,20 @@
         .content-text { color: #374151; font-size: 1.125rem; word-break: keep-all; text-align: justify; }
         .content-text p { margin-bottom: 2rem; }
 
-        /* 이미지 스타일 통일 */
-        .content-img { 
-            width: 100%; 
-            border-radius: 1.5rem; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
-            display: block; 
-            object-fit: cover; 
-        }
+        .content-img { width: 100%; border-radius: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05); display: block; object-fit: cover; }
         .img-container { margin-top: 2.5rem; margin-bottom: 2.5rem; }
         .img-caption { text-align: center; font-size: 13px; color: #94a3b8; margin-top: 1rem; font-weight: 500; word-break: keep-all; }
         
-        .contact-box { background: white; border-radius: 1.5rem; border: 1px solid #f1f5f9; padding: 2rem; text-align: center; margin-top: 2rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
-    
-    
-    /* 각주 섹션 스타일 */
-.footnote-section {
-    margin-top: 4rem;
-    padding-top: 2rem;
-    border-top: 1px dashed #e2e8f0;
-}
+        .footnote-section { margin-top: 4rem; padding-top: 2rem; border-top: 1px dashed #e2e8f0; }
+        .footnote-section p { font-size: 13px !important; color: #94a3b8 !important; margin-bottom: 0.5rem !important; line-height: 1.5 !important; }
 
-.footnote-section p {
-    font-size: 13px !important;
-    color: #94a3b8 !important;
-    margin-bottom: 0.5rem !important;
-    line-height: 1.5 !important;
-}
-
-/* 본문 내 위첨자 스타일 */
-sup {
-    font-size: 10px;
-    color: var(--sunny-purple);
-    font-weight: 700;
-    margin-left: 2px;
-}
-
-
-
-/* 상단 읽기 진행바 스타일 */
-.progress-container {
-    position: fixed;
-    top: 64px; /* 헤더 높이만큼 띄우기 (h-16 = 64px) */
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: transparent;
-    z-index: 49; /* 헤더보다는 아래 */
-}
-
-.progress-bar {
-    height: 100%;
-    background: var(--sunny-purple); /* 팀 컬러를 쓰고 싶다면 스크립트로 조절 가능 */
-    width: 0%;
-    transition: width 0.1s ease;
-}        
-
-        #part-nav {
-    padding-left: 1rem;
-    padding-right: 1rem;
-}
+        .progress-container { position: fixed; top: 64px; left: 0; width: 100%; height: 4px; background: transparent; z-index: 49; }
+        .progress-bar { height: 100%; background: var(--sunny-purple); width: 0%; transition: width 0.1s ease; }        
     </style>
 </head>
 <body class="text-gray-900">
     <header class="sticky top-0 z-50 glass border-b border-gray-100">
-        <div class="progress-container">
-    <div id="scroll-indicator" class="progress-bar"></div>
-</div>
+        <div class="progress-container"><div id="scroll-indicator" class="progress-bar"></div></div>
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex justify-between items-center h-14 md:h-16">
                 <a href="index.html" class="flex items-center">
@@ -107,18 +54,18 @@ sup {
         </div>
     </div>
 
-<main class="max-w-3xl mx-auto px-6 py-16 md:py-24 animate__animated animate__fadeIn">
-    <header class="mb-12">
-        <div id="view-team-tag" class="text-[#63489a] text-[11px] font-black mb-2 tracking-widest uppercase"></div>
-        
-        <div id="view-team-cta" class="text-gray-500 text-sm md:text-base font-bold mb-6 break-keep leading-relaxed border-l-4 border-purple-100 pl-4 py-1"></div>
-        
-        <h1 id="view-title" class="text-3xl md:text-5xl font-black leading-tight break-keep">데이터를 불러오는 중...</h1>
-    </header>
+    <main class="max-w-3xl mx-auto px-6 py-10 md:py-16 animate__animated animate__fadeIn">
+        <header class="mb-10">
+            <div id="view-team-tag" class="text-[#63489a] text-sm md:text-base font-black mb-3 tracking-wider uppercase"></div>
+            
+            <div id="view-team-summary" class="text-gray-500 text-base md:text-lg font-bold mb-6 break-keep leading-relaxed border-l-4 border-purple-100 pl-4 py-1"></div>
+            
+            <h1 id="view-title" class="text-3xl md:text-5xl font-black hide leading-tight break-keep"></h1>
+        </header>
 
-    <article>
-        <div id="dynamic-body" class="content-text"></div>
-    </article>
+        <article>
+            <div id="dynamic-body" class="content-text"></div>
+        </article>
 
         <div class="mt-20 py-10 border-t border-gray-100 flex justify-center">
             <button onclick="copyURL()" class="bg-gray-900 text-white px-7 py-2.5 rounded-full font-black text-xs shadow-xl hover:bg-black transition-all transform hover:scale-105">
@@ -126,16 +73,18 @@ sup {
             </button>
         </div>
 
-        <div class="py-10 border-t border-gray-200">
+        <div class="py-12 border-t border-gray-200">
             <div class="flex flex-col items-start">
-                <a id="team-link" href="#" class="group flex items-center gap-1.5 mb-2">
-                    <h2 id="contact-team-name" class="text-xl font-black text-gray-900 group-hover:text-[#63489a] transition-colors">TEAM NAME</h2>
-                    <svg class="w-4 h-4 text-gray-400 group-hover:text-[#63489a] mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                <a id="team-link" href="#" class="group flex items-center gap-1.5 mb-3">
+                    <h2 id="contact-team-name" class="text-2xl font-black text-gray-900 group-hover:text-[#63489a] transition-colors uppercase">TEAM NAME</h2>
+                    <svg class="w-5 h-5 text-gray-400 group-hover:text-[#63489a]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                 </a>
-                <p id="team-one-liner" class="text-gray-500 text-sm font-medium mb-4 break-keep">사회문제의 본질을 연구하고 해결 가능한 크기로 구조화합니다.</p>
-                <div class="flex items-center gap-2 text-[#63489a] font-bold text-xs">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                    <a id="contact-email-link" href="" class="hover:underline tracking-tight">email@address.com</a>
+                
+                <p id="team-cta" class="text-gray-600 text-sm md:text-base font-medium mb-6 break-keep leading-relaxed whitespace-pre-line"></p>
+                
+                <div class="flex items-center gap-2 text-[#63489a] font-bold text-sm">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    <a id="contact-email-link" href="" class="hover:underline tracking-tight"></a>
                 </div>
             </div>
         </div>
@@ -151,13 +100,13 @@ sup {
             <div id="prev-article" class="invisible">
                 <a href="#" class="bottom-nav-card !p-4 border-gray-100 hover:border-[#63489a] rounded-xl flex flex-col group">
                     <span class="text-[9px] font-black text-gray-400 uppercase mb-1 group-hover:text-[#63489a]">Previous</span>
-                    <span class="text-[13px] font-bold text-gray-800 line-clamp-1">이전 글</span>
+                    <span class="text-[13px] font-bold text-gray-800 line-clamp-1"></span>
                 </a>
             </div>
             <div id="next-article" class="invisible">
                 <a href="#" class="bottom-nav-card !p-4 text-right border-gray-100 hover:border-[#63489a] rounded-xl flex flex-col items-end group">
                     <span class="text-[9px] font-black text-gray-400 uppercase mb-1 group-hover:text-[#63489a]">Next</span>
-                    <span class="text-[13px] font-bold text-gray-800 line-clamp-1">다음 글</span>
+                    <span class="text-[13px] font-bold text-gray-800 line-clamp-1"></span>
                 </a>
             </div>
         </div>
@@ -165,130 +114,106 @@ sup {
 
     <script src="data.js"></script>
     <script>
- function initView() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const articleId = urlParams.get('id');
+        function initView() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const articleId = urlParams.get('id');
 
-    if (typeof SUNNY_DATA === 'undefined' || !articleId) return;
-    const baseDetails = typeof TEAM_DETAILS !== 'undefined' ? TEAM_DETAILS : {};
+            if (typeof SUNNY_DATA === 'undefined' || !articleId) return;
+            const baseDetails = typeof TEAM_DETAILS !== 'undefined' ? TEAM_DETAILS : {};
+            const teamDataMap = typeof TEAM_DATA !== 'undefined' ? TEAM_DATA : {};
 
-    const current = SUNNY_DATA.find(a => a.id === articleId);
-    if (!current) {
-        document.getElementById('view-title').innerText = "아티클을 찾을 수 없습니다.";
-        return;
-    }
+            const current = SUNNY_DATA.find(a => a.id === articleId);
+            if (!current) {
+                document.getElementById('view-title').innerText = "아티클을 찾을 수 없습니다.";
+                return;
+            }
 
-    const teamInfo = baseDetails[current.teamId] || {};
-    const teamBase = (typeof TEAM_DATA !== 'undefined') ? TEAM_DATA[current.teamId] : null;
-    
-    // 1. 헤더 텍스트 매핑
-    document.getElementById('view-team-tag').innerText = current.teamName;
-    
-    // [중요 수정] summary 대신 cta를 가져와서 화면에 뿌려주는 로직
-    const ctaEl = document.getElementById('view-team-cta');
-    if (ctaEl) {
-        // TEAM_DATA에 cta가 있으면 그걸 쓰고, 없으면 TEAM_DETAILS의 cta를 가져옵니다.
-        const ctaText = (teamBase && teamBase.cta) ? teamBase.cta : (teamInfo.cta || "");
-        
-        if (ctaText) {
-            ctaEl.innerText = ctaText;
-            ctaEl.style.display = 'block'; 
-        } else {
-            ctaEl.style.display = 'none'; 
+            const teamBase = teamDataMap[current.teamId] || {};
+            const teamInfo = baseDetails[current.teamId] || {};
+
+            // 1. 상단 헤더 업데이트
+            document.getElementById('view-team-tag').innerText = teamBase.teamName || current.teamName;
+            
+            const summaryEl = document.getElementById('view-team-summary');
+            if (teamBase.summary) {
+                summaryEl.innerText = teamBase.summary;
+                summaryEl.style.display = 'block';
+            } else {
+                summaryEl.style.display = 'none';
+            }
+            
+            document.getElementById('view-title').innerText = current.title;
+
+            // 2. 본문 및 이미지 렌더링
+            const dynamicBody = document.getElementById('dynamic-body');
+            let articleContent = current.content || "";
+            if (current.thumbnail) {
+                articleContent = `
+                    <div class="img-container">
+                        <img src="${current.thumbnail}" class="content-img">
+                        ${current.thumbnailCaption ? `<p class="img-caption">▲ ${current.thumbnailCaption}</p>` : ''}
+                    </div>
+                ` + articleContent;
+            }
+            dynamicBody.innerHTML = articleContent;
+
+            // 3. 하단 팀 정보 섹션
+            const teamLink = document.getElementById('team-link');
+            teamLink.href = `team_detail.html?teamId=${current.teamId}`;
+            document.getElementById('contact-team-name').innerText = teamBase.teamName || current.teamName;
+            
+            // CTA 노출 (TEAM_DETAILS의 cta 필드 사용)
+            const ctaEl = document.getElementById('team-cta');
+            ctaEl.innerText = teamInfo.cta || teamInfo.description || "사회문제의 본질을 연구하고 해결 가능한 크기로 구조화합니다.";
+
+            // 이메일
+            const emailAddr = teamInfo.email || "sunny@sk.com";
+            const emailLink = document.getElementById('contact-email-link');
+            emailLink.innerText = emailAddr;
+            emailLink.href = `mailto:${emailAddr}`;
+
+            // 4. 파트 탭 생성
+            const teamArticles = SUNNY_DATA.filter(a => a.teamId === current.teamId);
+            const partNav = document.getElementById('part-nav');
+            partNav.innerHTML = teamArticles.map(art => `
+                <a href="article_view.html?id=${art.id}" class="part-tab ${art.id === articleId ? 'active' : ''}">
+                    ${art.part}
+                </a>
+            `).join('');
+
+            // 5. 이전/다음 글 설정
+            const currentIdx = teamArticles.findIndex(a => a.id === articleId);
+            if (currentIdx > 0) {
+                const prev = teamArticles[currentIdx - 1];
+                const el = document.getElementById('prev-article');
+                el.classList.remove('invisible');
+                el.querySelector('a').href = `article_view.html?id=${prev.id}`;
+                el.querySelector('span:last-child').innerText = prev.title;
+            }
+            if (currentIdx < teamArticles.length - 1) {
+                const next = teamArticles[currentIdx + 1];
+                const el = document.getElementById('next-article');
+                el.classList.remove('invisible');
+                el.querySelector('a').href = `article_view.html?id=${next.id}`;
+                el.querySelector('span:last-child').innerText = next.title;
+            }
         }
-    }
-    
-    document.getElementById('view-title').innerText = current.title;
-
-    // 2. 본문 및 이미지 결합
-    const dynamicBody = document.getElementById('dynamic-body');
-    let articleContent = current.content || "";
-
-    if (current.thumbnail) {
-        articleContent = `
-            <div class="img-container animate__animated animate__fadeIn">
-                <img src="${current.thumbnail}" class="content-img">
-                ${current.thumbnailCaption ? `<p class="img-caption">▲ ${current.thumbnailCaption}</p>` : ''}
-            </div>
-        ` + articleContent;
-    }
-    dynamicBody.innerHTML = articleContent;
-
-    // 3. 하단 팀 정보 섹션 업데이트
-    const teamLink = document.getElementById('team-link');
-    if (current.teamId) {
-        teamLink.href = `team_detail.html?teamId=${current.teamId}`;
-    }
-    
-    document.getElementById('contact-team-name').innerText = teamInfo.name || current.teamName;
-    
-    const oneLiner = document.getElementById('team-one-liner');
-    oneLiner.innerHTML = teamInfo.description || "사회문제의 본질을 연구하고 새로운 시각을 제안합니다.";
-    oneLiner.style.whiteSpace = "pre-line";
-
-    const emailAddr = teamInfo.email || "sunny@sk.com";
-    const emailLink = document.getElementById('contact-email-link');
-    emailLink.innerText = emailAddr;
-    emailLink.href = `mailto:${emailAddr}`;
-
-    // 4. 상단 탭 (동일 팀 아티클 목록)
-    const teamArticles = SUNNY_DATA.filter(a => a.teamId === current.teamId);
-    const partNav = document.getElementById('part-nav');
-    partNav.innerHTML = teamArticles.map(art => `
-        <a href="article_view.html?id=${art.id}" class="part-tab ${art.id === articleId ? 'active' : ''}">
-            ${art.part}
-        </a>
-    `).join('');
-    
-    const activeTab = partNav.querySelector('.active');
-    if (activeTab) {
-        activeTab.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-    }
-
-    // 5. 하단 내비게이션 (이전/다음 글)
-    const currentIdx = teamArticles.findIndex(a => a.id === articleId);
-    const prevEl = document.getElementById('prev-article');
-    const nextEl = document.getElementById('next-article');
-
-    if (currentIdx > 0) {
-        const prev = teamArticles[currentIdx - 1];
-        prevEl.classList.remove('invisible');
-        prevEl.querySelector('a').href = `article_view.html?id=${prev.id}`;
-        prevEl.querySelector('span:last-child').innerText = prev.title;
-    } else {
-        prevEl.classList.add('invisible');
-    }
-
-    if (currentIdx < teamArticles.length - 1) {
-        const next = teamArticles[currentIdx + 1];
-        nextEl.classList.remove('invisible');
-        nextEl.querySelector('a').href = `article_view.html?id=${next.id}`;
-        nextEl.querySelector('span:last-child').innerText = next.title;
-    } else {
-        nextEl.classList.add('invisible');
-    }
-}
 
         function copyURL() {
             navigator.clipboard.writeText(window.location.href);
             alert("주소가 복사되었습니다!");
         }
 
+        function updateProgressBar() {
+            const winScroll = document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            const indicator = document.getElementById("scroll-indicator");
+            if(indicator) indicator.style.width = scrolled + "%";
+        }
+
         window.onload = initView;
-
-        window.onscroll = function() {
-    updateProgressBar();
-};
-
-function updateProgressBar() {
-    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (winScroll / height) * 100;
-    const indicator = document.getElementById("scroll-indicator");
-    if(indicator) {
-        indicator.style.width = scrolled + "%";
-    }
-}
+        window.onscroll = updateProgressBar;
     </script>
 </body>
 </html>
