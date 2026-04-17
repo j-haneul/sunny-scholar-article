@@ -41,68 +41,70 @@
         <p class="text-gray-500 text-sm font-medium">5개의 팀이 만들어가는 변화의 움직임을 확인하세요.</p>
     </section>
 
-<main class="max-w-[1600px] mx-auto px-6 pb-24">
-    <div id="team-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-12">
+    <main class="max-w-[1600px] mx-auto px-6 pb-24">
+        <div id="team-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
+            </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="aspect-video bg-gray-100 rounded-[32px] overflow-hidden border border-gray-200 shadow-sm transition-all hover:scale-[1.02] duration-500">
+                <img src="images/sunny_group_1.jpg" alt="Sunny Group 1" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\"flex items-center justify-center h-full text-gray-400 font-bold\">PHOTO 1</div>'">
+            </div>
+            <div class="aspect-video bg-gray-100 rounded-[32px] overflow-hidden border border-gray-200 shadow-sm transition-all hover:scale-[1.02] duration-500">
+                <img src="images/sunny_group_2.jpg" alt="Sunny Group 2" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\"flex items-center justify-center h-full text-gray-400 font-bold\">PHOTO 2</div>'">
+            </div>
+            <div class="aspect-video bg-gray-100 rounded-[32px] overflow-hidden border border-gray-200 shadow-sm transition-all hover:scale-[1.02] duration-500">
+                <img src="images/sunny_group_3.jpg" alt="Sunny Group 3" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\"flex items-center justify-center h-full text-gray-400 font-bold\">PHOTO 3</div>'">
+            </div>
         </div>
+    </main>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="aspect-video bg-gray-200 rounded-[32px] overflow-hidden border border-gray-100 shadow-sm transition-transform hover:scale-[1.02] duration-500">
-            <img src="images/sunny_group_1.jpg" alt="Sunny Group 1" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class=\"flex items-center justify-center h-full text-gray-400\">PHOTO 1</div>'">
-        </div>
-        <div class="aspect-video bg-gray-200 rounded-[32px] overflow-hidden border border-gray-100 shadow-sm transition-transform hover:scale-[1.02] duration-500">
-            <img src="images/sunny_group_2.jpg" alt="Sunny Group 2" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class=\"flex items-center justify-center h-full text-gray-400\">PHOTO 2</div>'">
-        </div>
-        <div class="aspect-video bg-gray-200 rounded-[32px] overflow-hidden border border-gray-100 shadow-sm transition-transform hover:scale-[1.02] duration-500">
-            <img src="images/sunny_group_3.jpg" alt="Sunny Group 3" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class=\"flex items-center justify-center h-full text-gray-400\">PHOTO 3</div>'">
-        </div>
-    </div>
-</main>
+    <script src="data.js"></script>
 
-<script>
-    function renderTeams() {
-        const grid = document.getElementById('team-grid');
-        const sourceData = typeof TEAM_DATA !== 'undefined' ? TEAM_DATA : (typeof TEAM_DETAILS !== 'undefined' ? TEAM_DETAILS : null);
+    <script>
+        function renderTeams() {
+            const grid = document.getElementById('team-grid');
+            const sourceData = typeof TEAM_DATA !== 'undefined' ? TEAM_DATA : (typeof TEAM_DETAILS !== 'undefined' ? TEAM_DETAILS : null);
 
-        if (!sourceData) return;
+            if (!sourceData) return;
 
-        grid.innerHTML = Object.entries(sourceData).map(([id, team]) => `
-            <div class="group relative flex flex-col h-[280px] rounded-[32px] overflow-hidden transition-all duration-500 hover:shadow-xl animate__animated animate__fadeIn"
-                 style="background-color: ${team.theme.main}"> 
-                
-                <div class="p-6 pb-0 relative z-10">
-                    <span class="inline-block px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-widest">
-                        ${team.order}
-                    </span>
-                </div>
+            grid.innerHTML = Object.entries(sourceData).map(([id, team]) => `
+                <div class="group relative flex flex-col h-[300px] rounded-[32px] overflow-hidden transition-all duration-500 hover:shadow-2xl animate__animated animate__fadeIn"
+                     style="background-color: ${team.theme.main}"> 
+                    
+                    <div class="p-7 pb-0 relative z-10">
+                        <span class="inline-block px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-widest">
+                            ${team.order}
+                        </span>
+                    </div>
 
-                <div class="flex-1 px-6 pt-4 flex flex-col justify-start relative z-10">
-                    <h3 class="text-2xl font-black text-white mb-3 leading-tight break-keep">
-                        ${team.teamName || team.name}
-                    </h3>
-                    <div class="flex flex-wrap gap-1.5">
-                        ${(team.tags || []).map(tag => `
-                            <span class="px-2.5 py-1 rounded-lg bg-white/10 text-white text-[10px] font-bold backdrop-blur-sm">#${tag}</span>
-                        `).join('')}
+                    <div class="flex-1 px-7 pt-5 flex flex-col justify-start relative z-10">
+                        <h3 class="text-3xl font-black text-white mb-4 leading-tight break-keep">
+                            ${team.teamName || team.name}
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            ${(team.tags || []).map(tag => `
+                                <span class="px-3 py-1.5 rounded-xl bg-white/15 text-white text-[11px] font-extrabold backdrop-blur-sm border border-white/5">#${tag}</span>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <div class="p-6 mt-auto relative z-10">
+                        <a href="team_detail.html?teamId=${id}" 
+                           class="flex items-center justify-between w-full px-5 py-3.5 bg-white/15 hover:bg-white text-white hover:text-gray-900 rounded-[20px] transition-all duration-300 group/btn border border-white/10 shadow-lg">
+                            <span class="text-[13px] font-extrabold">팀 소개 보러가기</span>
+                            <svg class="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <div class="absolute left-7 bottom-5 text-6xl font-black text-white opacity-[0.15] pointer-events-none select-none uppercase tracking-tighter transition-all group-hover:opacity-25">
+                        ${id}
                     </div>
                 </div>
-
-                <div class="p-5 mt-auto relative z-10">
-                    <a href="team_detail.html?teamId=${id}" 
-                       class="flex items-center justify-between w-full px-4 py-3 bg-white/15 hover:bg-white text-white hover:text-gray-900 rounded-2xl transition-all duration-300 group/btn border border-white/10">
-                        <span class="text-[12px] font-black">팀 소개 보러가기</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
-
-                <div class="absolute left-6 bottom-4 text-5xl font-black text-white opacity-[0.12] pointer-events-none select-none uppercase tracking-tighter transition-all group-hover:opacity-20">
-                    ${id}
-                </div>
-            </div>
-        `).join('');
-    }
-    window.addEventListener('load', renderTeams);
-</script>
+            `).join('');
+        }
+        window.addEventListener('load', renderTeams);
+    </script>
 </body>
 </html>
