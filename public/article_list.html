@@ -29,10 +29,11 @@
         
         .text-gradient { background: var(--sunny-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
+        /* 이미지 16:9 고정 유지 */
         .article-img-wrapper {
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%; /* 16:9 */
+            padding-bottom: 56.25%;
             background: #f3f4f6;
             overflow: hidden;
         }
@@ -43,19 +44,15 @@
             object-fit: cover;
         }
 
-        /* [추가] 가로 스크롤 끝부분 블러 마스크 */
-        .scroll-container-wrapper {
-            position: relative;
-        }
+        .scroll-container-wrapper { position: relative; }
         .scroll-container-wrapper::after {
             content: "";
             position: absolute;
-            top: 0;
-            right: 0;
+            top: 0; right: 0;
             width: 80px;
-            height: calc(100% - 40px); /* 패딩 제외 높이 */
+            height: calc(100% - 40px);
             background: linear-gradient(to right, transparent, #f8f9ff);
-            pointer-events: none; /* 클릭 방해 금지 */
+            pointer-events: none;
             z-index: 10;
         }
     </style>
@@ -95,7 +92,7 @@ function renderArticles() {
 
         const section = document.createElement('section');
         section.id = tId; 
-        section.className = "scroll-mt-24"; // 애니메이션 클래스는 JS에서 나중에 추가
+        section.className = "scroll-mt-24";
 
         section.innerHTML = `
             <div class="px-6 mb-6">
@@ -127,13 +124,15 @@ function renderArticles() {
             <div class="scroll-container-wrapper group/scroll">
                 <div class="flex gap-5 overflow-x-auto pb-10 scrollbar-hide px-6 cursor-grab active:cursor-grabbing horizontal-scroll">
                     ${teamArticles.map(art => `
-                        <a href="article_view.html?id=${art.id}" class="group block bg-white rounded-[24px] overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-500 min-w-[280px] md:min-w-[320px] flex-shrink-0">
+                        <a href="article_view.html?id=${art.id}" class="group block bg-white rounded-[24px] overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-500 min-w-[280px] md:min-w-[320px] flex-shrink-0 flex flex-col">
                             <div class="article-img-wrapper">
                                 <img src="${art.thumbnail}" onerror="this.src='https://via.placeholder.com/400x225?text=SUNNY+ARTICLE'">
                             </div>
-                            <div class="p-5">
+                            <div class="p-5 flex-grow flex flex-col">
                                 <span class="text-[10px] font-black text-[#63489a] uppercase tracking-widest mb-2 inline-block">${art.part}</span>
-                                <h4 class="font-black text-lg text-gray-900 leading-snug group-hover:text-[#63489a] transition-colors break-keep line-clamp-2">${art.title}</h4>
+                                <h4 class="font-black text-lg text-gray-900 leading-snug group-hover:text-[#63489a] transition-colors break-keep line-clamp-2 h-[3.5rem] mb-1">
+                                    ${art.title}
+                                </h4>
                             </div>
                         </a>
                     `).join('')}
@@ -144,10 +143,7 @@ function renderArticles() {
         page.appendChild(section); 
     });
 
-    // 렌더링 직후 위치 조절
     initHorizontalScroll();
-    
-    // 이미지가 다 로드된 후 혹은 아주 약간의 지연 후 스크롤 실행 (애니메이션 충돌 방지)
     setTimeout(handleScrollToHash, 100);
 }
 
@@ -163,24 +159,15 @@ function initHorizontalScroll() {
     });
 }
 
-// [수정] 스크롤 위치 보정 함수
 function handleScrollToHash() {
     const hash = window.location.hash;
     if (!hash) return;
-
     const target = document.querySelector(hash);
     if (!target) return;
-
-    // 애니메이션 방해 요소를 제거하고 위치 계산
     target.classList.add('animate__animated', 'animate__fadeInUp');
-
-    const headerHeight = 80; // 상단 헤더 높이 + 여유공간
+    const headerHeight = 80; 
     const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-
-    window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth'
-    });
+    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
 }
 
 window.onload = renderArticles;
