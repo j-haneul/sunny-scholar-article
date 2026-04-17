@@ -22,7 +22,6 @@
         }
         .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
         
-        /* 이미지 없는 깔끔한 카드 스타일 */
         .team-card { 
             transition: all 0.3s ease; 
             background: white;
@@ -80,30 +79,40 @@
     <script>
         function renderTeams() {
             const grid = document.getElementById('team-grid');
-            if (typeof TEAM_DETAILS === 'undefined') return;
+            
+            // 1. 데이터 소스 변수명 확인 (TEAM_DATA 또는 TEAM_DETAILS)
+            // data.js에 있는 이름이 TEAM_DATA라면 아래처럼 수정해야 합니다.
+            const sourceData = typeof TEAM_DATA !== 'undefined' ? TEAM_DATA : (typeof TEAM_DETAILS !== 'undefined' ? TEAM_DETAILS : null);
 
-            grid.innerHTML = Object.entries(TEAM_DETAILS).map(([id, team]) => `
+            if (!sourceData) {
+                console.error("데이터를 찾을 수 없습니다.");
+                return;
+            }
+
+            grid.innerHTML = Object.entries(sourceData).map(([id, team]) => `
                 <div class="team-card p-8 animate__animated animate__fadeInUp">
                     <div>
                         <span class="inline-block bg-purple-50 text-[#63489a] text-[10px] font-black px-3 py-1 rounded-full uppercase mb-4">
-                            ${team.order}
+                            ${team.order || '-'}
                         </span>
                         <h3 class="text-2xl font-black text-gray-900 mb-3 leading-tight">
-                            ${team.name}
+                            ${team.teamName || team.name}
                         </h3>
                         <p class="text-gray-500 text-sm leading-relaxed line-clamp-3 mb-6 font-medium">
-                            ${team.description}
+                            ${team.summary || team.description}
                         </p>
                     </div>
                     
-                    <a href="team_detail.html?id=${teamId}" class="inline-flex items-center justify-center w-full py-4 bg-gray-50 hover:bg-[#63489a] text-[#63489a] hover:text-white text-xs font-black rounded-xl transition-all duration-300 uppercase tracking-widest group">
+                    <a href="team_detail.html?teamId=${id}" class="inline-flex items-center justify-center w-full py-4 bg-gray-50 hover:bg-[#63489a] text-[#63489a] hover:text-white text-xs font-black rounded-xl transition-all duration-300 uppercase tracking-widest group">
                         View Lab Profile
                         <span class="ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
                     </a>
                 </div>
             `).join('');
         }
-        window.onload = renderTeams;
+        
+        // 페이지 로드 시 실행
+        window.addEventListener('load', renderTeams);
     </script>
 </body>
 </html>
