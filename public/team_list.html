@@ -8,10 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
-        :root {
-            --sunny-purple: #63489a;
-            --grid-color: rgba(99, 72, 154, 0.05);
-        }
+        :root { --sunny-purple: #63489a; --grid-color: rgba(99, 72, 154, 0.05); }
         body { 
             font-family: 'Pretendard', sans-serif; 
             background-color: #f8f9ff;
@@ -20,15 +17,7 @@
             letter-spacing: -0.02em;
         }
         .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
-        
-        /* 팀명 길이에 따른 줄바꿈 및 생략 방지 */
-        .team-title {
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            word-break: keep-all;
-        }
+        .team-title { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; word-break: keep-all; }
     </style>
 </head>
 <body class="text-gray-900">
@@ -51,28 +40,75 @@
     </section>
 
     <main class="max-w-[1600px] mx-auto px-6 pb-24">
-        <div id="team-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
-            </div>
+        <div id="team-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-12 min-h-[320px]">
+            <p class="col-span-full text-center py-20 text-gray-400">데이터를 불러오는 중입니다...</p>
+        </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 overflow-hidden">
-            <div class="aspect-[16/10] bg-gray-200 rounded-[32px] overflow-hidden border border-gray-100 shadow-sm transition-transform hover:scale-[1.02] duration-500">
-                <img src="images/sunny_group_1.jpg" alt="Sunny Group 1" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-gray-400 font-bold\'>PHOTO 1</div>'">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="aspect-[16/10] bg-gray-100 rounded-[32px] overflow-hidden border border-gray-200">
+                <img src="images/sunny_group_1.jpg" class="w-full h-full object-cover" onerror="this.style.display='none';">
             </div>
-            <div class="aspect-[16/10] bg-gray-200 rounded-[32px] overflow-hidden border border-gray-100 shadow-sm transition-transform hover:scale-[1.02] duration-500">
-                <img src="images/sunny_group_2.jpg" alt="Sunny Group 2" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-gray-400 font-bold\'>PHOTO 2</div>'">
+            <div class="aspect-[16/10] bg-gray-100 rounded-[32px] overflow-hidden border border-gray-200">
+                <img src="images/sunny_group_2.jpg" class="w-full h-full object-cover" onerror="this.style.display='none';">
             </div>
-            <div class="aspect-[16/10] bg-gray-200 rounded-[32px] overflow-hidden border border-gray-100 shadow-sm transition-transform hover:scale-[1.02] duration-500">
-                <img src="images/sunny_group_3.jpg" alt="Sunny Group 3" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-gray-400 font-bold\'>PHOTO 3</div>'">
+            <div class="aspect-[16/10] bg-gray-100 rounded-[32px] overflow-hidden border border-gray-200">
+                <img src="images/sunny_group_3.jpg" class="w-full h-full object-cover" onerror="this.style.display='none';">
             </div>
         </div>
     </main>
 
     <script src="data.js"></script>
     <script>
-        function renderTeams() {
+        document.addEventListener('DOMContentLoaded', function() {
             const grid = document.getElementById('team-grid');
+            
+            // 데이터 변수명 확인 (TEAM_DATA 또는 TEAM_DETAILS)
             const sourceData = typeof TEAM_DATA !== 'undefined' ? TEAM_DATA : (typeof TEAM_DETAILS !== 'undefined' ? TEAM_DETAILS : null);
 
-            if (!sourceData) return;
+            if (!sourceData) {
+                grid.innerHTML = `<p class="col-span-full text-center py-20 text-red-500 font-bold">data.js를 찾을 수 없거나 데이터가 비어있습니다.</p>`;
+                return;
+            }
 
-            grid.innerHTML = Object.entries(sourceData
+            grid.innerHTML = Object.entries(sourceData).map(([id, team]) => {
+                const name = team.teamName || team.name || "Unknown Team";
+                const themeColor = (team.theme && team.theme.main) ? team.theme.main : "#63489a";
+                const fontSize = name.length > 8 ? 'text-xl' : 'text-2xl';
+
+                return `
+                    <div class="group relative flex flex-col h-[320px] rounded-[32px] overflow-hidden transition-all duration-500 hover:shadow-2xl animate__animated animate__fadeIn"
+                         style="background-color: ${themeColor}"> 
+                        
+                        <div class="p-7 pb-0 relative z-10">
+                            <span class="inline-block px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-widest">
+                                ${team.order || '00'}
+                            </span>
+                        </div>
+
+                        <div class="flex-1 px-7 pt-4 flex flex-col justify-start relative z-10 overflow-hidden">
+                            <h3 class="${fontSize} font-black text-white mb-3 leading-tight team-title">
+                                ${name}
+                            </h3>
+                            <div class="flex flex-wrap gap-1.5">
+                                ${(team.tags || []).map(tag => `
+                                    <span class="px-2.5 py-1 rounded-lg bg-white/10 text-white text-[10px] font-bold backdrop-blur-sm">#${tag}</span>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <div class="p-6 mt-auto relative z-10">
+                            <a href="team_detail.html?teamId=${id}" 
+                               class="flex items-center justify-between w-full px-4 py-3.5 bg-white/15 hover:bg-white text-white hover:text-gray-900 rounded-2xl transition-all duration-300 group/btn border border-white/10 shadow-lg">
+                                <span class="text-[12px] font-black">팀 소개 보러가기</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        });
+    </script>
+</body>
+</html>
