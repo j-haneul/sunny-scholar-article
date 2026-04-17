@@ -54,7 +54,7 @@ const SUNNY_DATA = [
         teamName: "포레 (fou:re)",
         part: "Part 1. 문제의 발견",
         title: "#1 스물 하나, 홀로 짊어진 시간들",
-        thumbnail: "images/fore_1.png",
+        thumbnail: "images/fore_1.jpg",
         thumbnailCaption: "이미지 출처 : pixabay", 
         content: `
             <p>수업 중간에 울린 전화는 119였습니다.</p>
