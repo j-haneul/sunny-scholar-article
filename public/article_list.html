@@ -1,184 +1,167 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Articles | 2026 SUNNY Scholar</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-<style>
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
-:root {
---sunny-purple: #63489a;
---sunny-gradient: linear-gradient(135deg, #4f319b 0%, #8c52ff 100%);
---grid-color: rgba(99, 72, 154, 0.05);
-}
-body { 
-font-family: 'Pretendard', sans-serif; 
-background-color: #f8f9ff;
-background-image: 
-linear-gradient(to bottom, rgba(99, 72, 154, 0.05) 0%, transparent 15%),
-linear-gradient(var(--grid-color) 1px, transparent 1px),
-linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-background-size: 100% 100%, 40px 40px, 40px 40px;
-}
-.glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); }
-.scrollbar-hide::-webkit-scrollbar { display: none; }
-.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-.text-gradient { background: var(--sunny-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles | 2026 SUNNY Scholar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
+        :root {
+            --sunny-purple: #63489a;
+            --sunny-gradient: linear-gradient(135deg, #4f319b 0%, #8c52ff 100%);
+            --grid-color: rgba(99, 72, 154, 0.05);
+        }
+        body { 
+            font-family: 'Pretendard', sans-serif; 
+            background-color: #f8f9ff;
+            background-image: 
+                linear-gradient(to bottom, rgba(99, 72, 154, 0.05) 0%, transparent 15%),
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
+        }
+        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+        
+        /* [수정] 가로 스크롤바 숨기기 및 영역 설정 */
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .text-gradient { background: var(--sunny-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-/* 팀 정보 요약 박스 스타일 */
-.team-info-box {
-    background: white;
-    border: 1px solid #f0f0f5;
-    border-radius: 20px;
-    padding: 24px;
-    margin-bottom: 24px;
-}
-.tag-mini {
-    padding: 3px 8px;
-    font-size: 10px;
-    font-weight: 800;
-    border-radius: 5px;
-}
-</style>
+        /* [수정] 이미지 고정 비율 및 꽉 차게 설정 */
+        .article-img-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 비율 고정 */
+            background: #f3f4f6;
+            overflow: hidden;
+        }
+        .article-img-wrapper img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover; /* 어떤 이미지 사이즈든 영역을 꽉 채움 */
+        }
+    </style>
 </head>
 <body class="text-gray-900">
 
-<header class="sticky top-0 z-50 glass border-b border-gray-100">
-<div class="max-w-7xl mx-auto px-6 h-14 md:h-16 flex justify-between items-center">
-<a href="index.html"><img src="images/sunny_scholar_logo.png" class="h-7 md:h-8 w-auto" onerror="this.src='https://via.placeholder.com/150x40?text=LOGO'"></a>
-<nav class="hidden md:flex space-x-10 text-xs font-black uppercase tracking-widest">
-<a href="article_list.html" class="text-gray-800 border-b-2 border-[#63489a]">Articles</a>
-<a href="team_list.html" class="text-gray-400 hover:text-gray-800 transition">Lab</a>
-<a href="about.html" class="text-gray-400 hover:text-gray-800 transition">About</a>
-</nav>
-</div>
+<header class="sticky top-0 z-50 glass">
+    <div class="max-w-7xl mx-auto px-6 h-14 md:h-16 flex justify-between items-center">
+        <a href="index.html"><img src="images/sunny_scholar_logo.png" class="h-7 md:h-8 w-auto"></a>
+        <nav class="hidden md:flex space-x-10 text-xs font-black uppercase tracking-widest">
+            <a href="article_list.html" class="text-gray-800 border-b-2 border-[#63489a]">Articles</a>
+            <a href="team_list.html" class="text-gray-400 hover:text-gray-800 transition">Lab</a>
+            <a href="about.html" class="text-gray-400 hover:text-gray-800 transition">About</a>
+        </nav>
+    </div>
 </header>
 
 <section class="py-12 md:py-16 px-6 max-w-7xl mx-auto">
-<p class="text-[#63489a] font-black tracking-widest text-[10px] uppercase mb-2">Step 01 Archive</p>
-<h1 class="text-3xl md:text-4xl font-black mb-2 tracking-tight">Problem Definition <span class="text-gradient">Articles</span></h1>
-<p class="text-gray-500 text-sm font-medium">5개의 팀이 정의한 문제의 본질을 아티클로 확인하세요.</p>
+    <p class="text-[#63489a] font-black tracking-widest text-[10px] uppercase mb-2">Step 01 Archive</p>
+    <h1 class="text-3xl md:text-4xl font-black mb-2 tracking-tight">Problem Definition <span class="text-gradient">Articles</span></h1>
+    <p class="text-gray-500 text-sm font-medium">5개의 팀이 정의한 문제의 본질을 아티클로 확인하세요.</p>
 </section>
 
-<main id="article-page" class="max-w-7xl mx-auto px-6 pb-24 space-y-24"></main>
+<main id="article-page" class="max-w-7xl mx-auto pb-24 space-y-20"></main>
 
 <script src="data.js"></script>
 <script>
 function renderArticles() {
     const page = document.getElementById('article-page');
-    if (typeof SUNNY_DATA === 'undefined' || typeof TEAM_DATA === 'undefined') {
-        console.error("데이터 로드 실패");
-        return;
-    }
+    if (typeof SUNNY_DATA === 'undefined' || typeof TEAM_DATA === 'undefined') return;
 
-    page.innerHTML = ''; // 중복 렌더링 방지
+    page.innerHTML = '';
 
-    // 1. 팀별 아티클 섹션 생성
     Object.keys(TEAM_DATA).forEach(tId => {
         const team = TEAM_DATA[tId];
         const teamArticles = SUNNY_DATA.filter(d => d.teamId === tId);
 
         const section = document.createElement('section');
         section.id = tId; 
-        section.className = "animate__animated animate__fadeInUp animate-fast scroll-mt-24 mb-20"; // mb-20으로 팀간 간격 확보
+        section.className = "animate__animated animate__fadeInUp scroll-mt-24";
 
-section.innerHTML = `
-            <div class="bg-white rounded-[20px] p-5 md:p-6 border border-gray-100 shadow-[0_4px_15px_rgb(0,0,0,0.02)] mb-6 relative overflow-hidden group">
-                
-                <div class="relative z-10">
-                    <div class="flex flex-col gap-3">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-2">
-                                <span class="bg-[#63489a] text-white text-[10px] font-extrabold px-1.5 py-0.5 rounded uppercase tracking-wider">
-                                    ${team.order}
-                                </span>
+        section.innerHTML = `
+            <div class="px-6 mb-6">
+                <div class="bg-white rounded-[24px] p-6 md:p-8 border border-gray-100 shadow-sm relative overflow-hidden group">
+                    <div class="relative z-10">
+                        <div class="flex flex-col gap-4">
+                            <div class="flex items-center justify-between">
+                                <span class="bg-[#63489a] text-white text-[10px] font-extrabold px-2 py-1 rounded uppercase tracking-wider">${team.order}</span>
+                                <div class="flex gap-1.5">
+                                    ${team.tags.map(tag => `
+                                        <span class="px-3 py-1 rounded-lg text-[11px] font-extrabold border border-gray-50 shadow-sm" 
+                                              style="background-color: ${team.theme.tagBg}; color: ${team.theme.main}">#${tag}</span>
+                                    `).join('')}
+                                </div>
                             </div>
-                            <div class="flex gap-1.5">
-                                ${team.tags.map(tag => `
-                                    <span class="px-3 py-1 rounded-lg text-[11px] md:text-[12px] font-extrabold border border-gray-50 shadow-sm" 
-                                          style="background-color: ${team.theme.tagBg}; color: ${team.theme.main}">
-                                        #${tag}
-                                    </span>
-                                `).join('')}
+                            <h2 class="text-2xl md:text-3xl font-black text-gray-950 tracking-tighter">${team.teamName}</h2>
+                            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-t border-gray-50 pt-4">
+                                <p class="text-[14px] md:text-[15px] font-bold text-gray-500 leading-snug max-w-2xl whitespace-pre-line">${team.summary}</p>
+                                <a href="team_detail.html?teamId=${tId}" class="inline-flex items-center gap-1.5 text-[13px] font-black text-[#63489a] hover:underline flex-shrink-0">
+                                    팀 연구 정보 보기
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path></svg>
+                                </a>
                             </div>
-                        </div>
-
-                        <h2 class="text-2xl md:text-3xl font-black text-gray-950 tracking-tighter">
-                            ${team.teamName}
-                        </h2>
-
-                        <div class="flex items-end justify-between gap-4 border-t border-gray-50 pt-3">
-                            <p class="text-[14px] md:text-[16px] font-bold text-gray-500 leading-tight max-w-[70%] whitespace-pre-line">
-                                ${team.summary}
-                            </p>
-                            
-                            <a href="team_detail.html?teamId=${tId}" 
-                               class="inline-flex items-center gap-1.5 text-[13px] md:text-[14px] font-black text-[#63489a] hover:text-[#4e387a] transition-all group/btn flex-shrink-0 mb-0.5">
-                                팀 연구 정보 보기
-                                <svg class="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path>
-                                </svg>
-                            </a>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="flex gap-4 overflow-x-auto pb-8 scrollbar-hide px-1">
-                ${teamArticles.map(art => `
-                    <a href="article_view.html?id=${art.id}" class="group block bg-white rounded-[20px] overflow-hidden border border-gray-100 hover:shadow-[0_15px_40px_rgba(0,0,0,0.08)] transition-all duration-500 min-w-[260px] md:min-w-[300px] flex-shrink-0">
-                        <div class="relative w-full pb-[58%] overflow-hidden bg-gray-50">
-                            <img src="${art.thumbnail}" 
-                                class="absolute top-0 left-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
-                                onerror="this.src='https://via.placeholder.com/400x225?text=SUNNY+ARTICLE'">
-                        </div>
-                        <div class="p-4">
-                            <div class="flex items-center gap-2 mb-2">
-                                <span class="text-[9px] font-black text-[#63489a] uppercase tracking-[0.1em]">${art.part}</span>
+            <div class="relative group/scroll">
+                <div class="flex gap-5 overflow-x-auto pb-10 scrollbar-hide px-6 cursor-grab active:cursor-grabbing horizontal-scroll">
+                    ${teamArticles.map(art => `
+                        <a href="article_view.html?id=${art.id}" class="group block bg-white rounded-[24px] overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-500 min-w-[280px] md:min-w-[320px] flex-shrink-0">
+                            <div class="article-img-wrapper">
+                                <img src="${art.thumbnail}" onerror="this.src='https://via.placeholder.com/400x225?text=SUNNY+ARTICLE'">
                             </div>
-                            <h4 class="font-black text-lg text-gray-900 leading-snug group-hover:text-[#63489a] transition-colors break-keep line-clamp-2">
-                                ${art.title}
-                            </h4>
-                        </div>
-                    </a>
-                `).join('')}
+                            <div class="p-5">
+                                <span class="text-[10px] font-black text-[#63489a] uppercase tracking-widest mb-2 inline-block">${art.part}</span>
+                                <h4 class="font-black text-lg text-gray-900 leading-snug group-hover:text-[#63489a] transition-colors break-keep line-clamp-2">${art.title}</h4>
+                            </div>
+                        </a>
+                    `).join('')}
+                    <div class="min-w-[24px] h-1 flex-shrink-0"></div>
+                </div>
             </div>
         `;
-
-page.appendChild(section); 
+        page.appendChild(section); 
     });
 
-    // 2. 렌더링이 끝난 직후에 스크롤 위치 보정 실행
+    initHorizontalScroll(); // 가로 스크롤 휠 이벤트 연결
     handleScrollToHash();
+}
+
+// [추가] 마우스 휠로 가로 스크롤 가능하게 하는 기능
+function initHorizontalScroll() {
+    const containers = document.querySelectorAll('.horizontal-scroll');
+    containers.forEach(container => {
+        container.addEventListener('wheel', (e) => {
+            if (e.deltaY !== 0) {
+                e.preventDefault();
+                container.scrollLeft += e.deltaY;
+            }
+        });
+    });
 }
 
 function handleScrollToHash() {
     if (window.location.hash) {
         const targetId = window.location.hash;
-        
         setTimeout(() => {
             const element = document.querySelector(targetId);
             if (element) {
-                // [수정] 첫 번째 팀(#foure)일 때는 헤더 오프셋을 거의 주지 않거나 작게 설정
-                // 일반 팀은 220, 첫 팀은 100 정도로 조절
-                const isFirstTeam = targetId === '#foure';
-                const headerOffset = isFirstTeam ? 20 : 200; 
-                
+                const headerOffset = targetId === '#foure' ? 20 : 120;
                 const elementPosition = element.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
             }
         }, 400); 
     }
 }
 
-// 페이지 로드 시 실행
 window.onload = renderArticles;
 </script>
 </body>
