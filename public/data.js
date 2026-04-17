@@ -33,7 +33,7 @@ const TEAM_DATA = {
         summary: "경계성지능 한부모 가정의\n삶과 자립의 사각지대",
         mainTitle: "이중의 어려움, 하나의 관심:\n경계성지능 한부모의 고군분투",
         tags: ["경계성지능한부모", "사각지대"],
-        theme: { main: "#653CC3", grad: "linear-gradient(135deg, #653CC3 0%, #7E56DC 100%)", tagBg: "#ece9f5", bgText: "DODREAM" }
+        theme: { main: "#653CC3", grad: "linear-gradient(135deg, #653CC3 0%, #7E56DC 100%)", tagBg: "#ece9f5", bgText: "DO-DREAM" }
     },
     "lighthouse": {
         teamName: "등대",
@@ -42,7 +42,7 @@ const TEAM_DATA = {
         summary: "중도입국청소년의 입학 지연\n및 학업 포기 문제",
         mainTitle: "닫힌 교문 앞의 이방인들,\n중도입국청소년의 권리",
         tags: ["중도입국청소년", "입학지연"],
-        theme: { main: "#633CBB", grad: "linear-gradient(135deg, #633CBB 0%, #744BC9 100%)", tagBg: "#ebe8f2", bgText: "LIGHT" }
+        theme: { main: "#633CBB", grad: "linear-gradient(135deg, #633CBB 0%, #744BC9 100%)", tagBg: "#ebe8f2", bgText: "LIGHT HOUSE" }
     }
 };
 
