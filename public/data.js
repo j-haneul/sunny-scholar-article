@@ -3,7 +3,7 @@ const TEAM_DATA = {
         teamName: "포레(fou:re)",
         order: "1조",
         category: "자립",
-        summary: "조부모 돌봄 자립준비청년의\n학업 중도포기 문제",
+        summary: "조부모 돌봄 자립준비청년의 학업 중도포기 문제",
         mainTitle: "가족 돌봄과 자립 사이의 선택,\n우리는 무엇을 놓치고 있는가",
         tags: ["자립준비청년", "학업포기"],
         theme: { main: "#8B52FB", grad: "linear-gradient(135deg, #8B52FB 0%, #A67BFF 100%)", tagBg: "#f5f0ff", bgText: "FOU:RE" }
@@ -12,7 +12,7 @@ const TEAM_DATA = {
         teamName: "그린",
         order: "2조",
         category: "자립",
-        summary: "자립준비청년의 학업 중단,\n그 이면의 구조적 결핍",
+        summary: "자립준비청년의 학업 중단, 그 이면의 구조적 결핍",
         mainTitle: "보호 종료 이후의 교육 공백:\n누구를 위한 자립인가",
         tags: ["자립준비청년", "교육단절"],
         theme: { main: "#804BEB", grad: "linear-gradient(135deg, #804BEB 0%, #9D74FF 100%)", tagBg: "#f2edff", bgText: "GREEN" }
@@ -21,7 +21,7 @@ const TEAM_DATA = {
         teamName: "헤아림",
         order: "3조",
         category: "장애",
-        summary: "장애인 의무고용제도 내\n발달장애인 배제 문제",
+        summary: "장애인 의무고용제도 내 발달장애인 배제 문제",
         mainTitle: "숫자 뒤에 가려진 고용 불평등,\n발달장애인의 내일",
         tags: ["발달장애인", "고용배제"],
         theme: { main: "#6C40C9", grad: "linear-gradient(135deg, #6C40C9 0%, #8A5EE6 100%)", tagBg: "#eeebf7", bgText: "HEARIM" }
@@ -30,7 +30,7 @@ const TEAM_DATA = {
         teamName: "두드림(Do-Dream)",
         order: "4조",
         category: "장애",
-        summary: "경계성지능 한부모 가정의\n삶과 자립의 사각지대",
+        summary: "경계성지능 한부모 가정의 삶과 자립의 사각지대",
         mainTitle: "이중의 어려움, 하나의 관심:\n경계성지능 한부모의 고군분투",
         tags: ["경계성지능한부모", "사각지대"],
         theme: { main: "#653CC3", grad: "linear-gradient(135deg, #653CC3 0%, #7E56DC 100%)", tagBg: "#ece9f5", bgText: "DO-DREAM" }
@@ -39,7 +39,7 @@ const TEAM_DATA = {
         teamName: "등대",
         order: "5조",
         category: "이주",
-        summary: "중도입국청소년의 입학 지연\n및 학업 포기 문제",
+        summary: "중도입국청소년의 입학 지연 및 학업 포기 문제",
         mainTitle: "닫힌 교문 앞의 이방인들,\n중도입국청소년의 권리",
         tags: ["중도입국청소년", "입학지연"],
         theme: { main: "#633CBB", grad: "linear-gradient(135deg, #633CBB 0%, #744BC9 100%)", tagBg: "#ebe8f2", bgText: "LIGHT HOUSE" }
@@ -154,6 +154,7 @@ const TEAM_DETAILS = {
 
 조부모 가정위탁 자립준비청년의 예견된 돌봄 문제, 여러분은 어떻게 생각하시나요? 
 비슷한 사례를 알고 계시거나, 저희 포레에게 전달하고자 하는 이야기가 있다면 언제든 연락 주시길 바랍니다.`,
+        cta: '조부모 가정위탁 자립준비청년의 예견된 돌봄 문제, 여러분은 어떻게 생각하시나요? \n 비슷한 사례를 알고 계시거나, 저희 포레에게 전달하고자 하는 이야기가 있다면 언제든 연락 주시길 바랍니다.`,
         email: "foure.sunny@gmail.com",
         instagram: "",
         homepage: "",
