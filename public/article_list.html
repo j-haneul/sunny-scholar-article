@@ -140,11 +140,13 @@ function handleScrollToHash() {
     if (window.location.hash) {
         const targetId = window.location.hash;
         
-        // 데이터가 그려지는 시간을 고려해 아주 잠깐 대기
         setTimeout(() => {
             const element = document.querySelector(targetId);
             if (element) {
-                const headerOffset = 110; // 헤더 높이에 맞춘 보정값
+                // [수정] 110에서 220으로 값을 키웠습니다. 
+                // 이 값이 커질수록 팀 카드가 아래쪽(화면 중앙 방향)으로 내려와서 뜹니다.
+                const headerOffset = 220; 
+                
                 const elementPosition = element.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -153,7 +155,7 @@ function handleScrollToHash() {
                     behavior: 'smooth'
                 });
             }
-        }, 300); 
+        }, 400); 
     }
 }
 
