@@ -727,14 +727,14 @@ const SUNNY_DATA = [
     <p>외국에서 성장하다가 부모의 재혼이나 취업 등의 이유로 한국으로 넘어와 낯선 환경에 놓인 아이들을 중도입국청소년이라고 부른다.</p>
 
     <div class="img-container">
-      <img src="images/dodream_3.png" class="content-img">
+      <img src="images/lighthouse_3.png" class="content-img">
       <p class="img-caption">▲ 이미지 출처: SIT 중도입국청소년우리 미래와 한계 — 국내 중도입국청소년 증가 추이, Claude를 통해 재생성</p>
     </div>
 
     <p>2018년 이후 중도입국청소년은 매년 4천 명 이상 증가하고 있다. 설렘 반, 두려움 반으로 공항을 나선 이들 가운데, 입국 후 6개월이 지나도록 학교에 가지 못한 아이들은 약 45% 이상으로 추정되며 그 중 1년 이상 가지 못하는 비율도 약 27%에 이른다.</p>
 
     <div class="img-container">
-      <img src="images/dodream_4.png" class="content-img">
+      <img src="images/lighthouse_4.png" class="content-img">
       <p class="img-caption">▲ 이미지 출처 : SIT 중도입국청소년, 우리의 미래와 한계 — 중도입국청소년의 공교육 대기 시간, Claude를 통해 재생성</p>
     </div>
 
@@ -758,41 +758,41 @@ const SUNNY_DATA = [
     teamName: "등대",
     part: "Part 3. 원인 설명",
     title: "#3 “집에서 혼자 보내는 시간이요..?”",
-    thumbnail: "images/lighthouse_5.jpg",
+    thumbnail: "images/lighthouse_5.png",
     thumbnailCaption: "이미지 출처 : Unsplash, @Amanda Gueraldi",
     content:`
     <p>앞서 살펴보았듯, 한국 땅에 다다른 준이의 앞에는 '입학 대기'라는 두꺼운 장벽이 놓여 있었다. 서류 절차가 꼬이고 언어의 벽에 부딪히며 학교로 가는 길은 한두 달에서 반 년으로, 그리고 또 다시 일년으로 자꾸만 밀려났다. 이 사소해 보이는 '기다림'의 시간은 준이를 거대한 늪으로 밀어 넣는 시작점이었다.</p>
 
     <div class="img-container">
-      <img src="images/dodream_6.png" class="content-img">
+      <img src="images/lighthouse_6.png" class="content-img">
       <p class="img-caption">▲ 이미지 출처: Claude 생성</p>
     </div>
 
     <p>학교라는 울타리 밖에서 머무는 시간이 길어질수록 준이의 세계는 방 안으로, 침대 위로 급격히 좁아졌다. 비재학 중도입국청소년의 경우 집에서 혼자 보내는 시간이 매우 길다. 민간·공공 지원기관과의 연결 역시 대체로 학교를 통해 이루어지기 때문이다. 많은 경우 교사나 학교 측의 안내를 통해 지역아동센터나 공부방 등과 이어지는데, 입학 자체가 지연된 아이들은 이 첫 연결고리부터 갖기 어렵다. 이는 곧 왕준과 같이 입학지연으로부터 시작된 ‘은둔 청소년’을 만들게 된다.</p>
 
     <div class="img-container">
-      <img src="images/dodream_7.png" class="content-img">
+      <img src="images/lighthouse_7.png" class="content-img">
       <p class="img-caption">▲ 이미지 출처: Claude 생성</p>
     </div>
 
     <p>이러한 은둔 중도입국청소년들이 한국 사회에 적응해 나가는 일은 쉽지 않다. 방 안에 머무는 시간이 길어질수록 아이들의 세계는 한 뼘씩 좁아지다 못해 결국 자신만의 고립된 섬으로 변모한다. 은둔이라는 물리적인 차단은 단순히 공간의 제약을 넘어, 한 사람의 성장을 지탱해 줄 핵심적인 자양분들을 하나둘씩 앗아가는 과정이 된다. 또래 친구를 만나 서툰 한국어라도 내뱉어보고, 한국의 문화를 몸으로 부딪히며 익힐 유일한 통로가 막혀버린 탓이다. 연습할 기회조차 없이 흘러가는 시간 속에서, 한국 사람과 마주하는 일은 이제 설렘이 아닌 거대한 부담이자 공포로 다가온다.</p>
 
     <div class="img-container">
-      <img src="images/dodream_8.png" class="content-img">
+      <img src="images/lighthouse_8.png" class="content-img">
       <p class="img-caption">▲ 이미지 출처: Claude 생성</p>
     </div>
 
     <p>입을 뗄 때마다 느껴지는 막막함과 낯선 문화와 사람에 대한 두려움은 준이를 점점 더 깊숙이 집 안으로 밀어 넣었다. 밖으로 나갈 용기가 사라진 자리에 스스로를 사회로부터 지워버리는 '그림자' 같은 생활이 시작된 것이다. 처음 한국에 올 때 품었던 경찰이 되고 싶었던 그의 꿈은 "어차피 나가봤자 말도 안 통하고 적응도 못 할 거야"라는 무기력으로 변해있었다. 결국 한국 사회 적응에 있어 의지와 동기를 상실하게 된 왕준은 입학에 대한 생각보단 집안 침대에서 본국 친구들과의 소통에 목매게 된다.</p>
 
     <div class="img-container">
-      <img src="images/dodream_9.png" class="content-img">
+      <img src="images/lighthouse_9.png" class="content-img">
       <p class="img-caption">▲ 이미지 출처: Claude 생성</p>
     </div>
 
     <p>앞서 말했듯 지원센터로의 연계는 대다수의 경우 학교를 통해 이루어지고 있다. 여성가족부에서 시행한 2024 전국 다문화가족 실태조사에 따르면 학교에 다니는 아이들의 경우 많게는 35% 이상이 지역아동센터, 청소년 방과후 아카데미, 공부방 같은 곳을 이용하며 도움을 받는다. 하지만 준이처럼 '학교에 다니지 않는' 아이들의 이용률은 고작 4.9%로 곤두박질친다. 비재학 청소년들은 결국 학교를 못 가서 세상과 단절되었는데, 역설적으로 학교를 다니지 않기 때문에 도와줄 복지 서비스에도 접근하기 어려워지는 악순환이 발생한다.</p>
 
     <div class="img-container">
-      <img src="images/dodream_10.png" class="content-img">
+      <img src="images/lighthouse_10.png" class="content-img">
       <p class="img-caption">▲ 이미지 출처: Claude 생성</p>
     </div>
 
@@ -805,7 +805,7 @@ const SUNNY_DATA = [
     teamName: "등대",
     part: "Part 4. 문제 해결의 시작",
     title: "#4 작은 방의 세계를 넘어",
-    thumbnail: "images/lighthouse_4.jpg",
+    thumbnail: "images/lighthouse_11.jpg",
     thumbnailCaption: "이미지 출처 : Unsplash, @Evgeni Tcherkasski",
     content: `
     <p>우리는 앞선 이야기에서 더 나아가, 아이들이 학교에 들어가지 못한 채 점점 보이지 않는 상태로 밀려나는 과정에 주목해보려 한다. 입학이 지연되는 시간은 단지 배움의 공백만을 만드는 것이 아니다. 그 시간 동안 아이들은 집 안에 머무는 데 익숙해지고, 또래와도 지역사회와도 연결되지 못한 채 점차 세상 밖으로 나올 계기를 잃어간다.</p>
@@ -834,7 +834,7 @@ const SUNNY_DATA = [
     teamName: "등대",
     part: "Part 5. 팀 소개",
     title: "#5 잠깐의 어둠을 지나, 희망을 가지고 방향을 찾을 수 있도록",
-    thumbnail: "images/lighthouse_5.jpg",
+    thumbnail: "images/lighthouse_12.jpg",
     thumbnailCaption: "이미지 출처 : 써니스콜라 사무국",
     content: `
     <p>팀 등대는 외국에서 살다가 한국으로 들어와 학창시절을 보내는 중도입국청소년의 어려움에 주목하는 대학생 팀이다. 끝이 보이지 않는 바다에서, 흔들리지 않고 도움이 필요한 곳을 바라보는 등대처럼, 우리는 어두운 방 안에서 한 걸음 내딛기조차 어려운 수많은 준이들에게 작은 가능성의 빛을 전하고 싶다는 마음으로 모였다.</p>
@@ -852,7 +852,7 @@ const SUNNY_DATA = [
     <p>이렇듯 시작은 정말 단순한 질문이었다. 그런데 하나씩 찾아볼수록 우리가 몰랐던, 그리고 세상이 주목하지 않아 왔던 현실이 보이기 시작했다. 한국에 왔지만 바로 학교에 가지 못하는 아이들, 입학 과정에서 긴 시간을 헤매는 아이들, 그리고 결국 방 안에만 머무르게 되는 아이들. 우리는 그제서야 깨달았다. 이건 특수한 누군가의 이야기가 아니라, 이미 한국 사회 안에서 벌어지고 있지만, 우리가 그랬듯 많은 사람들이 모르고 지나치는 현실이라는 것을.</p>
 
     <div class="img-container">
-      <img src="images/lighthouse_5.png" class="content-img">
+      <img src="images/lighthouse_13.jpg" class="content-img">
       <p class="img-caption">▲ 이미지 출처: 써니스콜라 사무국</p>
     </div>
 
@@ -867,7 +867,7 @@ const SUNNY_DATA = [
     <p>그 질문이, 등대가 이 문제를 선택하게 된 시작이었다. 그리고 이 과정을 지나며 우리는 더 이상 이 문제를 ‘중도입국청소년만의 문제’로만 보지 않게 되었다. 교사, 학부모, 지원기관, 지역사회까지 수많은 사람이 얽혀 있는 구조 속에서 이 문제를 바라보게 되었다. 무엇보다 가장 크게 변한 것은, 우리가 ‘문제’를 보기보다 그 안의 사람을 먼저 떠올리게 되었다는 점이다.</p>
 
     <div class="img-container">
-      <img src="images/lighthouse_6.png" class="content-img">
+      <img src="images/lighthouse_14.png" class="content-img">
       <p class="img-caption">▲ 이미지 출처: Claude 생성</p>
     </div>
 
