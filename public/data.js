@@ -735,7 +735,7 @@ const TEAM_DETAILS = {
     },
     "green": {
         order: "LAB 02",
-        name: "그린 : 자립준비청년 학업 중단",
+        name: "그린",
         teamProfileImg: "images/green_team_1.jpg", 
         description: "자립준비청년들이 경제적 어려움으로 인해 학업을 포기하지 않도록, 지속 가능한 교육 환경과 정책적 지원 방안을 연구합니다.",
         cta: `수현의 이야기로 시작한 이 탐구가 자립을 준비하고 있는 수많은 수현들을 만나 모두가 함께 나아갈 수 있는, 그려갈 수 있는 세상으로 나아갈 수 있기를 바랍니다.  \n그린이 그려갈 세상에 많은 관심 부탁드리며 함께해 주시길 부탁드립니다.`,
@@ -743,11 +743,61 @@ const TEAM_DETAILS = {
         instagram: "",
         homepage: "",
         members: [
-            { name: "정그린", img: "images/g_member1.png" },
-            { name: "나에듀", img: "images/g_member2.png" },
-            { name: "정린린", img: "images/g_member3.png" },
-            { name: "나듀듀", img: "images/g_member4.png" },
-            { name: "정그링", img: "images/g_member5.png" }
+            { name: "", img: "images/g_member1.png" },
+            { name: "", img: "images/g_member2.png" },
+            { name: "", img: "images/g_member3.png" },
+            { name: "", img: "images/g_member4.png" },
+            { name: "", img: "images/g_member5.png" }
+        ]
+    },
+    "hearim": {
+        order: "LAB 03",
+        name: "헤아림",
+        teamProfileImg: "images/hearim_team_1.jpg", 
+        description: `저희 '헤아림'은 발달장애인이 마주하는 재취업의 문턱과 그 사이의 긴 공백을 연구합니다. 단순히 일자리를 늘리는 것을 넘어, 당사자의 삶을 온전히 헤아리고 지속 가능한 연결을 만드는 세상을 꿈꿉니다.`,
+        cta: `여러분의 의견을 들려주세요!`,
+        email: "hearim.sunny@gmail.com",
+        instagram: "",
+        homepage: "",
+        members: [
+            { name: "", img: "images/h_member1.png" }, // (앞선 본문 참고)
+            { name: "", img: "images/h_member2.png" },
+            { name: "", img: "images/h_member3.png" },
+            { name: "", img: "images/h_member4.png" }
+        ]
+    },
+
+    "dodream": {
+        order: "LAB 04",
+        name: "두드림 : (팀 주제 입력)",
+        teamProfileImg: "images/dodream_team_1.jpg", 
+        description: `팀 두드림(Do-Dream)은 우리 사회의 보이지 않는 문을 두드리며, 새로운 가능성을 여는 연구를 지속합니다. (구체적인 팀 소개 문구를 입력하세요)`,
+        cta: `두드림의 여정에 함께해주셔서 감사합니다. 저희 팀의 연구에 의견이 있으시다면 언제든 연락 부탁드립니다.`,
+        email: "dodream.sunny@gmail.com",
+        instagram: "",
+        homepage: "",
+        members: [
+            { name: "", img: "images/d_member1.png" },
+            { name: "", img: "images/d_member2.png" },
+            { name: "", img: "images/d_member3.png" },
+            { name: "", img: "images/d_member4.png" }
+        ]
+    },
+
+    "lighthouse": {
+        order: "LAB 05",
+        name: "등대 : (팀 주제 입력)",
+        teamProfileImg: "images/lighthouse_team_1.jpg", 
+        description: `팀 등대는 어두운 곳을 밝히는 빛처럼, 사회 문제의 근본적인 원인을 조명하고 나아가야 할 방향을 제시합니다. (구체적인 팀 소개 문구를 입력하세요)`,
+        cta: `함께 길을 찾는 등대의 빛이 되어주세요. 여러분의 소중한 목소리를 기다립니다.`,
+        email: "lighthouse.sunny@gmail.com",
+        instagram: "",
+        homepage: "",
+        members: [
+            { name: "", img: "images/l_member1.png" },
+            { name: "", img: "images/l_member2.png" },
+            { name: "", img: "images/l_member3.png" },
+            { name: "", img: "images/l_member4.png" }
         ]
     }
 };
