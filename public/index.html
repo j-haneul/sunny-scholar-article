@@ -146,29 +146,21 @@
 </footer>
 <script src="data.js"></script>
 <script>
-    // 팀 카드를 렌더링하는 함수
     function renderTeamCards(filter = 'all') {
         const container = document.getElementById('team-container');
         if (!container) return;
 
-        // 데이터 존재 여부 확인
-        if (typeof TEAM_DATA === 'undefined') {
-            console.error("TEAM_DATA를 찾을 수 없습니다.");
-            return;
-        }
+        container.innerHTML = ''; 
 
-        container.innerHTML = ''; // 초기화
-
+        // 1. 실제 팀 카드들 렌더링
         Object.keys(TEAM_DATA).forEach(id => {
             const team = TEAM_DATA[id];
-
-            // 필터링 로직 (카테고리 매칭)
             if (filter !== 'all' && team.category !== filter) return;
 
             const card = document.createElement('div');
             card.className = "team-card group animate__animated animate__fadeIn";
-            // 클릭 시 article_list.html의 해당 팀 위치(#id)로 이동
             card.onclick = () => {
+                // [수정] 해시값을 가지고 이동
                 location.href = `article_list.html#${id}`;
             };
 
@@ -178,16 +170,12 @@
                     <div class="relative z-10">
                         <span class="text-[9px] font-black tracking-[0.3em] mb-2 block uppercase opacity-70">${team.order}</span>
                         <h3 class="text-2xl font-black tracking-tighter leading-none mb-4">${team.teamName}</h3>
-                        <p class="text-[13px] font-bold leading-snug text-white/90 whitespace-pre-line">
-                            ${team.summary}
-                        </p>
+                        <p class="text-[13px] font-bold leading-snug text-white/90 whitespace-pre-line">${team.summary}</p>
                     </div>
                 </div>
                 <div class="p-6 flex flex-col flex-grow bg-white">
                     <div class="flex flex-wrap gap-1.5 mb-6">
-                        ${team.tags.map(tag => `
-                            <span class="tag-block" style="background-color: ${team.theme.tagBg}; color: ${team.theme.main}">#${tag}</span>
-                        `).join('')}
+                        ${team.tags.map(tag => `<span class="tag-block" style="background-color: ${team.theme.tagBg}; color: ${team.theme.main}">#${tag}</span>`).join('')}
                     </div>
                     <div class="mt-auto pt-4 border-t border-gray-50 flex justify-between items-center">
                         <span class="text-[10px] font-black text-gray-400 uppercase tracking-widest group-hover:text-[#63489a] transition-colors">View Articles</span>
@@ -199,29 +187,39 @@
             `;
             container.appendChild(card);
         });
+
+        // 2. [추가] 25개 전체 아티클 보기 카드 (필터가 'all'일 때만 맨 뒤에 표시)
+        if (filter === 'all') {
+            const allCard = document.createElement('div');
+            allCard.className = "team-card group animate__animated animate__fadeIn flex items-center justify-center border-2 border-dashed border-gray-100 bg-gray-50/50 hover:bg-[#f5f0ff] hover:border-[#63489a]/30";
+            allCard.style.minHeight = "350px";
+            allCard.onclick = () => { location.href = 'article_list.html'; };
+            
+            allCard.innerHTML = `
+                <div class="text-center p-8">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-sm mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <span class="text-2xl text-[#63489a] font-black">+</span>
+                    </div>
+                    <h3 class="text-xl font-black text-gray-900 mb-2">25개 전체 아티클 보기</h3>
+                    <p class="text-[12px] text-gray-400 font-bold uppercase tracking-tight">Sunny Scholar 1단계 모든 기록</p>
+                </div>
+            `;
+            container.appendChild(allCard);
+        }
     }
 
-    // 필터링 함수
     function filterTeams(category) {
-        // 버튼 활성화 스타일 제어
         const buttons = document.querySelectorAll('.filter-btn');
         buttons.forEach(btn => {
             btn.classList.remove('active', 'text-white', 'bg-[#63489a]');
             btn.classList.add('text-gray-400');
         });
-
-        // 클릭된 버튼 스타일 적용
-        const activeBtn = event.currentTarget;
-        activeBtn.classList.add('active', 'text-white', 'bg-[#63489a]');
-        activeBtn.classList.remove('text-gray-400');
-
+        event.currentTarget.classList.add('active', 'text-white', 'bg-[#63489a]');
+        event.currentTarget.classList.remove('text-gray-400');
         renderTeamCards(category);
     }
 
-    // 페이지 로드 시 실행
-    document.addEventListener('DOMContentLoaded', () => {
-        renderTeamCards('all');
-    });
+    document.addEventListener('DOMContentLoaded', () => renderTeamCards('all'));
 </script>
 </body>
 </html>
