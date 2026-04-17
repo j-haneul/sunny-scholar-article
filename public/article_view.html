@@ -19,9 +19,18 @@
         
         .content-text { color: #374151; font-size: 1.125rem; word-break: keep-all; text-align: justify; }
         .content-text p { margin-bottom: 2rem; }
-        .content-img { border-radius: 1.5rem; box-shadow: 0 20px 40px rgba(0,0,0,0.05); width: 100%; display: block; object-fit: cover; }
+
+        /* 이미지 스타일 통일 */
+        .content-img { 
+            width: 100%; 
+            border-radius: 1.5rem; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+            display: block; 
+            object-fit: cover; 
+        }
+        .img-container { margin-top: 2.5rem; margin-bottom: 2.5rem; }
+        .img-caption { text-align: center; font-size: 13px; color: #94a3b8; margin-top: 1rem; font-weight: 500; word-break: keep-all; }
         
-        /* 추가된 팀 컨택트 카드 스타일 */
         .contact-box { background: white; border-radius: 1.5rem; border: 1px solid #f1f5f9; padding: 2rem; text-align: center; margin-top: 2rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
     </style>
 </head>
@@ -54,9 +63,7 @@
         </header>
 
         <article>
-            <img id="view-main-img" src="" class="content-img mb-10" style="display:none;">
             <div id="dynamic-body" class="content-text"></div>
-            <img id="view-sub-img" src="" class="content-img mt-10" style="display:none;">
         </article>
 
         <div class="mt-20 py-10 border-t border-gray-100 flex justify-center">
@@ -116,18 +123,38 @@
                 return;
             }
 
-            // 1. 기본 텍스트 및 본문 매핑
+            // 1. 헤더 텍스트 매핑
             document.getElementById('view-team-tag').innerText = current.teamName;
             document.getElementById('view-title').innerText = current.title;
-            document.getElementById('dynamic-body').innerHTML = current.content || "";
 
-            // 2. 팀 정보 및 상세 페이지 연결 (이슈 해결)
+            // 2. 본문 및 이미지 결합
+            const dynamicBody = document.getElementById('dynamic-body');
+            let articleContent = current.content || "";
+
+            if (current.thumbnail) {
+                articleContent = `
+                    <div class="img-container animate__animated animate__fadeIn">
+                        <img src="${current.thumbnail}" class="content-img">
+                        ${current.thumbnailCaption ? `<p class="img-caption">▲ ${current.thumbnailCaption}</p>` : ''}
+                    </div>
+                ` + articleContent;
+            }
+
+            if (current.subImage) {
+                articleContent = articleContent + `
+                    <div class="img-container animate__animated animate__fadeIn">
+                        <img src="${current.subImage}" class="content-img">
+                        ${current.subImageCaption ? `<p class="img-caption">▲ ${current.subImageCaption}</p>` : ''}
+                    </div>
+                `;
+            }
+            dynamicBody.innerHTML = articleContent;
+
+            // 3. 팀 정보 업데이트
             const teamLink = document.getElementById('team-link');
             if (current.teamId) {
-                // team_detail.html에서 데이터를 불러올 수 있도록 teamId를 파라미터로 넘깁니다.
                 teamLink.href = `team_detail.html?teamId=${current.teamId}`;
             }
-            
             document.getElementById('contact-team-name').innerText = current.teamName;
             document.getElementById('team-one-liner').innerText = current.teamDescription || "사회문제의 본질을 연구하고 새로운 시각을 제안합니다.";
             
@@ -135,18 +162,6 @@
             const emailLink = document.getElementById('contact-email-link');
             emailLink.innerText = emailAddr;
             emailLink.href = `mailto:${emailAddr}`;
-
-            // 3. 이미지 처리
-            const mainImg = document.getElementById('view-main-img');
-            if(current.thumbnail) {
-                mainImg.src = current.thumbnail;
-                mainImg.style.display = 'block';
-            }
-            const subImg = document.getElementById('view-sub-img');
-            if(current.subImage) {
-                subImg.src = current.subImage;
-                subImg.style.display = 'block';
-            }
 
             // 4. 상단 탭 (동일 팀 아티클 목록)
             const teamArticles = SUNNY_DATA.filter(a => a.teamId === current.teamId);
