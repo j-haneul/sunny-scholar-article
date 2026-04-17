@@ -1,8 +1,57 @@
+const TEAM_DATA = {
+    "foure": {
+        teamName: "포레(fou:re)",
+        order: "1조",
+        category: "자립",
+        summary: "조부모 돌봄 자립준비청년의\n학업 중도포기 문제",
+        mainTitle: "가족 돌봄과 자립 사이의 선택,\n우리는 무엇을 놓치고 있는가",
+        tags: ["자립준비청년", "학업포기"],
+        theme: { main: "#8B52FB", grad: "linear-gradient(135deg, #8B52FB 0%, #A67BFF 100%)", tagBg: "#f5f0ff", bgText: "FOU:RE" }
+    },
+    "green": {
+        teamName: "그린",
+        order: "2조",
+        category: "자립",
+        summary: "자립준비청년의 학업 중단,\n그 이면의 구조적 결핍",
+        mainTitle: "보호 종료 이후의 교육 공백:\n누구를 위한 자립인가",
+        tags: ["자립준비청년", "교육단절"],
+        theme: { main: "#804BEB", grad: "linear-gradient(135deg, #804BEB 0%, #9D74FF 100%)", tagBg: "#f2edff", bgText: "GREEN" }
+    },
+    "hearim": {
+        teamName: "헤아림",
+        order: "3조",
+        category: "장애",
+        summary: "장애인 의무고용제도 내\n발달장애인 배제 문제",
+        mainTitle: "숫자 뒤에 가려진 고용 불평등,\n발달장애인의 내일",
+        tags: ["발달장애인", "고용배제"],
+        theme: { main: "#6C40C9", grad: "linear-gradient(135deg, #6C40C9 0%, #8A5EE6 100%)", tagBg: "#eeebf7", bgText: "HEARIM" }
+    },
+    "dodream": {
+        teamName: "두드림(Do-Dream)",
+        order: "4조",
+        category: "장애",
+        summary: "경계성지능 한부모 가정의\n삶과 자립의 사각지대",
+        mainTitle: "이중의 어려움, 하나의 관심:\n경계성지능 한부모의 고군분투",
+        tags: ["경계성지능한부모", "사각지대"],
+        theme: { main: "#653CC3", grad: "linear-gradient(135deg, #653CC3 0%, #7E56DC 100%)", tagBg: "#ece9f5", bgText: "DODREAM" }
+    },
+    "lighthouse": {
+        teamName: "등대",
+        order: "5조",
+        category: "이주",
+        summary: "중도입국청소년의 입학 지연\n및 학업 포기 문제",
+        mainTitle: "닫힌 교문 앞의 이방인들,\n중도입국청소년의 권리",
+        tags: ["중도입국청소년", "입학지연"],
+        theme: { main: "#633CBB", grad: "linear-gradient(135deg, #633CBB 0%, #744BC9 100%)", tagBg: "#ebe8f2", bgText: "LIGHT" }
+    }
+};
+
+
 const SUNNY_DATA = [
     {
         id: "article-01",
-        teamId: "fore",
-        teamName: "포레 (FORE)",
+        teamId: "foure",
+        teamName: "포레 (fou:re)",
         part: "Part 1. 문제의 발견",
         title: "#1 스물 하나, 홀로 짊어진 시간들",
         thumbnail: "images/fore_1.png",
@@ -42,8 +91,8 @@ const SUNNY_DATA = [
     },
     {
         id: "article-02",
-        teamId: "fore",
-        teamName: "포레 (FORE)",
+        teamId: "foure",
+        teamName: "포레 (fou:re)",
         part: "Part 2. 원인 분석",
         title: "보이지 않는 돌봄의 무게: 통계로 본 현실",
  thumbnail: "images/fore_2.jpg",
@@ -52,9 +101,9 @@ const SUNNY_DATA = [
 ];
 // 팀 상세 정보를 담은 데이터 추가
 const TEAM_DETAILS = {
-    "fore": {
+    "foure": {
         order: "LAB 01",
-        name: "포레(fo:re)",
+        name: "포레(fou:re)",
         teamProfileImg: "images/fore_team_1.jpg", 
         description: "저희 fou:re(포레)는 사회를 바라볼 때 당연하게 여겨져 온 것들을 다시 질문하는 데서 출발합니다. 익숙함 속에서 무심히 지나쳐 온 문제를 되짚으며, 사회를 서로 연결된 하나의 숲(forest)처럼  바라봅니다. 동시에 four(4명)과 re(다시·회복)의 결합으로, 실패하더라도 끊임없이 다시 도전하고 시도하겠다는 의지를 담고 있습니다.",
         email: "fore_sunny@example.com",
