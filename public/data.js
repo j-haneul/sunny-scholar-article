@@ -247,7 +247,243 @@ const SUNNY_DATA = [
       <p class="img-caption">▲ 이미지 출처 : 포레팀 촬영</p>
     </div>
 `
-    }
+    },
+// ==========================================
+  // 2. 그린 (Green) 팀
+  // ==========================================
+  {
+    id: "green-01",
+    teamId: "green",
+    teamName: "그린",
+    part: "Part 1. 당사자 소개",
+    title: "#1 제목입력",
+    thumbnail: "images/green_1.jpg",
+    thumbnailCaption: "이미지 출처 : pixabay",
+    content: `
+    `
+  },
+  {
+    id: "green-02",
+    teamId: "green",
+    teamName: "그린",
+    part: "Part 2. 문제 정의",
+    title: "#2 제목입력",
+    thumbnail: "images/green_2.jpg",
+    thumbnailCaption: "이미지 출처 : pixabay",
+    content: `
+    `
+  },
+  {
+    id: "green-03",
+    teamId: "green",
+    teamName: "그린",
+    part: "Part 3. 해결의 실마리",
+    title: "#3 제목입력",
+    thumbnail: "images/green_3.jpg",
+    thumbnailCaption: "이미지 출처 : pixabay",
+    content: `
+    `
+  },
+  {
+    id: "green-04",
+    teamId: "green",
+    teamName: "그린",
+    part: "Part 4. 팀의 철학",
+    title: "#4 제목입력",
+    thumbnail: "images/green_4.jpg",
+    thumbnailCaption: "이미지 출처 : pixabay",
+    content: `
+    `
+  },
+  {
+    id: "green-05",
+    teamId: "green",
+    teamName: "그린",
+    part: "Part 5. 변화의 시작",
+    title: "#5 제목입력",
+    thumbnail: "images/green_5.jpg",
+    thumbnailCaption: "이미지 출처 : pixabay",
+    content: `
+    `
+  },
+
+  // ==========================================
+  // 3. 헤아림 (Hearim) 팀
+  // ==========================================
+  {
+    id: "hearim-01",
+    teamId: "hearim",
+    teamName: "헤아림",
+    part: "Part 1. 당사자 소개",
+    title: "#1 제목입력",
+    thumbnail: "images/hearim_1.jpg",
+    thumbnailCaption: "이미지 출처 : pixabay",
+    content: `
+    `
+  },
+  {
+    id: "hearim-02",
+    teamId: "hearim",
+    teamName: "헤아림",
+    part: "Part 2. 문제 정의",
+    title: "#2 제목입력",
+    thumbnail: "images/hearim_2.jpg",
+    thumbnailCaption: "이미지 출처 : pixabay",
+    content: `
+    `
+  },
+  {
+    id: "hearim-03",
+    teamId: "hearim",
+    teamName: "헤아림",
+    part: "Part 3. 해결의 실마리",
+    title: "#3 제목입력",
+    thumbnail: "images/hearim_3.jpg",
+    thumbnailCaption: "이미지 출처 : pixabay",
+    content: `
+    `
+  },
+  {
+    id: "hearim-04",
+    teamId: "hearim",
+    teamName: "헤아림",
+    part: "Part 4. 팀의 철학",
+    title: "#4 제목입력",
+    thumbnail: "images/hearim_4.jpg",
+    thumbnailCaption: "이미지 출처 : pixabay",
+    content: `
+    `
+  },
+  {
+    id: "hearim-05",
+    teamId: "hearim",
+    teamName: "헤아림",
+    part: "Part 5. 변화의 시작",
+    title: "#5 제목입력",
+    thumbnail: "images/hearim_5.jpg",
+    thumbnailCaption: "이미지 출처 : pixabay",
+    content: `
+    `
+  },
+
+  // ==========================================
+  // 4. 두드림 (Do-Dream) 팀
+  // ==========================================
+  {
+    id: "dodream-01",
+    teamId: "dodream",
+    teamName: "두드림(Do-Dream)",
+    part: "Part 1. 당사자 소개",
+    title: "#1 제목입력",
+    thumbnail: "images/dodream_1.jpg",
+    thumbnailCaption: "이미지 출처 : pixabay",
+    content: `
+    `
+  },
+  {
+    id: "dodream-02",
+    teamId: "dodream",
+    teamName: "두드림(Do-Dream)",
+    part: "Part 2. 문제 정의",
+    title: "#2 제목입력",
+    thumbnail: "images/dodream_2.jpg",
+    thumbnailCaption: "이미지 출처 : pixabay",
+    content: `
+    `
+  },
+  {
+    id: "dodream-03",
+    teamId: "dodream",
+    teamName: "두드림(Do-Dream)",
+    part: "Part 3. 해결의 실마리",
+    title: "#3 제목입력",
+    thumbnail: "images/dodream_3.jpg",
+    thumbnailCaption: "이미지 출처 : pixabay",
+    content: `
+    `
+  },
+  {
+    id: "dodream-04",
+    teamId: "dodream",
+    teamName: "두드림(Do-Dream)",
+    part: "Part 4. 팀의 철학",
+    title: "#4 제목입력",
+    thumbnail: "images/dodream_4.jpg",
+    thumbnailCaption: "이미지 출처 : pixabay",
+    content: `
+    `
+  },
+  {
+    id: "dodream-05",
+    teamId: "dodream",
+    teamName: "두드림(Do-Dream)",
+    part: "Part 5. 변화의 시작",
+    title: "#5 제목입력",
+    thumbnail: "images/dodream_5.jpg",
+    thumbnailCaption: "이미지 출처 : pixabay",
+    content: `
+    `
+  },
+
+  // ==========================================
+  // 5. 등대 (Lighthouse) 팀
+  // ==========================================
+  {
+    id: "lighthouse-01",
+    teamId: "lighthouse",
+    teamName: "등대",
+    part: "Part 1. 당사자 소개",
+    title: "#1 제목입력",
+    thumbnail: "images/lighthouse_1.jpg",
+    thumbnailCaption: "이미지 출처 : pixabay",
+    content: `
+    `
+  },
+  {
+    id: "lighthouse-02",
+    teamId: "lighthouse",
+    teamName: "등대",
+    part: "Part 2. 문제 정의",
+    title: "#2 제목입력",
+    thumbnail: "images/lighthouse_2.jpg",
+    thumbnailCaption: "이미지 출처 : pixabay",
+    content: `
+    `
+  },
+  {
+    id: "lighthouse-03",
+    teamId: "lighthouse",
+    teamName: "등대",
+    part: "Part 3. 해결의 실마리",
+    title: "#3 제목입력",
+    thumbnail: "images/lighthouse_3.jpg",
+    thumbnailCaption: "이미지 출처 : pixabay",
+    content: `
+    `
+  },
+  {
+    id: "lighthouse-04",
+    teamId: "lighthouse",
+    teamName: "등대",
+    part: "Part 4. 팀의 철학",
+    title: "#4 제목입력",
+    thumbnail: "images/lighthouse_4.jpg",
+    thumbnailCaption: "이미지 출처 : pixabay",
+    content: `
+    `
+  },
+  {
+    id: "lighthouse-05",
+    teamId: "lighthouse",
+    teamName: "등대",
+    part: "Part 5. 변화의 시작",
+    title: "#5 제목입력",
+    thumbnail: "images/lighthouse_5.jpg",
+    thumbnailCaption: "이미지 출처 : pixabay",
+    content: `
+    `
+  }
+    
 ];
 
 const TEAM_DETAILS = {
