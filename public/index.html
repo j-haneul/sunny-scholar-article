@@ -148,8 +148,20 @@
 <script src="data.js"></script>
 <script>
     function renderArticles(filter = 'all') {
-        const container = document.getElementById('team-container');
-        container.innerHTML = '';
+       const card = `
+    <div class="team-card group animate__animated animate__fadeIn animate-fast" 
+         onclick="location.href='article_list.html?teamId=${id}#${id}'"> <div class="card-banner text-white" style="background: ${team.theme.grad}">
+            <div class="banner-bg-text">${team.theme.bgText}</div>
+            <div class="relative z-10">
+                <span class="text-[9px] font-black tracking-[0.3em] mb-1 block uppercase opacity-60">${team.order}</span>
+                <h3 class="text-2xl font-black tracking-tighter leading-none mb-3">${team.teamName}</h3>
+                <p class="text-[14px] font-black leading-snug whitespace-pre-line text-white/90">
+                    ${team.summary}
+                </p>
+            </div>
+        </div>
+        </div>
+`;
 
         // data.js의 TEAM_DATA를 순회
         Object.keys(TEAM_DATA).forEach(id => {
@@ -182,9 +194,8 @@
                         
                         <div class="mt-auto pt-5 border-t border-gray-50 flex justify-between items-center">
                             <span class="text-[#63489a] font-black text-[11px] tracking-[0.05em] flex items-center group-hover:translate-x-1 transition-transform">
-                                인사이트 읽기 <span class="ml-1.5">→</span>
+                                아티클 읽기 <span class="ml-1.5">→</span>
                             </span>
-                            <span class="text-[10px] font-black text-gray-300">Detail</span>
                         </div>
                     </div>
                 </div>
