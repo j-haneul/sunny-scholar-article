@@ -96,8 +96,27 @@ const SUNNY_DATA = [
         teamName: "포레 (fou:re)",
         part: "Part 2. 원인 분석",
         title: "#2 ‘돌봄’이라는 당연함에 부딪히다",
- thumbnail: "images/fore_2.jpg",
-        content: "<p>두 번째 파트 내용이 들어갈 자리입니다.</p>"
+         thumbnail: "images/fore_2.jpg",
+          thumbnailCaption: "이미지 출처 : pixabay, @EDUIN", 
+        content: `
+    <p>1편에서 만났던 성진이를 기억하시나요?...(중략)... 특히 전체 가정위탁 아동 100명 중 70명<sup>3</sup> 은 할머니, 할아버지 밑에서 자란 ‘조손 가정’ 아이들입니다.</p>
+
+    <div class="img-container">
+        <img src="images/fore_3.jpg" class="content-img" alt="가족 돌봄 이미지">
+        <p class="img-caption">▲ 이미지 출처 : ChatGPT 생성 이미지</p>
+    </div>
+
+    <p>문제는 이들이 성인이 된 후입니다...(중략)... 학업을 중단하는 것<sup>6</sup> 으로 나타났습니다. 결국 돌봄과 생계, 학업 중에서 ‘학업’을 가장 먼저 내려놓고 있습니다.</p>
+
+    <div class="footnote-section">
+        <p>1. 2025년 자립준비청년 현황(아동권리보장원, 2026)</p>
+        <p>2. 2023 자립지원 실태조사(보건복지부, 2024)</p>
+        <p>3. 2021 가정위탁보호 현황보고서(아동권리보장원, 2022)</p>
+        <p>4. 2021년 아동자립지원 통계현황(보건복지부, 2022)</p>
+        <p>5. 2023 서울시 가족돌봄청년 실태조사</p>
+        <p>6. 한국대학교육협의회 대학알리미, 2023년 자립지원 실태조사, 2022년 가족돌봄청년 실태조사 를 통한 추정치</p>
+    </div>
+`
     },
      {
         id: "article-03",
