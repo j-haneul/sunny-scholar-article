@@ -124,7 +124,9 @@ const SUNNY_DATA = [
         teamName: "포레 (fou:re)",
         part: "Part 3. 원인 분석",
         title: "#3 할머니의 시계는 멈추지 않는다",
- thumbnail: "images/fore_4.jpg",
+ thumbnail: "images/fore_4.JPG",
+                   thumbnailCaption: "이미지 출처 : Unsplash ", 
+
         content: "<p>세 번째 파트 내용이 들어갈 자리입니다.</p>"
     },
      {
