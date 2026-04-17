@@ -604,9 +604,10 @@ const TEAM_DETAILS = {
         name: "그린 : 자립준비청년 학업 중단",
         teamProfileImg: "images/green_team_1.jpg", 
         description: "자립준비청년들이 경제적 어려움으로 인해 학업을 포기하지 않도록, 지속 가능한 교육 환경과 정책적 지원 방안을 연구합니다.",
-        email: "fore_sunny@example.com",
-        instagram: "https://instagram.com/아이디",
-        homepage: "https://velog.io/@아이디",
+        cta: `수현의 이야기로 시작한 이 탐구가 자립을 준비하고 있는 수많은 수현들을 만나 모두가 함께 나아갈 수 있는, 그려갈 수 있는 세상으로 나아갈 수 있기를 바랍니다.  \n그린이 그려갈 세상에 많은 관심 부탁드리며 함께해 주시길 부탁드립니다.`,
+        email: "green2sunny@gmail.com",
+        instagram: "",
+        homepage: "",
         members: [
             { name: "정그린", img: "images/g_member1.png" },
             { name: "나에듀", img: "images/g_member2.png" },
