@@ -146,7 +146,7 @@ function handleScrollToHash() {
                 // [수정] 첫 번째 팀(#foure)일 때는 헤더 오프셋을 거의 주지 않거나 작게 설정
                 // 일반 팀은 220, 첫 팀은 100 정도로 조절
                 const isFirstTeam = targetId === '#foure';
-                const headerOffset = isFirstTeam ? 100 : 220; 
+                const headerOffset = isFirstTeam ? 20 : 200; 
                 
                 const elementPosition = element.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
