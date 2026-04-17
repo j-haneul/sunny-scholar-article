@@ -408,7 +408,7 @@ const SUNNY_DATA = [
     teamName: "헤아림",
     part: "Part 1. 당사자 소개",
     title: "#1 취업은 했지만, 그 다음은 없었다",
-    thumbnail: "images/hearim_1.jpg",
+    thumbnail: "images/hearim_1.png",
     thumbnailCaption: "이미지 출처 : ChatGPT 생성",
     content: `
     <div class="my-4 py-2">
@@ -485,7 +485,7 @@ const SUNNY_DATA = [
     teamName: "헤아림",
     part: "Part 2. 문제 발견",
     title: "#2 9년 6개월, 발달장애인의 시간은 그렇게 멈춰 있다",
-    thumbnail: "images/hearim_2.jpg",
+    thumbnail: "images/hearim_2.png",
     thumbnailCaption: "이미지 출처 : ChatGPT 생성",
     content:`
     <p>민준은 4년간 일한 직장을 잃고도 꾸준히 새로운 기회를 물색했다. 직무 훈련도 받아보고, 계약직으로도 일해 보았지만 마음 놓고 일할 수 있는 일터를 찾지 못한 채 벌써 또 다른 4년이 흘렀다. 이 기다림이 언제 끝날지는 누구도 알 수 없다. 그는 오늘도 다시 일을 시작할 수 있을 것이라는 희망과 기약 없는 시간 속에서 느끼는 불안을 동시에 안고 살아간다.</p>
@@ -493,7 +493,7 @@ const SUNNY_DATA = [
     <p>혹자는 이것이 민준과 같은 발달장애인만이 겪는 일인지 의아해할 수도 있다. 자신의 의사와 관계없이 일을 하지 못하게 되는 상황은 비장애인도 종종 경험하는 일이며, 아무런 공백 없이 취업을 이어간다는 것은 너무나 이상적인 상황으로 느껴지기 때문이다. 그러나 마지막 직장을 떠난 이후 재취업까지 걸리는 시간을 비교해 본다면 차이는 더욱 분명히 드러난다.</p>
 
     <div class="img-container">
-      <img src="images/hearim_3.jpg" class="content-img">
+      <img src="images/hearim_3.png" class="content-img">
       <p class="img-caption">▲ 이미지 출처 : 헤아림팀 자체 제작</p>
     </div>
 
@@ -508,14 +508,14 @@ const SUNNY_DATA = [
     teamName: "헤아림",
     part: "Part 3. 원인 설명",
     title: "#3 빈자리는 일자리만이 아니었다",
-    thumbnail: "images/hearim_4.jpg",
+    thumbnail: "images/hearim_4.png",
     thumbnailCaption: "이미지 출처 : ChatGPT 생성",
     content:`
     <p>짧은 계약과 오랜 쉼의 반복. 기약 없는 기다림의 시간은 비단 민준만의 이야기는 아니다. 민준은 마지막으로 3개월간 일하던 공장을 뒤로 하고 집으로 돌아왔다. 오랜 미취업 상황에 놓인 다른 발달장애인들도 마찬가지다. 이들 중 상당수는 다니던 일터에서 일을 계속하기를 소망하지만, 집으로 돌아온 후 평균 9년 6개월이라는 긴 미취업 기간을 보낸다.</p>
     <p>그러나 이들의 일상은 여기서 끝나지 않는다. 일자리를 잃어도 시간은 흐른다. 당연한 말이지만, 발달장애인에게는 사뭇 다른 시간이 흘러간다. 처음 구직을 준비하고, 직무훈련을 받을 때는 복지관이나 직업재활시설이 곁에 있었다. 출퇴근을 챙겨 주고, 더 적합한 일을 찾아 주고, 혹여나 직장 내 갈등은 없는지 세심하게 조율해주던 이들이었다. 하지만 고용 자체에 집중한 현행 제도가 그의 근속 기간까지 보장해 줄 수는 없었다. 결국 짧은 계약 기간과 집으로의 발걸음이 반복되어 가고, 그 과정에서 접점이 함께 흐릿해졌다. 기관은 다른 당사자들을 지원해야 하고, 민준을 오래 알던 담당자는 다른 기관이나 다른 사람에게로 떠난다. 근로계약의 만료는 일자리뿐 아니라 관계를 잃게했다.</p>
 
     <div class="img-container">
-      <img src="images/hearim_5.jpg" class="content-img">
+      <img src="images/hearim_5.png" class="content-img">
       <p class="img-caption">▲ 이미지 출처 : 헤아림팀 자체 제작</p>
     </div>
 
@@ -523,7 +523,7 @@ const SUNNY_DATA = [
     <p>곁에 있는 지원인력과의 관계가 멀어진다면, 다음 취업을 향한 발판은 그만큼 좁아진다. 당사자의 특성을 충분히 이해하지 못한 채 이루어지는 매칭은 적응 실패로 이어지기 쉽고, 그 과정이 반복될수록 재취업은 더욱 요원해진다. 다시 취업에 도전하는 일 자체가 버거워지는 것이다. 미취업 기간이 길어질수록 점차 구직 활동에 소극적인 모습을 보이게 된다. 굳게 마음을 먹고 구직 활동을 시도하기도 힘들뿐더러, 마음을 먹는다고 쉬이 재취업이 이루어지지도 않는다. 민준이 처음 이력서 항목 앞에서 한 시간 넘게 주저하던 것처럼, 어머니의 도움을 받아 겨우 서류를 접수했던 것처럼, 취업 연계 지원이 끊긴 자리에는 막막함만 남는다.</p>
 
     <div class="img-container">
-      <img src="images/hearim_6.jpg" class="content-img">
+      <img src="images/hearim_6.jpeg" class="content-img">
       <p class="img-caption">▲ 이미지 출처 : 헤아림팀 자체 제작</p>
     </div>
 
@@ -537,7 +537,7 @@ const SUNNY_DATA = [
     teamName: "헤아림",
     part: "Part 4. 문제 해결의 시작",
     title: "#4 지원의 문제가 아니라, 지속의 문제다",
-    thumbnail: "images/hearim_7.jpg",
+    thumbnail: "images/hearim_7.png",
     thumbnailCaption: "이미지 출처 : ChatGPT 생성",
     content: `
     <p>발달장애인의 취업 공백은 단순히 '오래 쉬는 것'이 아니다. 그 시간 동안 이전에 힘들게 쌓아온 경험은 흐릿해지고, 다시 일자리를 구해도 모든 것을 사실상 처음부터 다시 시작해야 한다. 그러나 발달장애인의 취업은 매번 초기화되는 단절의 반복이 아니라, 이전의 흐름 위에서 계속될 수 있어야 한다. 그 간극이 우리가 이 문제를 들여다보게 된 이유다.</p>
@@ -563,7 +563,7 @@ const SUNNY_DATA = [
     teamName: "헤아림",
     part: "Part 5. 팀 소개",
     title: "#5 마주해야 비로소 보이는 것들",
-    thumbnail: "images/hearim_8.jpg",
+    thumbnail: "images/hearim_8.png",
     thumbnailCaption: "이미지 출처 : 써니 스콜라 사무국",
     content: `
     <p>“저희 팀이 선택한 가치는 ‘다른 세상을 마주할 용기’입니다. 우리에게 익숙한 관점을 내려놓고, 그동안 잘 알지 못했던 누군가의 삶을 온전히 헤아릴 수 있는 사람들이 되고 싶습니다.”</p>
@@ -583,7 +583,7 @@ const SUNNY_DATA = [
     <p>이 문제도 마찬가지다. 우리가 당장 제도를 바꾸거나, 대규모 고용 시스템을 설계할 수는 없다. 하지만 같은 지역사회 안에서 살아가는 사람으로서 발달장애인을 마주할 수 있다. 당사자의 삶을 더 구체적으로 전달하고, 왜 이 문제가 반복되는지를 조금 더 많은 사람들에게 설명할 수도 있다. 짧은 방문, 작은 봉사, 한 번의 대화처럼 사소해 보이는 만남이 차곡차곡 쌓여간다면, 큰 변화로 이어질 수 있다고 믿기 때문이다.</p>
 
     <div class="img-container">
-      <img src="images/hearim_9.jpg" class="content-img">
+      <img src="images/hearim_9.png" class="content-img">
       <p class="img-caption">▲ 이미지 출처 : 써니 스콜라 사무국</p>
     </div>
 
