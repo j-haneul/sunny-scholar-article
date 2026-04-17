@@ -6,131 +6,48 @@
     <title>Team Profile | 2026 SUNNY Scholar</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <style>
-    /* ... 기존 스타일 유지 ... */
-    
-    /* 팀 프로필 이미지: 가로형 16:10 비율로 변경 */
-    .team-main-visual { 
-        width: 100%; 
-        max-width: 500px; 
-        aspect-ratio: 16 / 10; 
-        border-radius: 32px; 
-        overflow: hidden; 
-        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        border: 4px solid white/20;
-    }
-
-    /* 팀 멤버 이미지: 동그란 원형 */
-    .member-img { 
-        width: 48px; 
-        height: 48px; 
-        border-radius: 9999px; 
-        object-fit: cover; 
-        background: #f0f0f0; 
-    }
-
-    /* 컨택 정보 텍스트 박스 */
-    .contact-info-box {
-        background: #f8f9ff;
-        border-radius: 16px;
-        padding: 12px 16px;
-        border: 1px solid #eee;
-        font-size: 13px;
-        color: #444;
-        word-break: break-all;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-</style>
-
-<div id="team-hero" class="theme-bg pt-12 pb-20 px-6 text-white relative overflow-hidden">
-    <div class="max-w-6xl mx-auto relative z-10">
-        <div class="flex items-center justify-between mb-12">
-            <button onclick="moveTeam(-1)" class="p-3 hover:bg-white/10 rounded-full transition-all">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path></svg>
-            </button>
-            <div class="text-center">
-                <span id="display-team-order" class="inline-block px-3 py-1 bg-white/20 rounded-full text-[10px] font-black tracking-[0.2em] mb-3">LOADING</span>
-                <h1 id="display-team-name" class="text-3xl md:text-5xl font-black tracking-tighter">로딩 중...</h1>
-            </div>
-            <button onclick="moveTeam(1)" class="p-3 hover:bg-white/10 rounded-full transition-all">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path></svg>
-            </button>
-        </div>
-
-        <div class="flex flex-col md:flex-row items-center gap-10 max-w-5xl mx-auto">
-            <div class="team-main-visual animate__animated animate__fadeInLeft">
-                <img id="display-team-img" src="" alt="Team Profile" class="w-full h-full object-cover">
-            </div>
-            <div class="flex-1 text-center md:text-left animate__animated animate__fadeInRight">
-                <p id="display-team-desc" class="text-[14px] md:text-[15px] font-medium leading-relaxed break-keep opacity-90 text-white/90"></p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<main class="py-16 px-6 max-w-6xl mx-auto">
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-24">
-        <section class="lg:col-span-2 bg-white p-8 md:p-10 rounded-[40px] border border-gray-100 shadow-sm">
-            <h2 class="text-xs font-black text-gray-400 uppercase tracking-[0.3em] mb-8">Team Members</h2>
-            <div id="member-list" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
-        </section>
-
-        <section class="bg-white p-8 md:p-10 rounded-[40px] border border-gray-100 shadow-sm flex flex-col">
-            <h2 class="text-xs font-black text-gray-400 uppercase tracking-[0.3em] mb-8">Connect</h2>
-            <div id="contact-container" class="space-y-4">
-                </div>
-        </section>
-    </div>
-    </main>
-
-<script>
-    // ... 초기화 및 이동 함수 유지 ...
-
-    function initTeamDetail() {
-        // ... 데이터 로드 로직 동일 ...
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
+        :root { --sunny-purple: #63489a; --grid-color: rgba(99, 72, 154, 0.05); }
+        body { 
+            font-family: 'Pretendard', sans-serif; background-color: #fcfcff;
+            background-image: linear-gradient(var(--grid-color) 1px, transparent 1px), linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 40px 40px; letter-spacing: -0.02em;
+        }
+        .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); }
         
-        // 1. 멤버 리스트 렌더링 (Scholar -> SUNNY로 변경)
-        const memberList = document.getElementById('member-list');
-        memberList.innerHTML = (teamDetail.members || []).map(m => `
-            <div class="member-card animate__animated animate__fadeInUp">
-                <img src="${m.img}" class="member-img" onerror="this.src='https://via.placeholder.com/100?text=👤'">
-                <div>
-                    <p class="text-[15px] font-black text-gray-900">${m.name}</p>
-                    <p class="text-[10px] text-[#63489a] font-black uppercase tracking-wider">SUNNY</p>
-                </div>
-            </div>
-        `).join('');
-
-        // 2. 컨택 영역 렌더링 (이메일 주소 노출 + SNS 버튼)
-        const contactContainer = document.getElementById('contact-container');
-        let contactHTML = '';
-
-        if (teamDetail.email) {
-            contactHTML += `
-                <div class="contact-info-box">
-                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    <span>${teamDetail.email}</span>
-                </div>
-            `;
+        /* 팀 프로필 이미지: 가로형 16:10 */
+        .team-main-visual { 
+            width: 100%; 
+            max-width: 540px; 
+            aspect-ratio: 16 / 10; 
+            border-radius: 32px; 
+            overflow: hidden; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border: 4px solid rgba(255,255,255,0.2);
         }
 
-        if (teamDetail.instagram) {
-            contactHTML += `
-                <a href="${teamDetail.instagram}" target="_blank" class="block w-full text-center py-3 bg-gradient-to-tr from-orange-400 via-red-500 to-purple-600 text-white rounded-xl font-black text-[12px] shadow-sm hover:brightness-110 transition-all">Instagram</a>
-            `;
+        /* 멤버 카드 및 이미지 */
+        .member-card { 
+            background: white; border: 1px solid #f0f0f0; border-radius: 20px; 
+            padding: 10px; display: flex; align-items: center; gap: 12px;
+            transition: all 0.3s ease;
+        }
+        .member-card:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.04); }
+        .member-img { width: 48px; height: 48px; border-radius: 9999px; object-fit: cover; background: #f0f0f0; }
+
+        /* 컨택 정보 텍스트 박스 */
+        .contact-info-box {
+            background: #f8f9ff; border-radius: 16px; padding: 12px 16px;
+            border: 1px solid #eee; font-size: 13px; color: #444;
+            display: flex; align-items: center; gap: 8px; word-break: break-all;
         }
 
-        if (teamDetail.blog || teamDetail.homepage) {
-            contactHTML += `
-                <a href="${teamDetail.blog || teamDetail.homepage}" target="_blank" class="block w-full text-center py-3 bg-gray-900 text-white rounded-xl font-black text-[12px] shadow-sm hover:bg-gray-800 transition-all">Homepage</a>
-            `;
-        }
-        
-        contactContainer.innerHTML = contactHTML || '<p class="text-gray-400 text-sm text-center">정보가 없습니다.</p>';
-    }
-</script>
+        .theme-bg { transition: background-color 0.5s ease; }
+        .team-nav-btn { transition: all 0.3s ease; opacity: 0.6; font-size: 11px; }
+        .team-nav-btn:hover { opacity: 1; transform: translateY(-2px); }
+        .team-nav-active { opacity: 1; border-bottom: 2px solid white; }
+    </style>
 </head>
 
 <body>
@@ -149,34 +66,30 @@
         <div id="quick-nav-list" class="max-w-5xl mx-auto flex justify-center gap-6 px-6 font-black text-white/70 uppercase tracking-widest whitespace-nowrap"></div>
     </div>
 
-    <div id="team-hero" class="theme-bg pt-16 pb-20 px-6 text-white relative overflow-hidden">
-        <div class="max-w-6xl mx-auto relative z-10 flex flex-col md:flex-row items-center gap-10">
-            
-            <button onclick="moveTeam(-1)" class="hidden md:block p-3 hover:bg-white/10 rounded-full transition-all">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path></svg>
-            </button>
-
-            <div class="flex-1 flex flex-col md:flex-row items-center gap-8 md:gap-12 w-full text-center md:text-left">
-                <div class="w-48 h-48 md:w-64 md:h-64 rounded-[40px] overflow-hidden shadow-2xl border-4 border-white/20 shrink-0 animate__animated animate__zoomIn">
-                    <img id="display-team-img" src="" alt="Team Profile" class="w-full h-full object-cover">
+    <div id="team-hero" class="theme-bg pt-12 pb-20 px-6 text-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="flex items-center justify-between mb-12">
+                <button onclick="moveTeam(-1)" class="p-3 hover:bg-white/10 rounded-full transition-all">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+                <div class="text-center">
+                    <span id="display-team-order" class="inline-block px-3 py-1 bg-white/20 rounded-full text-[10px] font-black tracking-[0.2em] mb-3 uppercase">LOADING</span>
+                    <h1 id="display-team-name" class="text-3xl md:text-5xl font-black tracking-tighter">로딩 중...</h1>
                 </div>
-                <div>
-                    <span id="display-team-order" class="inline-block px-3 py-1 bg-white/20 rounded-full text-[11px] font-black tracking-widest mb-4">LOADING</span>
-                    <h1 id="display-team-name" class="text-4xl md:text-6xl font-black mb-6 tracking-tighter leading-tight">로딩 중...</h1>
-                    <p id="display-team-desc" class="text-base md:text-lg font-bold leading-relaxed break-keep opacity-90 max-w-xl"></p>
-                </div>
+                <button onclick="moveTeam(1)" class="p-3 hover:bg-white/10 rounded-full transition-all">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path></svg>
+                </button>
             </div>
 
-            <button onclick="moveTeam(1)" class="hidden md:block p-3 hover:bg-white/10 rounded-full transition-all">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path></svg>
-            </button>
+            <div class="flex flex-col md:flex-row items-center gap-10 max-w-5xl mx-auto">
+                <div class="team-main-visual animate__animated animate__fadeInLeft">
+                    <img id="display-team-img" src="" alt="Team Profile" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-1 text-center md:text-left animate__animated animate__fadeInRight">
+                    <p id="display-team-desc" class="text-[14px] md:text-[15px] font-medium leading-relaxed break-keep opacity-90 text-white/90"></p>
+                </div>
+            </div>
         </div>
-        
-        <div class="flex md:hidden justify-center gap-10 mt-10 relative z-10">
-            <button onclick="moveTeam(-1)" class="p-3 bg-white/10 rounded-full"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path></svg></button>
-            <button onclick="moveTeam(1)" class="p-3 bg-white/10 rounded-full"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path></svg></button>
-        </div>
-
         <div class="absolute -top-24 -right-24 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
     </div>
 
@@ -184,13 +97,12 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-24">
             <section class="lg:col-span-2 bg-white p-8 md:p-10 rounded-[40px] border border-gray-100 shadow-sm">
                 <h2 class="text-xs font-black text-gray-400 uppercase tracking-[0.3em] mb-8">Team Members</h2>
-                <div id="member-list" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    </div>
+                <div id="member-list" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
             </section>
 
             <section class="bg-white p-8 md:p-10 rounded-[40px] border border-gray-100 shadow-sm flex flex-col">
                 <h2 class="text-xs font-black text-gray-400 uppercase tracking-[0.3em] mb-8">Connect</h2>
-                <div id="contact-container" class="flex flex-col gap-3"></div>
+                <div id="contact-container" class="space-y-4"></div>
             </section>
         </div>
 
@@ -223,49 +135,59 @@
 
             if (!teamBase) return;
 
+            // 테마 적용
             const mainColor = teamBase.theme?.main || '#63489a';
             document.querySelectorAll('.theme-bg').forEach(el => el.style.backgroundColor = mainColor);
             renderQuickNav(baseData);
 
-            // 데이터 적용 (기본 + 상세 데이터 병합)
+            // 기본 정보 매핑
             document.getElementById('display-team-name').innerText = teamBase.teamName || teamDetail.name;
             document.getElementById('display-team-desc').innerText = teamDetail.description || teamBase.summary;
             document.getElementById('display-team-order').innerText = teamBase.order || teamDetail.order;
             
-            // 팀 이미지 처리
+            // 팀 메인 이미지
             const teamImg = document.getElementById('display-team-img');
             teamImg.src = teamDetail.teamProfileImg || './images/default_team.jpg';
-            teamImg.onerror = () => teamImg.src = 'https://via.placeholder.com/400x400?text=SUNNY+TEAM';
+            teamImg.onerror = () => teamImg.src = 'https://via.placeholder.com/800x500?text=SUNNY+TEAM';
 
-            // 팀원 리스트 처리
+            // 팀원 리스트 (Scholar -> SUNNY)
             const memberList = document.getElementById('member-list');
-            const members = teamDetail.members || [];
-            if (members.length > 0) {
-                memberList.innerHTML = members.map(m => `
-                    <div class="member-card animate__animated animate__fadeInUp">
-                        <img src="${m.img}" class="member-img" onerror="this.src='https://via.placeholder.com/100?text=${m.name}'">
-                        <div>
-                            <p class="text-[15px] font-black text-gray-900">${m.name}</p>
-                            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Scholar</p>
-                        </div>
+            memberList.innerHTML = (teamDetail.members || []).map(m => `
+                <div class="member-card animate__animated animate__fadeInUp">
+                    <img src="${m.img}" class="member-img" onerror="this.src='https://via.placeholder.com/100?text=👤'">
+                    <div>
+                        <p class="text-[15px] font-black text-gray-900">${m.name}</p>
+                        <p class="text-[10px] text-[#63489a] font-black uppercase tracking-wider">SUNNY</p>
                     </div>
-                `).join('');
+                </div>
+            `).join('') || '<p class="text-gray-400 text-sm">등록된 멤버가 없습니다.</p>';
+
+            // 컨택 포인트 (이메일 텍스트 + SNS 버튼)
+            const contactContainer = document.getElementById('contact-container');
+            let contactHTML = '';
+
+            if (teamDetail.email) {
+                contactHTML += `
+                    <div class="contact-info-box">
+                        <svg class="w-4 h-4 shrink-0 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span>${teamDetail.email}</span>
+                    </div>
+                `;
             }
 
-            // 컨택 정보
-            const contactContainer = document.getElementById('contact-container');
-            const contacts = [];
-            const email = teamDetail.email || teamBase.email;
-            const insta = teamDetail.instagram || teamBase.instagram;
+            if (teamDetail.instagram) {
+                contactHTML += `
+                    <a href="${teamDetail.instagram}" target="_blank" class="block w-full text-center py-3 bg-gradient-to-tr from-orange-400 via-red-500 to-purple-600 text-white rounded-xl font-black text-[12px] shadow-sm hover:brightness-110 transition-all">Instagram</a>
+                `;
+            }
 
-            if (email) contacts.push({ type: 'Email', link: `mailto:${email}`, color: 'bg-gray-900' });
-            if (insta) contacts.push({ type: 'Instagram', link: insta, color: 'bg-gradient-to-tr from-orange-400 via-red-500 to-purple-600' });
-
-            contactContainer.innerHTML = contacts.map(c => `
-                <a href="${c.link}" target="_blank" class="w-full text-center py-4 ${c.color} text-white rounded-2xl font-black text-[13px] hover:brightness-110 transition-all shadow-sm">
-                    ${c.type}
-                </a>
-            `).join('') || '<p class="text-gray-400 text-sm">연락처가 없습니다.</p>';
+            if (teamDetail.blog || teamDetail.homepage) {
+                contactHTML += `
+                    <a href="${teamDetail.blog || teamDetail.homepage}" target="_blank" class="block w-full text-center py-3 bg-gray-900 text-white rounded-xl font-black text-[12px] shadow-sm hover:bg-gray-800 transition-all">Homepage</a>
+                `;
+            }
+            
+            contactContainer.innerHTML = contactHTML || '<p class="text-gray-400 text-sm text-center">정보가 없습니다.</p>';
 
             renderTeamArticles(currentTeamId);
         }
