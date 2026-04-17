@@ -55,6 +55,7 @@ const SUNNY_DATA = [
         part: "Part 1. 문제의 발견",
         title: "#1 스물 하나, 홀로 짊어진 시간들",
         thumbnail: "images/fore_1.png",
+        thumbnailCaption: "이미지 출처 : pixabay", 
         content: `
             <p>수업 중간에 울린 전화는 119였습니다.</p>
             <p>“할머님께서 횡단보도를 건너다 넘어지셨어요. 바로 병원으로 오세요.”</p>
