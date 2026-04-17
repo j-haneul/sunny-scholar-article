@@ -2,120 +2,144 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Articles | 2026 SUNNY Scholar</title>
+    <title>Article List - SUNNY Scholar</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
-        :root {
-            --sunny-purple: #63489a;
-            --sunny-gradient: linear-gradient(135deg, #4f319b 0%, #8c52ff 100%);
-            --grid-color: rgba(99, 72, 154, 0.05);
+        
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Pretendard', sans-serif; background-color: #fcfcfd; }
+        
+        /* 팀 배너 스타일 */
+        .team-header-banner {
+            border-radius: 24px;
+            padding: 48px 40px;
+            color: white;
+            margin-bottom: 32px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
         }
-        body { 
-            font-family: 'Pretendard', sans-serif; 
-            background-color: #f8f9ff;
-            background-image: 
-                linear-gradient(to bottom, rgba(99, 72, 154, 0.05) 0%, transparent 15%),
-                linear-gradient(var(--grid-color) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-            background-size: 100% 100%, 40px 40px, 40px 40px;
+        
+        .bg-text-large {
+            position: absolute;
+            right: -10px;
+            top: -10px;
+            font-size: 9rem;
+            font-weight: 900;
+            opacity: 0.08;
+            font-style: italic;
+            letter-spacing: -0.05em;
+            user-select: none;
+            line-height: 1;
         }
-        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); }
-        .article-card { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease; border-radius: 1.25rem; }
-        .article-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
-        .scrollbar-hide::-webkit-scrollbar { display: none; }
-        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-        .text-gradient { background: var(--sunny-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        /* 아티클 카드 애니메이션 */
+        .article-card {
+            transition: all 0.3s ease;
+        }
+        .article-card:hover {
+            transform: translateY(-5px);
+            border-color: #63489a;
+        }
     </style>
 </head>
-<body class="text-gray-900">
+<body>
 
-    <header class="sticky top-0 z-50 glass border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-6 h-14 md:h-16 flex justify-between items-center">
-            <a href="index.html"><img src="images/sunny_scholar_logo.png" class="h-7 md:h-8 w-auto" onerror="this.src='https://via.placeholder.com/150x40?text=LOGO'"></a>
-            <nav class="hidden md:flex space-x-10 text-xs font-black uppercase tracking-widest">
-                <a href="article_list.html" class="text-gray-800 border-b-2 border-[#63489a]">Articles</a>
-                <a href="team_list.html" class="text-gray-400 hover:text-gray-800 transition">Lab</a>
-                <a href="about.html" class="text-gray-400 hover:text-gray-800 transition">About</a>
-            </nav>
-        </div>
-    </header>
+<main class="max-w-7xl mx-auto px-6 py-16">
+    <div id="article-page-container"></div>
+</main>
 
-    <section class="py-12 md:py-16 px-6 max-w-7xl mx-auto">
-        <p class="text-[#63489a] font-black tracking-widest text-[10px] uppercase mb-2">Step 01 Archive</p>
-        <h1 class="text-3xl md:text-4xl font-black mb-2 tracking-tight">Problem Definition <span class="text-gradient">Articles</span></h1>
-        <p class="text-gray-500 text-sm font-medium">5개의 팀이 정의한 문제의 본질을 아티클로 확인하세요.</p>
-    </section>
+<script src="data.js"></script>
+<script>
+    function renderTeamSections() {
+        const container = document.getElementById('article-page-container');
+        if (!container) return;
+        container.innerHTML = '';
 
-    <main id="article-page" class="max-w-7xl mx-auto px-6 pb-24 space-y-20"></main>
-
-    <script src="data.js"></script>
-    <script>
-    function renderArticles() {
-            const page = document.getElementById('article-page');
-        
-        // 데이터가 로드되지 않았을 때 체크
-        if (typeof SUNNY_DATA === 'undefined') {
-            console.error("SUNNY_DATA를 찾을 수 없습니다. data.js 경로를 확인하세요.");
-            return;
-        }
-
-        const teamIds = [...new Set(SUNNY_DATA.map(d => d.teamId))];
-        page.innerHTML = ''; 
-
-        teamIds.forEach(tId => {
-            const teamArticles = SUNNY_DATA.filter(d => d.teamId === tId);
-                        const teamDetail = (typeof TEAM_DETAILS !== 'undefined') ? TEAM_DETAILS[tId] : null;
+        // data.js의 TEAM_DATA를 순회하며 섹션 생성
+        Object.keys(TEAM_DATA).forEach(id => {
+            const team = TEAM_DATA[id];
             
-            // 팀 정보 결정 (데이터가 없을 경우 대비)
-            const teamOrder = teamDetail?.order || "LAB";
-            const teamName = teamDetail?.name || teamArticles[0].teamName;
+            // 해당 팀의 아티클 필터링 (SUNNY_DATA 기준)
+            const teamArticles = SUNNY_DATA.filter(article => article.teamId === id);
 
             const section = document.createElement('section');
-            section.className = "animate__animated animate__fadeInUp animate-fast";
-            
-            section.innerHTML = `
-                <div class="flex justify-between items-end mb-8 border-b border-gray-100 pb-4">
-                    <div class="flex items-center gap-3">
-                        <span class="bg-[#63489a] text-white text-[10px] font-black px-2 py-1 rounded">${teamOrder}</span>
-                        <h2 class="text-xl md:text-2xl font-black text-gray-900">${teamName}</h2>
-                    </div>
-                    <a href="team_detail.html?id=${tId}" class="text-[11px] font-black text-[#63489a] hover:opacity-70 transition flex items-center gap-1">
-                        팀 정보 보기 <span class="text-[14px]">→</span>
-                    </a>
-                </div>
-                
-                <div class="flex gap-6 overflow-x-auto pb-8 scrollbar-hide px-1">
-${teamArticles.map(art => `
-    <a href="article_view.html?id=${art.id}" class="group block bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-500 min-w-[280px] md:min-w-[320px] flex-shrink-0">
-        
-        <div class="relative w-full pb-[56.25%] overflow-hidden bg-gray-50 flex-shrink-0">
-            <img src="${art.thumbnail}" 
-                 class="absolute top-0 left-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
-                 onerror="this.src='https://via.placeholder.com/400x225?text=SUNNY+ARTICLE'">
-        </div>
+            section.id = id; // index.html의 해시(#id)와 매칭
+            section.className = "mb-24 scroll-mt-28"; // 스크롤 시 헤더 여백 고려
 
-        <div class="p-5">
-            <div class="flex items-center gap-1.5 mb-2">
-                <span class="w-2 h-[1.5px] bg-[#8c52ff]"></span>
-                <span class="text-[9px] font-black text-[#8c52ff] uppercase tracking-wider">${art.part}</span>
-            </div>
-            
-            <h4 class="font-black text-lg md:text-xl text-gray-950 leading-tight group-hover:text-[#63489a] transition-colors break-keep line-clamp-2 min-h-[2.6em]">
-                ${art.title}
-            </h4>
-        </div>
-    </a>
-`).join('')}     </div>
+            section.innerHTML = `
+                <div class="team-header-banner animate__animated animate__fadeIn" style="background: ${team.theme.grad}">
+                    <div class="bg-text-large">${team.theme.bgText}</div>
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="px-3 py-1 bg-white/20 rounded-md text-[10px] font-black tracking-widest uppercase">
+                                ${team.order}
+                            </span>
+                            <span class="text-xs font-bold opacity-80">${team.category}</span>
+                        </div>
+                        <h2 class="text-4xl font-black mb-4 tracking-tight">${team.teamName}</h2>
+                        <p class="text-lg opacity-90 whitespace-pre-line mb-8 font-medium max-w-2xl leading-relaxed">
+                            ${team.summary}
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            ${team.tags.map(tag => `
+                                <span class="px-4 py-1.5 bg-white text-gray-900 rounded-full text-[11px] font-bold shadow-sm">
+                                    #${tag}
+                                </span>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    ${teamArticles.length > 0 ? 
+                        teamArticles.map(art => `
+                            <div class="article-card bg-white p-8 rounded-2xl border border-gray-100 shadow-sm flex flex-col cursor-pointer" 
+                                 onclick="location.href='article_view.html?id=${art.id}'">
+                                <span class="text-[10px] font-black text-[#63489a] mb-3 tracking-widest uppercase">${art.part || 'Research'}</span>
+                                <h4 class="text-xl font-bold text-gray-900 mb-6 leading-snug break-keep">${art.title}</h4>
+                                <div class="mt-auto flex justify-between items-center">
+                                    <span class="text-xs text-gray-400 font-bold uppercase tracking-tighter">Read Article</span>
+                                    <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center group-hover:bg-[#63489a] transition-colors">
+                                        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('') 
+                        : `<div class="col-span-full py-12 text-center border-2 border-dashed border-gray-100 rounded-2xl text-gray-300 font-bold">등록된 아티클이 없습니다.</div>`
+                    }
+                </div>
             `;
-            page.appendChild(section);
+            container.appendChild(section);
         });
     }
 
-    // 페이지 로드 시 단 한 번 실행
-    window.onload = renderArticles;
-    </script>
+    // 초기 실행 및 해시 스크롤 처리
+    window.addEventListener('DOMContentLoaded', () => {
+        renderTeamSections();
+        
+        // URL에 #id가 포함되어 넘어온 경우
+        if (window.location.hash) {
+            const targetId = window.location.hash;
+            // 렌더링 완료 후 이동하기 위해 약간의 지연시간 부여
+            setTimeout(() => {
+                const element = document.querySelector(targetId);
+                if (element) {
+                    const offset = 100; // 헤더 높이만큼 오프셋
+                    const bodyRect = document.body.getBoundingClientRect().top;
+                    const elementRect = element.getBoundingClientRect().top;
+                    const elementPosition = elementRect - bodyRect;
+                    const offsetPosition = elementPosition - offset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 200);
+        }
+    });
+</script>
 </body>
 </html>
