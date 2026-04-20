@@ -11,14 +11,13 @@
 
     :root {
         --sunny-purple: #63489a;
-        --sunny-deep-purple: #4e387a;
         --sunny-gradient: linear-gradient(135deg, #4f319b 0%, #8c52ff 100%);
         --grid-color: rgba(99, 72, 154, 0.05);
     }
 
     body { 
         font-family: 'Pretendard', sans-serif; 
-        background-color: #f8f9ff; /* 인덱스와 동일한 배경색 */
+        background-color: #f8f9ff;
         background-image: 
             linear-gradient(to bottom, rgba(99, 72, 154, 0.05) 0%, transparent 15%),
             linear-gradient(var(--grid-color) 1px, transparent 1px),
@@ -27,89 +26,80 @@
         letter-spacing: -0.02em;
     }
 
-    /* --- [핵심] 상단바 규격 통일 (어바웃/인덱스와 1:1 일치) --- */
- /* --- 상단바 규격 완전 통일 --- */
-header { 
-    height: 64px !important; 
-    position: sticky !important;
-    top: 0 !important;
-    z-index: 50 !important;
-    background: rgba(255, 255, 255, 0.8) !important; 
-    backdrop-filter: blur(12px) !important; 
-    -webkit-backdrop-filter: blur(12px) !important; 
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
-    width: 100% !important;
-}
+    /* --- 상단바 규격 완전 통일 --- */
+    header { 
+        height: 64px !important; 
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 50 !important;
+        background: rgba(255, 255, 255, 0.8) !important; 
+        backdrop-filter: blur(12px) !important; 
+        -webkit-backdrop-filter: blur(12px) !important; 
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+        width: 100% !important;
+    }
 
-.header-container {
-    max-width: 80rem !important; 
-    margin: 0 auto !important;
-    padding: 0 1.5rem !important;
-    width: 100% !important;
-    height: 100% !important;
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-}
+    .header-container {
+        max-width: 80rem !important; 
+        margin: 0 auto !important;
+        padding: 0 1.5rem !important;
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+    }
 
-.nav-link {
-    position: relative !important;
-    height: 64px !important;
-    display: flex !important;
-    align-items: center !important;
-    color: #1f2937 !important;
-    font-size: 11px !important; /* 요청하신 폰트 크기 */
-    font-weight: 900 !important; /* 가장 두꺼운 폰트 */
-    text-transform: uppercase !important;
-    letter-spacing: 0.1em !important;
-    text-decoration: none !important;
-    transition: color 0.3s ease !important;
-}
+    .nav-link {
+        position: relative !important;
+        height: 64px !important;
+        display: flex !important;
+        align-items: center !important;
+        color: #1f2937 !important;
+        font-size: 11px !important;
+        font-weight: 900 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.1em !important;
+        text-decoration: none !important;
+        transition: color 0.3s ease !important;
+    }
 
-/* 밑줄 효과 */
-.nav-link::after {
-    content: '' !important;
-    position: absolute !important;
-    bottom: 18px !important; /* 언더바 높이 고정 */
-    left: 50% !important;
-    width: 0 !important;
-    height: 2px !important;
-    background-color: var(--sunny-purple) !important;
-    transition: all 0.3s ease !important;
-    transform: translateX(-50%) !important;
-}
+    .nav-link::after {
+        content: '' !important;
+        position: absolute !important;
+        bottom: 18px !important;
+        left: 50% !important;
+        width: 0 !important;
+        height: 2px !important;
+        background-color: var(--sunny-purple) !important;
+        transition: all 0.3s ease !important;
+        transform: translateX(-50%) !important;
+    }
 
-.nav-link:hover::after,
-.nav-link.active-tab::after {
-    width: 100% !important;
-}
+    .nav-link:hover::after, .nav-link.active-tab::after { width: 100% !important; }
+    .nav-link.active-tab { color: var(--sunny-purple) !important; }
 
-.nav-link.active-tab {
-    color: var(--sunny-purple) !important;
-}
-
-    /* --- 아티클 페이지 전용 스타일 유지 및 보정 --- */
     .text-gradient { background: var(--sunny-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    
     .scrollbar-hide::-webkit-scrollbar { display: none; }
     .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
-    /* 가로 스크롤 영역 끝단 그라데이션 (배경색 통일) */
+    /* --- [핵심 수정] 가로 스크롤 영역 우측 그라데이션 --- */
+    .scroll-container-wrapper {
+        position: relative; /* 자식 요소인 ::after의 기준점 */
+        width: 100%;
+        overflow: hidden;
+    }
+
     .scroll-container-wrapper::after {
         content: "";
         position: absolute;
-        top: 0; right: 0;
-        width: 80px;
-        height: calc(100% - 40px);
-        background: linear-gradient(to right, transparent, #fcfcfd); /* 배경색에 맞춤 */
-        pointer-events: none;
+        top: 0; 
+        right: 0;
+        width: 60px; /* 불투명 효과 너비 */
+        height: calc(100% - 40px); /* 스크롤바 영역 제외 */
+        background: linear-gradient(to right, transparent, #f8f9ff); /* 배경색과 동일하게 */
+        pointer-events: none; /* 클릭 방해 금지 */
         z-index: 10;
-    }
-
-    /* 카드 썸네일 비율 고정 */
-    .group img {
-        aspect-ratio: 16 / 9;
-        object-fit: cover;
     }
 </style>
 </head>
@@ -120,7 +110,6 @@ header {
         <a href="index.html" class="flex items-center">
             <img src="/images/sunny_scholar_logo.png" alt="Logo" style="height: 32px; width: auto;">
         </a>
-
         <nav class="hidden md:flex items-center" style="gap: 2.5rem;">
             <a href="article_list.html" class="nav-link active-tab">Articles</a>
             <a href="team_list.html" class="nav-link">Lab</a>
@@ -151,7 +140,7 @@ function renderArticles() {
 
         const section = document.createElement('section');
         section.id = tId; 
-        section.className = "scroll-mt-24";
+        section.className = "scroll-mt-32"; // 스크롤 시 여유 공간
 
         section.innerHTML = `
             <div class="px-6 mb-6">
@@ -180,38 +169,28 @@ function renderArticles() {
                 </div>
             </div>
             
-            <div class="scroll-container-wrapper group/scroll">
-                <div class="flex gap-5 overflow-x-auto pb-10 scrollbar-hide px-6 cursor-grab active:cursor-grabbing horizontal-scroll">
-               ${teamArticles.map(art => `
-    <a href="article_view.html?id=${art.id}" class="group block bg-white rounded-[24px] overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-500 min-w-[280px] md:min-w-[320px] flex-shrink-0 flex flex-col">
-        
-        <div class="w-full h-[180px] md:h-[200px] bg-gray-100 overflow-hidden relative flex-shrink-0">
-            <img src="${art.thumbnail}" 
-                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                 onerror="this.src='https://via.placeholder.com/400x225?text=SUNNY+ARTICLE'">
-        </div>
-        
-        <div class="p-6 flex flex-col">
-            <div class="h-5 mb-2">
-                <span class="text-[10px] font-black text-[#63489a] uppercase tracking-widest">
-                    ${art.part}
-                </span>
-            </div>
-
-            <div class="h-[3rem] mb-2">
-                <h4 class="font-black text-lg text-gray-900 leading-snug group-hover:text-[#63489a] transition-colors break-keep line-clamp-2">
-                    ${art.title}
-                </h4>
-            </div>
-            
-            <div class="flex justify-end items-center h-6 mt-2">
-                <svg class="w-5 h-5 text-[#63489a] opacity-0 group-hover:opacity-100 transition-all transform translate-x-[-10px] group-hover:translate-x-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                </svg>
-            </div>
-        </div>
-    </a>
-`).join('')}
+            <div class="scroll-container-wrapper">
+                <div class="flex gap-5 overflow-x-auto pb-10 scrollbar-hide px-6 horizontal-scroll">
+                    ${teamArticles.map(art => `
+                        <a href="article_view.html?id=${art.id}" class="group block bg-white rounded-[24px] overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-500 min-w-[280px] md:min-w-[320px] flex-shrink-0 flex flex-col">
+                            <div class="w-full h-[180px] md:h-[200px] bg-gray-100 overflow-hidden relative">
+                                <img src="${art.thumbnail}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            </div>
+                            <div class="p-6 flex flex-col">
+                                <div class="h-5 mb-2">
+                                    <span class="text-[10px] font-black text-[#63489a] uppercase tracking-widest">${art.part}</span>
+                                </div>
+                                <div class="h-[3rem] mb-2">
+                                    <h4 class="font-black text-lg text-gray-900 leading-snug group-hover:text-[#63489a] transition-colors break-keep line-clamp-2">${art.title}</h4>
+                                </div>
+                                <div class="flex justify-end items-center h-6 mt-2">
+                                    <svg class="w-5 h-5 text-[#63489a] opacity-0 group-hover:opacity-100 transition-all transform translate-x-[-10px] group-hover:translate-x-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                    `).join('')}
                     <div class="min-w-[24px] h-1 flex-shrink-0"></div>
                 </div>
             </div>
@@ -220,7 +199,8 @@ function renderArticles() {
     });
 
     initHorizontalScroll();
-    setTimeout(handleScrollToHash, 100);
+    // 렌더링 완료 후 해시 이동 실행
+    setTimeout(handleScrollToHash, 200);
 }
 
 function initHorizontalScroll() {
@@ -231,19 +211,34 @@ function initHorizontalScroll() {
                 e.preventDefault();
                 container.scrollLeft += e.deltaY;
             }
-        });
+        }, { passive: false });
     });
 }
 
+// [핵심 수정] 타겟 팀 섹션을 화면 정중앙에 위치시키기
 function handleScrollToHash() {
     const hash = window.location.hash;
     if (!hash) return;
     const target = document.querySelector(hash);
     if (!target) return;
-    target.classList.add('animate__animated', 'animate__fadeInUp');
-    const headerHeight = 80; 
-    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+
+    // 타겟 요소의 위치 계산
+    const rect = target.getBoundingClientRect();
+    const targetTop = rect.top + window.pageYOffset;
+    
+    // 화면 정중앙에 오게 하기 위해: (타겟상단좌표) - (화면절반높이) + (요소절반높이)
+    // 단, 상단 헤더(64px) 가리지 않게 보정
+    const viewportHeight = window.innerHeight;
+    const elementHeight = target.offsetHeight;
+    const scrollPosition = targetTop - (viewportHeight / 2) + (elementHeight / 2);
+
+    window.scrollTo({
+        top: scrollPosition,
+        behavior: 'smooth'
+    });
+
+    // 강조 애니메이션
+    target.classList.add('animate__animated', 'animate__pulse');
 }
 
 window.onload = renderArticles;
