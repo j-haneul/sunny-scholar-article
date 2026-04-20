@@ -601,7 +601,7 @@ const SUNNY_DATA = [
     teamName: "두드림(Do-Dream)",
     part: "Part 1. 당사자 소개",
     title: "#1 그들도 끝까지 해내고 싶었다",
-    thumbnail: "images/dodream_1.jpg",
+    thumbnail: "images/dodream_1.png",
     thumbnailCaption: "이미지 출처 : Gemini 생성",
     content: `
     <div class="my-4 py-2">
@@ -648,7 +648,7 @@ const SUNNY_DATA = [
     teamName: "두드림(Do-Dream)",
     part: "Part 2. 문제 발견",
     title: "#2 그건 준후만의 이야기가 아니었다",
-    thumbnail: "images/dodream_2.jpg",
+    thumbnail: "images/dodream_2.png",
     thumbnailCaption: "이미지 출처 : Claude 생성, IQ 분포와 경계선 지능 구간",
     content:`
     <p>준후는 매뉴얼을 누구보다 성실하게 따랐다. 그런데 실수는 줄지 않았다. 혹시 이게 준후만의 이야기일까. 숫자를 보면, 그렇지 않다는 걸 알 수 있다.</p>
@@ -680,13 +680,13 @@ const SUNNY_DATA = [
     teamName: "두드림(Do-Dream)",
     part: "Part 3. 원인 설명",
     title: "#3 열심히 했는데 왜 더 망가졌을까, 체크리스트의 함정",
-    thumbnail: "images/dodream_5.jpg",
+    thumbnail: "images/dodream_5.jpeg",
     thumbnailCaption: "이미지 출처 : Gemini 생성",
     content: `
     <p>홀로 근무하며 준후가 의지할 곳은 체크리스트 뿐이다. 준후는 정해진 과정을 반복하면 상황이 나아질거라고 믿고 있다. 사소한 일이라도 그렇게 해냈기 때문이며, 이 체크리스트 안에는 지금 이 일을 하기 위한 모든 게 담겨 있다고 믿기 때문이다. 하지만 새로운 체크리스트와 그에 대한 준후의 믿음은 상황을 나아지게 만들지 못했다.</p>
 
     <div class="img-container">
-      <img src="images/dodream_6.png" class="content-img">
+      <img src="images/dodream_6.jpeg" class="content-img">
       <p class="img-caption">▲ 이미지 출처: Claude 생성</p>
     </div>
 
@@ -707,7 +707,7 @@ const SUNNY_DATA = [
     teamName: "두드림(Do-Dream)",
     part: "Part 4. 문제 해결의 시작",
     title: "#4 '했다'가 아니라 '어떻게 했는가'를 물었다면",
-    thumbnail: "images/dodream_7.jpg",
+    thumbnail: "images/dodream_7.png",
     thumbnailCaption: "이미지 출처 : pixabay",
     content: `
     <p>결국, 체크리스트는 준후의 사고 회로를 멈추게 만들었다. 준후는 매뉴얼이 촘촘한 상황 안에서도 여러 번의 돌발 상황을 맞이한다. 그러나 준후는 그 상태로 멈추게 된다. 단 한 번일지라도, 매뉴얼에 없는 상황이 발생했을 때 스스로 판단하는 경험을 해보는 것은 중요하다. 경험은 두려움을 줄이고, 다시 용기있게 시도하도록 만들기 때문이다.</p>
