@@ -1176,8 +1176,8 @@ const TEAM_DETAILS = {
         members: [
             { name: "박민주", img: "images/d_member1.png" },
             { name: "박찬용", img: "images/d_member2.png" },
-            { name: "이세정", img: "images/d_member3.png" },
-            { name: "송예나", img: "images/d_member4.png" }
+            { name: "송예나", img: "images/d_member3.png" },
+            { name: "이세정", img: "images/d_member4.png" }
         ]
     },
 
@@ -1198,8 +1198,8 @@ const TEAM_DETAILS = {
         members: [
             { name: "김민지", img: "images/l_member1.png" },
             { name: "송해눈", img: "images/l_member2.png" },
-            { name: "한삼아", img: "images/l_member3.png" },
-            { name: "정수종", img: "images/l_member4.png" }
+            { name: "정수종", img: "images/l_member3.png" },
+            { name: "한삼아", img: "images/l_member4.png" }
         ]
     }
 };
