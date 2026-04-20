@@ -11,20 +11,17 @@
         
         :root { 
             --sunny-purple: #63489a; 
-            --grid-color: rgba(99, 72, 154, 0.05);
         }
 
         body { 
             font-family: 'Pretendard', sans-serif; 
-            background-color: #fcfcfd;
-            background-image: linear-gradient(var(--grid-color) 1px, transparent 1px), linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-            background-size: 40px 40px;
+            background-color: #f8f9ff; /* 그리드 없는 깔끔한 배경 */
             line-height: 1.8; 
-            letter-spacing: -0.02em;
+            letter-spacing: -0.01em;
             color: #111827;
         }
 
-        /* --- 헤더 & 네비게이션 (규격 통일 버전) --- */
+        /* --- [헤더 유지 버전] 통합 규격 --- */
         header { 
             height: 64px !important; 
             position: sticky !important;
@@ -57,7 +54,6 @@
             text-transform: uppercase !important;
             letter-spacing: 0.1em !important;
             text-decoration: none !important;
-            transition: color 0.3s ease !important;
         }
 
         .nav-link::after {
@@ -75,24 +71,26 @@
         .nav-link:hover::after, .nav-link.active-tab::after { width: 100% !important; }
         .nav-link.active-tab { color: var(--sunny-purple) !important; }
 
-        /* 스크롤 진행 바 */
+        /* 스크롤 인디케이터 */
         .progress-container { position: absolute; bottom: -1px; left: 0; width: 100%; height: 3px; background: transparent; }
         .progress-bar { height: 100%; background: var(--sunny-purple); width: 0%; transition: width 0.1s ease; }
 
-        /* --- 아티클 상세 전용 레이아웃 --- */
+        /* --- 아티클 상세 레이아웃 --- */
+        .content-text { color: #374151; font-size: 1.125rem; word-break: keep-all; text-align: justify; }
+        .content-text p { margin-bottom: 2rem; }
+        
         .part-tab { transition: all 0.3s ease; border-radius: 99px; padding: 6px 16px; white-space: nowrap; font-size: 11px; font-weight: 800; color: #9ca3af; border: 1px solid #eee; background: white; }
         .part-tab.active { background: var(--sunny-purple); color: white; border-color: var(--sunny-purple); }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         
-        .content-text { color: #374151; font-size: 1.125rem; word-break: keep-all; text-align: justify; }
-        .content-text p { margin-bottom: 2rem; }
-
-        .content-img { width: 100%; border-radius: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05); display: block; object-fit: cover; }
-        .img-container { margin-top: 2.5rem; margin-bottom: 2.5rem; }
-        .img-caption { text-align: center; font-size: 13px; color: #94a3b8; margin-top: 1rem; font-weight: 500; word-break: keep-all; }
+        .content-img { width: 100%; border-radius: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05); object-fit: cover; }
+        .img-container { margin: 2.5rem 0; }
+        .img-caption { text-align: center; font-size: 13px; color: #94a3b8; margin-top: 1rem; font-weight: 500; }
         
-        .bottom-nav-card { transition: all 0.3s ease; border: 1px solid #eee; background: white; padding: 1.25rem; border-radius: 1rem; display: flex; flex-direction: column; }
+        .bottom-nav-card { transition: all 0.3s ease; background: white; border: 1px solid #eee; border-radius: 1rem; }
         .bottom-nav-card:hover { border-color: var(--sunny-purple); transform: translateY(-4px); }
+
+        .footnote-section { margin-top: 4rem; padding-top: 2rem; border-top: 1px dashed #e2e8f0; }
     </style>
 </head>
 <body>
@@ -100,7 +98,7 @@
         <div class="progress-container"><div id="scroll-indicator" class="progress-bar"></div></div>
         <div class="header-container">
             <a href="index.html" class="flex items-center">
-                <img src="/images/sunny_scholar_logo.png" alt="Logo" style="height: 32px; width: auto;">
+                <img src="/images/sunny_scholar_logo.png" alt="Logo" style="height: 30px; width: auto;">
             </a>
             <nav class="hidden md:flex items-center" style="gap: 2.5rem;">
                 <a href="article_list.html" class="nav-link active-tab">Articles</a>
@@ -110,7 +108,7 @@
         </div>
     </header>
 
-    <div class="bg-white border-b border-gray-100 sticky top-16 z-40">
+    <div class="bg-white border-b border-gray-100 sticky top-[64px] z-40">
         <div class="max-w-3xl mx-auto px-6 py-3">
             <div id="part-nav" class="flex justify-start md:justify-center items-center gap-2 overflow-x-auto no-scrollbar py-1"></div>
         </div>
@@ -156,13 +154,13 @@
 
         <div class="mt-10 mb-20 grid grid-cols-1 md:grid-cols-2 gap-3">
             <div id="prev-article" class="invisible">
-                <a href="#" class="bottom-nav-card group">
+                <a href="#" class="bottom-nav-card !p-4 flex flex-col group">
                     <span class="text-[9px] font-black text-gray-400 uppercase mb-1 group-hover:text-[#63489a]">Previous</span>
                     <span class="text-[13px] font-bold text-gray-800 line-clamp-1"></span>
                 </a>
             </div>
             <div id="next-article" class="invisible">
-                <a href="#" class="bottom-nav-card text-right items-end group">
+                <a href="#" class="bottom-nav-card !p-4 text-right flex flex-col items-end group">
                     <span class="text-[9px] font-black text-gray-400 uppercase mb-1 group-hover:text-[#63489a]">Next</span>
                     <span class="text-[13px] font-bold text-gray-800 line-clamp-1"></span>
                 </a>
@@ -189,7 +187,7 @@
             const teamBase = teamDataMap[current.teamId] || {};
             const teamInfo = baseDetails[current.teamId] || {};
 
-            // 1. 헤더/메타 정보 업데이트
+            // 1. 헤더 정보
             document.getElementById('view-team-tag').innerText = teamBase.teamName || current.teamName;
             const summaryEl = document.getElementById('view-team-summary');
             if (teamBase.summary) {
@@ -200,7 +198,7 @@
             }
             document.getElementById('view-title').innerText = current.title;
 
-            // 2. 본문 & 이미지 렌더링
+            // 2. 본문 렌더링 (이미지 포함)
             const dynamicBody = document.getElementById('dynamic-body');
             let articleContent = current.content || "";
             if (current.thumbnail) {
@@ -213,7 +211,7 @@
             }
             dynamicBody.innerHTML = articleContent;
 
-            // 3. 하단 팀 정보 연동
+            // 3. 하단 팀 정보
             const teamLink = document.getElementById('team-link');
             teamLink.href = `team_detail.html?teamId=${current.teamId}`;
             document.getElementById('contact-team-name').innerText = teamBase.teamName || current.teamName;
@@ -224,7 +222,7 @@
             emailLink.innerText = emailAddr;
             emailLink.href = `mailto:${emailAddr}`;
 
-            // 4. 파트 탭 생성
+            // 4. 파트 탭 및 이전/다음
             const teamArticles = SUNNY_DATA.filter(a => a.teamId === current.teamId);
             const partNav = document.getElementById('part-nav');
             partNav.innerHTML = teamArticles.map(art => `
@@ -233,7 +231,6 @@
                 </a>
             `).join('');
 
-            // 5. 이전/다음 아티클 설정
             const currentIdx = teamArticles.findIndex(a => a.id === articleId);
             if (currentIdx > 0) {
                 const prev = teamArticles[currentIdx - 1];
@@ -261,11 +258,4 @@
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = (winScroll / height) * 100;
             const indicator = document.getElementById("scroll-indicator");
-            if(indicator) indicator.style.width = scrolled + "%";
-        }
-
-        window.onload = initView;
-        window.onscroll = updateProgressBar;
-    </script>
-</body>
-</html>
+            if(indicator)
