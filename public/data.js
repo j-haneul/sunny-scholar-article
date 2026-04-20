@@ -1119,33 +1119,43 @@ const TEAM_DETAILS = {
         order: "LAB 02",
         name: "그린",
         teamProfileImg: "images/green_team_1.jpg", 
-        description: "자립준비청년들이 경제적 어려움으로 인해 학업을 포기하지 않도록, 지속 가능한 교육 환경과 정책적 지원 방안을 연구합니다.",
+        description: `저희는 미완의 상태에서 가능성을 그려나가는 팀, 그린입니다. 
+        문제를 “그려보다”라는 의미에서, 아직 형태가 분명하지 않은 생각이라도 상상하고, 그려보고, 시도하는 과정을 중요시합니다. 또한, 영어 “green”에서 착안하여 미숙하지만 햇살(Sunny)을 받아 자라나는 새싹과 성장의 이미지를 담고자 했습니다. 
+부족함을 인정하고 배우며 자라나는 과정 속에서 미숙함을 숨기기보다 가능성으로 받아들이고, 작은 시도와 경험을 지속하며 성장해나가겠습니다.
+
+수현의 이야기로 시작한 이 탐구가 자립을 준비하고 있는 수많은 수현들을 만나 모두가 함께 나아갈 수 있는, 그려갈 수 있는 세상으로 나아갈 수 있기를 바랍니다.
+그린이 그려갈 세상에 많은 관심 부탁드리며 함께해 주시길 부탁드립니다.`,
         cta: `수현의 이야기로 시작한 이 탐구가 자립을 준비하고 있는 수많은 수현들을 만나 모두가 함께 나아갈 수 있는, 그려갈 수 있는 세상으로 나아갈 수 있기를 바랍니다.  \n그린이 그려갈 세상에 많은 관심 부탁드리며 함께해 주시길 부탁드립니다.`,
         email: "green2sunny@gmail.com",
         instagram: "",
         homepage: "",
         members: [
-            { name: "", img: "images/g_member1.png" },
-            { name: "", img: "images/g_member2.png" },
-            { name: "", img: "images/g_member3.png" },
-            { name: "", img: "images/g_member4.png" },
-            { name: "", img: "images/g_member5.png" }
+            { name: "김정회", img: "images/g_member1.png" },
+            { name: "박소희", img: "images/g_member2.png" },
+            { name: "이김은채", img: "images/g_member3.png" },
+            { name: "한채경", img: "images/g_member4.png" },
+            { name: "허미현", img: "images/g_member5.png" }
         ]
     },
     "hearim": {
         order: "LAB 03",
         name: "헤아림",
         teamProfileImg: "images/hearim_team_1.jpg", 
-        description: `저희 '헤아림'은 발달장애인이 마주하는 재취업의 문턱과 그 사이의 긴 공백을 연구합니다. 단순히 일자리를 늘리는 것을 넘어, 당사자의 삶을 온전히 헤아리고 지속 가능한 연결을 만드는 세상을 꿈꿉니다.`,
+        description: `
+        우리에게 익숙한 관점을 내려놓고 타인의 상황과 마음을 온전히 헤아릴 수 있는 사람들이 되고 싶습니다. 그동안 잘 알지 못했던 누군가의 삶의 이야기를 진심으로 듣고, 이들과 나란히 앉아 대화할 수 있는 존재가 되고자 합니다. 
+        무엇이 진짜 문제인지 단번에 알기 어려운 세상 속에서, 조금은 돌아가더라도 다양한 목소리에 귀 기울이며, 우리만의 속도로 ‘우리가 해결할 수 있는 문제는 무엇일까?’하는 질문의 답을 찾아가는 여정을 꿈꿉니다.
+        
+        저희 '헤아림'은 발달장애인이 마주하는 재취업의 문턱과 그 사이의 긴 공백을 연구합니다. 단순히 일자리를 늘리는 것을 넘어, 당사자의 삶을 온전히 헤아리고 지속 가능한 연결을 만드는 세상을 꿈꿉니다.`,
         cta: `여러분의 의견을 들려주세요!`,
         email: "hearim.sunny@gmail.com",
         instagram: "",
         homepage: "",
         members: [
-            { name: "", img: "images/h_member1.png" }, // (앞선 본문 참고)
-            { name: "", img: "images/h_member2.png" },
-            { name: "", img: "images/h_member3.png" },
-            { name: "", img: "images/h_member4.png" }
+            { name: "남궁송", img: "images/h_member1.png" }, // (앞선 본문 참고)
+            { name: "주서영", img: "images/h_member2.png" },
+            { name: "이준희", img: "images/h_member3.png" },
+            { name: "이채윤", img: "images/h_member4.png" },
+            { name: "이하윤", img: "images/h_member4.png" }
         ]
     },
 
@@ -1153,17 +1163,21 @@ const TEAM_DETAILS = {
         order: "LAB 04",
         name: "두드림 : (팀 주제 입력)",
         teamProfileImg: "images/dodream_team_1.jpg", 
-        description: `
+        description: `“꿈을 꾸는 데서 멈추지 않고, 행동으로 두드리다.”
+        
+'두드림(Do-Dream)'은 [문을 두드리다: 현장 당사자 중심의 문제 발굴]과 [꿈의 실현: 현실적 해결책 제시]라는 두 가지의 가치를 바탕으로 닫혀있는 사회문제의 문을 두드리고자 하는 저희 팀의 의지를 담고 있습니다.
+사회문제 앞에서의 망설임을 지나 행동을 실천하고, 꿈을 이야기하는 것을 넘어 현실로 연결하며 우리만의 문을 열 수 있는 8개월의 여정을 만들어가고자 합니다.
+
 키오스크 앞에 멈춰 섰던 준후처럼, 누군가는 여전히 자신을 설명하지 못한 채 그 자리에 서 있습니다. 준후와 같은 사람들이 다시 움직일 수 있도록, 저희는 계속 이 문을 두드려보려 합니다. 두드림에게 전하고 싶은 이야기가 있다면, 아래 이메일로 전해 주세요.`,
         cta: `두드림에게 전하고 싶은 이야기가 있다면, 아래 이메일로 전해 주세요.`,
         email: "dodream0123@gmail.com",
         instagram: "",
         homepage: "",
         members: [
-            { name: "", img: "images/d_member1.png" },
-            { name: "", img: "images/d_member2.png" },
-            { name: "", img: "images/d_member3.png" },
-            { name: "", img: "images/d_member4.png" }
+            { name: "박민주", img: "images/d_member1.png" },
+            { name: "박찬용", img: "images/d_member2.png" },
+            { name: "이세정", img: "images/d_member3.png" },
+            { name: "송예나", img: "images/d_member4.png" }
         ]
     },
 
@@ -1174,18 +1188,18 @@ const TEAM_DETAILS = {
         description: `사회문제라는 끝이 보이지 않는 바다에서, 우리는 흔들리지 않고 서서 도움이 필요한 곳을 바라봅니다.
 너무 어두워 한 걸음 내딛기조차 어려운 순간에도, 각자가 자기만의 길을 찾아갈 수 있도록 가능성이라는 작은 빛을 건네고 싶습니다. 저희 팀 ‘등대’는 누군가의 길을 대신 정해주기보다, 스스로 희망을 가지고 방향을 찾도록 곁에서 비추는 존재가 되고자 합니다.
         
-        앞으로 우리는 입학 지연이 어떻게 은둔과 고립으로 이어지는지 그 연결고리를 더 구체적으로 파악해보고자 한다. 당사자뿐 아니라 교사, 학부모, 지원기관 관계자 등 다양한 주체를 인터뷰하며 실제로 어떤 지점에서 이들의 삶의 흐름이 끊어지는지를 계속 따라가 볼 예정이다.
-이 글을 읽고 있는 분들 중 비슷한 경험이 있거나 현장에서 이 문제를 마주한 적이 있다면, 당신의 이야기를 함께 들려주면 좋겠다.
+        앞으로 저희는 입학 지연이 어떻게 은둔과 고립으로 이어지는지 그 연결고리를 더 구체적으로 파악해보고자 합니다. 당사자뿐 아니라 교사, 학부모, 지원기관 관계자 등 다양한 주체를 인터뷰하며 실제로 어떤 지점에서 이들의 삶의 흐름이 끊어지는지를 계속 따라가 볼 예정입니다.
+이 글을 읽고 있는 분들 중 비슷한 경험이 있거나 현장에서 이 문제를 마주한 적이 있다면, 당신의 이야기를 함께 들려주면 좋겠습니다.
 `,
         cta: `이 글을 읽고 있는 분들 중 비슷한 경험이 있거나 현장에서 이 문제를 마주한 적이 있다면, 당신의 이야기를 함께 들려주면 좋겠다.`,
         email: "sksunny.deungdae@gmail.com",
         instagram: "https://www.instagram.com/deungdae.sksunny/",
         homepage: "",
         members: [
-            { name: "", img: "images/l_member1.png" },
-            { name: "", img: "images/l_member2.png" },
-            { name: "", img: "images/l_member3.png" },
-            { name: "", img: "images/l_member4.png" }
+            { name: "김민지", img: "images/l_member1.png" },
+            { name: "송해눈", img: "images/l_member2.png" },
+            { name: "한삼아", img: "images/l_member3.png" },
+            { name: "정수종", img: "images/l_member4.png" }
         ]
     }
 };
