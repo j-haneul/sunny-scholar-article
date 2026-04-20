@@ -109,6 +109,15 @@
                     <span class="text-[13px] font-bold text-gray-800 line-clamp-1"></span>
                 </a>
             </div>
+            <div id="list-article" class="hidden">
+    <a href="article_list.html" class="bottom-nav-card !p-4 text-right bg-[#63489a] border-[#63489a] rounded-xl flex flex-col items-end group hover:bg-[#4d377a] transition-colors shadow-lg shadow-purple-100">
+        <span class="text-[9px] font-black text-purple-200 uppercase mb-1">Finish</span>
+        <span class="text-[13px] font-bold text-white flex items-center gap-1">
+            다른 아티클 보러가기 
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </span>
+    </a>
+</div>
         </div>
     </main>
 
@@ -182,21 +191,33 @@
             `).join('');
 
             // 5. 이전/다음 글 설정
-            const currentIdx = teamArticles.findIndex(a => a.id === articleId);
-            if (currentIdx > 0) {
-                const prev = teamArticles[currentIdx - 1];
-                const el = document.getElementById('prev-article');
-                el.classList.remove('invisible');
-                el.querySelector('a').href = `article_view.html?id=${prev.id}`;
-                el.querySelector('span:last-child').innerText = prev.title;
-            }
-            if (currentIdx < teamArticles.length - 1) {
-                const next = teamArticles[currentIdx + 1];
-                const el = document.getElementById('next-article');
-                el.classList.remove('invisible');
-                el.querySelector('a').href = `article_view.html?id=${next.id}`;
-                el.querySelector('span:last-child').innerText = next.title;
-            }
+const currentIdx = teamArticles.findIndex(a => a.id === articleId);
+
+// 이전 글 설정
+if (currentIdx > 0) {
+    const prev = teamArticles[currentIdx - 1];
+    const el = document.getElementById('prev-article');
+    el.classList.remove('invisible');
+    el.querySelector('a').href = `article_view.html?id=${prev.id}`;
+    el.querySelector('span:last-child').innerText = prev.title;
+}
+
+// 다음 글 또는 목록 가기 설정
+const nextEl = document.getElementById('next-article');
+const listEl = document.getElementById('list-article');
+
+if (currentIdx < teamArticles.length - 1) {
+    // 다음 아티클이 있는 경우
+    const next = teamArticles[currentIdx + 1];
+    nextEl.classList.remove('invisible');
+    listEl.classList.add('hidden'); // 목록 버튼 숨김
+    nextEl.querySelector('a').href = `article_view.html?id=${next.id}`;
+    nextEl.querySelector('span:last-child').innerText = next.title;
+} else {
+    // 마지막 아티클인 경우 (5번째 파트 등)
+    nextEl.classList.add('invisible'); // 다음 버튼 숨김
+    listEl.classList.remove('hidden'); // 목록 버튼 노출
+}
         }
 
         function copyURL() {
