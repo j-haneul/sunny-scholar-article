@@ -190,35 +190,43 @@
                 </a>
             `).join('');
 
-            // 5. 이전/다음 글 설정
+          // 5. 이전/다음 글 설정
 const currentIdx = teamArticles.findIndex(a => a.id === articleId);
-
-// 이전 글 설정
-if (currentIdx > 0) {
-    const prev = teamArticles[currentIdx - 1];
-    const el = document.getElementById('prev-article');
-    el.classList.remove('invisible');
-    el.querySelector('a').href = `article_view.html?id=${prev.id}`;
-    el.querySelector('span:last-child').innerText = prev.title;
-}
-
-// 다음 글 또는 목록 가기 설정
+const prevEl = document.getElementById('prev-article');
 const nextEl = document.getElementById('next-article');
 const listEl = document.getElementById('list-article');
 
+// [이전 버튼 로직]
+if (currentIdx > 0) {
+    const prev = teamArticles[currentIdx - 1];
+    prevEl.classList.remove('invisible');
+    prevEl.querySelector('a').href = `article_view.html?id=${prev.id}`;
+    prevEl.querySelector('span:last-child').innerText = prev.title;
+} else {
+    prevEl.classList.add('invisible');
+}
+
+// [다음 버튼 vs 목록 버튼 로직]
 if (currentIdx < teamArticles.length - 1) {
-    // 다음 아티클이 있는 경우
+    // 다음 편이 있는 경우
     const next = teamArticles[currentIdx + 1];
     nextEl.classList.remove('invisible');
-    listEl.classList.add('hidden'); // 목록 버튼 숨김
+    nextEl.style.display = 'block'; // 강제 표시
+    
+    if(listEl) listEl.style.display = 'none'; // 목록 버튼 강제 숨김
+    
     nextEl.querySelector('a').href = `article_view.html?id=${next.id}`;
     nextEl.querySelector('span:last-child').innerText = next.title;
 } else {
-    // 마지막 아티클인 경우 (5번째 파트 등)
-    nextEl.classList.add('invisible'); // 다음 버튼 숨김
-    listEl.classList.remove('hidden'); // 목록 버튼 노출
+    // 마지막 편인 경우
+    nextEl.classList.add('invisible');
+    nextEl.style.display = 'none'; // 다음 버튼 강제 숨김
+    
+    if(listEl) {
+        listEl.classList.remove('hidden');
+        listEl.style.display = 'block'; // 목록 버튼 강제 표시
+    }
 }
-        }
 
         function copyURL() {
             navigator.clipboard.writeText(window.location.href);
