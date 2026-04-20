@@ -4,65 +4,144 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Article View | 2026 SUNNY Scholar</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<script>
+        // 네비게이션 활성화 스크립트
+        function setActiveMenu() {
+            const path = window.location.pathname;
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active-tab');
+                const href = link.getAttribute('href');
+                // 아티클 상세페이지이므로 Articles(article_list.html)를 찾아 활성화
+                if (href.includes('article')) {
+                    link.classList.add('active-tab');
+                }
+            });
+        }
+        window.addEventListener('load', setActiveMenu);
+
+        // 스크롤 인디케이터 스크립트
+        function updateProgressBar() {
+            const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            const indicator = document.getElementById("scroll-indicator");
+            if(indicator) indicator.style.width = scrolled + "%";
+        }
+        window.addEventListener('scroll', updateProgressBar);
+    </script>
+
     <style>
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
-        :root { --sunny-purple: #63489a; }
-        body { font-family: 'Pretendard', sans-serif; background-color: #f8f9ff; line-height: 1.8; }
-        .glass { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); }
-        .part-tab { transition: all 0.3s ease; border-radius: 99px; padding: 6px 16px; white-space: nowrap; font-size: 11px; font-weight: 800; color: #9ca3af; border: 1px solid #eee; }
-        .part-tab.active { background: var(--sunny-purple); color: white; border-color: var(--sunny-purple); }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .bottom-nav-card { transition: all 0.3s ease; border: 1px solid #eee; background: white; padding: 1.5rem; border-radius: 1rem; display: flex; flex-direction: column; }
-        .bottom-nav-card:hover { border-color: var(--sunny-purple); transform: translateY(-4px); }
-        
+
+        :root { 
+            --sunny-purple: #63489a; 
+            --sunny-gradient: linear-gradient(135deg, #4f319b 0%, #8c52ff 100%);
+            --grid-color: rgba(99, 72, 154, 0.05); 
+        }
+
+        body { 
+            font-family: 'Pretendard', sans-serif; 
+            background-color: #fcfcfd;
+            background-image: linear-gradient(var(--grid-color) 1px, transparent 1px), linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 40px 40px; 
+            letter-spacing: -0.02em;
+            line-height: 1.8;
+            color: #111827;
+        }
+
+        /* --- [상단바 규격 통일] --- */
+        header { 
+            height: 64px !important; 
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 50 !important;
+            background: rgba(255, 255, 255, 0.8) !important; 
+            backdrop-filter: blur(12px) !important; 
+            -webkit-backdrop-filter: blur(12px) !important; 
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+        }
+
+        .header-container {
+            max-width: 80rem !important;
+            margin: 0 auto !important;
+            padding: 0 1.5rem !important;
+            height: 100% !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+        }
+
+        .nav-link {
+            position: relative !important;
+            height: 64px !important;
+            display: flex !important;
+            align-items: center !important;
+            color: #1f2937 !important;
+            font-size: 11px !important;
+            font-weight: 900 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.1em !important;
+            transition: color 0.3s ease !important;
+            text-decoration: none !important;
+        }
+
+        .nav-link::after {
+            content: '' !important;
+            position: absolute !important;
+            bottom: 18px !important;
+            left: 50% !important;
+            width: 0 !important;
+            height: 2px !important;
+            background-color: var(--sunny-purple) !important;
+            transition: all 0.3s ease !important;
+            transform: translateX(-50%) !important;
+        }
+
+        .nav-link:hover::after, .nav-link.active-tab::after { width: 100% !important; }
+        .nav-link.active-tab { color: var(--sunny-purple) !important; }
+
+        /* 스크롤바 진행도 라인 */
+        .progress-container { 
+            position: absolute; 
+            bottom: -1px; 
+            left: 0; 
+            width: 100%; 
+            height: 3px; 
+            background: transparent; 
+        }
+        .progress-bar { height: 100%; background: var(--sunny-purple); width: 0%; }
+
+        /* --- [아티클 뷰 전용] --- */
         .content-text { color: #374151; font-size: 1.125rem; word-break: keep-all; text-align: justify; }
         .content-text p { margin-bottom: 2rem; }
-
-        .content-img { width: 100%; border-radius: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05); display: block; object-fit: cover; }
-        .img-container { margin-top: 2.5rem; margin-bottom: 2.5rem; }
-        .img-caption { text-align: center; font-size: 13px; color: #94a3b8; margin-top: 1rem; font-weight: 500; word-break: keep-all; }
+        .part-tab { transition: all 0.3s ease; border-radius: 99px; padding: 6px 16px; font-size: 11px; font-weight: 800; color: #9ca3af; border: 1px solid #eee; background: white; white-space: nowrap; }
+        .part-tab.active { background: var(--sunny-purple); color: white; border-color: var(--sunny-purple); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
         
-        .footnote-section { margin-top: 4rem; padding-top: 2rem; border-top: 1px dashed #e2e8f0; }
-        .footnote-section p { font-size: 13px !important; color: #94a3b8 !important; margin-bottom: 0.5rem !important; line-height: 1.5 !important; }
-
-        .progress-container { position: fixed; top: 64px; left: 0; width: 100%; height: 4px; background: transparent; z-index: 49; }
-        .progress-bar { height: 100%; background: var(--sunny-purple); width: 0%; transition: width 0.1s ease; }        
+        .img-container { margin: 2.5rem 0; }
+        .content-img { width: 100%; border-radius: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .img-caption { text-align: center; font-size: 13px; color: #94a3b8; margin-top: 1rem; }
+        
+        .bottom-nav-card { transition: all 0.3s ease; background: white; }
+        .bottom-nav-card:hover { transform: translateY(-4px); }
     </style>
 </head>
-<body class="text-gray-900">
-  <header class="sticky top-0 z-50 glass border-b border-gray-100">
+<body>
+
+    <header>
         <div class="progress-container"><div id="scroll-indicator" class="progress-bar"></div></div>
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex justify-between items-center h-14 md:h-16">
-                <a href="index.html" class="flex items-center">
-                    <img src="/images/sunny_scholar_logo.png" alt="Logo" class="h-7 md:h-8 w-auto">
-                </a>
-                <nav class="hidden md:flex space-x-10 text-xs font-black tracking-widest uppercase">
-                    <a href="article_list.html" class="nav-link text-gray-800 hover:text-sunny transition">Articles</a>
-                    <a href="team_list.html" class="nav-link text-gray-800 hover:text-sunny transition">Lab</a>
-                    <a href="about.html" class="nav-link text-gray-800 hover:text-sunny transition">About</a>
-                </nav>
-            </div>
+        <div class="header-container">
+            <a href="index.html" class="flex items-center">
+                <img src="/images/sunny_scholar_logo.png" alt="Logo" style="height: 32px; width: auto;">
+            </a>
+            <nav class="hidden md:flex items-center" style="gap: 2.5rem;">
+                <a href="article_list.html" class="nav-link active-tab">Articles</a>
+                <a href="team_list.html" class="nav-link">Lab</a>
+                <a href="about.html" class="nav-link">About</a>
+            </nav>
         </div>
     </header>
-
-    <div class="bg-white border-b border-gray-100 sticky top-14 md:top-16 z-40">
-        <div class="max-w-3xl mx-auto px-6 py-3">
-            <div id="part-nav" class="flex justify-start md:justify-center items-center gap-2 overflow-x-auto no-scrollbar py-1"></div>
-        </div>
-    </div>
-
-    <main class="max-w-3xl mx-auto px-6 py-10 md:py-16 animate__animated animate__fadeIn">
-        <header class="mb-10">
-            <div id="view-team-tag" class="text-[#63489a] text-sm md:text-base font-black mb-3 tracking-wider uppercase"></div>
-            
-            <div id="view-team-summary" class="text-gray-500 text-base md:text-lg font-bold mb-6 break-keep leading-relaxed border-l-4 border-purple-100 pl-4 py-1"></div>
-            
-            <h1 id="view-title" class="text-3xl md:text-5xl font-black hide leading-tight break-keep"></h1>
-        </header>
-
         <article>
             <div id="dynamic-body" class="content-text"></div>
         </article>
