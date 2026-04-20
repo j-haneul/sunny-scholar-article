@@ -17,8 +17,8 @@
                 
                 // 현재 경로에 해당 파일명이 포함되어 있으면 active 클래스 추가
                 // index.html의 경우 경로가 '/' 이거나 'index.html'일 때 활성화
-                if ((path.includes(href) && href !== "") || (path === "/" && href === "index.html")) {
-                    link.classList.add('active-tab');
+if ((path.includes(href) && href !== "") || (path.endsWith('/') && href === "index.html")) {
+            link.classList.add('active-tab');
                 }
             });
         }
@@ -47,31 +47,37 @@
         }
 
         /* --- 헤더 스타일 동기화 --- */
-        .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); }
-        
-        .nav-link {
-            position: relative;
-            transition: color 0.3s ease;
-        }
+/* 1. 헤더 높이 고정 */
+header { height: 64px; }
 
-        .nav-link:hover { color: var(--sunny-purple) !important; }
+/* 2. 글래스모피즘 수치 통일 */
+.glass { 
+    background: rgba(255, 255, 255, 0.8); 
+    backdrop-filter: blur(12px); 
+    border-bottom: 1px solid rgba(0,0,0,0.05); 
+}
 
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background-color: var(--sunny-purple);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
+/* 3. nav-link 텍스트 색상 및 간격 */
+.nav-link {
+    position: relative;
+    transition: color 0.3s ease;
+    color: #1f2937; /* text-gray-800 */
+}
 
-        .nav-link:hover::after { width: 100%; }
-
-        .nav-link.active-tab { color: var(--sunny-purple) !important; font-weight: 900; }
-        .nav-link.active-tab::after { width: 100%; }
+/* 4. 활성화 언더바 위치 (about.html 기준) */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #63489a;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+.nav-link.active-tab::after { width: 100%; }
+.nav-link.active-tab { color: #63489a !important; font-weight: 900; }
 
         /* --- 팀 카드 및 기타 스타일 --- */
         .team-card {
@@ -137,7 +143,7 @@
 
 <header class="sticky top-0 z-50 glass">
     <div class="max-w-7xl mx-auto px-6">
-        <div class="flex justify-between items-center h-14 md:h-16">
+        <div class="flex justify-between items-center h-16">
             <a href="index.html" class="flex items-center">
                 <img src="/images/sunny_scholar_logo.png" alt="Logo" class="h-7 md:h-8 w-auto">
             </a>
