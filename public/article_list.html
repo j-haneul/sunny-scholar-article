@@ -7,65 +7,126 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
-        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
-        :root {
-            --sunny-purple: #63489a;
-            --sunny-gradient: linear-gradient(135deg, #4f319b 0%, #8c52ff 100%);
-            --grid-color: rgba(99, 72, 154, 0.05);
-        }
-        body { 
-            font-family: 'Pretendard', sans-serif; 
-            background-color: #f8f9ff;
-            background-image: 
-                linear-gradient(to bottom, rgba(99, 72, 154, 0.05) 0%, transparent 15%),
-                linear-gradient(var(--grid-color) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-            background-size: 100% 100%, 40px 40px, 40px 40px;
-        }
-        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
-        
-        .scrollbar-hide::-webkit-scrollbar { display: none; }
-        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        .text-gradient { background: var(--sunny-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+     @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
 
-        /* 이미지 16:9 고정 유지 */
-        .article-img-wrapper {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%;
-            background: #f3f4f6;
-            overflow: hidden;
-        }
-        .article-img-wrapper img {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            object-fit: cover;
-        }
+    :root {
+        --sunny-purple: #63489a;
+        --sunny-deep-purple: #4e387a;
+        --sunny-gradient: linear-gradient(135deg, #4f319b 0%, #8c52ff 100%);
+        --grid-color: rgba(99, 72, 154, 0.05);
+    }
 
-        .scroll-container-wrapper { position: relative; }
-        .scroll-container-wrapper::after {
-            content: "";
-            position: absolute;
-            top: 0; right: 0;
-            width: 80px;
-            height: calc(100% - 40px);
-            background: linear-gradient(to right, transparent, #f8f9ff);
-            pointer-events: none;
-            z-index: 10;
-        }
-    </style>
+    body { 
+        font-family: 'Pretendard', sans-serif; 
+        background-color: #fcfcfd; /* 인덱스와 동일한 배경색 */
+        background-image: 
+            linear-gradient(to bottom, rgba(99, 72, 154, 0.05) 0%, transparent 15%),
+            linear-gradient(var(--grid-color) 1px, transparent 1px),
+            linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+        background-size: 100% 100%, 40px 40px, 40px 40px;
+        letter-spacing: -0.02em;
+    }
+
+    /* --- [핵심] 상단바 규격 통일 (어바웃/인덱스와 1:1 일치) --- */
+    header { 
+        height: 64px !important; 
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 50 !important;
+        background: rgba(255, 255, 255, 0.8) !important; 
+        backdrop-filter: blur(12px) !important; 
+        -webkit-backdrop-filter: blur(12px) !important; 
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .header-container {
+        max-width: 80rem !important; /* max-w-7xl 동일 */
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-left: 1.5rem !important; /* px-6 동일 */
+        padding-right: 1.5rem !important;
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        box-sizing: border-box !important;
+    }
+
+    .nav-link {
+        position: relative !important;
+        height: 64px !important;
+        display: flex !important;
+        align-items: center !important;
+        color: #1f2937 !important;
+        font-size: 11px !important;
+        font-weight: 900 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.1em !important;
+        transition: color 0.3s ease !important;
+        text-decoration: none !important;
+    }
+
+    .nav-link::after {
+        content: '' !important;
+        position: absolute !important;
+        bottom: 18px !important; /* 언더바 위치 고정 */
+        left: 50% !important;
+        width: 0 !important;
+        height: 2px !important;
+        background-color: #63489a !important;
+        transition: all 0.3s ease !important;
+        transform: translateX(-50%) !important;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active-tab::after {
+        width: 100% !important;
+    }
+
+    .nav-link.active-tab {
+        color: #63489a !important;
+    }
+
+    /* --- 아티클 페이지 전용 스타일 유지 및 보정 --- */
+    .text-gradient { background: var(--sunny-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* 가로 스크롤 영역 끝단 그라데이션 (배경색 통일) */
+    .scroll-container-wrapper::after {
+        content: "";
+        position: absolute;
+        top: 0; right: 0;
+        width: 80px;
+        height: calc(100% - 40px);
+        background: linear-gradient(to right, transparent, #fcfcfd); /* 배경색에 맞춤 */
+        pointer-events: none;
+        z-index: 10;
+    }
+
+    /* 카드 썸네일 비율 고정 */
+    .group img {
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+    }
+</style>
 </head>
 <body class="text-gray-900">
 
-<header class="sticky top-0 z-50 glass">
-    <div class="max-w-7xl mx-auto px-6 h-14 md:h-16 flex justify-between items-center">
-        <a href="index.html"><img src="images/sunny_scholar_logo.png" class="h-7 md:h-8 w-auto"></a>
-        <nav class="hidden md:flex space-x-10 text-xs font-black uppercase tracking-widest">
-            <a href="article_list.html" class="text-gray-800 border-b-2 border-[#63489a]">Articles</a>
-            <a href="team_list.html" class="text-gray-400 hover:text-gray-800 transition">Lab</a>
-            <a href="about.html" class="text-gray-400 hover:text-gray-800 transition">About</a>
+<header>
+    <div class="header-container">
+        <a href="index.html" class="flex items-center">
+            <img src="/images/sunny_scholar_logo.png" alt="Logo" style="height: 32px; width: auto;">
+        </a>
+
+        <nav class="hidden md:flex items-center" style="gap: 2.5rem;">
+            <a href="article_list.html" class="nav-link">Articles</a>
+            <a href="team_list.html" class="nav-link">Lab</a>
+            <a href="about.html" class="nav-link">About</a>
         </nav>
     </div>
 </header>
