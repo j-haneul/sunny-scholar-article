@@ -267,7 +267,6 @@ const SUNNY_DATA = [
 
     <div class="my-4 py-2">
       <p class="text-xl font-bold text-[#63489a] mb-2">“평범한 가정이라고 생각했던 가정이 사실 평범하지 않더라고요. 아버지는 스트레스를 가족들에게 풀었고, 아버지의 폭력은 일상이었죠.”</p>
-      <p class="text-sm text-gray-400 font-bold">— 수현</p>
     </div>
 
     <p>아버지의 폭력은 날이 갈수록 심해졌고, 어느 날은 정신을 잃어 응급실에 실려가기도 했습니다. 이후 전문기관에 의해 우선 쉼터에서 머물 수 있게 된 수현이는 이제는 폭력에서 벗어나 안전한 자신의 보금자리를 찾을 수 있으리라 생각했습니다.</p>
@@ -418,7 +417,7 @@ const SUNNY_DATA = [
         수현의 이야기로 시작한 이 탐구가 자립을 준비하고 있는 수많은 수현들을 만나 모두가 함께 나아갈 수 있는, 그려갈 수 있는 세상으로 나아갈 수 있기를 바랍니다. 
         그린이 그려갈 세상에 많은 관심 부탁드리며 함께해 주시길 부탁드립니다.
       </p>
-      <p class="text-sm font-bold text-gray-500">📧 dodream_sunny@email.com</p>
+      <p class="text-sm font-bold text-gray-500">📧 green2sunny@gmail.com</p>
     </div>
   `
   },
