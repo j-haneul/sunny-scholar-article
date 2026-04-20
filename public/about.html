@@ -5,6 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About | 2026 SUNNY Scholar</title>
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+    function setActiveMenu() {
+    const path = window.location.pathname;
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    navLinks.forEach(link => {
+        link.classList.remove('active-tab');
+        const href = link.getAttribute('href');
+        
+        // 현재 경로에 해당 파일명이 포함되어 있으면 active 클래스 추가
+        if (path.includes(href) && href !== "") {
+            link.classList.add('active-tab');
+        }
+    });
+}
+        window.addEventListener('load', setActiveMenu);
+</script>
+    
+// 윈도우 로드 시 실행되도록 추가
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
@@ -72,33 +92,56 @@
 
         .btn-hover { transition: all 0.3s ease; }
         .btn-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); }
+
+
+        :root { --sunny-purple: #63489a; }
+
+/* 상단바 높이 및 배경 고정 */
+header { height: 64px; }
+
+/* 메뉴 링크 스타일 */
+.nav-link {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* 마우스 올렸을 때 색상 */
+.nav-link:hover { color: var(--sunny-purple) !important; }
+
+/* 언더바 기본 상태 */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--sunny-purple);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+/* 마우스 올리면 언더바 길어짐 */
+.nav-link:hover::after { width: 100%; }
+
+/* 선택된 탭 스타일 고정 */
+.nav-link.active-tab { color: var(--sunny-purple) !important; font-weight: 900; }
+.nav-link.active-tab::after { width: 100%; }
     </style>
 </head>
 <header class="sticky top-0 z-50 glass border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="flex justify-between items-center h-14 md:h-16">
-            <a href="index.html" class="flex items-center transition-opacity hover:opacity-80">
-                <img src="images/sunny_scholar_logo.png" alt="Sunny Scholar Logo" class="h-7 md:h-8 w-auto">
+    <div class="progress-container"><div id="scroll-indicator" class="progress-bar"></div></div>
+    <div class="max-w-7xl mx-auto px-6 w-full">
+        <div class="flex justify-between items-center h-16">
+            <a href="index.html" class="flex items-center">
+                <img src="/images/sunny_scholar_logo.png" alt="Logo" class="h-8 w-auto">
             </a>
 
-            <nav class="hidden md:flex space-x-10 text-[11px] md:text-xs font-black tracking-[0.15em] uppercase">
-                <a href="article_list.html" id="nav-articles" class="text-gray-800 hover:text-[#63489a] transition-colors relative group">
-                    Articles
-                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#63489a] transition-all group-hover:w-full"></span>
-                </a>
-                <a href="team_list.html" id="nav-lab" class="text-gray-800 hover:text-[#63489a] transition-colors relative group">
-                    Lab
-                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#63489a] transition-all group-hover:w-full"></span>
-                </a>
-                <a href="about.html" id="nav-about" class="text-gray-800 hover:text-[#63489a] transition-colors relative group">
-                    About
-                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#63489a] transition-all group-hover:w-full"></span>
-                </a>
+            <nav class="flex space-x-8 text-[13px] font-black tracking-widest uppercase">
+                <a href="article_list.html" class="nav-link text-gray-800">Articles</a>
+                <a href="team_list.html" class="nav-link text-gray-800">Lab</a>
+                <a href="about.html" class="nav-link text-gray-800">About</a>
             </nav>
-            
-            <div class="md:hidden flex items-center">
-                <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </div>
         </div>
     </div>
 </header>
