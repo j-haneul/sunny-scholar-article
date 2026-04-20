@@ -7,6 +7,25 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
+            @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
+        :root { --sunny-purple: #63489a; }
+        body { font-family: 'Pretendard', sans-serif; background-color: #f8f9ff; line-height: 1.8; }
+        .glass { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); }
+        .part-tab { transition: all 0.3s ease; border-radius: 99px; padding: 6px 16px; white-space: nowrap; font-size: 11px; font-weight: 800; color: #9ca3af; border: 1px solid #eee; }
+        .part-tab.active { background: var(--sunny-purple); color: white; border-color: var(--sunny-purple); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .bottom-nav-card { transition: all 0.3s ease; border: 1px solid #eee; background: white; padding: 1.5rem; border-radius: 1rem; display: flex; flex-direction: column; }
+        .bottom-nav-card:hover { border-color: var(--sunny-purple); transform: translateY(-4px); }
+        
+        .content-text { color: #374151; font-size: 1.125rem; word-break: keep-all; text-align: justify; }
+        .content-text p { margin-bottom: 2rem; }
+
+        .content-img { width: 100%; border-radius: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05); display: block; object-fit: cover; }
+        .img-container { margin-top: 2.5rem; margin-bottom: 2.5rem; }
+        .img-caption { text-align: center; font-size: 13px; color: #94a3b8; margin-top: 1rem; font-weight: 500; word-break: keep-all; }
+        
+        .footnote-section { margin-top: 4rem; padding-top: 2rem; border-top: 1px dashed #e2e8f0; }
+        .footnote-section p { font-size: 13px !important; color: #94a3b8 !important; margin-bottom: 0.5rem !important; line-height: 1.5 !important; }
 /* --- [핵심] 상단바 규격 통일 (어바웃/팀상세와 1:1 일치) --- */
 header { 
     height: 64px !important; 
