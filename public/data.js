@@ -563,7 +563,7 @@ const SUNNY_DATA = [
     teamName: "헤아림",
     part: "Part 5. 팀 소개",
     title: "#5 마주해야 비로소 보이는 것들",
-    thumbnail: "images/hearim_8.jpeg",
+    thumbnail: "images/hearim_8.jpg",
     thumbnailCaption: "이미지 출처 : 써니 스콜라 사무국",
     content: `
     <p>“저희 팀이 선택한 가치는 ‘다른 세상을 마주할 용기’입니다. 우리에게 익숙한 관점을 내려놓고, 그동안 잘 알지 못했던 누군가의 삶을 온전히 헤아릴 수 있는 사람들이 되고 싶습니다.”</p>
