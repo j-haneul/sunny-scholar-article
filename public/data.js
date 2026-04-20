@@ -237,6 +237,17 @@ const SUNNY_DATA = [
       <img src="images/fore_9.jpg" class="content-img">
       <p class="img-caption">▲ 이미지 출처 : 포레팀 촬영</p>
     </div>
+
+        <hr class="my-8">
+
+    <div class="bg-gray-50 p-6 rounded-lg border border-dashed border-[#63489a]">
+      <p class="font-bold mb-4 text-[#63489a]">[여러분의 의견을 들려주세요!]</p>
+      <p class="text-sm leading-relaxed mb-4 text-gray-700">
+        조부모 가정위탁 자립준비청년의 예견된 돌봄 문제, 여러분은 어떻게 생각하시나요? 
+비슷한 사례를 알고 계시거나, 저희 포레에게 전달하고자 하는 이야기가 있다면 언제든 연락 주시길 바랍니다.
+      </p>
+      <p class="text-sm font-bold text-gray-500">📧foure.sunny@gmail.com</p>
+    </div>
 `
     },
 // ==========================================
@@ -395,6 +406,19 @@ const SUNNY_DATA = [
     <div class="img-container">
       <img src="images/green_8.jpg" class="content-img">
       <p class="img-caption">▲ 이미지 출처: 써니 스콜라 사무국</p>
+    </div>
+
+     <hr class="my-8">
+
+    <div class="bg-gray-50 p-6 rounded-lg border border-dashed border-[#63489a]">
+      <p class="font-bold mb-4 text-[#63489a]">[여러분의 의견을 들려주세요!]</p>
+      <p class="text-sm leading-relaxed mb-4 text-gray-700">
+        이 이야기가 누군가에게는 스쳐지나가는 글이 아니라 한 번쯤 멈춰서 생각해보는 계기가 되었으면 합니다. 
+        이 이야기가 필요한 분에게 전달해 주세요. 2단계에서 우리가 무엇을 시도하는지, 어떻게 그려나갈지 계속 지켜봐 주세요. 
+        수현의 이야기로 시작한 이 탐구가 자립을 준비하고 있는 수많은 수현들을 만나 모두가 함께 나아갈 수 있는, 그려갈 수 있는 세상으로 나아갈 수 있기를 바랍니다. 
+        그린이 그려갈 세상에 많은 관심 부탁드리며 함께해 주시길 부탁드립니다.
+      </p>
+      <p class="text-sm font-bold text-gray-500">📧 dodream_sunny@email.com</p>
     </div>
   `
   },
@@ -1012,11 +1036,15 @@ const SUNNY_DATA = [
     
     <p class="text-center text-lg font-bold my-8">준아, 함께 살아가는 세상이니까,<br><span class="text-[#63489a]">힘들 때는 등대에게 등 대도 돼!</span></p>
 
-    <hr class="my-8">
+     <hr class="my-8">
 
-    <div class="bg-gray-50 p-6 rounded-lg">
-      <p class="font-bold mb-2">[여러분의 의견을 들려주세요!]</p>
-      <p class="text-sm leading-relaxed">앞으로 우리는 입학 지연이 어떻게 은둔과 고립으로 이어지는지 그 연결고리를 더 구체적으로 파악해보고자 한다. 당사자뿐 아니라 교사, 학부모, 지원기관 관계자 등 다양한 주체를 인터뷰하며 실제로 어떤 지점에서 이들의 삶의 흐름이 끊어지는지를 계속 따라가 볼 예정이다. 이 글을 읽고 있는 분들 중 비슷한 경험이 있거나 현장에서 이 문제를 마주한 적이 있다면, 당신의 이야기를 함께 들려주면 좋겠다.</p>
+    <div class="bg-gray-50 p-6 rounded-lg border border-dashed border-[#63489a]">
+      <p class="font-bold mb-4 text-[#63489a]">[여러분의 의견을 들려주세요!]</p>
+      <p class="text-sm leading-relaxed mb-4 text-gray-700">
+       앞으로 우리는 입학 지연이 어떻게 은둔과 고립으로 이어지는지 그 연결고리를 더 구체적으로 파악해보고자 한다. 당사자뿐 아니라 교사, 학부모, 지원기관 관계자 등 다양한 주체를 인터뷰하며 실제로 어떤 지점에서 이들의 삶의 흐름이 끊어지는지를 계속 따라가 볼 예정이다.
+이 글을 읽고 있는 분들 중 비슷한 경험이 있거나 현장에서 이 문제를 마주한 적이 있다면, 당신의 이야기를 함께 들려주면 좋겠다.
+      </p>
+      <p class="text-sm font-bold text-gray-500">📧sksunny.deungdae@gmail.com</p>
     </div>
   `
   }
