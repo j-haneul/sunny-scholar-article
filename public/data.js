@@ -1133,11 +1133,11 @@ const TEAM_DETAILS = {
         instagram: "",
         homepage: "",
         members: [
-            { name: "김정회", img: "images/g_member1.png" },
-            { name: "박소희", img: "images/g_member2.png" },
-            { name: "이김은채", img: "images/g_member3.png" },
-            { name: "한채경", img: "images/g_member4.png" },
-            { name: "허미현", img: "images/g_member5.png" }
+            { name: "김정회", img: "images/g_member1.jpg" },
+            { name: "박소희", img: "images/g_member2.jpg" },
+            { name: "이김은채", img: "images/g_member3.jpg" },
+            { name: "한채경", img: "images/g_member4.jpg" },
+            { name: "허미현", img: "images/g_member5.jpg" }
         ]
     },
     "hearim": {
@@ -1156,11 +1156,11 @@ const TEAM_DETAILS = {
         instagram: "",
         homepage: "",
         members: [
-            { name: "남궁송", img: "images/h_member1.png" }, // (앞선 본문 참고)
-            { name: "주서영", img: "images/h_member2.png" },
-            { name: "이준희", img: "images/h_member3.png" },
-            { name: "이채윤", img: "images/h_member4.png" },
-            { name: "이하윤", img: "images/h_member4.png" }
+            { name: "남궁송", img: "images/h_member1.jpg" }, // (앞선 본문 참고)
+            { name: "주서영", img: "images/h_member2.jpg" },
+            { name: "이준희", img: "images/h_member3.jpg" },
+            { name: "이채윤", img: "images/h_member4.jpg" },
+            { name: "이하윤", img: "images/h_member4.jpg" }
         ]
     },
 
@@ -1179,10 +1179,10 @@ const TEAM_DETAILS = {
         instagram: "",
         homepage: "",
         members: [
-            { name: "박민주", img: "images/d_member1.png" },
-            { name: "박찬용", img: "images/d_member2.png" },
-            { name: "송예나", img: "images/d_member3.png" },
-            { name: "이세정", img: "images/d_member4.png" }
+            { name: "박민주", img: "images/d_member1.jpg" },
+            { name: "박찬용", img: "images/d_member2.jpg" },
+            { name: "송예나", img: "images/d_member3.jpg" },
+            { name: "이세정", img: "images/d_member4.jpg" }
         ]
     },
 
@@ -1202,10 +1202,10 @@ const TEAM_DETAILS = {
         instagram: "https://www.instagram.com/deungdae.sksunny/",
         homepage: "",
         members: [
-            { name: "김민지", img: "images/l_member1.png" },
-            { name: "송해눈", img: "images/l_member2.png" },
-            { name: "정수종", img: "images/l_member3.png" },
-            { name: "한삼아", img: "images/l_member4.png" }
+            { name: "김민지", img: "images/l_member1.jpg" },
+            { name: "송해눈", img: "images/l_member2.jpg" },
+            { name: "정수종", img: "images/l_member3.jpg" },
+            { name: "한삼아", img: "images/l_member4.jpg" }
         ]
     }
 };
