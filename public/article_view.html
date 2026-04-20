@@ -24,75 +24,47 @@
         .img-container { margin-top: 2.5rem; margin-bottom: 2.5rem; }
         .img-caption { text-align: center; font-size: 13px; color: #94a3b8; margin-top: 1rem; font-weight: 500; word-break: keep-all; }
         
-        .footnote-section { margin-top: 4rem; padding-top: 2rem; border-top: 1px dashed #e2e8f0; }
-        .footnote-section p { font-size: 13px !important; color: #94a3b8 !important; margin-bottom: 0.5rem !important; line-height: 1.5 !important; }
+        /* 프로그레스 바: 헤더 위에 독립적으로 고정 */
+        .progress-container { position: fixed; top: 0; left: 0; width: 100%; height: 4px; background: transparent; z-index: 100; }
+        .progress-bar { height: 100%; background: var(--sunny-purple); width: 0%; transition: width 0.1s ease; }
 
-.progress-container { 
-    position: fixed; 
-    top: 0; /* 64px에서 0으로 변경 (헤더가 사라졌을 때 기준) */
-    left: 0; 
-    width: 100%; 
-    height: 4px; 
-    z-index: 60; /* 헤더(50)보다 높게 설정 */
-}        .progress-bar { height: 100%; background: var(--sunny-purple); width: 0%; transition: width 0.1s ease; }        
+        /* 헤더 애니메이션 */
+        header { transition: transform 0.4s ease-in-out; will-change: transform; }
+        .header-hidden { transform: translateY(-100%); }
 
-header {
-    transition: transform 0.4s ease-in-out; /* 부드러운 움직임 */
-    will-change: transform;
-}
-
-/* 헤더를 숨길 때 사용할 클래스 (스크립트에서 제어) */
-.header-hidden {
-    transform: translateY(-100%);
-}
-
-/* 2단 네비게이션(part-nav)도 헤더와 함께 움직이도록 설정 */
-.sticky-nav {
-    transition: transform 0.4s ease-in-out, top 0.4s ease-in-out;
-}
-
-/* 헤더가 숨겨지면 2단 네비게이션은 화면 맨 위(top:0)로 붙게 함 */
-.nav-up {
-    top: 0 !important;
-}
-
-        
+        /* 서브 네비게이션 애니메이션 */
+        .sticky-nav { transition: all 0.4s ease-in-out; }
+        .nav-up { top: 0 !important; }
     </style>
 </head>
 <body class="text-gray-900">
-<header class="sticky top-0 z-50 glass border-b border-gray-100">
     <div class="progress-container"><div id="scroll-indicator" class="progress-bar"></div></div>
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="flex justify-between items-center h-14 md:h-16">
-            <a href="index.html" class="flex items-center">
-                <img src="/images/sunny_scholar_logo.png" alt="Logo" class="h-7 md:h-8 w-auto">
-            </a>
-            <nav class="hidden md:flex space-x-10 text-xs font-black tracking-widest uppercase">
-                <a href="article_list.html" class="nav-link text-gray-800 hover:text-sunny transition">Articles</a>
-                <a href="team_list.html" class="nav-link text-gray-800 hover:text-sunny transition">Lab</a>
-                <a href="about.html" class="nav-link text-gray-800 hover:text-sunny transition">About</a>
-            </nav>
+
+    <header class="sticky top-0 z-50 glass border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-center h-14 md:h-16">
+                <a href="index.html" class="flex items-center">
+                    <img src="/images/sunny_scholar_logo.png" alt="Logo" class="h-7 md:h-8 w-auto">
+                </a>
+                <nav class="hidden md:flex space-x-10 text-xs font-black tracking-widest uppercase">
+                    <a href="article_list.html" class="nav-link text-gray-800 hover:text-sunny transition">Articles</a>
+                    <a href="team_list.html" class="nav-link text-gray-800 hover:text-sunny transition">Lab</a>
+                    <a href="about.html" class="nav-link text-gray-800 hover:text-sunny transition">About</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div id="sub-nav-container" class="bg-white border-b border-gray-100 sticky top-14 md:top-16 z-40 sticky-nav">
+        <div class="max-w-3xl mx-auto px-6 py-3">
+            <div id="part-nav" class="flex justify-start md:justify-center items-center gap-2 overflow-x-auto no-scrollbar py-1"></div>
         </div>
     </div>
-</header>
-
-<div id="sub-nav-container" class="bg-white border-b border-gray-100 sticky top-14 md:top-16 z-40 sticky-nav">
-    <div class="max-w-3xl mx-auto px-6 py-3">
-        <div id="part-nav" class="flex justify-start md:justify-center items-center gap-2 overflow-x-auto no-scrollbar py-1"></div>
-    </div>
-</div>
-
-<div class="bg-white border-b border-gray-100 sticky top-14 md:top-16 z-40">
-
-<div id="sub-nav-container" class="bg-white border-b border-gray-100 sticky top-14 md:top-16 z-40 sticky-nav">
 
     <main class="max-w-3xl mx-auto px-6 py-10 md:py-16 animate__animated animate__fadeIn">
-        <header class="mb-10">
-            <div id="view-team-tag" class="text-[#63489a] text-sm md:text-base font-black mb-3 tracking-wider uppercase"></div>
-            
+        <header class="mb-10 !static !transform-none !bg-transparent border-none"> <div id="view-team-tag" class="text-[#63489a] text-sm md:text-base font-black mb-3 tracking-wider uppercase"></div>
             <div id="view-team-summary" class="text-gray-500 text-base md:text-lg font-bold mb-6 break-keep leading-relaxed border-l-4 border-purple-100 pl-4 py-1"></div>
-            
-            <h1 id="view-title" class="text-3xl md:text-5xl font-black hide leading-tight break-keep"></h1>
+            <h1 id="view-title" class="text-3xl md:text-5xl font-black leading-tight break-keep"></h1>
         </header>
 
         <article>
@@ -100,177 +72,4 @@ header {
         </article>
 
         <div class="mt-20 py-10 border-t border-gray-100 flex justify-center">
-            <button onclick="copyURL()" class="bg-gray-900 text-white px-7 py-2.5 rounded-full font-black text-xs shadow-xl hover:bg-black transition-all transform hover:scale-105">
-                아티클 주소 복사하기
-            </button>
-        </div>
-
-        <div class="py-12 border-t border-gray-200">
-            <div class="flex flex-col items-start">
-                <a id="team-link" href="#" class="group flex items-center gap-1.5 mb-3">
-                    <h2 id="contact-team-name" class="text-2xl font-black text-gray-900 group-hover:text-[#63489a] transition-colors uppercase">TEAM NAME</h2>
-                    <svg class="w-5 h-5 text-gray-400 group-hover:text-[#63489a]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                </a>
-                
-                <p id="team-cta" class="text-gray-600 text-sm md:text-base font-medium mb-6 break-keep leading-relaxed whitespace-pre-line"></p>
-                
-                <div class="flex items-center gap-2 text-[#63489a] font-bold text-sm">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                    <a id="contact-email-link" href="" class="hover:underline tracking-tight"></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="p-5 bg-gray-50 rounded-xl border border-gray-100 flex items-start gap-3">
-            <span class="text-gray-400 text-xs mt-0.5">ⓒ</span>
-            <p class="text-gray-500 text-[12px] leading-relaxed break-keep">
-                2026 SUNNY Scholar의 모든 콘텐츠 저작권은 해당 팀과 SK행복나눔재단에 있습니다. 인용 시에는 반드시 출처를 표기해야 하며, 전문 복사 및 무단 전재·재배포는 금지되어 있습니다. 
-            </p>
-        </div>
-
-        <div class="mt-10 mb-20 grid grid-cols-1 md:grid-cols-2 gap-3">
-            <div id="prev-article" class="invisible">
-                <a href="#" class="bottom-nav-card !p-4 border-gray-100 hover:border-[#63489a] rounded-xl flex flex-col group">
-                    <span class="text-[9px] font-black text-gray-400 uppercase mb-1 group-hover:text-[#63489a]">Previous</span>
-                    <span class="text-[13px] font-bold text-gray-800 line-clamp-1"></span>
-                </a>
-            </div>
-            <div id="next-article" class="invisible">
-                <a href="#" class="bottom-nav-card !p-4 text-right border-gray-100 hover:border-[#63489a] rounded-xl flex flex-col items-end group">
-                    <span class="text-[9px] font-black text-gray-400 uppercase mb-1 group-hover:text-[#63489a]">Next</span>
-                    <span class="text-[13px] font-bold text-gray-800 line-clamp-1"></span>
-                </a>
-            </div>
-        </div>
-    </main>
-
-    <script src="data.js"></script>
-    <script>
-        function initView() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const articleId = urlParams.get('id');
-
-            if (typeof SUNNY_DATA === 'undefined' || !articleId) return;
-            const baseDetails = typeof TEAM_DETAILS !== 'undefined' ? TEAM_DETAILS : {};
-            const teamDataMap = typeof TEAM_DATA !== 'undefined' ? TEAM_DATA : {};
-
-            const current = SUNNY_DATA.find(a => a.id === articleId);
-            if (!current) {
-                document.getElementById('view-title').innerText = "아티클을 찾을 수 없습니다.";
-                return;
-            }
-
-            const teamBase = teamDataMap[current.teamId] || {};
-            const teamInfo = baseDetails[current.teamId] || {};
-
-            // 1. 상단 헤더 업데이트
-            document.getElementById('view-team-tag').innerText = teamBase.teamName || current.teamName;
-            
-            const summaryEl = document.getElementById('view-team-summary');
-            if (teamBase.summary) {
-                summaryEl.innerText = teamBase.summary;
-                summaryEl.style.display = 'block';
-            } else {
-                summaryEl.style.display = 'none';
-            }
-            
-            document.getElementById('view-title').innerText = current.title;
-
-            // 2. 본문 및 이미지 렌더링
-            const dynamicBody = document.getElementById('dynamic-body');
-            let articleContent = current.content || "";
-            if (current.thumbnail) {
-                articleContent = `
-                    <div class="img-container">
-                        <img src="${current.thumbnail}" class="content-img">
-                        ${current.thumbnailCaption ? `<p class="img-caption">▲ ${current.thumbnailCaption}</p>` : ''}
-                    </div>
-                ` + articleContent;
-            }
-            dynamicBody.innerHTML = articleContent;
-
-            // 3. 하단 팀 정보 섹션
-            const teamLink = document.getElementById('team-link');
-            teamLink.href = `team_detail.html?teamId=${current.teamId}`;
-            document.getElementById('contact-team-name').innerText = teamBase.teamName || current.teamName;
-            
-            // CTA 노출 (TEAM_DETAILS의 cta 필드 사용)
-            const ctaEl = document.getElementById('team-cta');
-            ctaEl.innerText = teamInfo.cta || teamInfo.description || "사회문제의 본질을 연구하고 해결 가능한 크기로 구조화합니다.";
-
-            // 이메일
-            const emailAddr = teamInfo.email || "sunny@sk.com";
-            const emailLink = document.getElementById('contact-email-link');
-            emailLink.innerText = emailAddr;
-            emailLink.href = `mailto:${emailAddr}`;
-
-            // 4. 파트 탭 생성
-            const teamArticles = SUNNY_DATA.filter(a => a.teamId === current.teamId);
-            const partNav = document.getElementById('part-nav');
-            partNav.innerHTML = teamArticles.map(art => `
-                <a href="article_view.html?id=${art.id}" class="part-tab ${art.id === articleId ? 'active' : ''}">
-                    ${art.part}
-                </a>
-            `).join('');
-
-            // 5. 이전/다음 글 설정
-            const currentIdx = teamArticles.findIndex(a => a.id === articleId);
-            if (currentIdx > 0) {
-                const prev = teamArticles[currentIdx - 1];
-                const el = document.getElementById('prev-article');
-                el.classList.remove('invisible');
-                el.querySelector('a').href = `article_view.html?id=${prev.id}`;
-                el.querySelector('span:last-child').innerText = prev.title;
-            }
-            if (currentIdx < teamArticles.length - 1) {
-                const next = teamArticles[currentIdx + 1];
-                const el = document.getElementById('next-article');
-                el.classList.remove('invisible');
-                el.querySelector('a').href = `article_view.html?id=${next.id}`;
-                el.querySelector('span:last-child').innerText = next.title;
-            }
-        }
-
-        function copyURL() {
-            navigator.clipboard.writeText(window.location.href);
-            alert("주소가 복사되었습니다!");
-        }
-
-        function updateProgressBar() {
-            const winScroll = document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            const indicator = document.getElementById("scroll-indicator");
-            if(indicator) indicator.style.width = scrolled + "%";
-        }
-let lastScrollTop = 0;
-
-function handleScroll() {
-    // 함수 내부에서 요소를 찾거나, 전역 변수가 로드된 후 할당되었는지 확인
-    const header = document.querySelector('header');
-    const subNav = document.getElementById('sub-nav-container');
-    const indicator = document.getElementById("scroll-indicator");
-    
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    // 1. 프로그레스 바 업데이트
-    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (scrollTop / height) * 100;
-    if(indicator) indicator.style.width = scrolled + "%";
-
-    // 2. 헤더 숨기기/보여주기 (부드러운 인터랙션)
-    if (scrollTop > lastScrollTop && scrollTop > 100) {
-        header.classList.add('header-hidden');
-        if(subNav) subNav.classList.add('nav-up');
-    } else {
-        header.classList.remove('header-hidden');
-        if(subNav) subNav.classList.remove('nav-up');
-    }
-    
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-}
-
-window.addEventListener('scroll', handleScroll);
-    </script>
-</body>
-</html>
+            <button onclick="copyURL()" class="bg-gray-900 text-white px-7 py-2.5 rounded-full font-black text-xs shadow-
