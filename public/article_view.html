@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
-            @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
         :root { --sunny-purple: #63489a; }
         body { font-family: 'Pretendard', sans-serif; background-color: #f8f9ff; line-height: 1.8; }
         .glass { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); }
@@ -26,102 +26,33 @@
         
         .footnote-section { margin-top: 4rem; padding-top: 2rem; border-top: 1px dashed #e2e8f0; }
         .footnote-section p { font-size: 13px !important; color: #94a3b8 !important; margin-bottom: 0.5rem !important; line-height: 1.5 !important; }
-/* --- [핵심] 상단바 규격 통일 (어바웃/팀상세와 1:1 일치) --- */
-header { 
-    height: 64px !important; 
-    position: sticky !important;
-    top: 0 !important;
-    z-index: 50 !important;
-    background: rgba(255, 255, 255, 0.8) !important; 
-    backdrop-filter: blur(12px) !important; 
-    -webkit-backdrop-filter: blur(12px) !important; 
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-}
 
-.header-container {
-    max-width: 80rem !important; /* max-w-7xl 동일 */
-    margin-left: auto !important;
-    margin-right: auto !important;
-    padding-left: 1.5rem !important; /* px-6 동일 */
-    padding-right: 1.5rem !important;
-    width: 100% !important;
-    height: 100% !important;
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    box-sizing: border-box !important;
-}
-
-.nav-link {
-    position: relative !important;
-    height: 64px !important;
-    display: flex !important;
-    align-items: center !important;
-    color: #1f2937 !important;
-    font-size: 11px !important;
-    font-weight: 900 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.1em !important;
-    transition: color 0.3s ease !important;
-    text-decoration: none !important;
-}
-
-.nav-link::after {
-    content: '' !important;
-    position: absolute !important;
-    bottom: 18px !important; 
-    left: 50% !important;
-    width: 0 !important;
-    height: 2px !important;
-    background-color: #63489a !important;
-    transition: all 0.3s ease !important;
-    transform: translateX(-50%) !important;
-}
-
-.nav-link:hover::after,
-.nav-link.active-tab::after {
-    width: 100% !important;
-}
-
-.nav-link.active-tab {
-    color: #63489a !important;
-}
-
-/* 프로그레스 바 위치 조정 (헤더 높이에 맞춤) */
-.progress-container { 
-    position: fixed; 
-    top: 64px; /* 헤더 높이 64px와 일치 */
-    left: 0; 
-    width: 100%; 
-    height: 4px; 
-    background: transparent; 
-    z-index: 49; 
-}
+        .progress-container { position: fixed; top: 64px; left: 0; width: 100%; height: 4px; background: transparent; z-index: 49; }
+        .progress-bar { height: 100%; background: var(--sunny-purple); width: 0%; transition: width 0.1s ease; }        
     </style>
 </head>
 <body class="text-gray-900">
-<header>
-    <div class="progress-container"><div id="scroll-indicator" class="progress-bar"></div></div>
-    <div class="header-container">
-        <a href="index.html" class="flex items-center">
-            <img src="/images/sunny_scholar_logo.png" alt="Logo" style="height: 32px; width: auto;">
-        </a>
+    <header class="sticky top-0 z-50 glass border-b border-gray-100">
+        <div class="progress-container"><div id="scroll-indicator" class="progress-bar"></div></div>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-center h-14 md:h-16">
+                <a href="index.html" class="flex items-center">
+                    <img src="/images/sunny_scholar_logo.png" alt="Logo" class="h-7 md:h-8 w-auto">
+                </a>
+                <nav class="hidden md:flex space-x-10 text-xs font-black tracking-widest uppercase">
+                    <a href="article_list.html" class="nav-link text-gray-800 hover:text-sunny transition">Articles</a>
+                    <a href="team_list.html" class="nav-link text-gray-800 hover:text-sunny transition">Lab</a>
+                    <a href="about.html" class="nav-link text-gray-800 hover:text-sunny transition">About</a>
+                </nav>
+            </div>
+        </div>
+    </header>
 
-        <nav class="hidden md:flex items-center" style="gap: 2.5rem;">
-            <a href="article_list.html" class="nav-link active-tab">Articles</a>
-            <a href="team_list.html" class="nav-link">Lab</a>
-            <a href="about.html" class="nav-link">About</a>
-        </nav>
+    <div class="bg-white border-b border-gray-100 sticky top-14 md:top-16 z-40">
+        <div class="max-w-3xl mx-auto px-6 py-3">
+            <div id="part-nav" class="flex justify-start md:justify-center items-center gap-2 overflow-x-auto no-scrollbar py-1"></div>
+        </div>
     </div>
-</header>
-
-  <div class="bg-white border-b border-gray-100 sticky top-[64px] z-40">
-    <div class="max-w-3xl mx-auto px-6 py-3">
-        <div id="part-nav" class="flex justify-start md:justify-center items-center gap-2 overflow-x-auto no-scrollbar py-1"></div>
-    </div>
-</div>
 
     <main class="max-w-3xl mx-auto px-6 py-10 md:py-16 animate__animated animate__fadeIn">
         <header class="mb-10">
