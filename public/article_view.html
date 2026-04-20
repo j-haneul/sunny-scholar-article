@@ -11,29 +11,35 @@
         :root { --sunny-purple: #63489a; }
         body { font-family: 'Pretendard', sans-serif; background-color: #f8f9ff; line-height: 1.8; }
         .glass { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); }
+        
+        /* 탭 스타일 */
         .part-tab { transition: all 0.3s ease; border-radius: 99px; padding: 6px 16px; white-space: nowrap; font-size: 11px; font-weight: 800; color: #9ca3af; border: 1px solid #eee; }
         .part-tab.active { background: var(--sunny-purple); color: white; border-color: var(--sunny-purple); }
         .no-scrollbar::-webkit-scrollbar { display: none; }
-        .bottom-nav-card { transition: all 0.3s ease; border: 1px solid #eee; background: white; padding: 1.5rem; border-radius: 1rem; display: flex; flex-direction: column; }
-        .bottom-nav-card:hover { border-color: var(--sunny-purple); transform: translateY(-4px); }
-        
-        .content-text { color: #374151; font-size: 1.125rem; word-break: keep-all; text-align: justify; }
-        .content-text p { margin-bottom: 2rem; }
 
+        /* [복구] 아티클 본문 및 폰트 스타일 */
+        .content-text { color: #374151; font-size: 1.125rem; word-break: keep-all; text-align: justify; }
+        .content-text p { margin-bottom: 2rem; } /* 문단 간격 예전 스타일로 유지 */
+        
+        /* 이미지 및 캡션 */
         .content-img { width: 100%; border-radius: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05); display: block; object-fit: cover; }
         .img-container { margin-top: 2.5rem; margin-bottom: 2.5rem; }
         .img-caption { text-align: center; font-size: 13px; color: #94a3b8; margin-top: 1rem; font-weight: 500; word-break: keep-all; }
-        
-        /* 프로그레스 바: 최상단 레이어 */
+
+        /* [복구] 각주(Footnote) 섹션 스타일 */
+        .footnote-section { margin-top: 4rem; padding-top: 2rem; border-top: 1px dashed #e2e8f0; }
+        .footnote-section p { font-size: 13px !important; color: #94a3b8 !important; margin-bottom: 0.5rem !important; line-height: 1.5 !important; text-align: left !important; }
+
+        /* 하단 네비게이션 카드 */
+        .bottom-nav-card { transition: all 0.3s ease; border: 1px solid #eee; background: white; padding: 1.5rem; border-radius: 1rem; display: flex; flex-direction: column; }
+        .bottom-nav-card:hover { border-color: var(--sunny-purple); transform: translateY(-4px); }
+
+        /* 현재 기능: 프로그레스 바 & 애니메이션 */
         .progress-container { position: fixed; top: 0; left: 0; width: 100%; height: 4px; background: transparent; z-index: 100; }
         .progress-bar { height: 100%; background: var(--sunny-purple); width: 0%; transition: width 0.1s ease; }
-
-        /* 헤더 애니메이션 */
-        header { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); will-change: transform; }
+        header { transition: transform 0.4s ease-in-out; will-change: transform; }
         .header-hidden { transform: translateY(-100%); }
-
-        /* 서브 네비게이션 애니메이션 */
-        .sticky-nav { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .sticky-nav { transition: all 0.4s ease-in-out; }
         .nav-up { top: 0 !important; }
     </style>
 </head>
@@ -69,7 +75,10 @@
         </header>
 
         <article>
-            <div id="dynamic-body" class="content-text"></div>
+            <div id="dynamic-body" class="content-text">
+                </div>
+            
+            <div id="footnote-area" class="footnote-section hidden"></div>
         </article>
 
         <div class="mt-20 py-10 border-t border-gray-100 flex justify-center">
@@ -78,7 +87,7 @@
             </button>
         </div>
 
-        <div id="team-info-section" class="py-12 border-t border-gray-200">
+        <div class="py-12 border-t border-gray-200">
             <div class="flex flex-col items-start">
                 <a id="team-link" href="#" class="group flex items-center gap-1.5 mb-3">
                     <h2 id="contact-team-name" class="text-2xl font-black text-gray-900 group-hover:text-[#63489a] transition-colors uppercase">TEAM NAME</h2>
@@ -122,30 +131,19 @@
             const articleId = urlParams.get('id');
 
             if (typeof SUNNY_DATA === 'undefined' || !articleId) return;
-            const baseDetails = typeof TEAM_DETAILS !== 'undefined' ? TEAM_DETAILS : {};
-            const teamDataMap = typeof TEAM_DATA !== 'undefined' ? TEAM_DATA : {};
-
             const current = SUNNY_DATA.find(a => a.id === articleId);
-            if (!current) {
-                document.getElementById('view-title').innerText = "아티클을 찾을 수 없습니다.";
-                return;
-            }
+            if (!current) return;
 
-            const teamBase = teamDataMap[current.teamId] || {};
-            const teamInfo = baseDetails[current.teamId] || {};
+            // 데이터 매핑
+            const teamBase = (typeof TEAM_DATA !== 'undefined' ? TEAM_DATA[current.teamId] : {}) || {};
+            const teamInfo = (typeof TEAM_DETAILS !== 'undefined' ? TEAM_DETAILS[current.teamId] : {}) || {};
 
+            // 1. 헤더/제목 설정
             document.getElementById('view-team-tag').innerText = teamBase.teamName || current.teamName;
-            
-            const summaryEl = document.getElementById('view-team-summary');
-            if (teamBase.summary) {
-                summaryEl.innerText = teamBase.summary;
-                summaryEl.style.display = 'block';
-            } else {
-                summaryEl.style.display = 'none';
-            }
-            
+            document.getElementById('view-team-summary').innerText = teamBase.summary || "";
             document.getElementById('view-title').innerText = current.title;
 
+            // 2. 본문 렌더링 (썸네일 포함)
             const dynamicBody = document.getElementById('dynamic-body');
             let articleContent = current.content || "";
             if (current.thumbnail) {
@@ -158,40 +156,44 @@
             }
             dynamicBody.innerHTML = articleContent;
 
-            const teamLink = document.getElementById('team-link');
-            teamLink.href = `team_detail.html?teamId=${current.teamId}`;
-            document.getElementById('contact-team-name').innerText = teamBase.teamName || current.teamName;
-            
-            const ctaEl = document.getElementById('team-cta');
-            ctaEl.innerText = teamInfo.cta || teamInfo.description || "사회문제의 본질을 연구하고 해결 가능한 크기로 구조화합니다.";
+            // 3. 각주 처리 (데이터에 footnotes가 배열로 있을 경우)
+            const footnoteArea = document.getElementById('footnote-area');
+            if (current.footnotes && current.footnotes.length > 0) {
+                footnoteArea.classList.remove('hidden');
+                footnoteArea.innerHTML = current.footnotes.map(fn => `<p>${fn}</p>`).join('');
+            }
 
+            // 4. 팀 정보 푸터
+            document.getElementById('team-link').href = `team_detail.html?teamId=${current.teamId}`;
+            document.getElementById('contact-team-name').innerText = teamBase.teamName || current.teamName;
+            document.getElementById('team-cta').innerText = teamInfo.cta || teamInfo.description || "사회문제의 본질을 연구합니다.";
+            
             const emailAddr = teamInfo.email || "sunny@sk.com";
             const emailLink = document.getElementById('contact-email-link');
             emailLink.innerText = emailAddr;
             emailLink.href = `mailto:${emailAddr}`;
 
+            // 5. 파트 네비게이션
             const teamArticles = SUNNY_DATA.filter(a => a.teamId === current.teamId);
-            const partNav = document.getElementById('part-nav');
-            partNav.innerHTML = teamArticles.map(art => `
+            document.getElementById('part-nav').innerHTML = teamArticles.map(art => `
                 <a href="article_view.html?id=${art.id}" class="part-tab ${art.id === articleId ? 'active' : ''}">
                     ${art.part}
                 </a>
             `).join('');
 
-            const currentIdx = teamArticles.findIndex(a => a.id === articleId);
-            if (currentIdx > 0) {
-                const prev = teamArticles[currentIdx - 1];
+            // 6. 이전/다음 글
+            const idx = teamArticles.findIndex(a => a.id === articleId);
+            if (idx > 0) {
                 const el = document.getElementById('prev-article');
                 el.classList.remove('invisible');
-                el.querySelector('a').href = `article_view.html?id=${prev.id}`;
-                el.querySelector('span:last-child').innerText = prev.title;
+                el.querySelector('a').href = `article_view.html?id=${teamArticles[idx-1].id}`;
+                el.querySelector('span:last-child').innerText = teamArticles[idx-1].title;
             }
-            if (currentIdx < teamArticles.length - 1) {
-                const next = teamArticles[currentIdx + 1];
+            if (idx < teamArticles.length - 1) {
                 const el = document.getElementById('next-article');
                 el.classList.remove('invisible');
-                el.querySelector('a').href = `article_view.html?id=${next.id}`;
-                el.querySelector('span:last-child').innerText = next.title;
+                el.querySelector('a').href = `article_view.html?id=${teamArticles[idx+1].id}`;
+                el.querySelector('span:last-child').innerText = teamArticles[idx+1].title;
             }
         }
 
@@ -200,34 +202,27 @@
             alert("주소가 복사되었습니다!");
         }
 
-        // 스크롤 인터랙션 로직
+        // 스크롤 인터랙션
         let lastScrollTop = 0;
-        const scrollThreshold = 10; // 최소 스크롤 감지 범위
-
         function handleScroll() {
             const header = document.querySelector('header');
             const subNav = document.getElementById('sub-nav-container');
             const indicator = document.getElementById("scroll-indicator");
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            let st = window.pageYOffset || document.documentElement.scrollTop;
 
-            // 1. 프로그레스 바 업데이트
+            // 프로그레스 바
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (scrollTop / height) * 100;
-            if(indicator) indicator.style.width = scrolled + "%";
+            if(indicator) indicator.style.width = (st / height) * 100 + "%";
 
-            // 2. 헤더 숨기기/보여주기 (스크롤 방향 판단)
-            if (Math.abs(lastScrollTop - scrollTop) <= scrollThreshold) return;
-
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
-                // Scroll Down
+            // 헤더 숨기기/보여주기
+            if (st > lastScrollTop && st > 100) {
                 header.classList.add('header-hidden');
                 subNav.classList.add('nav-up');
             } else {
-                // Scroll Up
                 header.classList.remove('header-hidden');
                 subNav.classList.remove('nav-up');
             }
-            lastScrollTop = scrollTop;
+            lastScrollTop = st <= 0 ? 0 : st;
         }
 
         window.addEventListener('load', initView);
