@@ -21,7 +21,7 @@ const TEAM_DATA = {
         teamName: "헤아림",
         order: "3조",
         category: "장애",
-        summary: "발달장애인의 재취업 공백 문제",
+        summary: "발달장애인의 취업 공백기 장기화 문제",
         mainTitle: "9년 6개월간의 재취업 공백,\n그리고 사회적 관계 단절",
         tags: ["발달장애인", "재취업공백", "관계단절"],
         theme: { main: "#6C40C9", grad: "linear-gradient(135deg, #6C40C9 0%, #8A5EE6 100%)", tagBg: "#eeebf7", bgText: "HEARIM" }
@@ -30,7 +30,7 @@ const TEAM_DATA = {
         teamName: "두드림(Do-Dream)",
         order: "4조",
         category: "장애",
-        summary: "경계성지능인의 업무 적응 어려움 문제",
+        summary: "경계성지능인의 업무 오류 발생 문제",
         mainTitle: "업무 실수를 막기 위한 솔루션,:\n그럼에도 업무가 어려운 이유",
         tags: ["경계성지능인", "느린학습자", "직무매뉴얼"],
         theme: { main: "#653CC3", grad: "linear-gradient(135deg, #653CC3 0%, #7E56DC 100%)", tagBg: "#ece9f5", bgText: "DO-DREAM" }
@@ -39,7 +39,7 @@ const TEAM_DATA = {
         teamName: "등대",
         order: "5조",
         category: "이주",
-        summary: "중도입국청소년의 입학 지연으로 인한 은둔/고립화 문제",
+        summary: "중도입국청소년의 입학 지연으로 인한 은둔고립 문제",
         mainTitle: "닫힌 교문 앞의 아이들,\n중도입국청소년의 입학 지연",
         tags: ["중도입국청소년", "입학지연", "은둔고립"],
         theme: { main: "#633CBB", grad: "linear-gradient(135deg, #633CBB 0%, #744BC9 100%)", tagBg: "#ebe8f2", bgText: "LIGHT HOUSE" }
