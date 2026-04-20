@@ -732,7 +732,7 @@ const SUNNY_DATA = [
     part: "Part 4. 문제 해결의 시작",
     title: "#4 '했다'가 아니라 '어떻게 했는가'를 물었다면",
     thumbnail: "images/dodream_7.png",
-    thumbnailCaption: "이미지 출처 : pixabay",
+    thumbnailCaption: "이미지 출처 : Gemini 생성",
     content: `
     <p>결국, 체크리스트는 준후의 사고 회로를 멈추게 만들었다. 준후는 매뉴얼이 촘촘한 상황 안에서도 여러 번의 돌발 상황을 맞이한다. 그러나 준후는 그 상태로 멈추게 된다. 단 한 번일지라도, 매뉴얼에 없는 상황이 발생했을 때 스스로 판단하는 경험을 해보는 것은 중요하다. 경험은 두려움을 줄이고, 다시 용기있게 시도하도록 만들기 때문이다.</p>
     <p>그래서 우리는 매뉴얼에서 벗어난 순간, 멈춰버리는 준후의 판단 회로를 작동시키는 것을 목표로 삼기로 했다. 준후의 판단회로가 잘 작동하려면 ‘돈통 시재 확인’ -> O, ‘그라인더 작동 확인’ -> O 등이 아니라 스스로 생각하게 만드는 질문이 되어야 한다.</p>
@@ -762,7 +762,7 @@ const SUNNY_DATA = [
     part: "Part 5. 팀 소개",
     title: "#5 우리가 이 문을 두드리는 이유",
     thumbnail: "images/dodream_8.jpg",
-    thumbnailCaption: "이미지 출처 : Gemini 생성",
+    thumbnailCaption: "이미지 출처 : 써니 스콜라 사무국",
     content: `
     <div class="my-6 py-4 px-6 border-l-4 border-[#63489a] bg-gray-50">
       <p class="text-xl font-bold text-[#63489a] mb-2">“꿈을 꾸는 데서 멈추지 않고, 행동으로 두드리다.”</p>
