@@ -4,53 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Article View | 2026 SUNNY Scholar</title>
-<script>
-        // 네비게이션 활성화 스크립트
-        function setActiveMenu() {
-            const path = window.location.pathname;
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.classList.remove('active-tab');
-                const href = link.getAttribute('href');
-                // 아티클 상세페이지이므로 Articles(article_list.html)를 찾아 활성화
-                if (href.includes('article')) {
-                    link.classList.add('active-tab');
-                }
-            });
-        }
-        window.addEventListener('load', setActiveMenu);
-
-        // 스크롤 인디케이터 스크립트
-        function updateProgressBar() {
-            const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            const indicator = document.getElementById("scroll-indicator");
-            if(indicator) indicator.style.width = scrolled + "%";
-        }
-        window.addEventListener('scroll', updateProgressBar);
-    </script>
-
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
-
+        
         :root { 
             --sunny-purple: #63489a; 
-            --sunny-gradient: linear-gradient(135deg, #4f319b 0%, #8c52ff 100%);
-            --grid-color: rgba(99, 72, 154, 0.05); 
+            --grid-color: rgba(99, 72, 154, 0.05);
         }
 
         body { 
             font-family: 'Pretendard', sans-serif; 
             background-color: #fcfcfd;
             background-image: linear-gradient(var(--grid-color) 1px, transparent 1px), linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-            background-size: 40px 40px; 
+            background-size: 40px 40px;
+            line-height: 1.8; 
             letter-spacing: -0.02em;
-            line-height: 1.8;
-            color: #111827;
         }
 
-        /* --- [상단바 규격 통일] --- */
+        /* --- 헤더/네비게이션 규격 통일 --- */
         header { 
             height: 64px !important; 
             position: sticky !important;
@@ -82,7 +55,6 @@
             font-weight: 900 !important;
             text-transform: uppercase !important;
             letter-spacing: 0.1em !important;
-            transition: color 0.3s ease !important;
             text-decoration: none !important;
         }
 
@@ -101,34 +73,25 @@
         .nav-link:hover::after, .nav-link.active-tab::after { width: 100% !important; }
         .nav-link.active-tab { color: var(--sunny-purple) !important; }
 
-        /* 스크롤바 진행도 라인 */
-        .progress-container { 
-            position: absolute; 
-            bottom: -1px; 
-            left: 0; 
-            width: 100%; 
-            height: 3px; 
-            background: transparent; 
-        }
+        /* 스크롤 인디케이터 */
+        .progress-container { position: absolute; bottom: -1px; left: 0; width: 100%; height: 3px; background: transparent; }
         .progress-bar { height: 100%; background: var(--sunny-purple); width: 0%; }
 
-        /* --- [아티클 뷰 전용] --- */
+        /* --- 아티클 상세 전용 스타일 --- */
         .content-text { color: #374151; font-size: 1.125rem; word-break: keep-all; text-align: justify; }
         .content-text p { margin-bottom: 2rem; }
-        .part-tab { transition: all 0.3s ease; border-radius: 99px; padding: 6px 16px; font-size: 11px; font-weight: 800; color: #9ca3af; border: 1px solid #eee; background: white; white-space: nowrap; }
+        .part-tab { transition: all 0.3s ease; border-radius: 99px; padding: 6px 16px; white-space: nowrap; font-size: 11px; font-weight: 800; color: #9ca3af; border: 1px solid #eee; background: white; }
         .part-tab.active { background: var(--sunny-purple); color: white; border-color: var(--sunny-purple); }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         
-        .img-container { margin: 2.5rem 0; }
         .content-img { width: 100%; border-radius: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .img-container { margin: 2.5rem 0; }
         .img-caption { text-align: center; font-size: 13px; color: #94a3b8; margin-top: 1rem; }
         
         .bottom-nav-card { transition: all 0.3s ease; background: white; }
-        .bottom-nav-card:hover { transform: translateY(-4px); }
     </style>
 </head>
 <body>
-
     <header>
         <div class="progress-container"><div id="scroll-indicator" class="progress-bar"></div></div>
         <div class="header-container">
@@ -142,6 +105,20 @@
             </nav>
         </div>
     </header>
+
+    <div class="bg-white border-b border-gray-100 sticky top-16 z-40">
+        <div class="max-w-3xl mx-auto px-6 py-3">
+            <div id="part-nav" class="flex justify-start md:justify-center items-center gap-2 overflow-x-auto no-scrollbar py-1"></div>
+        </div>
+    </div>
+
+    <main class="max-w-3xl mx-auto px-6 py-10 md:py-16 animate__animated animate__fadeIn">
+        <header class="mb-10">
+            <div id="view-team-tag" class="text-[#63489a] text-sm md:text-base font-black mb-3 tracking-wider uppercase"></div>
+            <div id="view-team-summary" class="text-gray-500 text-base md:text-lg font-bold mb-6 break-keep leading-relaxed border-l-4 border-purple-100 pl-4 py-1"></div>
+            <h1 id="view-title" class="text-3xl md:text-5xl font-black leading-tight break-keep"></h1>
+        </header>
+
         <article>
             <div id="dynamic-body" class="content-text"></div>
         </article>
@@ -158,9 +135,7 @@
                     <h2 id="contact-team-name" class="text-2xl font-black text-gray-900 group-hover:text-[#63489a] transition-colors uppercase">TEAM NAME</h2>
                     <svg class="w-5 h-5 text-gray-400 group-hover:text-[#63489a]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                 </a>
-                
                 <p id="team-cta" class="text-gray-600 text-sm md:text-base font-medium mb-6 break-keep leading-relaxed whitespace-pre-line"></p>
-                
                 <div class="flex items-center gap-2 text-[#63489a] font-bold text-sm">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                     <a id="contact-email-link" href="" class="hover:underline tracking-tight"></a>
@@ -177,18 +152,17 @@
 
         <div class="mt-10 mb-20 grid grid-cols-1 md:grid-cols-2 gap-3">
             <div id="prev-article" class="invisible">
-                <a href="#" class="bottom-nav-card !p-4 border-gray-100 hover:border-[#63489a] rounded-xl flex flex-col group">
+                <a href="#" class="bottom-nav-card !p-4 border-gray-100 border hover:border-[#63489a] rounded-xl flex flex-col group">
                     <span class="text-[9px] font-black text-gray-400 uppercase mb-1 group-hover:text-[#63489a]">Previous</span>
                     <span class="text-[13px] font-bold text-gray-800 line-clamp-1"></span>
                 </a>
             </div>
             <div id="next-article" class="invisible">
-                <a href="#" class="bottom-nav-card !p-4 text-right border-gray-100 hover:border-[#63489a] rounded-xl flex flex-col items-end group">
+                <a href="#" class="bottom-nav-card !p-4 text-right border-gray-100 border hover:border-[#63489a] rounded-xl flex flex-col items-end group">
                     <span class="text-[9px] font-black text-gray-400 uppercase mb-1 group-hover:text-[#63489a]">Next</span>
                     <span class="text-[13px] font-bold text-gray-800 line-clamp-1"></span>
                 </a>
             </div>
-          
         </div>
     </main>
 
@@ -211,9 +185,8 @@
             const teamBase = teamDataMap[current.teamId] || {};
             const teamInfo = baseDetails[current.teamId] || {};
 
-            // 1. 상단 헤더 업데이트
+            // 1. 헤더 정보
             document.getElementById('view-team-tag').innerText = teamBase.teamName || current.teamName;
-            
             const summaryEl = document.getElementById('view-team-summary');
             if (teamBase.summary) {
                 summaryEl.innerText = teamBase.summary;
@@ -221,10 +194,9 @@
             } else {
                 summaryEl.style.display = 'none';
             }
-            
             document.getElementById('view-title').innerText = current.title;
 
-            // 2. 본문 및 이미지 렌더링
+            // 2. 본문 렌더링
             const dynamicBody = document.getElementById('dynamic-body');
             let articleContent = current.content || "";
             if (current.thumbnail) {
@@ -237,22 +209,18 @@
             }
             dynamicBody.innerHTML = articleContent;
 
-            // 3. 하단 팀 정보 섹션
+            // 3. 하단 팀 정보
             const teamLink = document.getElementById('team-link');
             teamLink.href = `team_detail.html?teamId=${current.teamId}`;
             document.getElementById('contact-team-name').innerText = teamBase.teamName || current.teamName;
-            
-            // CTA 노출 (TEAM_DETAILS의 cta 필드 사용)
-            const ctaEl = document.getElementById('team-cta');
-            ctaEl.innerText = teamInfo.cta || teamInfo.description || "사회문제의 본질을 연구하고 해결 가능한 크기로 구조화합니다.";
+            document.getElementById('team-cta').innerText = teamInfo.cta || teamInfo.description || "사회문제의 본질을 연구합니다.";
 
-            // 이메일
             const emailAddr = teamInfo.email || "sunny@sk.com";
             const emailLink = document.getElementById('contact-email-link');
             emailLink.innerText = emailAddr;
             emailLink.href = `mailto:${emailAddr}`;
 
-            // 4. 파트 탭 생성
+            // 4. 파트 탭 및 이전/다음
             const teamArticles = SUNNY_DATA.filter(a => a.teamId === current.teamId);
             const partNav = document.getElementById('part-nav');
             partNav.innerHTML = teamArticles.map(art => `
@@ -261,7 +229,7 @@
                 </a>
             `).join('');
 
-           const currentIdx = teamArticles.findIndex(a => a.id === articleId);
+            const currentIdx = teamArticles.findIndex(a => a.id === articleId);
             if (currentIdx > 0) {
                 const prev = teamArticles[currentIdx - 1];
                 const el = document.getElementById('prev-article');
@@ -276,6 +244,8 @@
                 el.querySelector('a').href = `article_view.html?id=${next.id}`;
                 el.querySelector('span:last-child').innerText = next.title;
             }
+        } // <--- 여기가 빠져있었습니다!
+
         function copyURL() {
             navigator.clipboard.writeText(window.location.href);
             alert("주소가 복사되었습니다!");
