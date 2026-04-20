@@ -4,26 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teams | 2026 SUNNY Scholar</title>
-<script>
-    function setActiveMenu() {
-        const path = window.location.pathname;
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        navLinks.forEach(link => {
-            link.classList.remove('active-tab');
-            const href = link.getAttribute('href');
-            
-            // 1. 현재 파일명(team_detail.html)이 href에 포함되거나,
-            // 2. 팀 상세 페이지일 경우 'Lab(team_list.html)' 메뉴를 활성화
-            if (path.includes(href) && href !== "") {
-                link.classList.add('active-tab');
-            } else if (path.includes('team_detail.html') && href === 'team_list.html') {
-                link.classList.add('active-tab');
-            }
-        });
-    }
-    window.addEventListener('load', setActiveMenu);
-</script>    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
     <style>
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
         :root { --sunny-purple: #63489a; --grid-color: rgba(99, 72, 154, 0.05); }
@@ -34,69 +17,71 @@
             background-size: 40px 40px;
             letter-spacing: -0.02em;
         }
-        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
-        .team-title { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; word-break: keep-all; }
 
+        /* --- 상단바 규격 (About 페이지와 1:1 통일) --- */
         header { 
-    height: 64px !important; 
-    position: sticky !important;
-    top: 0 !important;
-    z-index: 50 !important;
-    background: rgba(255, 255, 255, 0.8) !important; 
-    backdrop-filter: blur(12px) !important; 
-    -webkit-backdrop-filter: blur(12px) !important; 
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
-    width: 100% !important;
-}
+            height: 64px !important; 
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 50 !important;
+            background: rgba(255, 255, 255, 0.8) !important; 
+            backdrop-filter: blur(12px) !important; 
+            -webkit-backdrop-filter: blur(12px) !important; 
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+            width: 100% !important;
+        }
 
-.header-container {
-    max-width: 80rem !important; 
-    margin: 0 auto !important;
-    padding: 0 1.5rem !important;
-    width: 100% !important;
-    height: 100% !important;
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-}
+        .header-container {
+            max-width: 80rem !important; 
+            margin: 0 auto !important;
+            padding: 0 1.5rem !important;
+            width: 100% !important;
+            height: 100% !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+        }
 
-.nav-link {
-    position: relative !important;
-    height: 64px !important;
-    display: flex !important;
-    align-items: center !important;
-    color: #1f2937 !important;
-    font-size: 11px !important; /* 요청하신 폰트 크기 */
-    font-weight: 900 !important; /* 가장 두꺼운 폰트 */
-    text-transform: uppercase !important;
-    letter-spacing: 0.1em !important;
-    text-decoration: none !important;
-    transition: color 0.3s ease !important;
-}
+        .nav-link {
+            position: relative !important;
+            height: 64px !important;
+            display: flex !important;
+            align-items: center !important;
+            color: #1f2937 !important;
+            font-size: 11px !important;
+            font-weight: 900 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.1em !important;
+            text-decoration: none !important;
+            transition: color 0.3s ease !important;
+        }
 
-/* 밑줄 효과 */
-.nav-link::after {
-    content: '' !important;
-    position: absolute !important;
-    bottom: 18px !important; /* 언더바 높이 고정 */
-    left: 50% !important;
-    width: 0 !important;
-    height: 2px !important;
-    background-color: var(--sunny-purple) !important;
-    transition: all 0.3s ease !important;
-    transform: translateX(-50%) !important;
-}
+        .nav-link::after {
+            content: '' !important;
+            position: absolute !important;
+            bottom: 18px !important;
+            left: 50% !important;
+            width: 0 !important;
+            height: 2px !important;
+            background-color: var(--sunny-purple) !important;
+            transition: all 0.3s ease !important;
+            transform: translateX(-50%) !important;
+        }
 
-.nav-link:hover::after,
-.nav-link.active-tab::after {
-    width: 100% !important;
-}
+        .nav-link:hover::after, .nav-link.active-tab::after { width: 100% !important; }
+        .nav-link.active-tab { color: var(--sunny-purple) !important; }
 
-.nav-link.active-tab {
-    color: var(--sunny-purple) !important;
-}
+        /* 팀 타이틀 말줄임 처리 */
+        .team-title {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            word-break: keep-all;
+        }
     </style>
 </head>
+
 <body class="text-gray-900">
 
 <header>
@@ -104,7 +89,6 @@
         <a href="index.html" class="flex items-center">
             <img src="/images/sunny_scholar_logo.png" alt="Logo" style="height: 32px; width: auto;">
         </a>
-
         <nav class="hidden md:flex items-center" style="gap: 2.5rem;">
             <a href="article_list.html" class="nav-link">Articles</a>
             <a href="team_list.html" class="nav-link">Lab</a>
@@ -113,85 +97,105 @@
     </div>
 </header>
 
-    <section class="py-16 px-6 max-w-7xl mx-auto">
-        <p class="text-[#63489a] font-black tracking-widest text-[10px] uppercase mb-2">2026 SUNNY LAB</p>
-        <h1 class="text-4xl font-black mb-2 tracking-tight">Change Maker <span class="text-[#63489a]">Teams</span></h1>
-        <p class="text-gray-500 text-sm font-medium">5개의 팀이 만들어가는 변화의 움직임을 확인하세요.</p>
-    </section>
+<section class="py-16 px-6 max-w-7xl mx-auto">
+    <p class="text-[#63489a] font-black tracking-widest text-[10px] uppercase mb-2">2026 SUNNY LAB</p>
+    <h1 class="text-4xl font-black mb-2 tracking-tight">Change Maker <span class="text-[#63489a]">Teams</span></h1>
+    <p class="text-gray-500 text-sm font-medium">5개의 팀이 만들어가는 변화의 움직임을 확인하세요.</p>
+</section>
 
-    <main class="max-w-[1600px] mx-auto px-6 pb-24">
-        <div id="team-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-12 min-h-[320px]">
-            <p class="col-span-full text-center py-20 text-gray-400">데이터를 불러오는 중입니다...</p>
+<main class="max-w-[1600px] mx-auto px-6 pb-24">
+    <div id="team-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-12 min-h-[320px]">
         </div>
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <div class="group/img relative aspect-[16/10] bg-gray-200 rounded-[32px] overflow-hidden border border-gray-100 shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
-<img src="./images/sunny_group_1.jpg" alt="Sunny Moment 1"
-    class="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-110">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="group/img relative aspect-[16/10] bg-gray-200 rounded-[32px] overflow-hidden border border-gray-100 shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
+            <img src="./images/sunny_group_1.jpg" alt="Sunny Moment 1" class="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-110">
+        </div>
+        <div class="group/img relative aspect-[16/10] bg-gray-200 rounded-[32px] overflow-hidden border border-gray-100 shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
+            <img src="./images/sunny_group_2.webp" alt="Sunny Moment 2" class="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-110">
+        </div>
+        <div class="group/img relative aspect-[16/10] bg-gray-200 rounded-[32px] overflow-hidden border border-gray-100 shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
+            <img src="./images/sunny_group_3.webp" alt="Sunny Moment 3" class="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-110">
+        </div>
     </div>
-    <div class="group/img relative aspect-[16/10] bg-gray-200 rounded-[32px] overflow-hidden border border-gray-100 shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
-<img src="./images/sunny_group_2.webp" alt="Sunny Moment 2"
-             class="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-110">
-    </div>
-    <div class="group/img relative aspect-[16/10] bg-gray-200 rounded-[32px] overflow-hidden border border-gray-100 shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
-<img src="./images/sunny_group_3.webp" alt="Sunny Moment 3"
-             class="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-110">
-    </div>
-</div>
-    </main>
+</main>
 
-    <script src="data.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const grid = document.getElementById('team-grid');
+<script src="data.js"></script>
+<script>
+    // 1. 메뉴 활성화 로직
+    function setActiveMenu() {
+        const path = window.location.pathname;
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        navLinks.forEach(link => {
+            link.classList.remove('active-tab');
+            const href = link.getAttribute('href');
             
-            // 데이터 변수명 확인 (TEAM_DATA 또는 TEAM_DETAILS)
-            const sourceData = typeof TEAM_DATA !== 'undefined' ? TEAM_DATA : (typeof TEAM_DETAILS !== 'undefined' ? TEAM_DETAILS : null);
-
-            if (!sourceData) {
-                grid.innerHTML = `<p class="col-span-full text-center py-20 text-red-500 font-bold">data.js를 찾을 수 없거나 데이터가 비어있습니다.</p>`;
-                return;
+            // team_list.html 이나 team_detail.html 모두 'Lab' 메뉴 활성화
+            if (path.includes(href) && href !== "") {
+                link.classList.add('active-tab');
+            } else if ((path.includes('team_list.html') || path.includes('team_detail.html')) && href === 'team_list.html') {
+                link.classList.add('active-tab');
             }
+        });
+    }
 
-            grid.innerHTML = Object.entries(sourceData).map(([id, team]) => {
-                const name = team.teamName || team.name || "Unknown Team";
-                const themeColor = (team.theme && team.theme.main) ? team.theme.main : "#63489a";
-                const fontSize = name.length > 8 ? 'text-xl' : 'text-2xl';
+    // 2. 팀 그리드 렌더링 로직
+    function renderTeams() {
+        const grid = document.getElementById('team-grid');
+        const sourceData = typeof TEAM_DATA !== 'undefined' ? TEAM_DATA : (typeof TEAM_DETAILS !== 'undefined' ? TEAM_DETAILS : null);
 
-                return `
-                    <div class="group relative flex flex-col h-[320px] rounded-[32px] overflow-hidden transition-all duration-500 hover:shadow-2xl animate__animated animate__fadeIn"
-                         style="background-color: ${themeColor}"> 
-                        
-                        <div class="p-7 pb-0 relative z-10">
-                            <span class="inline-block px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-widest">
-                                ${team.order || '00'}
-                            </span>
-                        </div>
+        if (!sourceData) {
+            grid.innerHTML = `<p class="col-span-full text-center py-20 text-red-500 font-bold">데이터를 로드할 수 없습니다. (data.js 확인 필요)</p>`;
+            return;
+        }
 
-                        <div class="flex-1 px-7 pt-4 flex flex-col justify-start relative z-10 overflow-hidden">
-                            <h3 class="${fontSize} font-black text-white mb-3 leading-tight team-title">
-                                ${name}
-                            </h3>
-                            <div class="flex flex-wrap gap-1.5">
-                                ${(team.tags || []).map(tag => `
-                                    <span class="px-2.5 py-1 rounded-lg bg-white/10 text-white text-[10px] font-bold backdrop-blur-sm">#${tag}</span>
-                                `).join('')}
-                            </div>
-                        </div>
+        grid.innerHTML = Object.entries(sourceData).map(([id, team]) => {
+            const name = team.teamName || team.name || "Unknown Team";
+            const themeColor = (team.theme && team.theme.main) ? team.theme.main : "#63489a";
+            const fontSize = name.length > 8 ? 'text-xl' : 'text-2xl';
 
-                        <div class="p-6 mt-auto relative z-10">
-                            <a href="team_detail.html?teamId=${id}" 
-                               class="flex items-center justify-between w-full px-4 py-3.5 bg-white/15 hover:bg-white text-white hover:text-gray-900 rounded-2xl transition-all duration-300 group/btn border border-white/10 shadow-lg">
-                                <span class="text-[12px] font-black">팀 소개 보러가기</span>
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path>
-                                </svg>
-                            </a>
+            return `
+                <div class="group relative flex flex-col h-[320px] rounded-[32px] overflow-hidden transition-all duration-500 hover:shadow-2xl animate__animated animate__fadeIn"
+                     style="background-color: ${themeColor}"> 
+                    
+                    <div class="p-7 pb-0 relative z-10">
+                        <span class="inline-block px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-widest">
+                            ${team.order || '00'}
+                        </span>
+                    </div>
+
+                    <div class="flex-1 px-7 pt-4 flex flex-col justify-start relative z-10 overflow-hidden">
+                        <h3 class="${fontSize} font-black text-white mb-3 leading-tight team-title">
+                            ${name}
+                        </h3>
+                        <div class="flex flex-wrap gap-1.5">
+                            ${(team.tags || []).map(tag => `
+                                <span class="px-2.5 py-1 rounded-lg bg-white/10 text-white text-[10px] font-bold backdrop-blur-sm">#${tag}</span>
+                            `).join('')}
                         </div>
                     </div>
-                `;
-            }).join('');
-        });
-    </script>
+
+                    <div class="p-6 mt-auto relative z-10">
+                        <a href="team_detail.html?teamId=${id}" 
+                           class="flex items-center justify-between w-full px-4 py-3.5 bg-white/15 hover:bg-white text-white hover:text-gray-900 rounded-2xl transition-all duration-300 group/btn border border-white/10 shadow-lg">
+                            <span class="text-[12px] font-black">팀 소개 보러가기</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    // 모든 리소스 로드 후 실행
+    window.addEventListener('load', () => {
+        setActiveMenu();
+        renderTeams();
+    });
+</script>
+
 </body>
 </html>
