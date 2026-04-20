@@ -4,44 +4,44 @@ const TEAM_DATA = {
         order: "1조",
         category: "자립",
         summary: "조부모 돌봄 자립준비청년의 학업 중도포기 문제",
-        mainTitle: "가족 돌봄과 자립 사이의 선택,\n우리는 무엇을 놓치고 있는가",
-        tags: ["자립준비청년", "학업포기"],
+        mainTitle: "가족 돌봄과 자립 사이의 선택,\n예견된 돌봄",
+        tags: ["자립준비청년", "가족돌봄청년", "학업포기", "조손가정"],
         theme: { main: "#8B52FB", grad: "linear-gradient(135deg, #8B52FB 0%, #A67BFF 100%)", tagBg: "#f5f0ff", bgText: "FOU:RE" }
     },
     "green": {
         teamName: "그린",
         order: "2조",
         category: "자립",
-        summary: "자립준비청년의 학업 중단, 그 이면의 구조적 결핍",
-        mainTitle: "보호 종료 이후의 교육 공백:\n누구를 위한 자립인가",
-        tags: ["자립준비청년", "교육단절"],
+        summary: "가정 밖 청소년의 시설 부적응 문제",
+        mainTitle: "보호와 통제 사이의 간극:\n아이들이 다시 거리로 나가는 이유",
+        tags: ["가정밖청소년", "청소년쉼터", "시설부적응", "자립공백"],
         theme: { main: "#804BEB", grad: "linear-gradient(135deg, #804BEB 0%, #9D74FF 100%)", tagBg: "#f2edff", bgText: "GREEN" }
     },
     "hearim": {
         teamName: "헤아림",
         order: "3조",
         category: "장애",
-        summary: "장애인 의무고용제도 내 발달장애인 배제 문제",
-        mainTitle: "숫자 뒤에 가려진 고용 불평등,\n발달장애인의 내일",
-        tags: ["발달장애인", "고용배제"],
+        summary: "발달장애인의 재취업 공백 문제",
+        mainTitle: "9년 6개월간의 재취업 공백,\n그리고 사회적 관계 단절",
+        tags: ["발달장애인", "재취업공백", "관계단절"],
         theme: { main: "#6C40C9", grad: "linear-gradient(135deg, #6C40C9 0%, #8A5EE6 100%)", tagBg: "#eeebf7", bgText: "HEARIM" }
     },
     "dodream": {
         teamName: "두드림(Do-Dream)",
         order: "4조",
         category: "장애",
-        summary: "경계성지능 한부모 가정의 삶과 자립의 사각지대",
-        mainTitle: "이중의 어려움, 하나의 관심:\n경계성지능 한부모의 고군분투",
-        tags: ["경계성지능한부모", "사각지대"],
+        summary: "경계성지능인의 업무 적응 어려움 문제",
+        mainTitle: "업무 실수를 막기 위한 솔루션,:\n그럼에도 업무가 어려운 이유",
+        tags: ["경계성지능인", "느린학습자", "직무매뉴얼"],
         theme: { main: "#653CC3", grad: "linear-gradient(135deg, #653CC3 0%, #7E56DC 100%)", tagBg: "#ece9f5", bgText: "DO-DREAM" }
     },
     "lighthouse": {
         teamName: "등대",
         order: "5조",
         category: "이주",
-        summary: "중도입국청소년의 입학 지연 및 학업 포기 문제",
-        mainTitle: "닫힌 교문 앞의 이방인들,\n중도입국청소년의 권리",
-        tags: ["중도입국청소년", "입학지연"],
+        summary: "중도입국청소년의 입학 지연으로 인한 은둔/고립화 문제",
+        mainTitle: "닫힌 교문 앞의 아이들,\n중도입국청소년의 입학 지연",
+        tags: ["중도입국청소년", "입학지연", "은둔고립"],
         theme: { main: "#633CBB", grad: "linear-gradient(135deg, #633CBB 0%, #744BC9 100%)", tagBg: "#ebe8f2", bgText: "LIGHT HOUSE" }
     }
 };
