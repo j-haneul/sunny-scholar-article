@@ -175,7 +175,7 @@ header {
     </style>
 </head>
 <body class="text-gray-900">
-<header>
+<header class="relative">
     <div class="header-container">
         <a href="index.html" class="flex items-center">
             <img src="/images/sunny_scholar_logo.png" alt="Logo" style="height: 32px; width: auto;">
@@ -188,11 +188,19 @@ header {
         </nav>
 
         <div class="md:hidden flex items-center">
-            <button id="mobile-menu-button" class="text-gray-600 focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            <button id="mobile-menu-button" class="focus:outline-none" style="color: var(--sunny-purple);">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path id="menu-icon-path" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                 </svg>
             </button>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 absolute w-full left-0 z-40 shadow-lg animate__animated animate__fadeInDown">
+        <div class="px-6 py-4 flex flex-col gap-4">
+            <a href="article_list.html" class="text-[13px] font-black text-gray-900 py-2 border-b border-gray-50">ARTICLES</a>
+            <a href="team_list.html" class="text-[13px] font-black text-gray-900 py-2 border-b border-gray-50">LAB</a>
+            <a href="about.html" class="text-[13px] font-black text-gray-900 py-2">ABOUT</a>
         </div>
     </div>
 </header>
@@ -299,6 +307,35 @@ header {
         renderTeamCards(category);
     }
 
+document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIconPath = document.getElementById('menu-icon-path');
+
+    menuBtn.addEventListener('click', () => {
+        // 메뉴 표시/숨김 토글
+        mobileMenu.classList.toggle('hidden');
+        
+        // 아이콘 모양 변경 (햄버거 <-> X자)
+        if (mobileMenu.classList.contains('hidden')) {
+            // 햄버거 아이콘으로 복구
+            menuIconPath.setAttribute('d', 'M4 6h16M4 12h16m-7 6h7');
+        } else {
+            // X 아이콘으로 변경
+            menuIconPath.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+        }
+    });
+
+    // 메뉴 바깥 클릭 시 닫기 (사용성 개선)
+    window.addEventListener('click', (e) => {
+        if (!menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+            mobileMenu.classList.add('hidden');
+            menuIconPath.setAttribute('d', 'M4 6h16M4 12h16m-7 6h7');
+        }
+    });
+});
+
+    
     document.addEventListener('DOMContentLoaded', () => renderTeamCards('all'));
 </script>
     <script defer src="/_vercel/insights/script.js"></script>
