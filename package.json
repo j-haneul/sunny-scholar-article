@@ -4,5 +4,8 @@
   "scripts": {
     "start": "serve public",
     "build": "mkdir -p out && cp public/index.html out/"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
   }
 }
