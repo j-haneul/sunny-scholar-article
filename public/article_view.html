@@ -46,20 +46,35 @@
 <body class="text-gray-900">
     <div class="progress-container"><div id="scroll-indicator" class="progress-bar"></div></div>
 
-    <header class="sticky top-0 z-50 glass border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex justify-between items-center h-14 md:h-16">
-                <a href="index.html" class="flex items-center">
-                    <img src="/images/sunny_scholar_logo.png" alt="Logo" class="h-7 md:h-8 w-auto">
-                </a>
-                <nav class="hidden md:flex space-x-10 text-xs font-black tracking-widest uppercase">
-                    <a href="article_list.html" class="nav-link text-gray-800 hover:text-sunny transition">Articles</a>
-                    <a href="team_list.html" class="nav-link text-gray-800 hover:text-sunny transition">Lab</a>
-                    <a href="about.html" class="nav-link text-gray-800 hover:text-sunny transition">About</a>
-                </nav>
-            </div>
+   <header class="relative">
+    <div class="header-container">
+        <a href="index.html" class="flex items-center">
+            <img src="/images/sunny_scholar_logo.png" alt="Logo" style="height: 32px; width: auto;">
+        </a>
+
+        <nav class="hidden md:flex items-center" style="gap: 2.5rem;">
+            <a href="article_list.html" class="nav-link">Articles</a>
+            <a href="team_list.html" class="nav-link">Lab</a>
+            <a href="about.html" class="nav-link">About</a>
+        </nav>
+
+        <div class="md:hidden flex items-center">
+            <button id="mobile-menu-button" class="focus:outline-none transition-colors duration-300" style="color: var(--sunny-purple);">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path id="menu-icon-path" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
         </div>
-    </header>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 absolute w-full left-0 z-40 shadow-lg animate__animated animate__fadeInDown">
+        <div class="px-6 py-4 flex flex-col gap-4">
+            <a href="article_list.html" class="text-[13px] font-black text-gray-900 py-2 border-b border-gray-50 hover:text-[#63489a]">ARTICLES</a>
+            <a href="team_list.html" class="text-[13px] font-black text-gray-900 py-2 border-b border-gray-50 hover:text-[#63489a]">LAB</a>
+            <a href="about.html" class="text-[13px] font-black text-gray-900 py-2 hover:text-[#63489a]">ABOUT</a>
+        </div>
+    </div>
+</header>
 
     <div id="sub-nav-container" class="bg-white border-b border-gray-100 sticky top-14 md:top-16 z-40 sticky-nav">
         <div class="max-w-3xl mx-auto px-6 py-3">
@@ -232,7 +247,40 @@
             }
             lastScrollTop = st <= 0 ? 0 : st;
         }
+document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIconPath = document.getElementById('menu-icon-path');
 
+    // SUNNY 브랜드 컬러 변수
+    const sunnyPurple = getComputedStyle(document.documentElement).getPropertyValue('--sunny-purple').trim() || '#63489a';
+    const sunnyDeepPurple = '#4e387a'; // 선택 시 더 진한 색상
+
+    menuBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.toggle('hidden');
+        
+        if (isHidden) {
+            // 닫힘 상태: 기본 보라색 + 햄버거 아이콘
+            menuBtn.style.color = sunnyPurple;
+            menuIconPath.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+        } else {
+            // 열림 상태: 진한 보라색 + X 아이콘
+            menuBtn.style.color = sunnyDeepPurple;
+            menuIconPath.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+        }
+    });
+
+    // 바깥 영역 클릭 시 자동 닫기 및 색상 복구
+    window.addEventListener('click', (e) => {
+        if (!menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+            if (!mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+                menuBtn.style.color = sunnyPurple;
+                menuIconPath.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            }
+        }
+    });
+});
         window.addEventListener('load', initView);
         window.addEventListener('scroll', handleScroll);
     </script>
