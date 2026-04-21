@@ -680,9 +680,7 @@ const SUNNY_DATA = [
         <p>다른 사람들처럼, 준후도 맡은 일을 끝까지 스스로 해내고 싶다.<br>
         준후는 매뉴얼 없이는 혼자 적응할 수 없는 것일까.</p>
         
-        <div class="my-6 py-4 px-6 border-l-4 border-[#63489a] bg-gray-50 italic text-gray-500 text-sm">
-            *준후의 이야기는 인터뷰 당사자들의 실제 경험을 바탕으로 재구성한 내용입니다.
-        </div>
+        <p class="text-gray-500 text-sm mt-8">*준후의 이야기는 인터뷰 당사자들의 실제 경험을 바탕으로 재구성한 내용입니다.</p>
   `
   },
   {
