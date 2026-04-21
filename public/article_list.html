@@ -105,19 +105,35 @@
 </head>
 <body class="text-gray-900">
 
-<header>
+<header class="relative">
     <div class="header-container">
         <a href="index.html" class="flex items-center">
             <img src="/images/sunny_scholar_logo.png" alt="Logo" style="height: 32px; width: auto;">
         </a>
+
         <nav class="hidden md:flex items-center" style="gap: 2.5rem;">
-            <a href="article_list.html" class="nav-link active-tab">Articles</a>
+            <a href="article_list.html" class="nav-link">Articles</a>
             <a href="team_list.html" class="nav-link">Lab</a>
             <a href="about.html" class="nav-link">About</a>
         </nav>
+
+        <div class="md:hidden flex items-center">
+            <button id="mobile-menu-button" class="focus:outline-none transition-colors duration-300" style="color: var(--sunny-purple);">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path id="menu-icon-path" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 absolute w-full left-0 z-40 shadow-lg animate__animated animate__fadeInDown">
+        <div class="px-6 py-4 flex flex-col gap-4">
+            <a href="article_list.html" class="text-[13px] font-black text-gray-900 py-2 border-b border-gray-50 hover:text-[#63489a]">ARTICLES</a>
+            <a href="team_list.html" class="text-[13px] font-black text-gray-900 py-2 border-b border-gray-50 hover:text-[#63489a]">LAB</a>
+            <a href="about.html" class="text-[13px] font-black text-gray-900 py-2 hover:text-[#63489a]">ABOUT</a>
+        </div>
     </div>
 </header>
-
 <section class="py-12 md:py-16 px-6 max-w-7xl mx-auto">
     <p class="text-[#63489a] font-black tracking-widest text-[10px] uppercase mb-2">Step 01 Archive</p>
     <h1 class="text-3xl md:text-4xl font-black mb-2 tracking-tight">Problem Definition <span class="text-gradient">Articles</span></h1>
@@ -240,7 +256,40 @@ function handleScrollToHash() {
     // 강조 애니메이션
     target.classList.add('animate__animated', 'animate__pulse');
 }
+document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIconPath = document.getElementById('menu-icon-path');
 
+    // SUNNY 브랜드 컬러 변수
+    const sunnyPurple = getComputedStyle(document.documentElement).getPropertyValue('--sunny-purple').trim() || '#63489a';
+    const sunnyDeepPurple = '#4e387a'; // 선택 시 더 진한 색상
+
+    menuBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.toggle('hidden');
+        
+        if (isHidden) {
+            // 닫힘 상태: 기본 보라색 + 햄버거 아이콘
+            menuBtn.style.color = sunnyPurple;
+            menuIconPath.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+        } else {
+            // 열림 상태: 진한 보라색 + X 아이콘
+            menuBtn.style.color = sunnyDeepPurple;
+            menuIconPath.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+        }
+    });
+
+    // 바깥 영역 클릭 시 자동 닫기 및 색상 복구
+    window.addEventListener('click', (e) => {
+        if (!menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+            if (!mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+                menuBtn.style.color = sunnyPurple;
+                menuIconPath.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            }
+        }
+    });
+});
 window.onload = renderArticles;
 </script>
 </body>
