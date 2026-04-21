@@ -5,7 +5,7 @@ const TEAM_DATA = {
         category: "자립",
         summary: "조부모 돌봄 자립준비청년의 학업 중도포기 문제",
         mainTitle: "가족 돌봄과 자립 사이의 선택,\n예견된 돌봄",
-        tags: ["자립준비청년", "가족돌봄청년", "학업포기", "조손가정"],
+        tags: ["자립준비청년", "가족돌봄청년", "조손가정"],
         theme: { main: "#8B52FB", grad: "linear-gradient(135deg, #8B52FB 0%, #A67BFF 100%)", tagBg: "#f5f0ff", bgText: "FOU:RE" }
     },
     "green": {
@@ -14,7 +14,7 @@ const TEAM_DATA = {
         category: "자립",
         summary: "가정 밖 청소년의 시설 부적응 문제",
         mainTitle: "보호와 통제 사이의 간극:\n아이들이 다시 거리로 나가는 이유",
-        tags: ["가정밖청소년", "청소년쉼터", "시설부적응", "자립공백"],
+        tags: ["가정밖청소년", "청소년쉼터", "자립공백"],
         theme: { main: "#804BEB", grad: "linear-gradient(135deg, #804BEB 0%, #9D74FF 100%)", tagBg: "#f2edff", bgText: "GREEN" }
     },
     "hearim": {
