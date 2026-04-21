@@ -1163,7 +1163,7 @@ const TEAM_DETAILS = {
             { name: "주서영", img: "images/h_member2.jpg" },
             { name: "이준희", img: "images/h_member3.jpg" },
             { name: "이채윤", img: "images/h_member4.jpg" },
-            { name: "이하윤", img: "images/h_member4.jpg" }
+            { name: "이하윤", img: "images/h_member5.jpg" }
         ]
     },
 
