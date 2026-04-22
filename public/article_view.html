@@ -130,9 +130,26 @@ header {
     background: white;
 }
         /* [복구] 아티클 본문 및 폰트 스타일 */
-        .content-text { color: #374151; font-size: 1.125rem; word-break: keep-all; text-align: justify; }
-        .content-text p { margin-bottom: 2rem; } /* 문단 간격 예전 스타일로 유지 */
-        
+.content-text {
+    color: #374151;
+    /* [핵심] 기본값은 왼쪽 정렬 (모바일 및 작은 화면용) */
+    text-align: left; 
+    
+    font-size: 1.05rem;
+    line-height: 1.8;
+    letter-spacing: -0.01em;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}       
+
+
+        @media (min-width: 768px) {
+    .content-text {
+        text-align: justify;
+    }
+}
+
+         .content-text p { margin-bottom: 1.5rem; } /* 문단 간격 예전 스타일로 유지 */
         /* 이미지 및 캡션 */
         .content-img { width: 100%; border-radius: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05); display: block; object-fit: cover; }
         .img-container { margin-top: 2.5rem; margin-bottom: 2.5rem; }
