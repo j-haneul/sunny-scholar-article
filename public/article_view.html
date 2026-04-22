@@ -8,6 +8,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
 
+        /* 제목 크기 및 간격 미세 조정 */
+#view-title {
+    word-break: keep-all;
+    letter-spacing: -0.02em;
+}
+
+/* 모바일에서 파트 네비게이션이 너무 붙지 않게 */
+#part-nav {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+/* 상단 네비게이션 숨김 애니메이션 시 서브 네비게이션 위치 조정 */
+.nav-up {
+    top: 0 !important;
+}
+
         /* --- index.html 기준 상단바 레이아웃 강제 통일 --- */
 header { 
     height: 64px !important; 
@@ -142,6 +159,23 @@ header {
     </div>
 </header>
 
+<main class="max-w-3xl mx-auto px-6 py-10 md:py-16">
+    <div class="mb-10 text-center"> <div id="view-team-tag" class="text-[#63489a] text-sm font-black mb-3 tracking-wider uppercase"></div>
+        <div id="view-team-summary" class="text-gray-400 text-sm font-bold mb-6 break-keep"></div>
+        <h1 id="view-title" class="text-3xl md:text-4xl font-black leading-tight break-keep text-gray-900"></h1>
+    </div>
+
+    <div id="sub-nav-container" class="sticky top-[64px] z-30 bg-white/80 backdrop-blur-md border-b border-gray-100 mb-12 sticky-nav">
+        <div id="part-nav" class="flex gap-2 overflow-x-auto no-scrollbar py-4 justify-center">
+            </div>
+    </div>
+
+    <article>
+        <div id="dynamic-body" class="content-text">
+            </div>
+        <div id="footnote-area" class="footnote-section hidden"></div>
+    </article>
+    
         <article>
             <div id="dynamic-body" class="content-text">
                 </div>
