@@ -7,6 +7,72 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
+
+        /* --- index.html 기준 상단바 레이아웃 강제 통일 --- */
+header { 
+    height: 64px !important; 
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 50 !important;
+    background: rgba(255, 255, 255, 0.8) !important; 
+    backdrop-filter: blur(12px) !important; 
+    -webkit-backdrop-filter: blur(12px) !important; 
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+    width: 100% !important;
+    display: block !important; /* 혹시 모를 밀림 방지 */
+}
+
+.header-container {
+    max-width: 80rem !important; /* index.html의 max-w-7xl 설정값 */
+    margin: 0 auto !important;
+    padding: 0 1.5rem !important; /* index.html의 px-6 설정값 */
+    height: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+}
+
+/* 로고 크기 인덱스와 동일하게 32px 고정 */
+.header-container a img {
+    height: 32px !important;
+    width: auto !important;
+}
+
+/* 메뉴 텍스트 및 인덱스 스타일 밑줄 */
+.nav-link {
+    position: relative !important;
+    height: 64px !important;
+    display: flex !important;
+    align-items: center !important;
+    color: #1f2937 !important;
+    font-size: 11px !important;
+    font-weight: 900 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+    transition: color 0.3s ease !important;
+}
+
+.nav-link::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: 18px !important;
+    left: 50% !important;
+    width: 0 !important;
+    height: 2px !important;
+    background-color: #63489a !important;
+    transition: all 0.3s ease !important;
+    transform: translateX(-50%) !important;
+}
+
+.nav-link:hover::after,
+.nav-link.active-tab::after {
+    width: 100% !important;
+}
+
+.nav-link.active-tab {
+    color: #63489a !important;
+}
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
         :root { --sunny-purple: #63489a; }
         body { font-family: 'Pretendard', sans-serif; background-color: #f8f9ff; line-height: 1.8; }
