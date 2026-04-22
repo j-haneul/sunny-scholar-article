@@ -15,9 +15,10 @@
 }
     /* 5. 제목 크기 고정 (너무 커지는 문제 해결) */
 #view-title {
-    margin-top: 0.5rem;
+    margin-top: 0rem;
     letter-spacing: -0.02em;
     line-height: 1.35;
+    font-weight: 900 !important;
 }
 /* 1. 파트 네비게이션 컨테이너: 배경색과 테두리를 완전히 없앰 */
 #sub-nav-container {
@@ -142,7 +143,6 @@ header {
     overflow-wrap: break-word;
 }       
 
-
         @media (min-width: 768px) {
     .content-text {
         text-align: justify;
@@ -206,19 +206,22 @@ header {
 </header>
 <main class="max-w-3xl mx-auto px-6 py-10 md:py-16 animate__animated animate__fadeIn">
     
-    <div id="sub-nav-container" class="mb-8">
+    <div class="mb-6">
+        <div id="view-team-tag" class="text-[#63489a] text-sm md:text-base font-black mb-3 tracking-wider uppercase"></div>
+        
+        <div id="view-team-summary" class="text-gray-500 text-base md:text-lg font-bold mb-0 break-keep leading-relaxed border-l-4 border-purple-100 pl-4 py-1"></div>
+    </div>
+
+    <div id="sub-nav-container" class="mb-10">
         <div id="part-nav" class="no-scrollbar"></div>
     </div>
 
     <div class="mb-10">
-        <div id="view-team-tag" class="text-[#63489a] text-sm md:text-base font-black mb-3 tracking-wider uppercase"></div>
-        <div id="view-team-summary" class="text-gray-500 text-base md:text-lg font-bold mb-6 break-keep leading-relaxed border-l-4 border-purple-100 pl-4 py-1"></div>
-        
         <h1 id="view-title" class="text-3xl md:text-5xl font-black leading-tight break-keep text-gray-900"></h1>
     </div>
 
     <article>
-        <div id="dynamic-body" class="content-text text-left"></div>
+        <div id="dynamic-body" class="content-text"></div>
         <div id="footnote-area" class="footnote-section hidden"></div>
     </article>
 
