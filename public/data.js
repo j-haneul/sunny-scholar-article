@@ -865,7 +865,7 @@ const SUNNY_DATA = [
     thumbnail: "images/lighthouse_1.jpg",
     thumbnailCaption: "이미지 출처: Unsplash, @Jeff Hendricks",
     content: `
-    <p>오전 8시 15분, 창문 너머로 아이들의 발소리와 웃음소리가 멀어진다. 꺄르륵대며 웃는 교복 차림의 아이들의 수다 소리가 잦아들면 왕준은 하루는 다시 고요 속으로 멈춰 선다.</p>
+    <p>오전 8시 15분, 창문 너머로 아이들의 발소리와 웃음소리가 멀어진다. 꺄르륵대며 웃는 교복 차림의 아이들의 수다 소리가 잦아들면 왕준의 하루는 다시 고요 속으로 멈춰 선다.</p>
 
     <div class="my-4 py-2">
       <p class="text-xl font-bold text-[#63489a] mb-2">“기다리라는 말만 믿고 방 안에서만 있었는데, 어느새 창 밖 아이들 옷차림이 두 번이나 바뀌었어요. 저만 두고 세상이 흘러가는 것 같아요…”</p>
