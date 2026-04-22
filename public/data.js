@@ -5,7 +5,7 @@ const TEAM_DATA = {
         category: "자립",
         summary: "조부모 돌봄 자립준비청년의 학업 중도포기 문제",
         mainTitle: "가족 돌봄과 자립 사이의 선택,\n예견된 돌봄",
-        tags: ["자립준비청년", "가족돌봄청년", "조손가정"],
+        tags: ["자립준비청년", "가족돌봄청년"],
         theme: { main: "#8B52FB", grad: "linear-gradient(135deg, #8B52FB 0%, #A67BFF 100%)", tagBg: "#f5f0ff", bgText: "FOU:RE" }
     },
     "green": {
@@ -14,7 +14,7 @@ const TEAM_DATA = {
         category: "자립",
         summary: "가정 밖 청소년의 시설 부적응 문제",
         mainTitle: "보호와 통제 사이의 간극:\n아이들이 다시 거리로 나가는 이유",
-        tags: ["가정밖청소년", "청소년쉼터", "자립준비"],
+        tags: ["가정밖청소년", "청소년쉼터"],
         theme: { main: "#804BEB", grad: "linear-gradient(135deg, #804BEB 0%, #9D74FF 100%)", tagBg: "#f2edff", bgText: "GREEN" }
     },
     "hearim": {
@@ -23,7 +23,7 @@ const TEAM_DATA = {
         category: "장애",
         summary: "발달장애인의 취업 공백기 장기화 문제",
         mainTitle: "9년 6개월간의 재취업 공백,\n그리고 사회적 관계 단절",
-        tags: ["발달장애인", "재취업공백", "관계단절"],
+        tags: ["발달장애인", "취업공백"],
         theme: { main: "#6C40C9", grad: "linear-gradient(135deg, #6C40C9 0%, #8A5EE6 100%)", tagBg: "#eeebf7", bgText: "HEARIM" }
     },
     "dodream": {
@@ -32,7 +32,7 @@ const TEAM_DATA = {
         category: "장애",
         summary: "경계성지능인의 업무 오류 발생 문제",
         mainTitle: "업무 실수를 막기 위한 솔루션,:\n그럼에도 업무가 어려운 이유",
-        tags: ["경계성지능인", "느린학습자", "직무매뉴얼"],
+        tags: ["경계성지능인", "느린학습자"],
         theme: { main: "#653CC3", grad: "linear-gradient(135deg, #653CC3 0%, #7E56DC 100%)", tagBg: "#ece9f5", bgText: "DO-DREAM" }
     },
     "lighthouse": {
@@ -41,7 +41,7 @@ const TEAM_DATA = {
         category: "이주",
         summary: "중도입국청소년의 입학 지연으로 인한 은둔고립 문제",
         mainTitle: "닫힌 교문 앞의 아이들,\n중도입국청소년의 입학 지연",
-        tags: ["중도입국청소년", "입학지연", "은둔고립"],
+        tags: ["중도입국청소년", "은둔고립"],
         theme: { main: "#633CBB", grad: "linear-gradient(135deg, #633CBB 0%, #744BC9 100%)", tagBg: "#ebe8f2", bgText: "LIGHT HOUSE" }
     }
 };
