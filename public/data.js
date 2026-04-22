@@ -14,7 +14,7 @@ const TEAM_DATA = {
         category: "자립",
         summary: "가정 밖 청소년의 시설 부적응 문제",
         mainTitle: "보호와 통제 사이의 간극:\n아이들이 다시 거리로 나가는 이유",
-        tags: ["가정밖청소년", "청소년쉼터", "자립공백"],
+        tags: ["가정밖청소년", "청소년쉼터", "자립준비"],
         theme: { main: "#804BEB", grad: "linear-gradient(135deg, #804BEB 0%, #9D74FF 100%)", tagBg: "#f2edff", bgText: "GREEN" }
     },
     "hearim": {
