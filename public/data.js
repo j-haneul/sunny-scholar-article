@@ -30,9 +30,9 @@ const TEAM_DATA = {
         teamName: "두드림(Do-Dream)",
         order: "4조",
         category: "장애",
-        summary: "경계성지능인의 업무 오류 발생 문제",
+        summary: "경계선지능인의 업무 오류 발생 문제",
         mainTitle: "업무 실수를 막기 위한 솔루션,:\n그럼에도 업무가 어려운 이유",
-        tags: ["경계성지능인", "느린학습자"],
+        tags: ["경계선지능인", "느린학습자"],
         theme: { main: "#653CC3", grad: "linear-gradient(135deg, #653CC3 0%, #7E56DC 100%)", tagBg: "#ece9f5", bgText: "DO-DREAM" }
     },
     "lighthouse": {
